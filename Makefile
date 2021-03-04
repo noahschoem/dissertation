@@ -14,3 +14,4 @@ thesis:
 	latexmk -bibtex -pdf thesis
 	makeglossaries thesis
 	pdflatex -bibtex thesis
+	pdflatex -bibtex thesis
