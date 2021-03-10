@@ -1,4 +1,145 @@
 \section{The Koepke Approach}
 \label{ms:koepke}
 
-Codifies more carefully Koepke's approach to proving mutual stationarity, including notion of types, mutual Ramseyness.
+Koepke's argument for the consistency of $MS(\seq{\aleph_{2n+3}\mid n<\omega;\omega_1})$ uses an alternative way to think about the proof of \thref{ms_prikry}.
+We will flesh out this approach here, as our arguments for Magidor generics depend on Koepke's work.
+
+Koepke's mutual stationarity result in (todo: cite koepke_omega1) implicitly rephrases \thref{ms_prikry} as a Ramsey-theoretic result, in the following sense:
+
+\begin{definition}[Definition 2.2 of (todo: cite koepke_omega1)
+  Suppose that $\kappa$ is a limit cardinal with $cf(\kappa)=\lambda$, and let $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be a normal cofinal sequence of cardinals below $\kappa$.
+  \begin{enumerate}
+    \item Let $x\in [\kappa]^{<\omega}$. Then $type(x)=\seq{|x \cap \kappa_\alpha| \mid \alpha\in \lambda}$. 
+    
+    We'll say that $t\in [\omega]^\lambda$ is a type if for some $x$, $t=type(x)$.
+    
+    We'll additionally say that the \emph{instances} of $t$ are $inst(t) := \{x\in [\kappa]^{<\omega} \mid type(x) = t\}$
+    
+    \item Let $a\subseteq \omega$.
+    Then the \emph{projection by $a$}, $\upharpoonright a:[\kappa]^{<\omega} \to [\kappa]^{<\omega}$, is defined by 
+    \[
+      x\upharpoonright a = \{\xi \in x \mid o.t.(\xi\cap x)\in a\}
+    \]
+    
+    \item Because of how types are defined, for all $a$, if $type(x)=type(y)$ then $type(x\upharpoonright a)=type(y\upharpoonright a)$.
+    So if $t$ is a type, let $t\upharpoonright a$ be $type(x\upharpoonright a)$ for any $type(x)=t$.
+    
+    \item We say that a sequence of sets $\seq{I_\alpha \mid \alpha\in\lambda\cap Succ}$ with each $I_\alpha \subseteq \kappa_\alpha$ is \emph{mutually homogeneous for a function $F:[\kappa]^{<\omega}\to \kappa$} if for every $x,y\in\left[\bigcup_{\alpha \in \lambda\cap Succ} I_\alpha\right]^{<\omega}$, we have that $F(x)=F(y)$ whenever $type(x)=type(y)$ and $x\cap (F(x)+1) = y \cap (F(x) + 1)$.
+    
+    \item We say that $\seq{\kappa_\alpha \mid \alpha<\lambda}$ is \emph{mutually Ramsey} if for all $F:[\kappa]^{<\omega} \to \kappa$, there is a mutually homogeneous for $F$ sequence $\seq{I_\alpha \mid \alpha\in\lambda\cap Succ}$ such that $|I_\alpha|=\kappa_\alpha$.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  \begin{enumerate}
+    \item For $x\in[\kappa]^{<\omega}$, $type(x)$ is the (non-decreasing, eventually stabilizing) sequence that tells you, at point $\alpha$, how many elements of $x$ there are below $\kappa_\alpha$.
+    
+    \item Projection captures a notion of subsequence; for instance, if $x=\seq{\kappa_0,\kappa_1,\dots,\kappa_{20}}$ and $a$ is the even numbers, then $x\upharpoonright a=\seq{\kappa_0,\kappa_2,\kappa_4,\dots,\kappa_{18},\kappa_{20}}$, and e.g. $\kappa_1\notin x\upharpoonright a$ because $o.t.(x\cap \kappa_1)=o.t.(\{\kappa_0\})=1\notin a$.
+    
+    Based on this observation, we may equivalently say that if $x=\seq{x_i \mid 0\leq i<n}$ written in increasing order, then $x \upharpoonright a=\{x_j \mid 0\leq j<n, \ j\in a\}$.
+    
+    \item In the definition of mutually homogeneous, the restriction $x\cap (F(x)+1) = y \cap (F(x) + 1)$ is equivalent to $F(x)<\min(x \Delta y)$ (the symmetric difference).
+    
+    The idea here is that a sequence is mutually homogeneous for $F$ if $F$'s values on the (finite subsets picked from the) sequence depend only on type and a generalization of regressiveness. In a sense, this is exactly the behavior one would want out of a Skolem function on a structure with many large order-indiscernibles, which is exactly how the (todo: cite Foreman, Magidor, Canonical Structures II) result proceeds.
+\end{remark}
+
+It may be more natural to think about types as follows:
+
+\begin{definition}
+  Let $t$ be a type, and write $t=\seq{b_\alpha \mid \alpha<\lambda}$.
+  Then the \emph{signature of} $t$ is $s = sig(t) = \seq{b_\alpha - b_{\alpha-1} \mid \alpha\in (\lambda \cap Succ) \cup \{0\}}$ (where $b_{-1}:=0$).
+\end{definition}
+
+Type is meant to say ``below $\kappa_\alpha$, we have seen $b_\alpha$-many points" whereas signature says, ``there are $b_\alpha - b_{\alpha-1}$-many points in $[\kappa_{\alpha-1},\kappa_\alpha)$".
+
+Observe that given $s\in \omega^{<\lambda}$, if the support of $s$ is finite then we can precisely identify the type $t$ with signature $s$ by $b_\alpha = \sum_{i=0}^\alpha s(i)$.
+
+Signature allows us further characterizations of projections.
+If you want to project from $t'$ to $t$, then for all $\alpha$, $t'$ must have at least as many points in $[\kappa_{\alpha-1},\kappa_\alpha)$ as $t$.
+Thus we have the following observation:
+
+\begin{remark}
+  There is an $a\subseteq \omega$ such that $t' \upharpoonright a = t$ iff for all $\alpha$, $sig(t')(\alpha) \geq sig(t)(\alpha)$.
+\end{remark}
+
+Let's say $t'$ expects $4$ points in $[\kappa_{\alpha-1},\kappa_\alpha)$ and $t$ expects $2$. Then if we can project from $t'$ to $t$, then within $[\kappa_{\alpha-1},\kappa_\alpha)$ we have $6$ different possibilities of which indices within $[\kappa_{\alpha-1},\kappa_\alpha)$ we'll pick when we project, coming from choosing $4$ of the $2$ indices. 
+This leads to the following remark:
+
+\begin{remark} \thlabel{finitely_many_projections}
+  If we can in fact project from $t'$ to $t$, then the number of distinct maps $(\upharpoonright a) \upharpoonright inst(t') : inst(t') \to inst(t)$ is
+  \[
+    \prod_{\alpha\in (\lambda \cap Succ)} \binom{sig(t')(\alpha)}{sig(t)(\alpha)}
+  \]
+  where for all but finitely many $\alpha$, $\binom{sig(t')(\alpha)}{sig(t)(\alpha)} = 1$. In particular, the number of such maps $\upharpoonright a$ is finite.
+\end{remark}
+
+Our use case for mutually homogeneous sequences is to build a form of indiscernible sequence for a given model $\mathcal{M}$:
+
+\begin{definition}\thlabel{mutually_homogeneous_for_structure}
+  Let $\theta\geq \kappa$, and let $\mathcal{M}$ be a model of domain $V_\theta$ (or $H_\theta$ or $\theta$) with signature of size less than $\kappa_0$.
+  Suppose that $\mathcal{M}$ has a term $F$ which is a Skolem function for $\mathcal{M}$ (i.e. $F:[dom(\mathcal{M})]^{<\omega}\to \theta$ and for every $X\subseteq \kappa$, $X\subseteq F"[X]^{<\omega}\prec \mathcal{M}$).
+  Then we say that $\mathcal{I}:=\seq{I_\alpha \mid \alpha\in \lambda\cap Succ}$ is \emph{mutually homogeneous for $\mathcal{M}$ and $F$} if
+  \begin{itemize}
+    \item $\mathcal{I}$ is mutually homogeneous for $F$
+    \item for each formula $\phi$ in the signature of $\mathcal{M}$, if $x,y\in [\kappa]^{<\omega}$ are of the appropriate arity for $\phi$ and $type(x)=type(y)$, then $\mathcal{M}\models \phi(x) \iff \mathcal{M}\models \phi(y)$
+    \item for each term definable in $\mathcal{M}$ viewed as a map $g:[\kappa]^{<\omega}\to \kappa$, $\mathcal{I}$ is mutually homogeneous for $g$; that is, if $x,y\in \left[\bigcup_{\alpha \in \lambda\cap Succ} I_\alpha\right]^{<\omega}$ with $type(x)=type(y)$ and $x\cap (g(x)+1) = y \cap (g(x)+1)$ then $g(x)=g(y)$
+  \end{itemize}
+\end{definition}
+
+\begin{remark}\thlabel{rmk_construct_mh_for_structure}
+  If $\seq{\kappa_\alpha \mid \alpha\in \lambda \cap Succ}$ is mutually Ramsey such that each $I_\alpha\subseteq \kappa_\alpha$ may be chosen to be club (or measure one in $V$ for some appropriate notion of ``measure one") in $\kappa_\alpha$,
+  then constructing a mutually homogeneous system for $\mathcal{M}$ is straightforward, albeit with the following adjustment needed for the formulas $\phi$:
+  
+  We may view each formula $\phi$ restricted to parameters chosen from $[\kappa]^{<\omega}$ as a function $\phi:[\kappa]^{<\omega} \to \{0,1,2\}$ defined by: 
+  \[
+    \phi(x) = \begin{cases}
+      0 & |x|\text{ is inappropriate for use in }\phi \\
+      1 & \mathcal{M} \models \lnot \phi(x) \\
+      2 & \mathcal{M} \models \phi(x) \\
+    \end{cases}
+  \]
+  Then as long as we have that $\seq{I_\alpha \mid \alpha\in \lambda \cap Succ}$ is mutually homogeneous for $\phi$ and that $0,1,2\notin I_0$, we have that $y\cap (\phi(x)+1)=\emptyset$ for every $x,y\in [\kappa]^{<\omega}$; therefore, if $type(x)=type(y)$ then $\phi(x)=\phi(y)$.
+  
+  So to obtain a mutually homogeneous system for $\mathcal{M}$, we construct mutually homogeneous systems of clubs for $F$ and for each $\phi$ and each $g$ as in \thref{mutually_homogeneous_for_structure}, of which there will be less than $\kappa_0$-many, and take their intersection.
+\end{remark}
+
+The (Foreman, Magidor, Canonical Structures II) result on Prikry generics fundamentally relies only on arguments involving such $F:[\kappa]^{<\omega}\to \kappa$. 
+Koepke has arguments pertaining to such $F$ and in a much earlier paper proved the following:
+
+\begin{theorem}[Koepke 1984; also Koepke 2007, Proposition 2.3]\thlabel{koepke_mr}
+  Let $V[G]$ be a Prikry generic model for $\kappa$ over $V$, and let $\seq{\kappa_n \mid n<\omega}$ be a Prikry generic sequence for $\kappa$.
+  Then in $V[G]$, for some $m$, $\seq{\kappa_n \mid m\leq n<\omega}$ is mutually Ramsey.
+  Furthermore, the sequence of $I_n$'s witnessing this in $V[G]$ may be chosen to be club subsets of each $\kappa_n$, or stationary subsets of each $\kappa_n$ consisting only of inaccessibles.
+\end{theorem}
+
+The proof is fundamentally exactly as in (Foreman, Magidor, Canonical Structures II) but Koepke reproves it anyways.
+The clubness is left unwritten in both, but is implicit; the fact that each $I_n$ may consist only of inaccessibles comes from observing that measure-one (hence stationarily) many cardinals below a measurable are Mahlo.
+
+\begin{corollary}
+  If $\seq{\kappa_n\mid n<\omega}$ is a Prikry generic sequence over $V$ in $V[G]$,  then in $V[G]$, $MS(\seq{\kappa_n\mid n<\omega})$ holds on a tail.
+\end{corollary}
+
+\begin{proof}
+  Let $\vec{S}=\seq{S_n\mid n<\omega}$ be a family of sationary sets on $\seq{\kappa_n\mid n<\omega}$; without loss of generality, all of $\seq{\kappa_n\mid n<\omega}$ is mutually Ramsey.
+  
+  Let $\mathcal{M}$ be a structure on $\kappa$ with Skolem function $F$ and, without loss of generality, terms for each $S_n$; by mutual Ramseyness of $\kappa$, let $\seq{I_n\mid n<\omega}$ be a mutually homogeneous for $\mathcal{M}$ and $F$ family of clubs on each $\kappa_n$.
+  
+  Since each $I_n$ is unbounded in $\kappa_n$, let $\gamma_n\in S_n\cap Lim(I_n)$, and let 
+  \[
+    \mathcal{U}=F"\left[\bigcup_{n<\omega} I_n \cap \gamma_n\right]^{<\omega}
+  \]
+  
+  Since $F$ is a Skolem function and since $\gamma_n \in Lim(I_n)$, $\mathcal{U}\prec \mathcal{M}$ and $\sup(\mathcal{U}\cap \kappa_n)\geq \gamma_n$. 
+  
+  To see that $\sup(\mathcal{U}\cap \kappa_n)\leq \gamma_n$, let $x\in[\bigcup_{n<\omega} I_n \cap \gamma_n]^{<\omega}$ be such that $F(x)=\alpha\in [\kappa_{n-1},\kappa_n)$ for some $n$.
+  
+  Since $I_n$ is unbounded in $\kappa_n$, let $\delta\in I_n \cap (\max\{\gamma_n,\alpha\},\kappa_n)$;
+  since $x$ is finite and $I_n$ is unbounded in $\gamma_n$, let $\zeta\in I_n \cap (\max (x\cap \gamma_n),\gamma_n)$.
+
+  We now have that $\mathcal{M}\models F(x)<\delta$ by choice of $\delta$.
+  Additionally, by choice of $\delta$ and $\zeta$, and since $x\cap [\zeta,\kappa_n)=\emptyset$, the elements of $x$ bear the same order relation to $\zeta$ as they do to $\delta$, and in particular $type(x\cup\{\delta\})=type(x\cup \{\zeta\})$.
+  
+  Thus by mutual homogeneity applied to the formula $``F(\vec{a})<b"$, $\mathcal{M}\models F(x)<\zeta$ and observe that this implies $F(x)<\gamma_n$.
+  
+  Therefore $\sup(\mathcal{U}\cap \kappa_n)= \gamma_n$ as desired.
+\end{proof}
