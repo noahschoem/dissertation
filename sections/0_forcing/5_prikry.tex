@@ -1,5 +1,63 @@
-\section{Singularizing Cardinals via Prikry \& Magidor Forcing}
-\label{forcing:singularizing}
+\section{Singularizing Cardinals via Prikry Forcing}
+\label{forcing:prikry}
 
-% Might mention that you need remnants of measurables to singularize cardinals without collapsing, via e.g. Jensen Covering.
-% Here's where you can illustrate the basics of Prikry & Magidor forcing.
+While the L\'evy collapses $Col(\kappa,\lambda)$ and $Col(\kappa,<\lambda)$ require no large cardinal strength (or only an inaccessible), being able to singularize a cardinal without collapsing any cardinals by means of forcing requires a ground model with remnants of measurability, as shown by Jensen's Covering Lemma (c.f. (todo: cite Jech here)).
+The first such forcing comes from work by Prikry;
+as our results depend on generalizations of Prikry forcing, we summarize the salient points here.
+
+\begin{definition}[Prikry forcing]
+  Let $U$ be a normal measure on $\kappa$.
+  Then we define the forcing $\mathbb{P}(U)$ by:
+  \begin{enumerate}
+    \item Conditions are of the form $(s,A)$ where $s\in [\kappa]^{<\omega}$, $A\in U$, and $\max(s)<\min(A)$
+    \item The condition $(t,B)\leq (s,A)$ if $t\supseteq s$, $B\subseteq A$, and for all $\rho\in t\setminus s$, $\rho\in A$
+  \end{enumerate}
+\end{definition}
+
+A generic filter $G$ induces an $\omega$-length sequence $\seq{\beta_n\mid n<\omega}$ cofinal below $\kappa$, given by 
+\[
+  \seq{\beta_n\mid n<\omega}=\bigcup_{(s,A)\in G} s
+\]
+Thus $\kappa$ is no longer measurable, as $\cf^{V[G]}(\kappa)=\omega$.
+Remarkably, however, $\mathbb{P}(U)$ does not collapse cardinals, because the measure one components can decide the generic object's behavior.
+We make this precise:
+
+\begin{definition}[Direct and $n$-step extension]
+  Let $(t,B)\leq (s,A)$.
+  We say that $(t,B)$ is a \emph{direct extension} of $(s,A)$, written $(t,B)\leq^* (s,A)$, if $t=s$.
+  
+  And we say that $(t,B)$ is an $n$-\emph{step} extension of $(s,A)$ if $|t\setminus s|=n$.
+\end{definition}
+
+As $(s,A) \compat (s,B)$ for any $A,B$ (as $(s,A\cap B)=(s,A)\land (s,B)$), incompatibility is entirely characterized by the stem and so $\mathbb{P}(U)$ is $\kappa^+$-cc.
+
+As for preservation of cardinals below $\kappa$\footnote{
+  which is enough to show preservation of $\kappa$, as the limit of cardinals is also a cardinal
+}, we use the fact that $\leq^*$ is quite powerful.
+
+\begin{lemma}[Prikry property, open dense version]
+  Let $p\in\mathbb{P}(U)$, and let $D$ be an open dense subset of $\mathbb{P}(U)$.
+  Then there is a $q\leq^* p$ and an $n<\omega$ such that every $n$-step extension of $q$ is in $D$.
+\end{lemma}
+
+Essentially, this follows from the normality of $U$.
+As a corollary, direct extensions are sufficient to decide sentences in the forcing language:
+\begin{corollary}[Prikry property, sentential version]
+  Let $p\in\mathbb{P}(U)$ and let $\sigma$ be a sentence of the forcing language.
+  Then there is an $r\leq^* p$ such that $r$ decides $\sigma$.
+\end{corollary}
+
+\begin{proof}[Proof sketch]
+  Since the collection of all conditions deciding $\sigma$ is open dense, there is some $p\leq^* p$ and an $n$ such that every $n$-step extension of $p$ decides $\sigma$.
+  
+  But exactly one of $\sigma$ and $\lnot\sigma$ is forced measure-one often by the $n$-step extensions of $p$, so there is an $r\leq^* q$ such that every $n$-step extension of $r$ decides $\sigma$ the same way (the fleshed-out argument proceeds by induction on $n$). But then by density, $r$ must decide $\sigma$ that same way.
+\end{proof}
+
+\begin{corollary}
+  $\mathbb{P}(U)$ adds no bounded subsets of $\kappa$, and thus preserves cardinals.
+\end{corollary}
+
+\begin{proof}[Proof sketch]
+  Let $p\forces \dot{X}\subseteq \tau$ for some $\tau<\kappa$.
+  For each $\alpha<\tau$, there is some $p_\alpha \leq^* p$ deciding $``\alpha\in\dot{X}"$; then since $U$ is $\kappa$-complete, the greatest lower bound $q$ of $\seq{p_\alpha \mid \alpha<\tau}$ suffices to define $\dot{X}$ entirely within $V$.
+\end{proof}
