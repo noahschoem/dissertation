@@ -1,0 +1,464 @@
+\section{Singularizing Cardinals via Magidor Forcing}
+\label{forcing:magidor}
+
+Magidor forcing is a standard tool for singularizing cardinals to have uncountable cofinality without collapsing cardinals.
+
+The original approach for Magidor forcing from (todo: cite magidor, chg unctble cof) uses a system of representatives $r$ for normal measures below $\kappa$ the measurable cardinal we wish to singularize to cofinality $\lambda<\kappa$, and follows from a coherent system of measures:
+
+\begin{remark}
+  Let $\mathcal{U}$ be a coherent system of normal measures at $\kappa$ with $o^{\mathcal{U}}(\kappa)=\lambda$, and let $\alpha\leq\kappa$, $\eta<\tau<o^{\mathcal{U}}(\alpha)$.
+  
+  Since $U_{\alpha,\eta}\in Ult(V,U_{\alpha,\tau})$, we may fix some $r^\tau_{\alpha,\eta}:\kappa\to V$ such that $[r^\tau_{\alpha,\eta}]_{U_{\alpha,\tau}}=U_{\alpha,\eta}$.
+  
+  By elementarity, $U_{\alpha,\tau}$-often below $\kappa$, $r^\tau_{\alpha,\eta}(\delta)$ will be a normal measure on $\delta$, and will have Mitchell rank $\eta$ among normal measures on $\delta$. 
+  So we can further have that for $U_{\alpha,\tau}$-many $\eta<\kappa$, for all $\zeta<\eta$, $r^\tau_{\alpha,\zeta}(\delta)\prec r^\tau_{\alpha,\eta}(\delta)$.
+  
+  And we can expect even stronger coherence as follows:
+  For every $\alpha\leq\kappa$ and every $\tau<o^{\mathcal{U}}(\alpha)$,
+  for $U_{\alpha,\tau}$-many $\delta$, for every $\zeta<\eta<\tau$, we will have that
+  \[ 
+    [r^\eta_{\alpha,\zeta} \upharpoonright \delta]_{r^\tau_{\alpha,\eta}(\delta)}=r^\tau_{\alpha,\zeta}(\delta) \label{rep-transitivity}
+  \]
+  as a measure-one reflection of the statement that $[r^\tau_{\alpha,\eta}]_{U_{\alpha,\tau}}=U_{\alpha,\eta}$
+\end{remark}
+
+Keeping this in mind, we will fix some measure-one sets witnessing useful coherence properties for $r$:
+\begin{remark}\thlabel{mitchell_rep_coherence_sets}
+  \begin{itemize}
+    \item Fix $\vec{U}=\seq{U_\xi\mid \xi<\lambda}$ a Mitchell-order increasing sequence of normal measures on $\kappa$.
+    
+    \item Observe: for $\eta<\xi<\lambda$, we may let $r^\xi_\eta:\kappa\to V$ represent $U_\eta$ in $Ult(V,U_\xi)$.  
+    By elementarity, we have that for $U_\xi$-many $\delta$, $r^\xi_\eta(\delta)$ is a normal measure on $\delta$ with Mitchell rank $\eta$, and furthermore this can be witnessed by $r$; i.e. $r^\xi_\zeta(\delta)\prec r^\xi_\eta(\delta)$ for all $\zeta<\eta$.
+    
+    \item Fix $X_\xi$ to be the set of all such $\delta<\kappa$ as in the above bullet point.
+    
+    \item Fix $Y_0=\kappa \cap Inacc$.
+    
+    \item For $U_\xi$-many $\delta\in X_\xi$, we have a coherence property among the representatives, in the sense that whenever $\zeta<\eta<\xi$, $[r^\eta_\zeta \upharpoonright \delta]_{r^\xi_\eta(\delta)}=r^\xi_\zeta(\delta)$.
+    
+    \item Fix $Y_\xi$ to be the set of such $\delta<\kappa$ as in the above bullet point.
+  \end{itemize}
+\end{remark}
+
+\begin{definition}[Magidor forcing, $\mathbb{M}\left(\vec{U}\right)$: conditions]\thlabel{def_mag_forcing}
+  Conditions are ordered pairs $(f,A)$ where:
+  \begin{enumerate}
+    \item $dom(f)\in [\lambda]^{<\omega}$ and $dom(A)=\lambda\setminus dom(f)$
+    
+    \item For $\xi\in dom(f)$, $f(\xi)\in Y_\xi$, $f(\xi)>\lambda$, and $f$ is strictly increasing.
+    
+    \item For $\xi\in dom(A)$ with $\xi<\max dom(f)$, let $\tau=\min \{dom(f)\setminus (\xi+1)\}$. Then $A(\xi)\in r^\tau_\xi(f(\tau))$. 
+    That is, if $f$ already has already added an ordinal with index above $\xi$, then the measure that we'll be picking the value of $f(\xi)$ from in the future will be a normal measure on $f(\tau)$ (instead of $\kappa$) with Mitchell rank $\xi$.
+    
+    \item For $\xi\in dom(A)$ with $\xi>\max dom(f)$, $A(\xi)\in U_\xi$.
+    Letting $\tau=\max (dom(f)\cap \xi)$, we further require that $A(\xi)\subseteq Y_\xi\setminus (f(\tau)+1)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Magidor forcing, $\mathbb{M}\left(\vec{U}\right)$: extension]
+  We say that $(g,B)\leq (f,A)$ if:
+  \begin{enumerate}
+    \item $g\supseteq f$
+    \item Whenever $\xi\in dom(g)\setminus dom(f)$, $g(\xi)\in A(\xi)$
+    \item Whenever $\xi\in \lambda\setminus dom(g)$, $B(\xi)\subseteq A(\xi)$
+  \end{enumerate}
+  In the case where $g=f$, we say that $(f,B)$ is a \emph{direct extension} of $(f,A)$ and write $(f,B)\leq^* (f,A)$.
+\end{definition}
+
+For notational convenience, if $p=(f,A)$ we will say that $f$ is the \emph{stem} of $p$, and write $stem(p)$ to mean $f$.
+Additionally, we will say that $A$ is the \emph{measure component} of $p$ and write $meas(p)$ to mean $A$\footnote{
+  We will use an alternative convention $p=(f^p,A^p)$ in line with (todo: cite gitik HBC) in a future section, when $stem$ and $meas$ become too cumbersome.
+}.
+
+\begin{remark}\thlabel{magidor_weakest_step_extension}
+  If $p=(f,A)$, $\vec{\nu}:a\to \kappa$ for some $a\in[A]^{<\omega}$, and there is some $B$ for which $(f\frown \vec{\nu},B)$ is a condition below $p$,
+  we write $p\frown \vec{\nu}$ to mean the weakest such $(f\frown \vec{\nu},A')$ below $p$.
+  Namely, for $\xi>\max dom(f\frown \vec{\nu})$, ${A'(\xi)=A(\xi)\setminus (f\frown\vec{v}(\xi)+1)}$, and for $\xi<\max dom(f\frown \vec{\nu})$:
+  for $\tau$ being the least domain element of $f\frown \vec{\nu}$ bigger than $\xi$:
+  \begin{itemize}
+    \item if $\tau\in dom(\nu)$, we have that $A'(\xi)=A(\xi)\cap \tau$; since $[\alpha \mapsto A(\xi) \cap \alpha]_{r_\xi^\tau (\nu(\tau))}=A(\xi)$ and $\nu(\tau)\in Y_\tau$, $A'(\xi)\in r_\xi^\tau (\nu(\tau))$ and is the $\subseteq$-largest such.
+    
+    \item if $\tau\in dom(f)$, then $A'(\xi)=A(\xi)$.
+  \end{itemize}
+\end{remark}
+
+\begin{remark}
+  There are several non-obvious reasons why we use $\seq{Y_\xi \mid \xi<\lambda}$.
+  The clearest reason, however, is in ensuring that two-step extensions commute, in the following sense: suppose $(\emptyset,A)$ is a condition, $\zeta<\xi<\lambda$, $\rho\in Y_\zeta$, and $\sigma\in Y_\xi$.
+  Then minimally extending to $((\xi,\sigma),A_\xi)$ ensures that $\rho\in A_\xi(\zeta)=A(\zeta)\cap \sigma \in r_\zeta^\xi(\sigma)$ so that for minimally extended choice of $B$, $((\zeta,\rho)\frown(\xi,\sigma),B)$ is below both $((\zeta,\rho),A_\zeta)$ and $((\xi,\sigma),A_\xi)$.
+\end{remark}
+
+Here's some heuristic information on how $\mathbb{M}\left(\vec{U}\right)$ behaves:
+\begin{itemize}
+  \item $\mathbb{M}\left(\vec{U}\right)$ adds a sequence $\seq{\alpha_\eta \mid \eta<\lambda}$ increasing, normal, and with supremum $\kappa$, changing the cofinality of $\kappa$ into $\lambda$.
+  We obtain $\seq{\alpha_\eta \mid \eta<\lambda}$ from a generic $G$ by $\seq{\alpha_\eta \mid \eta<\lambda}=\bigcup_{(f,A)\in G} f$.
+  
+  \item A condition $(f,A)$ has specified a finite subset of the above sequence where if $\eta\in dom(f)$, then $f(\eta)=\alpha_\eta$. Further, if $\eta\in dom(A)$, then $(f,A)$ specifies that $\alpha_\eta\in A(\eta)$ (and in particular, $\alpha_\eta$ is a $V$-measurable cardinal with $\vec{U}$-rank $\eta$).
+\end{itemize}
+
+
+\begin{lemma}
+  $\mathbb{M}\left(\vec{U}\right)$ has the $\kappa^+$-cc and thus preserves all cardinals larger than $\kappa$.
+\end{lemma}
+\begin{proof}
+  As with Prikry forcing, incompatible conditions must have different stems so antichains are no larger than $\left|\kappa^{[\lambda]^{<\omega}}\right|=\kappa$.
+\end{proof}
+
+$\mathbb{M}\left(\vec{U}\right)$ itself factors into different forcings below each point, as follows:
+
+\begin{definition}
+  Let $p=(f,A)\in \mathbb{M}\left(\vec{U}\right)$ and let $\xi<\lambda$.
+  Then we may define the following:
+  \begin{itemize}
+    \item $p_\xi=(f,A)_\xi=(f\upharpoonright (\xi+1),A\upharpoonright (\xi+1))$
+    \item $p^\xi=(f,A)^\xi=(f\upharpoonright (\lambda \setminus (\xi+1)), A\upharpoonright (\lambda\setminus (\xi+1)))$
+    \item $\mathbb{M}\left(\vec{U}\right)_{\xi,\beta}=\{(f,A)_\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
+    \item $\mathbb{M}\left(\vec{U}\right)^{\xi,\beta}=\{(f,A)^\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
+  \end{itemize}
+\end{definition}
+
+\begin{remark}\thlabel{magidor_factoring}
+  Observe that by choice of $Y_\xi$'s, relative to the weakest $A$ for which $p=((\xi,\beta),A)$,
+  we have that $\mathbb{M}\left(\vec{U}\right) / p\cong \mathbb{M}\left(\vec{U}\right)_{\xi,\beta} \times \mathbb{M}\left(\vec{U}\right)^{\xi,\beta}$.
+  In particular, in $V$, $\mathbb{M}\left(\vec{U}\right)_{\xi,\beta}$ has the $\beta^+$-cc and $(\mathbb{M}\left(\vec{U}\right)^{\xi,\beta},\leq^*)$ is $<\beta^+$-directed closed.
+  
+  Additionally, by (todo: cite Easton's Lemma that for cc x closed, closed remains distributive after cc forcing. Proof is exactly as in Jech, p. 234.), after forcing with $\mathbb{M}\left(\vec{U}\right)_{\xi,\beta}$, the partial order $(\mathbb{M}\left(\vec{U}\right)^{\xi,\beta},\leq^*)$ remains $<\beta^+$-distributive.
+\end{remark}
+
+Magidor forcing admits an analogue of the Prikry lemma.
+Recall that in Prikry forcing, for every condition $p$ and every dense subset $D$, there is an $n$ and a $q\leq^* p$ such that every $n$-step extension of $q$ is in $D$.
+For $\mathbb{M}\left(\vec{U}\right)$, this lemma takes on a different form; rather than $n$-step extensions, we care about  $a$-step extensions.
+Whereas an $n$-step extension of Prikry tacked on $n$ new ordinals at the end, an $a$-step extension will specify finitely many new elements of our generic sequence, with indices coming exactly from $a$:
+
+\begin{definition}
+  Let $a\in \lambda^{<\omega}$. 
+  If $(f,A)\in \mathbb{M}\left(\vec{U}\right)$ and $a\subseteq dom(A)$, we say that $(g,B)$ is an $a$-step extension of $(f,A)$ if $(g,B)\leq (f,A)$ and $dom(g)=dom(f)\sqcup a$.
+\end{definition}
+
+Before we state and prove Prikry-type lemmata for Magidor forcing, it is worth formalizing how we may diagonalize over all possible extensions:
+
+\begin{lemma}[Diagonalization Lemma]\thlabel{magidor_diagonalization}
+  Let $p=(g,H)\in \mathbb{M}(\vec{U})$ and let 
+  \[
+    E=\left\{\vec{\nu}:a\to\kappa \mid a\in [dom(H)]^{<\omega}, \vec{\nu}\in \prod_{\alpha\in a} H(\alpha), \text{ and }p\frown \vec{\nu} \text{ is a condition below }p\right\}
+  \]
+  Let $\seq{p_{\vec{\nu}} \mid \vec{\nu}\in E}$ be some family of conditions such that $p_{\vec{\nu}}\leq^* p \frown \vec{\nu}$.
+  Then there exists a $q\leq^* p$ such that for all $\vec{\nu}\in E$ for which $q\frown \vec{\nu}$ is a condition (i.e. $\vec{\nu}$ is increasing and lies in $\prod_{\zeta\in dom(\nu)}meas(q)(\zeta)$), $q\frown\vec{\nu} \leq^* p_{\vec{\nu}}$.
+\end{lemma}
+
+\begin{proof}
+  For each $a\in [dom(H)]^{<\omega}$, let $E_a=\{\vec{\nu}\in E \mid dom(\vec{\nu})=a\}$.
+  We will show how to obtain, for each $a$, a $q_a\leq^* p$ such that for all $\vec{\nu}\in E_a$ for which $\vec{\nu}$ is a valid extension of $q_a$, $q_a\frown \vec{\nu}\leq^* p_{\vec{\nu}}$; we'll say that such $q_a$ is good for $p$ and $E_a$. Since $\leq^*$ is $\lambda^+$-directed closed, (as every involved measure is $\lambda^+$-complete), the greatest $\leq^*$-lower bound $q$ of $\seq{q_a\mid a\in [dom(H)]^{<\omega}}$ will be as desired.
+  
+  To define $q_a$, we first define $q_a$ for $|a|=1$ and then will induct on $|a|$.
+  Without loss of generality, we may assume that $g=\emptyset$; we will justify why we may assume this after the following claim.
+  
+  \begin{claim}
+    Suppose $g=\emptyset$; then for each $\alpha<\lambda$ there is some $p_\alpha\leq^*p$ (with $p_\alpha=(\emptyset,H^\alpha)$) that is good for $p$ and $E_{\{\alpha\}}$, that is, for all $\nu\in H^\alpha(\alpha)$, $p_\alpha \frown (\alpha,\nu)\leq^* p_{(\alpha,\nu)}$.
+  \end{claim}
+  \begin{proof}[Proof of claim]
+    Let $\alpha<\lambda$; it is given that for each $\nu\in H(\alpha)$, $p_{(\alpha,\nu)}:=((\alpha,\nu), H_\nu)$ is $\leq^*$-below $p\frown (\alpha,\nu)$.
+    
+    We define $p_\alpha = (\emptyset,H^\alpha)$ over three separate cases, defining $H^\alpha(\beta)$ depending on where $\beta$ falls relative to $\alpha$.
+    
+    Let $\beta<\lambda$. 
+    Then to define $H^\alpha(\beta)$:    
+    \begin{enumerate}[C{a}se 1:]
+      \item If $\beta>\alpha$, then let 
+      \[H^\alpha(\beta)=\diagcap_{\nu\in H(\alpha)} H_\nu(\beta)\]
+      
+      \item If $\beta<\alpha$, consider the map $\nu\mapsto H_\nu(\beta)$, mapping from $\nu\in H(\alpha)$ to measure one sets in $r_\beta^\alpha(\nu)$.
+      By Łoś's Theorem and definition of $r_\beta^\alpha$, $[\nu\mapsto H_\nu(\beta)]_{U_\alpha}\in U_\beta$; let $B_{\beta,\alpha}=[\nu\mapsto H_\nu(\beta)]_{U_\alpha}$.
+      Also, since $[r_\alpha^\beta]_{U_\alpha}=U_\beta$, and since $B_{\beta,\alpha}=[\nu\mapsto B_{\beta,\alpha}\cap \nu]_{U_\alpha}$, we have that for some $C_{\beta,\alpha} \in U_\alpha$, for all $\nu\in C_{\beta,\alpha}$, $B_{\beta,\alpha}\cap \nu=H_\nu(\beta)$.
+      Let \[
+        H^\alpha(\beta)=B_{\beta,\alpha}\cap H(\beta)
+      \]
+      Our final case depends on the use of $C_{\beta,\alpha}$.
+      
+      \item Finally, for $\beta=\alpha$, let \[
+        H^\alpha(\alpha)=H(\alpha) \cap \bigcap_{\gamma<\alpha} C_{\gamma,\alpha}
+      \]
+      which is measure one by the completeness of the relevant measure.
+    \end{enumerate}
+    To finish the claim, let $\alpha\in dom(H)$ and let $\nu\in H^\alpha(\alpha)$. 
+    Let $J=meas(p_\alpha \frown (\alpha,\nu))$; our goal is to show that for each $\beta\neq\alpha$, $J(\beta)\subseteq H_\nu(\beta)$.
+    
+    For $\beta>\alpha$, $J(\beta)=H^\alpha(\beta)\setminus (\nu+1)$, which by the choice made in Case 1, is included in $H_\nu(\beta)$.
+    
+    For $\beta<\alpha$, then by the choices made in Cases 2 and 3, $\nu\in C_{\beta,\alpha}$ and hence $J(\beta)=H^\alpha(\beta)\cap \nu\subseteq H_\nu(\beta)$. 
+    
+    Thus $H^\alpha$ is as desired.
+  \end{proof}
+  In the event that $g=(\beta,\rho)$, we may argue as above for $p\upharpoonright (\beta,\lambda)$ to obtain some 
+  \[
+    \tensor*[^{\beta}]{p}{_\alpha}=(\emptyset,\tensor*[^\beta]{H}{^\alpha})\in \mathbb{M}(\seq{U_\gamma \mid \beta<\gamma<\lambda})
+  \]
+  satisfying the above claim for the forcing $\mathbb{M}(\seq{U_\gamma \mid \beta<\gamma<\lambda})$.
+  
+  Let $\gamma>\beta$; for each $\beta'<\beta$, $meas(p)(\beta')\in r_{\beta'}^\beta(\rho)$, which has cardinality $2^{\rho}<\kappa$, so by $\kappa$-completeness there is an $F_{\beta',\gamma}\in U_\gamma$ and some $G_{\beta',\gamma} \in r_{\beta'}^\beta(\rho)$ such that for all $\nu\in F_{\beta',\gamma}$, $H_\nu(\beta')=G_{\beta',\gamma}$.
+  
+  Then we argue as above for $(g\upharpoonright \beta,\seq{G_{\beta',\gamma} \mid \beta'<\beta})$ to obtain 
+  \[
+    \tensor*[_{\beta}]{p}{_\alpha}=(g\upharpoonright \beta, \tensor*[_{\beta}]H{^\alpha})\in\mathbb{M}\left(\seq{r_{\beta'}^\beta(\rho) \mid \beta'<\beta}\right)
+  \]
+  satisfying the above claim for $\mathbb{M}\left(\seq{r_{\beta'}^\beta(\rho) \mid \beta'<\beta}\right)$.
+  
+  Then 
+  \[
+    p_\alpha = \left(g, \tensor*[_{\beta}]H{^\alpha} \frown \seq{ \tensor*[^\beta]{H}{^\alpha}(\gamma) \cap \bigcap_{\beta'<\beta} G_{\beta',\gamma} \mid \gamma<\kappa }\right)
+  \]
+  is as desired.
+  
+  For larger $g$, note that $|g|$ is always finite so letting $\beta=\max dom(g)$ may recursively argue exactly as above for $p \upharpoonright (\beta,\lambda)$ and $p \upharpoonright \beta$.
+  
+  Hence we now have, for each $|a|=1$, some $q_a$ good for $p$ and $E_a$.
+  
+  For the induction, suppose that we have that for each $a$ of length $n$ some $q_a\leq^* p$ that is good for $p$ and $E_a$.
+  Let $b$ be a stem of length $n+1$, let $\alpha_0=\min b$, and let $a=b\setminus \{\alpha_0\}$.
+  Then by induction, for all $\nu\in H(\alpha_0)$, there is some $q'_\nu\leq^* p_{(\alpha_0,\nu)}$ such that $q'_\nu$ is good for $p_{(\alpha_0,\nu)}$ and $E_a$.
+  By the above claim applied to the family $\seq{q'_\nu \mid \nu\in H(\alpha_0)}$, there is some $q_b$ that is good for $p$ and $E_b$.
+\end{proof}
+
+\begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_prikry_type_open_dense}
+  Let $D$ be an open dense set and $p=(g,H)$ a condition.
+  Then there is an $a\in \lambda^{<\omega}$ and an $r\leq^* p$ such that every $a$-step extension of $r$ is in $D$.
+\end{lemma}
+
+\begin{proof}
+  Let $E$ be as in \thref{magidor_diagonalization}.  
+  For every $\vec{\nu}\in E$, let
+  \[
+    p_{\vec{\nu}}=
+    \begin{cases}
+      \text{ some chosen }q\leq^*p\frown{\vec{\nu}} \text{ with }q\in D & \text{ if such }q\text{ exists}\\
+      p\frown\vec{\nu} & \text{otherwise}
+    \end{cases}
+  \]
+  
+  Of course, by open density, there will \emph{always} be some $q\leq p\frown \vec{\nu}$ with $q\in D$; the point is we want such $q$ to be a direct extension only.
+  
+  By \thref{magidor_diagonalization}, we obtain, for $\seq{p_{\vec{\nu}}\mid \vec{\nu}\in E}$,
+  some $p'\leq^* p$ such that for all $\vec{\nu}$, $p'\frown \vec{\nu}\leq p_{\vec{\nu}}$.
+  We now claim the following:
+  
+  \begin{claim}\thlabel{magidor_stepwise_density_hom}
+    For every $a\in [A]^{<\omega}$, there is a $q\leq^* p'$ such that ether every $a$-step extension of $q$ is in $D$, or none are.
+  \end{claim}
+  \begin{proof}[Proof of claim]
+    We proceed by induction on $|a|$.
+    
+    If $a=\{i\}$, then let $B^+=\{\nu\in meas(p')(i)\mid p'\frown(i,\nu)\in D\}$, and $B^-=\{\nu \in meas(p')(i) \mid p'\frown(i,\nu)\notin D\}$. Since $B^+\sqcup B^- = meas(p')(i)$, exactly one of these is measure one with respect to the relevant measure; let $B'$ be whichever one it is.
+    Let $H^*$ be the function on $\lambda$ where $H^*(i)=B'$ and when $j\neq i$, $H^*(j)=H(j)$.
+    Let $q=(stem(p'),H^*)$. 
+    To see that $q$ is as desired, note that clearly $q\leq^* p'$, and if $B'=B^+$, then every $\{i\}$-step extension is in $D$.
+    If instead $B'=B^-$, then for each $\nu\in B'$, we must have had that $p_{(i,\nu)}=p\frown (i,\nu)$ which is not in $D$, and \emph{no} direct extension of $p\frown (i,\nu)$ lands in $D$, either.
+    In particular, no direct extension of $q\frown (i,\nu)$ is in $D$, and thus no $\{i\}$-step extension of $q$ is in $D$.
+    
+    Before we move to the general case, we note the following for the case $a=\{i,j\}$ with $i<j$.
+    For each $\nu\in meas(p')(i)$, we may perform the same argument as above for $p'\frown (i,\nu)$ at $j$ to obtain a $q_\nu\leq^* p'\frown (i,\nu)$ such that either every $\{j\}$-step extension of $p'\frown (i,\nu)$ is in $D$, or none are.
+    We will additionally induct on this as well.
+    
+    For $|a|>1$, suppose the claim is true for every $b$-step extension with $|b|=n$. 
+    Let $|a|=n+1$, and let $i=\min(a)$.
+    and suppose $\nu\in meas(p')(i)$.
+    By our induction hypothesis, there is a $q_\nu \leq^*p'\frown (i,\nu)$ such that either every $a\setminus\{i\}$-step extension of $q_\nu$ is in $D$, or none are.
+    As in the $|a|=1$ case, 
+    let $B^+=\{\nu\in meas(p')(i)\mid \forall \ a\setminus\{i\}\text{-step extensions } r\leq q_\nu, \ r\in D\}$ 
+    and let $B^-=\{\nu\in meas(p')(i)\mid \forall \ a\setminus\{i\}\text{-step extensions } r\leq q_\nu, \ r\notin D\}$.
+    Since $B^+\sqcup B^-=meas(p')(i)$, exactly one of $B^+$ and $B^-$ is measure one; let $B'$ be whichever one it is.
+    Then the desired direct extension $q\leq^* p'$ will be given by $meas(q)(i)=B'$, $meas(q)(j)=\diagcap_{\nu\in B'}meas(q_\nu)(j)$ whenever $j\in a\setminus\{i\}$, and $meas(q)(j)=meas(p')(j)$ otherwise.
+    
+    To see that $q$ is as desired, note that every $a$-step extension $r$ of $q$ can be viewed as a $\{i\}$-step extension followed by an $a\setminus\{i\}$-step extension;
+    $stem(r)(i)\in B'$, and for every $j\in a\setminus\{i\}$, $stem(r)(j)\in meas(q_\nu)(j)$.
+    Thus as in the $|a|=1$ argument, and by choice of $p'$, either every $a$-step extension of $q$ is in $D$ or none are.
+    
+    And moreover, if $i'<i$, we can inductively argue for $p'\frown (i',\nu)$ for each $\nu\in meas(p')(i')$ to obtain $q_\nu\leq^* p'\frown(i',\nu)$ such that either every $a$-step extension of $q_\nu$ is in $D$, or none are.
+  \end{proof}
+  By iterated use of the above claim, we fix a $\kappa$-length enumeration of $[A]^{<\omega}$ and obtain a $\leq^*$-decreasing sequence $\seq{p_a\mid a\subseteq [A]^{<\omega}}$ with $p_a\leq^* p'$ such that every $a$-step extension of $p_a$ is in $D$ or none are.
+  
+  Let $r$ be a $\leq^*$-lower bound of the $p_a$'s, obtained by taking diagonal intersections over the measure components of the $p_a$'s.
+  Since $D$ is open dense, let $q\in D$ be below $r$, let $a$ be such that $q$ is an $a$-step extension of $r$.
+  Then since some $a$-step extension of $q_a$ is in $D$, we have that all $a$-step extensions of $q_a$ are in $D$ and hence so are all $a$-step extensions of $r$.
+\end{proof}
+
+\begin{corollary}[Prikry-type lemma, sentential version I]\thlabel{magidor_prikry_type_sentential}
+  Let $\sigma$ be a sentence of the forcing language, and let $(f,A)\in \mathbb{M}\left(\vec{U}\right)$.
+  Then there is an $(f,B)\leq^*(f,A)$ such that $(f,B)$ decides $\sigma$.
+\end{corollary}
+  
+\begin{proof}
+  Since the collection of conditions deciding $\sigma$ is open dense, by \thref{magidor_prikry_type_open_dense}, there is some $(f,A')\leq^* (f,A)$ and some $a$ such that every $a$-step extension of $(f,A')$ decides $\sigma$.
+  But then, by a similar argument as in \thref{magidor_stepwise_density_hom}, one of either $\sigma$ or $\lnot\sigma$ is forced measure one-often below $(f,A')$. 
+  So we may shrink the measures in $A'$ to some measure-one family $B$ so that every $a$-step extension of $(f,B)$ decides $\sigma$ the exact same way.
+  But then $(f,B)$ decides $\sigma$ that way as well.
+\end{proof}
+
+Further arguments along similar lines yields an even stronger sentential Prikry-type lemma:
+\begin{lemma}[Prikry-type lemma, sentential version II]\thlabel{magidor_prikry_type_sentential_better}
+  Let $\sigma$ be a sentence of the forcing language, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
+  Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, then $(g,H)_\beta \frown (f,B)^\beta$ also decides $\sigma$ the same way.
+\end{lemma}
+This appears as Lemma 4.5 of (todo: cite Magidor, chg cofs), and we give a proof here:
+
+\begin{proof}
+  For ease of notation, let $f(\beta)=\rho$.
+  For each $r\leq (f,A)_\beta$ in $\mathbb{M}(\vec{U})_{(\beta,\rho)}$, by \thref{magidor_prikry_type_sentential}, let $p_r\leq^* r \frown (f,A)^\beta$ (in the full $\mathbb{M}(\vec{U})$) be such that $p_r$ decides $\sigma$.
+  By construction, for each such $r$, $(p_r)_\beta\leq^* r$ and $(p_r)^\beta = (f,meas(p_r))^\beta$.
+  
+  Let $q_r=(f,A)_\beta \frown (p_r)^\beta$; note that $q_r\leq^* (f,A)$ by construction.
+  Since there are only $\rho$-many such $r$ and since $\leq^* $ on $\mathbb{M}(\vec{U})^{(\beta,\rho)}$ is $\rho^+$-directed closed, let $(f,B)$ be the greatest $\leq^*$-lower bound of the $q_r$'s, where $B$ is given by
+  \[
+    B(\gamma)=\begin{cases}
+      A(\gamma) & \gamma<\beta \\
+      \bigcap_r meas(q_r)(\gamma) & \gamma>\beta \\
+    \end{cases}
+  \]
+  To complete the argument, if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, let $r=(g,H)_\beta$.
+  Then by construction, $(g,H)\leq r \frown (f,B)^\beta\leq p_r$ which decides $\sigma$, and thus $(g,H)$ and $(g,H)_\beta \frown (f,B)^\beta$ must decide $\sigma$ the same way.
+\end{proof}
+
+Observe that a $\mathbb{M}\left(\vec{U}\right)$-generic adds a sequence $\seq{\alpha_\eta \mid \eta<\lambda} = \bigcup_{(g,H)\in G} g$ strictly increasing, normal, and with supremum $\kappa$. As with Prikry forcing, Magidor forcing preserves cardinals:
+\begin{lemma}\thlabel{magidor_preserves_cardinals}
+  Let $\delta\in V$ be a cardinal. Then $\delta$ is a cardinal in $V^{\mathbb{M}(\vec{U})}$; moreover if $\delta$ is $V$-regular, $\delta\neq \kappa$, and $\delta\neq \alpha_\eta$ for any limit $\eta$ then $\delta$ remains regular.
+\end{lemma}
+
+The proof is also in (Magidor, chg cofs, TODO cite).
+We prove it here, too:
+\begin{proof}
+  Since $\mathbb{M}(\vec{U})$ is $\kappa^+$-cc and since $\kappa$ is a limit of cardinals, we only need to check for $\delta<\kappa$.
+  
+  In the event that $p\forces \delta\leq\alpha_0$, then already $\mathbb{M}(\vec{U)}_{(0,\alpha_0)}$ is $\delta^+$-directed closed and therefore cannot collapse $\delta$.
+  
+  Otherwise, without loss of generality (by expanding $dom(stem(p))$ if need be) let $\beta$ be least such that $p\forces (\alpha_\beta)^+\leq \delta$; by minimality, without loss of generality $p\forces \delta\leq\alpha_{\beta+1}$.
+  
+  We will now show that any bounded subset of $\delta$ in $V^{\mathbb{M}(\vec{U})}$ is added by $\mathbb{M}(\vec{U})_{(\beta,\alpha_\beta)}$, which is $\delta$-cc and therefore could not have collapsed (or singularized) $\delta$.
+  Let $p\forces \dot{X}\subseteq \delta$; for each $\gamma<\delta$, by \thref{magidor_prikry_type_sentential_better}, let $q_\gamma\leq^* p$ be such that $(q_\gamma)_\beta=p_\beta$ and if $r\leq q_\gamma$ and $r$ decides the statement $``\gamma\in\dot{X}"$, then $r_\beta \frown (q_\gamma)^\beta$ decides likewise.
+  Let $q$ be a $\leq^*$-lower bound of the $q_\gamma$'s; by construction of $q$, any $\mathbb{M}(\vec{U})_{(\beta,\alpha_\beta)}$-generic including $(q)_\beta$ suffices to define $\dot{X}$, and thus $X$ is added by $\mathbb{M}(\vec{U})_{(\beta,\alpha_\beta)}$.
+\end{proof}
+
+As with Prikry forcing, $\mathbb{M}(\vec{U})$ admits a notion of geometricity that characterizes the genericity of the sequence $\seq{\beta_\eta \mid \eta<\lambda}$ added.
+Geometricity for a Magidor generic sequence differs from a Prikry generic sequence in that the geometricity reflects to smaller limit ordinals.
+We make this precise:
+
+\begin{definition}\thlabel{def_magidor_geometricity}
+  Suppose $G$ is $\mathbb{M}(\vec{U})$-generic and let $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}\in V[G]$ be increasing, normal, and with supremum $\kappa$.
+  
+  Then we say that $\vec{\beta}$ is \emph{geometric} if for every $\xi\leq\lambda$ limit, and every $\seq{A_\eta \mid \eta<\xi}$ in $V$ with each $A_\eta \in r^\xi_\eta(\beta_\eta)$ (and if $\xi=\lambda$, then $A_\eta\in U_\eta$),
+  for coboundedly many $\eta<\xi$, $\beta_\eta\in A_\eta$.
+\end{definition}
+
+\begin{proposition}\thlabel{magidor_generic_implies_geometric}
+  Let $G$ be $\mathbb{M}(\vec{U})$-generic and let
+  \[
+    \vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}=:\bigcup_{(f,A)\in G} f
+  \]
+  Then $\vec{\beta}$ is geometric.
+\end{proposition}
+
+(TODO: flesh out the limit reflection argument. Say why it's the same. Can do the special case of $g=((\xi,\beta_\xi))$, and spell it out by naming the relevant dense set.)
+\begin{proof}
+  When $\xi=\lambda$, $\{(g,H) \mid \forall \eta>\max(dom(g)), \ H(\eta)\subseteq A_\eta\}$ is open dense by measure-one set intersection.
+  
+  For $\xi<\lambda$ limit, the same applies in $\mathbb{M}(\vec{U})_{(\xi,\beta_\xi)}$: within $V$, the set 
+  \[
+    \{(g,H) \mid g(\xi)=\beta_\xi \text{ and }\forall \zeta\in \left((\max dom(g))\cap \xi, \xi\right) \ H(\eta)\subseteq A_\eta\}
+  \]
+  is open dense in $\mathbb{M}(\vec{U})_{(\xi,\beta_\xi)}$, hence is open dense below the weakest condition $p$ in the full $\mathbb{M}(\vec{U})$ with $stem(p)(\xi)=\beta_\xi$.
+\end{proof}
+
+The converse is also true in the following sense:
+\begin{proposition}\thlabel{magidor_geometric_iff_generic}
+  Suppose $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}\in V[G]$ is geometric.
+  Let 
+  \[
+    H=
+    \left\{(f,A) \middle|
+      \begin{array}{l}
+        f\text{ is a finite subsequence of }\vec{\beta}, \\ dom(A)=\lambda\setminus dom(f), \\        
+        \forall \eta \in dom(A) \ A(\eta)\in U_\eta \text{ or the relevant }r^\gamma_\eta(\beta_\gamma), \\
+        \text{ and }\beta_\eta\in A(\eta)
+      \end{array}
+    \right\}
+  \]
+  Then $H$ is $\mathbb{M}(\vec{U})$-generic over $V$.
+\end{proposition}
+
+A proof can be found in (Fuchs, todo cite) that makes use of much stronger Prikry-type lemmas than \thref{magidor_prikry_type_open_dense} and \thref{magidor_prikry_type_sentential_better};
+these stronger Prikry-type lemmas handle the cases where for a particular $(f,A)$ and $\seq{B_\eta \mid \eta<\xi}\in V$, there are nonzero (but coboundedly many) $\eta\in dom(A)$ but $\beta_\eta\notin B_\eta$.
+We present an alternative proof here:
+
+(TODO: prove that this is a filter.
+TODO: also try proving genericity. Perhaps by induction on $\lambda$; try the case of $\lambda=\omega$, see if you can induct to $\omega+\omega$, and then limit of limits such as $\omega^2$.)
+
+\begin{proof}
+  $H$ is a filter, as by construction $(\emptyset,\seq{Y_\xi\mid \xi<\lambda}\in H$ and $H$ is clearly upwards closed. 
+  As for downwards directedness, if $p,q\in H$ then $stem(p)$ and $stem(q)$ are finite segments of the same sequence, hence $p\compat q$ and the intersection of $meas(p)$ and $meas(q)$ contains every $\beta_\eta$ for $\eta\notin dom(p\cup q)$. Thus $p\land q\in H$.
+  
+  Genericity is more complicated and proceeds by transfinite induction on the length of $\vec{U}$ and the factoring of \thref{magidor_factoring}. 
+  
+  Our base case is when $\lambda=\omega$ and we are considering $\mathbb{M}(\seq{U_n\mid n<\omega})$.
+  Let $\mathcal{D}\in V$ be open dense in $\mathbb{M}(\seq{U_n\mid n<\omega})$.
+  Let $\vec{Y}=\seq{Y_n\mid n<\omega}$ be as in \thref{mitchell_rep_coherence_sets}.
+  For each $g\in V$ an initial segment of $\seq{\beta_n\mid n<\omega}$\footnote{
+    Since $\lambda=\omega$, we may without loss of generality extend each $g$ a finite subsequence of $\seq{\beta_n\mid n<\omega}$ to an initial subsequence.
+  },
+  by \thref{magidor_prikry_type_open_dense}, let $a_g$, $A_g$ be such that $(g,A_g)\leq^* (g,\vec{Y}\upharpoonright (\omega\setminus dom(g)))$ and every $a_g$-step extension of 
+  $(g,A_g)$ is in $\mathcal{D}$; without loss of generality, $a_g=[\max(dom(g))+1,k_g]$ for some $k_g<\omega$.
+  Let $B$ be a measure one system given by 
+  \[
+    B(n)=\diagcap_{g} A_g(n):=\left\{\alpha < \kappa \mid \alpha\in \bigcap_{\max(ran(g))<\alpha} A_g(n)\right\}
+  \]
+  Since $\seq{\beta_n\mid n<\omega}$ is geometric, there is some $j$ such that for all $n\geq j$, $\beta_n\in B(n)$;
+  let $g=\seq{\beta_i\mid i<j}$.
+  By definition of $B$, $(g,B\upharpoonright [j,\omega))\leq^* (g,A_g)$ and hence for all $n\geq j$, $\beta_n\in A_g(n)$.
+  Let $p=(g,B\upharpoonright [j,\omega)) \frown \seq{\beta_l \mid j\leq l<k_g}$.
+  By definition, $p$ is an $a_g$-step extension of $(g,A_g)$ so lies in $\mathcal{D}$.
+  Furthermore, by definition of $H$, $p\in H$ and thus $H\cap \mathcal{D}\neq\emptyset$.
+  
+  For the successor step, suppose $\lambda=\bar{\lambda}+\omega$ for some limit $\bar{\lambda}$ such that the result is true for any $\mathbb{M}\left(\seq{U_\eta\mid \eta<\bar{\lambda}}\right)$.
+  Let $\seq{\beta_\eta\mid \eta<\lambda}$ be geometric for $\mathbb{M}(\seq{U_\eta \mid \eta<\lambda})$.
+  Let $g=\seq{(\bar{\lambda},\beta_{\bar{\lambda}})}$ and in line with the factoring of \thref{magidor_factoring}, consider $\mathbb{M}(\vec{U})_g \times \mathbb{M}(\vec{U})^g$.
+  By geometricity and induction, the resulting $H_g$ defined from $\seq{\beta_\eta \mid \eta<\bar{\lambda}}$ is $\mathbb{M}\left(\seq{U_\eta\mid \eta<\bar{\lambda}}\right)$-generic over $V$; since $\mathbb{M}\left(\seq{U_\eta\mid \eta<\bar{\lambda}}\right)$ is $\beta_{\bar{\lambda}}^+$-cc, and by our base case, the filter $H^g$ defined from $\seq{\beta_{\bar{\lambda}+n}\mid n<\omega}$ is $\mathbb{M}\left(\seq{U_{\bar{\lambda}+n} \mid n<\omega}\right)$-generic over $V[H_g]$.
+  So by the Product Lemma, $H=H_g\times H^g$ is $\mathbb{M}\left(\seq{U_\eta \mid \eta<\lambda}\right)$-generic over $V$.
+  
+  For the limit case, suppose that $\lambda=\sup_{\rho<\tau} \lambda_\rho$ for some $\tau\leq\lambda$ regular.
+  Further suppose that for all $\rho<\tau$, $\vec{\beta}\upharpoonright \lambda_\rho$ induces $H_\rho$ an $\mathbb{M}\left(\vec{U}\right)_{(\rho,\beta_{\lambda_\rho})}$-generic over $V$ (and by size bounds, over intermediate extensions as well) (with product decomposition as above).
+  Let $\mathcal{D}$ be open dense; for each $\mathbb{M}\left(\vec{U}\right)$-stem $g$, by \thref{magidor_prikry_type_open_dense}, let $a_g$, $A_g$ be such that every $a_g$-step extension of $(g,A_g)$ is in $\mathcal{D}$.
+%   Let $B$ be a measure one system for $\mathbb{M}\left(\vec{U}\right)$ given by
+%   \[
+%     B(\eta)=\diagcap_g A_g(\eta)
+%   \]
+  By \thref{magidor_diagonalization}, let $(\emptyset,B)$ diagonalize the family $\seq{(g,A_g) \mid g \text{ a stem}}$;
+  that is, for every $g\in \prod_{\eta<\lambda} B(\eta)$, $(g,B\upharpoonright (\lambda\setminus dom(g)))\leq^* (g,A_g)$.
+  But then by geometricity, let $\lambda_\rho$ be the least limit ordinal such that for all $\xi\geq \lambda_\rho$, $\beta_\xi\in B(\xi)$.
+  By assumption on $\vec{\beta}$, $\vec{\beta}\upharpoonright \lambda_\rho$ is geometric for $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$ and thus $H_{\rho}$ is $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$-generic over $V$; however, (something's still not right. how decompose and argue meets $\mathcal{D}$?)
+\end{proof}
+
+
+At the very least, our tools yield the following lemma that says geometric sequences actually meet $V$-measure one systems cofinitely instead of just coboundedly.
+This helps for arguing mutual stationarity results for restricted cofinality below $\beta_0$, by a lemma from the original mutual stationarity paper of (foremanmagidor-nsns, todo cite).
+
+\begin{lemma}\thlabel{magidor_geometric_cofinite_meet}
+  Let $\vec{\beta}=\seq{\beta_\xi \mid \xi<\lambda}$ be geometric, and let $Z\in \prod_{\xi<\lambda} U_\xi$ with each $Z(\xi)\subseteq Y_\xi$.
+  Then there is some $a\in [\lambda]^{<\omega}$ such that for all $\xi\notin dom(a)$, $\beta_\xi\in Z(\xi)$; furthermore, there is some $Z'$ such that $(\vec{\beta}\upharpoonright a,Z')$ is a condition and for all $\xi\in dom(Z')$, $\beta_\xi\in Z'(\xi)\subseteq Z(\xi)$.
+\end{lemma}
+
+\begin{proof}
+  We build $a$ by induction.
+  By the definition of \thref{def_magidor_geometricity} on $\vec{\beta}$ at $\lambda$, there is some $\zeta<\lambda$ such that for all $\xi\in [\zeta,\lambda)$, $\beta_\xi\in Z(\xi)$.
+  If $\zeta$ may be chosen to be a limit ordinal (or $0$), let $\zeta_0$ be the least such limit ordinal (or $0$) and let $a_0=\emptyset$.
+  Otherwise, let $\zeta'$ be the least such successor ordinal and let $\zeta_0$ be the unique limit ordinal (or $0$) and $m_0$ be the unique natural number such that $\zeta_0+m_0 = \zeta'$.
+  Let $a_0=[\zeta_0,\zeta_0+m_0)$.
+  
+  We now proceed inductively; suppose we have defined $\zeta_n$ a limit ordinal and $a_n\in [\lambda]^{<\omega}$.
+  By the definition of \thref{def_magidor_geometricity} on $\vec{\beta}$ at $\zeta_n$, there is some $\zeta<\zeta_n$ such that for all $\xi\in [\zeta,\zeta_n)$, $\beta_\xi\in Z(\xi)\cap \beta_{\zeta_n}$.
+  If $\zeta$ may be made limit (or $0$), let $\zeta_{n+1}$ be the least such, and let $a_{n+1}=\emptyset$.
+  Otherwise, let $\zeta'$ be the least such successor ordinal, and let $\zeta_{n+1}$ be the unique limit ordinal (or $0$) and let $m_{n+1}$ be the unique natural number such that $\zeta_{n+1}+m_{n+1}=\zeta'$.
+  Let $a_{n+1}=[\zeta_{n+1},\zeta_{n+1}+m_{n+1})$.
+  
+  Since $Ord$ is well-ordered, the above must terminate at some $n$ at which $\zeta_n=0$.
+  Let $a=\bigsqcup_{k\leq n} a_k$.
+  Precisely by construction of $a$, for every $\xi\notin dom(a)$, $\beta_\xi\in Z(\xi)$.
+  
+  Even though $\vec{\beta}\upharpoonright a$ is not a valid stem extension of $(\emptyset,Z)$, if we mimic the definition of $(\emptyset,Z)\frown (\vec{\beta}\upharpoonright a)$ as in \thref{magidor_weakest_step_extension}, we obtain $(\vec{\beta}\upharpoonright a,Z')$ with $Z'$ as desired.
+\end{proof}
