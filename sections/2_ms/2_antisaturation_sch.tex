@@ -1,5 +1,33 @@
 \section{Mutual Stationarity as Antisaturation Result}
 \label{ms:antisaturation}
 
-Argues why MS may be viewed as an antisaturation result under not SCH.
-Also concludes with our (meager) knowledge on MS + failure of SCH.
+In line with mutual stationarity's original purpose, we may view mutual stationarity principles as a strong form of antisaturation.
+
+Its introduction implicitly takes this view in the form of the following (a weaker version of which appears as Theorem 7 and Corollary 8 in (TODO: cite foremanmagidor-nsns)):
+
+\begin{theorem}\thlabel{ms_antisat}
+  Assume $\delta$ is the successor of a regular cardinal and $\lambda$ is a singular cardinal with $cf(\lambda)=\mu>\delta$.
+  Let $\seq{\kappa_\alpha\mid \alpha<\mu}$ be a cofinal sequence of cardinals in $\lambda$ and suppose $MS(\seq{\kappa_\alpha\mid \alpha<\mu},cof(<\delta))$.
+  Then the nonstationary ideal on $\mathcal{P}_\delta(\lambda)$ is not $\lambda^\mu$-saturated.
+\end{theorem}
+
+Under $\lnot SCH_\lambda$ with $\lambda$ of uncountable cofinality, this would give a more impressive antisaturation result for the nonstationary ideal on $(\mathcal{P}_\delta(\lambda))$ than previously known.
+Thus compatibility of mutual stationarity principles with $\lnot SCH$ are of independent interest.
+
+\begin{proof}[Proof of \thref{ms_antisat}]
+  Let $\seq{S_\alpha\subseteq\kappa_\alpha \cap cof(<\delta) \mid \alpha<\mu}$ 
+  be a sequence of stationary sets.
+  By Solovay's Splitting theorem, for each $\alpha$ let $\seq{T^\alpha_\beta\mid \beta<\kappa_\alpha}$ be a pairwise disjoint sequence of stationary subsets of $S_\alpha$.
+  
+  For each $f\in \prod_{\alpha<\mu} \kappa_\alpha$, let $S_f=\{M\in \mathcal{P}_\delta(\lambda) \mid \alpha\in M\implies \sup(M\cap \kappa_\alpha)\in T^\alpha_{f(\alpha)}\}$.
+  
+  Since $\seq{T^\alpha_\beta\mid \beta<\kappa_\alpha}$ is mutually stationary, each $S_f$ is stationary in $\mathcal{P}_\delta(\lambda)$.
+  Further, if $f\neq g$, then $f(\alpha)\neq g(\alpha)$ and hence $S^\alpha_{f(\alpha)}\cap S^\alpha_{g(\alpha)}=\emptyset$.
+  Thus $S_f\cap S_g$ misses the club $\{M\in \mathcal{P}_\delta(\lambda)\mid \alpha\in M\}$.
+\end{proof}
+
+However, very little is known about mutual stationarity principles with $\lnot SCH$.
+
+Koepke's argument in (todo: cite koepke, ms every other, omega 1) does not depend on cardinal arithmetic, so should readily achieve $MS(\seq{\aleph_{2n+3}\mid n<\omega; cof(\leq\omega_1)}) + \lnot SCH_{\aleph_\omega})$.
+
+Ben-Neria's arguments in (todo: cite benneria2017) assume $GCH$, but suggest a framework for achieving mutual stationarity principles with the failure of $GCH$.
