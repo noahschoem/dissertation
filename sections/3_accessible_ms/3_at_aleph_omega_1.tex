@@ -1,3 +1,467 @@
 \section{Down to $\aleph_{omega_1}$}
 \label{accessible_ms:at_aleph_omega_1}
 
+To achieve mutual stationarity properties at accessible cardinals of uncountable cofinality, we develop a forcing that will simultaneously singularize a cardinal $\kappa$ and collapse cardinals below to make $\kappa$ the new $\aleph_{\omega_1}$.
+
+This is ongoing work, and a first proof of concept would be to achieve $MS(\seq{\aleph_{2n+3}\middle| n<\omega}\frown \seq{\aleph_{\alpha+2n}\middle| \omega\leq\alpha<\omega_1,n<\omega};\omega_1)$.
+
+While we have not achieved this, we have developed an as of yet unpublished Magidor-like forcing that singularizes $\kappa$ and collapses below to make $\kappa$ into $\aleph_{\omega_1}$.
+
+As an additional result, we state and partially prove a characterization of genericity for such forcing, along the lines of (todo: cite Sinapova-Unger, Combinatorics at $\aleph_\omega$) and (todo: cite Fuchs).
+
+We fix $\vec{U}=\seq{U_\xi \middle| \xi<\lambda}$, $\lambda<\kappa$, $Y_\xi$, and $\seq{r_\beta^\alpha \middle| \beta<\alpha<\lambda}$ as in Section 1.
+
+Suppose $GCH$; let $\seq{U_\gamma \middle| \gamma\leq \lambda}$ be a Mitchell order-increasing system of measures.
+Work in $Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[Col(\alpha^+,<\kappa)]_{U_\lambda}$.
+
+\begin{lemma}\thlabel{big_guide_generic}
+  There is a $K\in V$ which is $Col(\kappa^+,<j_{U_\lambda}(\kappa))$-generic over $Ult(V,U_\lambda)$.
+\end{lemma}
+
+\begin{proof}
+  Observe that there are at most $(2^\kappa)^V$-many antichains of $Col(\kappa^+,<j_{U_\lambda}(\kappa))$ in the ultrapower; 
+  this is since each such antichain is of the form $[f]$, where $f$ is a function with domain $\kappa$ such that for all $\alpha$, $f(\alpha)$ is an antichain of $Col(\alpha^+,<\kappa)$.
+  
+  Let $\seq{A_\beta \middle| \beta<2^\kappa}$ be a $V$-enumeration of all antichains of $Col(\kappa^+,<j_{U_\lambda}(\kappa))$ in the ultrapower.
+  By $GCH$, since $|j(\kappa)|=\kappa^+$, we have exactly $\kappa^+$-many antichains and since $Col(\kappa^+,<j_{U_\lambda}(\kappa))$ is $\kappa+1$-closed and the ultrapower is closed under $\kappa$-sequences, we may iteratively build a descending chain $K'=\seq{p_\beta\middle| \beta<\kappa^+}$ such that for every maximal antichain $A_\beta$ in the ultrapower, $p_\beta\in A_\beta$ or is stronger than some condition in $A_\beta$.
+  Then $K$, the upwards closure of $K'$, is as desired.
+\end{proof}
+
+\begin{lemma}\thlabel{coherence_guiding_generic_family}
+  Furthermore, for every $\alpha\leq\lambda$ there is a $K_\alpha\in V$ which is $Col(\kappa^+,<j_{U_\alpha}(\kappa))$-generic over $Ult(V,U_\alpha)$, such that:
+  \begin{enumerate}
+    \item whenever $\alpha<\beta\leq \lambda$, $K_\alpha\in Ult(V,U_\beta)$
+    \item there is a family of functions $\seq{k_\alpha^\beta\middle| \alpha<\beta<\lambda}$ such that $K_\alpha = [\eta \mapsto k^\beta_\alpha (\eta)]_{U_\beta}$
+    \item \label{coherence_guiding_generic_family:refl} in particular, for some $Z_\beta\in U_\beta$, for every $\eta\in Z_\beta$, $k^\beta_\alpha(\eta)$ is a $Col(\eta^+,<j_{r^\beta_\alpha(\eta)}(\eta))$-generic over $Ult(V,r^\beta_\alpha(\eta))$  and $[K_\alpha \upharpoonright \eta]_{r^\beta_\alpha(\eta)}=k^\beta_\alpha(\eta)$; furthermore, this reflects downwards through $r$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  The existence of $K_\alpha$ can be argued exactly as in \thref{big_guide_generic}.
+  
+  As for obtaining that $K_\alpha\in Ult(V,U_\beta)$, observe that since $U_\alpha\in Ult(V,U_\beta)$ (and by $GCH$), we simply have that $\left| j_{U_\alpha}(\kappa) \right|^{Ult(V,U_\beta)}=2^\kappa=\kappa^+$ (by $\kappa^\kappa$ onto $j_{U_\alpha}(\kappa)$ by $f \mapsto [f]_{U_\alpha}$, see for instance (Jech, arg that no n.m. is in its own ultrapower) for details).
+  Furthermore, since $U_\alpha\in Ult(V,U_\beta)$, the entire family $\seq{A_\rho \middle| \rho<(2^\kappa)^{Ult(V,U_\alpha)}}$ of $Ult(V,U_\alpha)$-antichains of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ lives in $Ult(V,U_\beta)$, and there are only $\kappa^+$-many of them as witnessed in $Ult(V,U_\beta)$.
+  Since $Ult(V,U_\beta)$ is closed under $\kappa$-sequences, the argument as in \thref{big_guide_generic} goes through in $Ult(V,U_\beta)$, but for $Col(\kappa^+,<j_{U_\alpha}(\kappa))$.
+  
+  The second and third items are measure-one reflections of the first.
+\end{proof}
+
+The above coherent family of ultrapower collapse-generics allows us to define a Magidor-style forcing with interleaved collapses, where the collapses are ``guided" by the ultrapower generics.
+In summary, conditions will similar to Magidor forcing to add a sequence $\seq{\kappa_\alpha \middle| \alpha<\omega_1}$ with supremum $\kappa$, but:
+\begin{itemize}
+  \item $\kappa_0$ will be the new $\aleph_3$,
+  \item between any two adjacent Magidor points $\kappa_\alpha$ and $\kappa_{\alpha+1}$ we will also force with $Col(\kappa_\alpha^+,<\kappa_{\alpha+1})$,
+  \item extension will be as in Magidor forcing, but additionally we may stregthen collapses, and we don't allow already-collapsed ordinals to become future Magidor points,
+  \item when we add new points to the growing finite subfamily of the Magidor sequence, we must also carefully choose new collapse terms below and above,
+  \item and the conditions are restricted in such a way as to ensure that no Magidor sequence point gets collapsed, and that the poset still has a Prikry-type property.
+\end{itemize}
+
+We define Magidor with interleaved collapses in full generality; for our purposes, we will later restrict $\lambda$ to be $\omega$ or $\omega_1$.
+\begin{definition}
+  $\mathbb{MC}(\vec{U})$: conditions are of the form $(f,c,A,C)$ where:
+  \begin{enumerate}
+    \item $dom(f),dom(c)\in [\lambda\sqcup\{-1\}]^{<\omega}$, $dom(f)=dom(c)$, and $dom(A)=dom(C)=\lambda\setminus dom(f)$, and $f(-1)=\omega_1$. We will write $dom^+(f)$ to mean $dom(f)\cap Ord$, and similarly for $dom(c)$.
+    \item For $\xi\in dom^+(f)$, $f(\xi)\in Z_\xi$, $f(\xi)>\lambda$, and $f$ is strictly increasing
+    \item for $\xi\in dom(A)$ with $\xi<\max dom^+(f)$, let $\tau=\min\{dom^+(f)\setminus (\xi+1)\}$.
+    Then $A(\xi)\in r^\tau_\xi(f(\tau))$.
+    \item For $\xi\in dom(A)$ with $\xi>\max dom^+(f)$, $A(\xi)\in U_\xi$; with $\tau=\max (dom^+(f)\cap \xi)$, we further require that $A(\xi)\subseteq Z_\xi\setminus(f(\tau)+1)$.
+    \item For each $\alpha \in dom(c)$, $c(\alpha)$, if $(dom(f)\setminus (\alpha+1))\neq\emptyset$, is a $Col(f(\alpha)^+,<f(\min(dom(f)\setminus (\alpha+1))))$-condition; otherwise is a $Col(f(\alpha)^+,<\kappa)$-condition
+    \item for each $\alpha\in dom(A)$, for each $\beta\in dom(A)\cap \alpha$, $A(\alpha) \cap \sup c(\beta) = \emptyset$, that is, no collapsed ordinals will ever become Magidor points;
+    \item $C$ acts as a measure-one system of future choices for $c$; that is, for each relevant $\alpha$, $C(\alpha)$ is a function with domain $A(\alpha)$ such that
+    \begin{itemize}
+      \item if $\delta\in A(\alpha)$, then $C(\alpha)(\delta)\in Col(\delta^+,<\kappa)$ if $\delta>\max dom(f)$; otherwise, letting $\xi=\min (dom(f)\setminus (\alpha+1))$, is in $Col(\delta^+,<f(\xi))$
+      
+      \item if $\alpha>\max dom(f)$, then $[C(\alpha)]_{U_\alpha}\in K_\alpha$; otherwise, letting $\xi=\min (dom(f)\setminus (\alpha+1))$, we have that $[C(\alpha)]_{r_\alpha^\xi(f(\xi))}\in k_\alpha^\xi(f(\xi))$.
+    \end{itemize}
+  \end{enumerate}
+  
+  We say that the condition $(f',c',A',C')\leq (f,c,A,C)$ if
+  \begin{enumerate}
+    \item $f' \supseteq f$ and if $\alpha \in dom^+(f')\setminus dom^+(f)$, then $f'(\alpha)\in A(\alpha)$
+    \item for each $\alpha \in dom(c)$, $c'(\alpha)\leq c(\alpha)$ in the relevant collapse forcing
+    \item for each $\alpha \in dom^+(c')\setminus dom^+(c)$, $c'(\alpha) \leq C(\alpha)(f'(\alpha))$
+    \item for all $\alpha \in dom(A')$, $A'(\alpha)\subseteq A(\alpha)$
+    \item for all $\alpha \in dom(C')$, $C'(\alpha)(\delta)\leq C(\alpha)(\delta)$ for all $\delta\in A'(\alpha)$
+    
+  \end{enumerate}
+  As for our definition of direct extension, we will say that $(f',c',A',C')\leq^* (f,c,A,C)$ if $f'=f$ (note that we may still strengthen collapse terms in a direct extension).
+\end{definition}
+
+\begin{remark}
+  For ease of notation, and in accordance with conventions found in (handbook chapter), we may write a condition $p\in \mathbb{MC}(\vec{U})$ as
+  \[
+    p=(f^p,c^p,A^p,C^p)
+  \]
+  
+  We'll say that the \emph{stem} of $p$ is $f^p$.
+\end{remark}
+
+\begin{definition}
+  Let $p$ be a condition, let $\alpha \in dom(A^q)$, and let $\nu\in A^q(\alpha)$.
+  Then we may define the condition $p\frown (\alpha,\nu)$ as the weakest extension $q$ of $p$ such $f^q(\alpha)=\nu$, namely:
+  \begin{itemize}
+    \item $f^{p\frown (\alpha,\nu)}=f^p \frown (\alpha,\nu)$
+    \item $c^{p\frown (\alpha,\nu)}=c^p \frown (\alpha,C^p(\alpha)(\nu))$
+    \item For $\beta>\alpha$, $A^{p\frown (\alpha,\nu)}(\beta)=A^p(\beta)\setminus \sup(C^p(\alpha)(\nu))$ and $C^{p\frown (\alpha,\nu)}(\beta)=C^p(\beta) \upharpoonright A^{p\frown (\alpha,\nu)}(\beta)$
+    \item For $\beta<\alpha$, $A^{p\frown (\alpha,\nu)}(\beta)=A^p(\beta)\cap \nu \cap \{\mu \in Z_\beta \cap \nu \mid \sup C^p(\beta)(\mu)<\nu\}$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), this is in $r_\beta^\alpha(\nu)$
+    \item and for $\beta<\alpha$, $C^{p\frown (\alpha,\nu)}(\beta)=C^p(\beta)\upharpoonright A^{p\frown (\alpha,\nu)}(\beta)$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), $[C^{p\frown (\alpha,\nu)}(\beta)]_{r_\beta^\alpha(\nu)}\in k_\beta^\alpha(\nu)$ as needed
+  \end{itemize}
+  and we may define, for each $a\in [dom(A^p)]^{<\omega}$ and each strictly increasing $\vec{\nu}\in \prod_{\alpha\in a} A^p(\alpha)$, $p\frown \vec{\nu}$ similarly.
+\end{definition}
+
+\begin{definition}
+  Let $a\in [\lambda\cup\{-1\}]^{<\omega}$, let $b\subseteq a \cup \{-1\}$, and let $p,q$ be conditions with $q\leq p$. We'll say that $q$ is an $a$-step extension of $p$ if $dom(f^q)=dom(f^p)\sqcup a$.
+\end{definition}
+
+%% TODO: poset combinatorics. MS in the generic extension.
+
+Observe that $\mathbb{MC}(\vec{U})$ has the $\kappa^+$-cc essentially for the same reasons as classical Magidor forcing.
+Note that two conditions with the same Magidor stem need not be compatible due to their collapse terms being incompatible:
+
+\begin{proposition}
+  $\mathbb{MC}(\vec{U})$ has the $\kappa^+$-cc.
+\end{proposition}
+
+\begin{proof}
+  Observe that if $p$, $q$ are conditions such that both $f^p=f^q$ and $c^p=c^q$, then $p \compat q$; simply strengthen $A^p$, $A^q$, $C^p$, $C^q$ accordingly. 
+  Thus there are only $\kappa$-many choices of incompatible stems and collapses.
+\end{proof}
+
+% TODO: make more explicit; separate into a \thlabel-able remark or proposition, elaborate (i.e. say below any Magidor point etc), and \thref the vanilla M(U) version
+\begin{remark}\thlabel{magidor_collapse_factoring}
+  As with vanilla Magidor forcing (c.f. \thref{magidor_factoring}),
+  due to our use of the reflected guiding generics $\seq{k_\alpha^\beta\middle| \alpha<\beta, \beta<\lambda}$, for each $\beta$ and each $\rho\in Y_\xi$, relative to the weakest $p$ for which $f^p(\beta)=\rho$, 
+  \[
+    \mathbb{MC}(\vec{U}) / p=\mathbb{MC}(\vec{U})_{(\gamma,\delta)}\times\mathbb{MC}(\vec{U})^{(\gamma,\delta)}
+  \]
+  so $\mathbb{MC}(\vec{U})$ factors.
+  Thus, as with $\mathbb{M}(\vec{U})$, many preservation arguments that work for $\mathbb{MC}(\vec{U})$ still reflect downwards.
+\end{remark}
+
+The diagonalization lemma for $\mathbb{MC}(\vec{U})$ requires more assumptions than with $\mathbb{M}(\vec{U})$; due to the introduction of collapse terms, not every indexed family of step extensions below $p$ can be diagonalized.
+
+However, a Prikry-type property still holds, and through its proof we can extract a partial diagonalization lemma.
+\begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_collapse_prikry_open_dense}
+  If $p$ is a condition and $\mathcal{D}$ is an open dense set, then there is a direct extension $r\leq^* p$ and an $a\in [\lambda]^{<\omega}$ such that every $a$-step extension of $r$ is in $\mathcal{D}$.
+\end{lemma}
+
+Before we prove this, we will introduce some terminology for families of direct extensions of a fixed condition:
+
+\begin{definition}\thlabel{family_meets_dense_set_below}
+  Let $p\in\mathbb{MC}(\vec{U})$, let $\mathcal{D}$ be an open dense set, and let
+  \[
+    E=\left\{\vec{\nu}:a\to \kappa \middle| a\in [dom(A^p)]^{<\omega}, \vec{\nu}\in \prod_{\alpha\in a} A^p(\alpha),\text{ and }p\frown\vec{\nu}\text{ is a condition below }p\right\}
+  \]
+  and for each $a\in[\lambda]^{<\omega}$ such that there are valid $a$-step extensions of $p$, let 
+  \[
+    E_a=\{\vec{\nu}\in E \mid dom(\vec{\nu})=a\}
+  \]
+  Let $\seq{p_{\vec{\nu}}\middle| \vec{\nu}\in E_a\text{( or }E\text{)}}$ be an $E_a$ (or $E$)-indexed family of conditions.
+  We say that such a family \emph{meets $\mathcal{D}$ below $p$ if possible} if for each $\vec{\nu}\in E_a$ (or $E$), $p_{\vec{\nu}}\leq^* p \frown \vec{\nu}$ and if there is some $r\leq^* p_{\vec{\nu}}$ such that $r\in\mathcal{D}$, then $p_{\vec{\nu}}\in\mathcal{D}$ as well.
+\end{definition}
+
+\begin{proof}[Proof of \thref{magidor_collapse_prikry_open_dense}]
+  We proceed in a series of claims.
+  Let $E$, and $E_a$ for each $a\in [dom(A^p)]^{<\omega}$, be as in \thref{family_meets_dense_set_below}; note that for each $\alpha\in dom(A^p)$, $E_{\{\alpha\}}=A^p(\alpha)$.
+  
+  \begin{claim}\thlabel{magidor_collapse_meets_dense_generic_one_step}
+    For each $\alpha\in dom(A^p)$, there is a family $\seq{p_{(\alpha,\nu)} \middle| \nu\in A^p(\alpha)}$ that meets $\mathcal{D}$ below $p$ if possible such that
+    \[
+      [\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)] \in K_\alpha
+    \]
+    (or $k_\alpha^\beta(\rho)$ if applicable).
+  \end{claim}
+  \begin{proof}[Proof of \thref{magidor_collapse_meets_dense_generic_one_step}]
+    Without loss of generality, we argue for $\alpha>\max dom(f^p)$; for smaller $\alpha$, due to \thref{magidor_collapse_factoring}, we may factor and work over $\mathbb{MC}(\vec{U})_{(\alpha,f^p(\alpha))}$ and $\mathbb{MC}(\vec{U})^{(\alpha,f^p(\alpha))}$.
+    
+    Let $\mathcal{D}^*\subseteq Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ be given by
+    \[
+      \mathcal{D}^*=\left\{[\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)]_{U_\alpha} \middle| \seq{p_{(\alpha,\nu)} \middle| \nu\in A^p(\alpha)}\text{ meets }\mathcal{D}\text{ below }p\text{ if possible} \right\}
+    \]
+    Then $\mathcal{D}^*$ is dense below $[C^p(\alpha)]$.
+    To see this, let $[b]\in Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ be below $[C^p(\alpha)]$;
+    simply because $[b]\leq [C^p(\alpha)]$, (on a measure one collection of $\nu\in A^p(\alpha)$) we may straightaway let $p_{(\alpha,\nu)}$ be such that $p_{(\alpha,\nu)}\leq^* p\frown (\alpha,\nu)$, $c^{p_{(\alpha,\nu)}}(\alpha)\leq b(\nu)$, and if some $r\leq^* p_{(\alpha,\nu)}$ is in $\mathcal{D}$, then $p_{(\alpha,\nu)}$ is already chosen to be in $\mathcal{D}$.
+    Then $\seq{p_{(\alpha,\nu)}\middle| \nu\in A^p(\alpha)}$ meets $\mathcal{D}$ below $p$ if possible and by construction, $[\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)]\leq[b]$.
+    
+    Thus by the genericity of $K_\alpha$, $\mathcal{D}^* \cap K_\alpha\neq\emptyset$ and therefore there is some $\seq{p_{(\alpha,\nu)} \middle| \nu\in A^p(\alpha)}$ that meets $\mathcal{D}$ below $p$ if possible such that $[\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)]_{U_\alpha}\in K_\alpha$.
+  \end{proof}
+  
+  Having the family's collapse terms at $\alpha$ in $K_\alpha$ in the ultrapower allows us to diagonalize:
+  
+  \begin{claim}\thlabel{magidor_collapse_diagonalize_one_step}
+    Let $\seq{p_{(\alpha,\nu)}\middle| \nu\in A^p(\alpha)}$ be as in \thref{magidor_collapse_meets_dense_generic_one_step}.
+    Then there is a $p_\alpha\leq^* p$ such that $\seq{p_\alpha \frown (\alpha,\nu) \middle| \nu\in A^{p_\alpha}(\alpha)}$ meets $\mathcal{D}$ below $p$ if possible.
+  \end{claim}
+  
+  \begin{proof}[Proof of \thref{magidor_collapse_diagonalize_one_step}]
+    Without loss of generality, we argue for $p$ such that $f^p=\seq{(-1,\omega_1)}$; we can handle larger stems by factoring and measure one concentrations as per \thref{magidor_collapse_factoring}.
+    In this reduced case, it suffices to define $A^{p_\alpha}$, $C^{p_\alpha}$, and $c^{p_\alpha}(-1)$.
+    
+    Observe that for each $\nu\in A^p(\alpha)$, $c^{p_{(\alpha,\nu)}}(-1)\in Col(\omega_2,<\nu)$ which is of cardinality $\nu$.
+    Thus we may view the map $\nu\mapsto c^{p_{(\alpha,\nu)}}(-1)$ as a regressive map on $A^p(\alpha)$, and so by the normality of $U_\alpha$ and Fodor's Theorem, there is some $A'\in U_\alpha$, $A'\subseteq A^p(\alpha)$, and some $c'\in Col(\omega_2,<\kappa)$ such that for all $\nu\in A'$, $c^{p_{(\alpha,\nu)}}(-1)=c'$.
+    
+    Let
+    \[
+      c^{p_\alpha}(-1)=c'
+    \]
+    
+    For $\beta>\alpha$, observe that for each $\nu\in A'$, $[C^{p_{(\alpha,\nu)}}(\beta)]_{U_\beta}\in K_\beta$, so we may extend $\{[C^{p_{(\alpha,\nu)}}(\beta)]_{U_\beta} \mid \nu\in A'\}$ to some $\kappa$-sized downwards directed subset of $K_\beta$.
+    Thus, by the $\kappa^+$-distributvity $Col(\kappa^+,<j_{U_\beta}(\kappa))^{Ult(V,U_\beta)}$, we may find some $[C']$ such that $[C']_{U_\beta}\leq [C^{p_{(\alpha,\nu)}}(\beta)]_{U_\beta}$ as witnessed by $W_\nu\in U_\beta$, for all $\nu\in A'$
+    \footnote{
+      This is a widely applicable forcing result: let $\mathbb{P}$ be $\kappa^+$-distributive, let $G$ be $\mathbb{P}$-generic, and let $\seq{p_\alpha \mid \alpha<\kappa}$ be a downwards directed subset of $G$.
+      Then there is a $p\in G$ that is a lower bound of $\seq{p_\alpha \mid \alpha<\kappa}$.
+      To see this, note that by distributivity, $\seq{p_\alpha \mid \alpha<\kappa}$ is in the ground model and $D:=\{q \mid \forall \alpha \ q\leq p_\alpha\text{ or }\exists \alpha \ p\perp p_\alpha\}$ is dense.
+      Let $p\in D \cap G$. Since each $p_\alpha \in G$, $p\compat p_\alpha$ for all $\alpha$ and thus $p\leq p_\alpha$ for all $\alpha$.
+    }.
+    We let
+    \[
+      A^{p_\alpha}(\beta)=A' \cap \Delta_{\nu\in A'} W_\nu
+    \]
+    and let 
+    \[
+      C^{p_\alpha}(\beta) = C' \upharpoonright A^{p_\alpha}(\beta)
+    \]
+    
+    For $\beta<\alpha$, recall that each $A^{p_{(\alpha,\nu)}}(\beta)\in r_\beta^\alpha(\nu)$, and each $C^{p_{(\alpha,\nu)}}(\beta)$ is a map with domain $A^{p_{(\alpha,\nu)}}(\beta)$ such that
+    \begin{itemize}
+      \item for each $\mu\in A^{p_{(\alpha,\nu)}}(\beta)$, $C^{p_{(\alpha,\nu)}}(\beta)(\mu)\in Col(\mu^+,<\nu)$
+      \item $[C^{p_{(\alpha,\nu)}}(\beta)]_{r_\beta^\alpha(\nu)}\in k_\beta^\alpha(\nu)$
+    \end{itemize}
+    Let $B_{\beta,\alpha}=[\nu\mapsto A^{p_{(\alpha,\nu)}}(\beta)]_{U_\alpha}\in U_\beta$ and
+    let $X_{\beta,\alpha}=[\nu\mapsto C^{p_{(\alpha,\nu)}}(\beta)]_{U_\alpha}$.
+    By elementarity and the measure coherence, ${B_{\beta,\alpha}\in U_\beta}$;
+    by the guiding generic coherence of \thref{coherence_guiding_generic_family},  $[X_{\beta,\alpha}]_{U_\beta}\in K_\beta$.
+    
+    So let $F_{\beta,\alpha}$ be a $U_\alpha$-measure-one collection of $\nu\in A'$ such that
+    \begin{itemize}
+      \item $B_{\beta,\alpha} \cap \nu = A^{p_{(\alpha,\nu)}}(\beta)$
+      \item $X_{\beta,\alpha} \upharpoonright A^{p_{(\alpha,\nu)}}(\beta) = C^{p_{(\alpha,\nu)}}(\beta)$
+    \end{itemize}
+    Let
+    \[
+      A^{p_\alpha}(\beta)=B_{\beta,\alpha} \cap A^p(\alpha)
+    \]
+    and let
+    \[
+      C^{p_\alpha}(\beta)=X_{\beta,\alpha}\upharpoonright A^{p_\alpha}(\beta)
+    \]
+    We will need $F_{\beta,\alpha}$ for the next case.
+    
+    For $\beta=\alpha$, by the result of \thref{magidor_collapse_meets_dense_generic_one_step}, $[\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)]_{U_\alpha}\in K_\alpha$ so let $C''$ be such that $[C'']=[\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)]$ and let $A''$ be a measure one set witnessing this equality.
+    
+    Let
+    \[
+      A^{p_\alpha}(\alpha)=A'' \cap A' \cap \bigcap_{\beta<\alpha} F_{\beta,\alpha}
+    \]
+    This ensures that for every $\nu\in A^{p_\alpha}(\alpha)$, $(p_\alpha \frown (\alpha,\nu))\upharpoonright \alpha$ behaves as described above.
+    
+    Let
+    \[
+      C^{p_\alpha}(\alpha)=C''
+    \]
+    
+    Then $p_\alpha$ is as desired.
+  \end{proof}
+  
+  \begin{claim}\thlabel{magidor_collapse_diagonalize_all_step}
+    For all $a\in [dom(A^p)]^{<\omega}$, there is a $p_a\leq^* p$ such that 
+    \[
+      \seq{p_a\frown \vec{\nu} \middle| p_a\frown \vec{\nu}\text{ is a valid condition}}
+    \]
+    meets $\mathcal{D}$ below $p$ if possible.
+  \end{claim}
+  
+  \begin{proof}[Proof of \thref{magidor_collapse_diagonalize_all_step}]
+    We induct on $|a|$; \thref{magidor_collapse_meets_dense_generic_one_step} and \thref{magidor_collapse_diagonalize_one_step} show how to find such $p_a$ for $|a|=1$.
+    
+    As for the induction, suppose without loss of generality that $f^p=\seq{(-1,\omega_1)}$ as before;
+    suppose the above statement is true for every $a$ with $|a|=n$.
+    Let $\alpha=\min(a)$ and let $b=a\setminus \{\alpha\}$.
+    Then by the induction hypothesis, for (measure one many) $\mu\in A^p(\alpha)$, there is some $q_\mu\leq^* p \frown (\alpha,\mu)$ such that 
+    \[
+      \seq{ q_\mu \frown \vec{\nu} \middle| q_\mu \frown \vec{\nu} \text{ is a valid condition}}
+    \]
+    meets $\mathcal{D}$ below $p$ if possible. 
+    By the same argument as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may assume that $[\mu\mapsto c^{q_\mu}(\alpha)\mid \alpha\in A^p(\alpha)]_{U_\alpha}\in K_\alpha$, 
+    and thus by the same argument as in \thref{magidor_collapse_diagonalize_one_step}, we have some $q\leq^* p$ such that $q\frown (\alpha,\mu)\leq^* q_\mu$ whenever $\mu\in A^q(\alpha)$ and $\seq{q\frown (\alpha,\mu) \middle| \mu\in A^q(\alpha)}$ meets $\mathcal{D}$ below $p$ if possible\footnote{
+      Note that the same Fodor's Theorem argument works to concentrate $A^{q}(\alpha)$ so that for every $\mu\in A^q(\alpha)$, the map $\mu\mapsto c^{q_\mu}(-1)\in Col(\omega_2,<\mu)$ is constant.
+    }.
+    
+    But then by construction, $\seq{q\frown \vec{\nu} \middle| \vec{\nu}\in E_a}$ meets $\mathcal{D}$ below $p$ if possible, and so $q$ is our desired $p_a$.
+  \end{proof}
+  
+  By enumerating over all $a$ for which $p$ has valid $a$-step extensions (that is, $a\in [dom(A^p)]^{<\omega}$), 
+  we may additionally construct the $\seq{q_a \mid a\in [dom(A^p)]^{<\omega}}$ such that for each $\alpha\in dom(f^p)$, $\{c^{q_a}(\alpha)\mid a\in [dom(A^p)]^{<\omega}\}$ forms a directed system in the relevant collapse forcing of size less than $\lambda^+$.
+  
+  Therefore, by invoking the $\lambda^+$-closure of each relevant measure
+  to shrink the measure terms $A^{q_a}$,
+  the $\lambda^+$-directed closure of each relevant collapse forcing to shrink the $c^{q_a}$'s,
+  and the $\kappa^+$-directed closure of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ on the $C^{q_a}$'s,
+  we may let $q$ be a lower bound of $\seq{q_a\middle| a\in [dom(A^p)]^{<\omega}}$.
+  
+  By \thref{magidor_collapse_diagonalize_all_step}, we have that 
+  \[
+    \seq{q \frown \vec{\nu} \middle| \nu\in \left[\prod A^q(\alpha)\right]^{<\omega} \text{ increasing}}
+  \]
+  meets $\mathcal{D}$ below $q$ if possible. That means that for each applicable $\vec{\nu}$, if some direct extension of $q\frown \vec{\nu}$ lies in $\mathcal{D}$ then $q\frown \vec{\nu}\in \mathcal{D}$ already. 
+  
+  We will now find homogeneous families of such $\nu$, in the following sense.
+  Let $h:\left[\prod A^q(\alpha)\right]^{<\omega}\to \{0,1\}$\footnote{
+    $h$ as defined is not exactly a map on this domain, but rather is a map on increasing finite sequences drawn from the measure one family of $A^q(\alpha)$'s.
+  },
+  \[
+    h(\vec{\nu})=\begin{cases}
+      1 & q\frown \vec{\nu}\in\mathcal{D} \\
+      0 & \text{otherwise} \\
+    \end{cases}
+  \]
+  By \thref{simult_indisc_easy}\footnote{
+    Technically, \thref{simult_indisc_easy} applies independently to $h$ on each subinterval between points in $dom(f^q) \cup \{\kappa\}$, taking reflected measures as needed.
+  }, 
+  there is some $r\leq^* q$ with $c^r=c^q$ such that for every $n$ and every $a\in [dom(A^r)]^{<\omega}$,
+  \[
+    h \upharpoonright \prod^\uparrow_{\alpha\in a} A^r(\alpha)
+  \]
+  is constant.
+  
+  But then $r$ is finally as desired, as there is some $a$ so that every $a$-step extension of $r$ is in $\mathcal{D}$.
+  To see this, observe that by density, there must be some $\vec{\nu}$ such that some direct extension of $r\frown \vec{\nu}\in\mathcal{D}$;
+  but then $r\frown \vec{\nu}\in\mathcal{D}$, and since $r\frown\vec{\nu}\leq^* q\frown\vec{\nu}$, by construction of $q$, $q\frown \vec{\nu}\in\mathcal{D}$, so $h(\vec{\nu})=1$.
+  Let $a=dom(\vec{\nu})$; by the homogeneity of $h$, every $a$-step extension of $r$ is in $\mathcal{D}$.
+\end{proof}
+
+Combining elements of the aforementioned proof yields the following restricted diagonalization lemma:
+
+\begin{lemma}[Diagonalization Lemma]
+  Let $p\in\mathbb{MC}(\vec{U})$; let 
+  \[
+    E=\left\{\vec{\nu}:a\to\kappa \middle| a\in [dom(A^p)]^{<\omega}, \vec{\nu}\in \prod_{\alpha \in a} A^p(\alpha), \text{ and }p\frown \vec{\nu}\text{ is a condition below }p\right\}
+  \]
+  Let $\seq{p_{\vec{\nu}} \middle| \vec{\nu}\in E}$ be a family such that:
+  \begin{enumerate}
+    \item $p_{\vec{\nu}}\leq^* p \frown \vec{\nu}$
+    \item for all $a$, for all $\alpha\in dom(a)$, there is a $t:A^p(\alpha)\to \{p_{\vec{\nu}}\mid \vec{\nu}\in E\}$ such that $t(\mu)$ is some $\vec{\nu}$ such that $dom(\vec{\nu})=a$, $\vec{\nu}(\alpha)=\mu$, and
+    \[
+      \left[\mu\mapsto c^{p_{t(\mu)}}(\alpha)\right]\in K_\alpha \text{( or }k_\alpha^\beta(\rho)\text{)}
+    \]
+  \end{enumerate}
+  Then there is some $q\leq^* p$ such that whenever $q\frown\vec{\nu}$ is a valid condition, $q\frown \vec{\nu}\leq^* p_{\vec{\nu}}$
+\end{lemma}
+
+And as with vanilla Magidor forcing, we obtain the sentential versions of the Prikry lemma:
+
+\begin{lemma}[Prikry-type lemma, sentential version I]\thlabel{magidor_collapse_prikry_sentential}
+  Let $p\in\mathbb{MC}(\vec{U})$, and let $\sigma$ be a sentence of the forcing language. 
+  Then some $q\leq^* p$ decides $\sigma$.
+\end{lemma}
+
+The proof is functionally the same as in \thref{magidor_prikry_type_sentential}, but with collapse terms $c$ and $C$ that may need further extension.
+
+A similar tail-change lemma applies equally well:
+
+\begin{lemma}[Prikry-type lemma, sentential version II]\thlabel{magidor_collapse_prikry_sentential_better}
+  Let $\sigma$ be a sentence of the forcing language, let $p\in \mathbb{MC}(\vec{U})$, and let $\beta\in dom(f^p)$.
+  Then there is some $q\leq^* p$ such that $q\upharpoonright \beta=p\upharpoonright \beta$ and if $r\leq q$ such that $r$ decides $\sigma$, then $(r\upharpoonright \beta ) \frown (q \upharpoonright [\beta,\lambda))$ decides $\sigma$ the same way.
+\end{lemma}
+
+Likewise, this proof is similar to \thref{magidor_prikry_type_sentential_better}, except with more care needed during the diagonalization step.
+
+As for cardinal arithmetic in $V^{\mathbb{MC}(\vec{U})}$, we have a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, collapses of cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$, and preservation of all other cardinals. 
+Explicitly:
+
+\begin{lemma}
+  Let $\delta$ be a $V$-cardinal and let $\seq{\beta_\eta \middle| \eta<\lambda}$ be the Magidor sequence added by some $\mathbb{MC}(\vec{U})$-generic $G$. Then:
+  \begin{enumerate}
+    \item If $\delta\in (\beta_\eta^+,\beta_{\eta+1})$ for some $\eta$, then $\delta$ is collapsed to size $\beta_\eta^+$
+    \item If $\delta=\beta_\eta$ for some $\eta$ or $\delta=\kappa$, then $\delta$ is preserved
+    \item If $\delta=\beta_{\eta+1}$ for some $\eta$ or $\delta=\beta_0$ or $\delta\leq \omega_2$ or $\delta>\kappa$, then $\delta$ is $V[G]$-regular.
+  \end{enumerate}
+  Thus in $V[G]$, $\kappa=(\aleph_\lambda)^{V[G]}$.
+\end{lemma}
+
+The collapsing part is easy to see, as $G$ adds $Col(\beta_\eta^+,<\beta_{\eta+1})$-generics for every $\eta$.
+Much as in vanilla Magidor forcing, the preservation argument emulates \thref{magidor_preserves_cardinals} with the help of \thref{magidor_collapse_prikry_sentential_better}.
+
+% TODO: Char'n of genericity. Basically refer up to vanilla Magidor. Here, it's like Prop 2.3 of Combos at alephomega, plus with reflection.
+% c.f. meeting chat log:
+\begin{comment}
+11:39:11 From Dima Sinapova To Everyone : for each [b_\eta]\middle| \eta<\lambda, each [b_\eta]\in K_\eta
+11:39:41 From Dima Sinapova To Everyone : for all large $\eta$, $b_\eta(\beta_\eta)\in c^*_\eta$
+11:40:16 From Dima Sinapova To Everyone : rewrite the above with \xi replacing \lambda, limit \xi
+11:40:29 From Dima Sinapova To Everyone : and K^\eta_\xi replacing K_\eta
+11:41:16 From Dima Sinapova To Everyone : use $K_\eta<K_\xi$
+11:41:41 From Dima Sinapova To Everyone : for \eta<\xi, \xi limit fixed
+11:42:18 From Dima Sinapova To Everyone : K_\eta =  [f]_{U_\xi}
+11:42:53 From Dima Sinapova To Everyone : look at f(\beta_\eta)
+11:43:23 From Dima Sinapova To Everyone : K^\eta_\xi = f(\beta_\eta)
+c^*_\eta is generic for Col(\beta_\eta^++, <\beta_{\eta+1}) 
+\end{comment}
+
+As for a characterization of genericity along the lines of \thref{magidor_geometric_iff_generic}, we have that the Magidor generic sequence is geometric, along with a geometricity notion for the collapses, as follows:
+
+\begin{proposition} \thlabel{magidor_collapse_generic_implies_geometric}
+  Let $G$ be $\mathbb{MC}(\vec{U})$-generic.
+  Let
+  \[
+    \vec{\beta}=\seq{\beta_\eta \middle| \eta<\lambda} = \bigcup_{p\in G} f^p
+  \]
+  and for each $\eta<\lambda$, let 
+  \[
+    F_\eta=\bigcup_{p\in G, \eta\in dom(f^p)} c^p(\eta)
+  \]
+  Then
+  \begin{enumerate}
+    \item $\vec{\beta}$ is increasing, normal, and has supremum $\kappa$
+  
+    \item for all $\seq{A_\eta \middle| \eta<\lambda}\in V$ with each $A_\eta\in U_\eta$, for coboundedly many $\zeta<\lambda$, $\beta_\zeta\in A_\zeta$
+    
+    \item for all $\eta$, $F_\eta$ is $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic
+    
+    \item \label{magidor_collapse_generic_implies_geometric:collapse_futures} 
+    for all $\seq{C_\eta\middle| \eta<\lambda}$ in $V$ with each $C_\eta$ a map from a measure one set in $U_\eta$ to collapses such that each $[C_\eta]\in K_\eta$: for coboundedly many $\zeta<\lambda$, $C_\zeta(\beta_\zeta)\in F_\zeta$
+    
+    \item and the above items reflect down to each limit ordinal $\eta<\lambda$ with respect to the reflected measures $r$ and reflected guiding generics $k$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  These all follow from standard density and factoring arguments (c.f. \thref{magidor_generic_implies_geometric}), but with collapses included.
+  
+  Item \ref{magidor_collapse_generic_implies_geometric:collapse_futures} follows from the fact that given such $\seq{C_\eta \middle| \eta<\lambda}$, since the guiding generics are filters, 
+  \[
+    \left\{p\in\mathbb{MC}(\vec{U}) \middle| \forall \eta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\eta)]_{U_\eta}<[C_\eta]_{U_\eta} \right\}
+  \]
+  is dense.
+\end{proof}
+  
+The following converse seems plausible:
+(TODO: upgrade from conjecture to lemma, and write up a 1-ish page proof. Can even just appeal to ``like the Magidor Prikry-prop / diag'n" and run the induction argument.)
+  
+\begin{conjecture}
+  In $V^{\mathbb{MC}(\vec{U})}$, suppose $\seq{\beta_\eta \mid \eta<\lambda}$ is increasing, normal, and has limit $\kappa$, and for each $\eta$, suppose $F_\eta$ be $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$.
+  
+  Suppose the conclusion of \thref{magidor_collapse_generic_implies_geometric} applies to $\seq{\beta_\eta \mid \eta<\lambda}$ and the $F_\eta$'s, and define
+  \[
+    H=\left\{(f,c,A,C) \middle|
+      \begin{array}{l}
+        f\text{ is a finite subsequence of }\vec{\beta}, \\
+        \forall \alpha\in dom(f) \ c(\alpha)\in F_\alpha \\
+        A\in V \text{ and }dom(A)=\lambda\setminus dom(f), \\        
+        \forall \eta \in dom(A) \ A(\eta)\in U_\eta \text{ or the relevant }r^\gamma_\eta(\beta_\eta), \\
+        \forall \eta\in dom(A) \ \beta_\eta\in A(\eta), \\
+        C\in V \text{ and }\forall \eta \in dom(A) \ [C(\eta)]_{U_\eta}\in K_\eta (\text{ or }r^\gamma_\eta(\beta_\eta),k^\gamma_\eta(\beta_\eta)
+      \end{array}
+    \right\}
+  \]
+  Then $H$ is $\mathbb{MC}(\vec{U})$-generic over $V$.
+\end{conjecture}
+
+The real work in proving this conjecture is emulating the argument of (Fuchs), but with the interleaved collapses.
+
+\begin{conjecture}
+  In $V^{\mathbb{MC}(\vec{U})}$ with $\lambda=\omega_1$, 
+  \[
+    MS(\seq{\aleph_{2n+3}\middle| n<\omega}\frown \seq{\aleph_{\alpha+2n}\middle| \omega\leq\alpha<\omega_1,n<\omega};\omega_1)
+  \]
+  holds.
+\end{conjecture}
