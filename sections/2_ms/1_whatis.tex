@@ -3,7 +3,7 @@
 
 Will describe basic background on stationarity and mutual stationarity, original purpose. This section is work in progress.
 
-Mutual stationarity first appeared in (TODO: cite foremanmagidor-nsns) to argue for the nonsaturation of certain nonstationary ideals, and generalizes stationarity to singular cardinals.
+Mutual stationarity first appeared in \cite{foreman_magidor_ns_ns} to argue for the nonsaturation of certain nonstationary ideals, and generalizes stationarity to singular cardinals.
 
 To see the generalization, we recall that the following property precisely characterizes stationarity:
 
@@ -35,7 +35,7 @@ Many mutual stationarity proofs are analogous to, or generalizations of, the fol
   Then $MS(\seq{\kappa_\alpha \mid \alpha<\lambda, \alpha\text{ successor}})$ holds.
 \end{theorem}
 
-This is stated without proof in (TODO: cite foremanmagidor-nsns), but the proof is fairly straightforward:
+This is stated without proof in \cite{foreman_magidor_ns_ns}, but the proof is fairly straightforward:
 
 \begin{proof}
   Let $\mathcal{A}$ be an algebra on $\kappa$; augment $\mathcal{A}$ to $\mathcal{A}'$ with terms for each $S_\alpha$.
@@ -51,7 +51,7 @@ This is stated without proof in (TODO: cite foremanmagidor-nsns), but the proof 
   
   By choice of $\delta$, we have that $\mathcal{A'}\models F(x)<\delta$; but by how we chose $\delta$ and $\zeta$, and since $x\cap [\zeta,\kappa_\alpha)=\emptyset$, the elements of $x$ bear the exact same order relation to $\zeta$ as they do to $\delta$.
   \footnote{
-    In time, we will give this a precise name; see (def forthcoming) in \ref{ms:koepke}.
+    In time, we will give this a precise name; see \thref{koepke_types} in \ref{ms:koepke}.
   }
   Therefore, since $\mathcal{M}\models F(x)<\delta$ and $x$, $\delta$, $\zeta$ are order indiscernibles for $\mathcal{M}$, we have that $\mathcal{M}\models F(x)<\zeta$ and $\zeta<\gamma_\alpha$.
 \end{proof}
@@ -66,6 +66,8 @@ A largely similar argument works for the points of a Prikry generic sequence:
   \]
   holds.
 \end{theorem}
+
+This theorem and proof originally appeared in \cite{cummings_foreman_magidor_canonical_structure}, but in ways we will see in \ref{ms:koepke} was anticipated much earlier in \cite{koepke_free_subset}.
 
 \begin{proof}[Proof sketch]
   With the use of the Prikry property, the argument of \thref{ms_measurables} readily adapts to a $U$-measure one 
@@ -82,11 +84,11 @@ The following lemmas make working with mutually stationary sequences and mutual 
     \item If $\seq{S_\alpha\mid \alpha<\mu}$ is mutually stationary with each $S_\alpha\subseteq \kappa_\alpha\cap cof(\leq\nu)$ and $\nu<\kappa_0$ then the mutual stationarity can be witnessed by an elementary substructure of size $\nu$.
   \end{enumerate}
 \end{lemma}
-(todo: cite foremanmagidor-nsns) cite this as implicit in (todo: cite their citation of Baumgartner).
+Foreman and Magidor in \cite{foreman_magidor_ns_ns} cite this as implicit in \cite{baumgartner_size_clubs}.
 
 As a corollary, mutual stationarity principles of restricted cofinality (under mild assumptions) are preserved under finite changes:
 
-\begin{lemma}[Lemma 23 of (todo: cite foremanmagidor-nsns)]\thlabel{mutual_stationarity_finite_change}
+\begin{lemma}[Lemma 23 of \cite{foreman_magidor_ns_ns}]\thlabel{mutual_stationarity_finite_change}
   Let $\seq{S_\alpha \mid \alpha<\mu}$ be mutually stationary with each $S_\alpha \subseteq \kappa_\alpha \cap cof(\leq\nu)$, with $\nu<\kappa_0$.
   Suppose $\lambda_0,\dots,\lambda_n$ are all greater than $\nu$, not equal to any $\kappa_\alpha$, and $S_{\lambda_i}\subseteq \lambda_i\cap cof(\leq\nu)$.
   
@@ -99,13 +101,13 @@ As a corollary, mutual stationarity principles of restricted cofinality (under m
 
 As for consistency results:
 
-\begin{theorem}[Theorem 7 of (cite foremanmagidor-nsns)]
+\begin{theorem}[Theorem 7 of \cite{foreman_magidor_ns_ns}]
   \[
     MS(\seq{\kappa_\alpha \mid \alpha<\mu},cof(\omega))
   \]
 \end{theorem}
 
-\begin{theorem}[Theorem 24 of (cite foremanmagidor-nsns)]
+\begin{theorem}[Theorem 24 of \cite{foreman_magidor_ns_ns}]
   In $L$, for all $k\in\omega$, 
   \[
     \lnot MS(\seq{\aleph_n \mid n>k},cof(\omega_k))
@@ -114,13 +116,13 @@ As for consistency results:
 
 Further inner model theoretic results showed that mutual stationarity principles for fixed uncountable cofinality requires large cardinals incompatible with $L$:
 
-\begin{theorem}[Theorem 1.4 and Corollary 1.5 of (cite koepke-welch-globalsquare)]
+\begin{theorem}[Theorem 1.4 and Corollary 1.5 of \cite{koepke_welch_global_square_ms}]
   If $k<\omega$ and $MS(\seq{\aleph_n \mid n>k},cof(\omega_k))$, then there is an inner model in which each $\aleph_n^V$ has stationarily many measurable cardinals of Mitchell order $\omega_{n-2}$.
 \end{theorem}
 
 As of writing, the best known argument in the other direction comes from:
 
-\begin{theorem}[Theorem 1.3 of (cite benneria2017)]
+\begin{theorem}[Theorem 1.3 of \cite{benneria_singular_stat}]
   Assume $GCH$ and let $\seq{\kappa_n\mid n<\omega}$ be a sequence of cardinals with $\kappa_0=\omega$, and with limit $\kappa_\omega$ such that each $\kappa_n$ is $\kappa_\omega^+$-supercompact.
   Then after forcing with a full-support iteration of $Col(\kappa_n,<\kappa_{n+1})$, for each $k<\omega$, 
   \[
@@ -132,7 +134,7 @@ As of writing, the best known argument in the other direction comes from:
 Mutual stationarity results at every other $\aleph_n$ require much weaker large cardinal assumptions.
 For instance:
 
-\begin{theorem}[Theorem 1.6 of (koepke-omega1) and Theorem (unknown) of (koepke-welch-constrmutstat)]
+\begin{theorem}[Theorem 1.6 of \cite{koepke_ms_omega_1} and Theorem 1 of \cite{koepke_welch_strength_ms}]
   The principle 
   \[
     MS(\seq{\aleph_{2n+3}\mid n<\omega},cof(\omega_1))
@@ -141,7 +143,7 @@ For instance:
 \end{theorem}
 
 and for larger cofinality:
-\begin{theorem}[Theorem 1.4 of (benneria2017)]
+\begin{theorem}[Theorem 1.4 of \cite{benneria_singular_stat}]
   It is consistent, relative to a sequence $\seq{\kappa_n\mid n<\omega}$ with each $\kappa_n$ being $\kappa_n^+$-supercompact with a $\kappa_{n-1}^+$-Mitchell sequence of such measures, that every sequence $S_n\subseteq \aleph_{2n+3}\cap cof(<\aleph_{2n+2})$ of stationary subsets is mutually stationary.
   
   In particular, for all $k<\omega$,

@@ -3,7 +3,8 @@
 
 Magidor forcing is a standard tool for singularizing cardinals to have uncountable cofinality without collapsing cardinals.
 
-The original approach for Magidor forcing from (todo: cite magidor, chg unctble cof) uses a system of representatives $r$ for normal measures below $\kappa$ the measurable cardinal we wish to singularize to cofinality $\lambda<\kappa$, and follows from a coherent system of measures:
+The original approach for Magidor forcing found in  \cite{magidor_chg_cof} uses a system of representatives $r$ for normal measures below $\kappa$ the measurable cardinal we wish to singularize to cofinality $\lambda<\kappa$.
+The relevant properties follow from a coherent system of measures:
 
 \begin{remark}
   Let $\mathcal{U}$ be a coherent system of normal measures at $\kappa$ with $o^{\mathcal{U}}(\kappa)=\lambda$, and let $\alpha\leq\kappa$, $\eta<\tau<o^{\mathcal{U}}(\alpha)$.
@@ -298,7 +299,7 @@ Further arguments along similar lines yields an even stronger sentential Prikry-
   Let $\sigma$ be a sentence of the forcing language, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
   Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, then $(g,H)_\beta \frown (f,B)^\beta$ also decides $\sigma$ the same way.
 \end{lemma}
-This appears as Lemma 4.5 of (todo: cite Magidor, chg cofs), and we give a proof here:
+This appears as Lemma 4.5 of \cite{magidor_chg_cof}, and we give a proof here:
 
 \begin{proof}
   For ease of notation, let $f(\beta)=\rho$.
@@ -322,7 +323,7 @@ Observe that a $\mathbb{M}\left(\vec{U}\right)$-generic adds a sequence $\seq{\a
   Let $\delta\in V$ be a cardinal. Then $\delta$ is a cardinal in $V^{\mathbb{M}(\vec{U})}$; moreover if $\delta$ is $V$-regular, $\delta\neq \kappa$, and $\delta\neq \alpha_\eta$ for any limit $\eta$ then $\delta$ remains regular.
 \end{lemma}
 
-The proof is also in (Magidor, chg cofs, TODO cite).
+The proof is also in \cite{magidor_chg_cof}.
 We prove it here, too:
 \begin{proof}
   Since $\mathbb{M}(\vec{U})$ is $\kappa^+$-cc and since $\kappa$ is a limit of cardinals, we only need to check for $\delta<\kappa$.
@@ -383,7 +384,7 @@ The converse is also true in the following sense:
   Then $H$ is $\mathbb{M}(\vec{U})$-generic over $V$.
 \end{proposition}
 
-A proof can be found in (Fuchs, todo cite) that makes use of much stronger Prikry-type lemmas than \thref{magidor_prikry_type_open_dense} and \thref{magidor_prikry_type_sentential_better};
+A proof can be found in \cite{fuchs_magidor} that makes use of much stronger Prikry-type lemmas than \thref{magidor_prikry_type_open_dense} and \thref{magidor_prikry_type_sentential_better};
 these stronger Prikry-type lemmas handle the cases where for a particular $(f,A)$ and $\seq{B_\eta \mid \eta<\xi}\in V$, there are nonzero (but coboundedly many) $\eta\in dom(A)$ but $\beta_\eta\notin B_\eta$.
 We present an alternative proof here:
 
@@ -436,7 +437,7 @@ TODO: also try proving genericity. Perhaps by induction on $\lambda$; try the ca
 
 
 At the very least, our tools yield the following lemma that says geometric sequences actually meet $V$-measure one systems cofinitely instead of just coboundedly.
-This helps for arguing mutual stationarity results for restricted cofinality below $\beta_0$, by a lemma from the original mutual stationarity paper of (foremanmagidor-nsns, todo cite).
+This helps for arguing mutual stationarity results for restricted cofinality below $\beta_0$, by a lemma from the original mutual stationarity paper of \cite{foreman_magidor_ns_ns}.
 
 \begin{lemma}\thlabel{magidor_geometric_cofinite_meet}
   Let $\vec{\beta}=\seq{\beta_\xi \mid \xi<\lambda}$ be geometric, and let $Z\in \prod_{\xi<\lambda} U_\xi$ with each $Z(\xi)\subseteq Y_\xi$.
