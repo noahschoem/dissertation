@@ -1,20 +1,20 @@
 \section{Background}
 \label{ms:ms}
 
-Will describe basic background on stationarity and mutual stationarity, original purpose.
+Will describe basic background on stationarity and mutual stationarity, original purpose. This section is work in progress.
 
 Mutual stationarity first appeared in (TODO: cite foremanmagidor-nsns) to argue for the nonsaturation of certain nonstationary ideals, and generalizes stationarity to singular cardinals.
 
 To see the generalization, we recall that the following property precisely characterizes stationarity:
 
-\begin{proposition}
+\begin{proposition}\thlabel{stationarity_as_elementarity}
   Let $\kappa$ be a regular cardinal, and let $S\subseteq \kappa$.
   Then $S$ is stationary if and only if whenever $\mathcal{U}$ is an algebra on $\kappa$ (equivalently on some $\lambda\geq \kappa$), there is a $\mathcal{B}\prec \mathcal{U}$ such that $\sup(\mathcal{B}\cap \kappa)\in S$.
 \end{proposition}
 
 With this in mind, we may generalize this to sets on larger sequences of cardinals:
 
-\begin{definition}
+\begin{definition}\thlabel{definition_mutual_stationarity}
   Suppose $K:=\seq{\kappa_\alpha \mid \alpha<\mu}$ is an increasing sequence of regular cardinals with supremum $\lambda$ of cofinality $\mu$.
   
   We say that a family $\seq{S_\alpha\subseteq\kappa_\alpha \mid \alpha<\mu}$ is \emph{mutually stationary} if whenever $\mathcal{U}$ is an algebra on $\lambda$, there is a $\mathcal{B}\prec \mathcal{U}$ such that for all $\alpha\in\mathcal{B}\cap K$, $\sup(\mathcal{B}\cap \kappa_\alpha)\in S_\alpha$. (Note that any mutually stationary sequence of sets is necessarily composed of stationary sets.)
@@ -24,12 +24,15 @@ With this in mind, we may generalize this to sets on larger sequences of cardina
   If we restrict our attention to stationary sets of cofinality $\delta$ above, we analogously write $MS(\seq{\kappa_\alpha \mid \alpha<\mu},cof(\delta))$.
 \end{definition}
 
+By \thref{stationarity_as_elementarity}, any mutually stationary family consists of stationary sets; and the questions of whether there \emph{is} a mutually stationary family satisfying certain conditions, and whether any anount of $MS(\circ)$, holds, are both independently interesting questions.
+We mostly focus on the consistency of $MS(\circ)$-principles in this chapter.
+
 Many mutual stationarity proofs are analogous to, or generalizations of, the following:
 
 \begin{theorem}\thlabel{ms_measurables}
   Let $\seq{\kappa_\alpha \mid \alpha<\lambda, \alpha\text{ successor}}$ be an increasing sequence of measurable cardinals with limit $\kappa$, and with $\lambda<\kappa$.
   
-  Then every family $S_\alpha \subseteq \kappa_\alpha$ of stationary sets is mutually stationary.
+  Then $MS(\seq{\kappa_\alpha \mid \alpha<\lambda, \alpha\text{ successor}})$ holds.
 \end{theorem}
 
 This is stated without proof in (TODO: cite foremanmagidor-nsns), but the proof is fairly straightforward:
@@ -37,14 +40,14 @@ This is stated without proof in (TODO: cite foremanmagidor-nsns), but the proof 
 \begin{proof}
   Let $\mathcal{A}$ be an algebra on $\kappa$; augment $\mathcal{A}$ to $\mathcal{A}'$ with terms for each $S_\alpha$.
   For each $\alpha$, let $H_\alpha$ be a measure one (with respect to a normal measure on $\kappa_\alpha$) family of $\mathcal{A}$-order-indiscernibles for $\mathcal{A}\cap \kappa_\alpha$.
-  Let $\gamma_\alpha\in S_\alpha\cap Lim(H_\alpha)$, let $H'_\alpha=H_\alpha \cap \gamma_\alpha$, 
-  and let $\mathcal{M}=Hull_{\mathcal{A}'}(\bigcup \{H'_\alpha \mid \alpha<\lambda\})$.
+  Since $Lim(H_\alpha)$, the collection of limit points of $H_\alpha$, is then a club, let $\gamma_\alpha\in S_\alpha\cap Lim(H_\alpha)$, let $H'_\alpha=H_\alpha \cap \gamma_\alpha$, 
+  and let $\mathcal{M}=Hull_{\mathcal{A}'}\left(\bigcup_{\alpha<\lambda}H'_\alpha \mid \alpha<\lambda\right)$.
   
   Clearly for each $\alpha$, $\mathcal{M}\cap \kappa_\alpha \geq \gamma_\alpha$.
-  To see that this is exact, suppose that for some Skolem term $F$ and some $x\in [\bigcup \{H'_\alpha \mid \alpha<\lambda\}]^{<\omega}$, $F(x)=\beta$; let $\alpha$ a successor ordinal such that $\beta\in [\kappa_{\alpha^-}, \kappa_{\alpha})$.
+  To see that this is an equality, suppose that for some Skolem term $F$ and some $x\in \left[\bigcup_{\alpha<\lambda}H'_\alpha \mid \alpha<\lambda\right]^{<\omega}$, $F(x)=\beta$; let $\alpha$ be a successor ordinal such that $\beta\in [\kappa_{\alpha-1}, \kappa_{\alpha})$.
   
   Since $H_{\alpha}$ is unbounded in $\kappa_\alpha$, let $\delta \in H_\alpha \cap (\max\{\gamma_\alpha,\beta\},\kappa_{\alpha})$.
-  Since $x$ is finite and $H_\alpha$ is unbounded in $\gamma_\alpha$, let $\zeta\in H_\alpha \cap (\max(x\cap \gamma_\alpha, \gamma_\alpha)$.
+  Since $x$ is finite and $H_\alpha$ is unbounded in $\gamma_\alpha$, let $\zeta\in H_\alpha \cap (\max(x\cap \gamma_\alpha), \gamma_\alpha)$.
   
   By choice of $\delta$, we have that $\mathcal{A'}\models F(x)<\delta$; but by how we chose $\delta$ and $\zeta$, and since $x\cap [\zeta,\kappa_\alpha)=\emptyset$, the elements of $x$ bear the exact same order relation to $\zeta$ as they do to $\delta$.
   \footnote{
@@ -55,7 +58,7 @@ This is stated without proof in (TODO: cite foremanmagidor-nsns), but the proof 
 
 A largely similar argument works for the points of a Prikry generic sequence:
 
-\begin{theorem}
+\begin{theorem}\thlabel{ms_prikry}
   Let $\kappa$ be measurable with normal measure $U$, let $\mathbb{P}(U)$ be Prikry forcing at $\kappa$, and let $\seq{\kappa_n \mid n<\omega}$ be Prikry generic.
   Then in the generic extension, there is some $m<\omega$ such that 
   \[
@@ -65,12 +68,36 @@ A largely similar argument works for the points of a Prikry generic sequence:
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-  With the use of the Prikry property, the argument of \thref{ms_measurables} readily adapts to a measure one 
-  system of order indiscernibles below $\kappa$.
-  We will further sketch this argument in \ref{ms:koepke}.
+  With the use of the Prikry property, the argument of \thref{ms_measurables} readily adapts to a $U$-measure one 
+  set $B$ of order indiscernibles below $\kappa$;
+  then $(\emptyset,B\cap Lim(B))$ forces the desired mutual stationarity property.
+  We will further refine and elaborate on this argument in \ref{ms:koepke}.
 \end{proof}
 
-As for consistency results for fixed cofinality:
+The following lemmas make working with mutually stationary sequences and mutual stationarity principles easier.
+
+\begin{lemma}[Folklore]
+  \begin{enumerate}
+    \item Any subsequence of a mutually stationary family of sets is also mutually stationary.
+    \item If $\seq{S_\alpha\mid \alpha<\mu}$ is mutually stationary with each $S_\alpha\subseteq \kappa_\alpha\cap cof(\leq\nu)$ and $\nu<\kappa_0$ then the mutual stationarity can be witnessed by an elementary substructure of size $\nu$.
+  \end{enumerate}
+\end{lemma}
+(todo: cite foremanmagidor-nsns) cite this as implicit in (todo: cite their citation of Baumgartner).
+
+As a corollary, mutual stationarity principles of restricted cofinality (under mild assumptions) are preserved under finite changes:
+
+\begin{lemma}[Lemma 23 of (todo: cite foremanmagidor-nsns)]\thlabel{mutual_stationarity_finite_change}
+  Let $\seq{S_\alpha \mid \alpha<\mu}$ be mutually stationary with each $S_\alpha \subseteq \kappa_\alpha \cap cof(\leq\nu)$, with $\nu<\kappa_0$.
+  Suppose $\lambda_0,\dots,\lambda_n$ are all greater than $\nu$, not equal to any $\kappa_\alpha$, and $S_{\lambda_i}\subseteq \lambda_i\cap cof(\leq\nu)$.
+  
+  Then 
+  \[
+    \seq{S_\alpha \mid \alpha<\mu} \frown \seq{S_{\lambda_i} \mid i<n}
+  \]
+  is also mutually stationary.
+\end{lemma}
+
+As for consistency results:
 
 \begin{theorem}[Theorem 7 of (cite foremanmagidor-nsns)]
   \[
@@ -85,7 +112,7 @@ As for consistency results for fixed cofinality:
   \]
 \end{theorem}
 
-Further inner model theoretic results showed that mutual stationarity for fixed uncountable cofinality requires large cardinals incompatible with $L$:
+Further inner model theoretic results showed that mutual stationarity principles for fixed uncountable cofinality requires large cardinals incompatible with $L$:
 
 \begin{theorem}[Theorem 1.4 and Corollary 1.5 of (cite koepke-welch-globalsquare)]
   If $k<\omega$ and $MS(\seq{\aleph_n \mid n>k},cof(\omega_k))$, then there is an inner model in which each $\aleph_n^V$ has stationarily many measurable cardinals of Mitchell order $\omega_{n-2}$.
@@ -115,7 +142,7 @@ For instance:
 
 and for larger cofinality:
 \begin{theorem}[Theorem 1.4 of (benneria2017)]
-  It is consistent relative to a sequence $\seq{\kappa_n\mid n<\omega}$ with each $\kappa_n$ being $\kappa-n^+$-supercompact with a $\kappa_{n-1}^+$-Mitchell sequence of such measures that every sequence $S_n\subseteq \aleph_{2n+3}\cap cof(<\aleph_{2n+2})$ of stationary subsets is mutually stationary.
+  It is consistent, relative to a sequence $\seq{\kappa_n\mid n<\omega}$ with each $\kappa_n$ being $\kappa_n^+$-supercompact with a $\kappa_{n-1}^+$-Mitchell sequence of such measures, that every sequence $S_n\subseteq \aleph_{2n+3}\cap cof(<\aleph_{2n+2})$ of stationary subsets is mutually stationary.
   
   In particular, for all $k<\omega$,
   \[
