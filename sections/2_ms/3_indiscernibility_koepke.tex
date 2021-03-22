@@ -4,17 +4,19 @@
 Koepke's argument for the consistency of $MS(\seq{\aleph_{2n+3}\mid n<\omega;\omega_1})$ uses an alternative way to think about the proof of \thref{ms_prikry}.
 We will flesh out this approach here, as our arguments for Magidor generics depend on Koepke's work.
 
-Koepke's mutual stationarity result in (todo: cite koepke_omega1) implicitly rephrases \thref{ms_prikry} as a Ramsey-theoretic result, in the following sense:
+Koepke's mutual stationarity result in (todo: cite koepke-omega1) implicitly rephrases \thref{ms_prikry} as a Ramsey-theoretic result, in the following sense:
 
-\begin{definition}[Definition 2.2 of (todo: cite koepke_omega1)
-  Suppose that $\kappa$ is a limit cardinal with $cf(\kappa)=\lambda$, and let $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be a normal cofinal sequence of cardinals below $\kappa$.
+\begin{definition}[Definition 2.2 of (todo: cite koepke-omega1)]
+   Suppose that $\kappa$ is a limit cardinal with $cf(\kappa)=\lambda$, and let $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be a normal cofinal sequence of cardinals below $\kappa$.
   \begin{enumerate}
-    \item Let $x\in [\kappa]^{<\omega}$. Then $type(x)=\seq{|x \cap \kappa_\alpha| \mid \alpha\in \lambda}$. 
+     \item Let $x\in \left[\kappa\right]^{<\omega}$. Then $type(x)=\seq{\left|x \cap \kappa_\alpha\right| \mid \alpha\in \lambda}$. 
     
-    We'll say that $t\in [\omega]^\lambda$ is a type if for some $x$, $t=type(x)$.
+     We'll say that $t\in [\omega]^\lambda$ is a type if for some $x$, $t=type(x)$.
     
-    We'll additionally say that the \emph{instances} of $t$ are $inst(t) := \{x\in [\kappa]^{<\omega} \mid type(x) = t\}$
+     We'll additionally say that the \emph{instances} of $t$ are $inst(t) := \{x\in [\kappa]^{<\omega} \mid type(x) = t\}$
     
+    % probably don't need projection
+    \begin{comment}
     \item Let $a\subseteq \omega$.
     Then the \emph{projection by $a$}, $\upharpoonright a:[\kappa]^{<\omega} \to [\kappa]^{<\omega}$, is defined by 
     \[
@@ -23,6 +25,7 @@ Koepke's mutual stationarity result in (todo: cite koepke_omega1) implicitly rep
     
     \item Because of how types are defined, for all $a$, if $type(x)=type(y)$ then $type(x\upharpoonright a)=type(y\upharpoonright a)$.
     So if $t$ is a type, let $t\upharpoonright a$ be $type(x\upharpoonright a)$ for any $type(x)=t$.
+    \end{comment}
     
     \item We say that a sequence of sets $\seq{I_\alpha \mid \alpha\in\lambda\cap Succ}$ with each $I_\alpha \subseteq \kappa_\alpha$ is \emph{mutually homogeneous for a function $F:[\kappa]^{<\omega}\to \kappa$} if for every $x,y\in\left[\bigcup_{\alpha \in \lambda\cap Succ} I_\alpha\right]^{<\omega}$, we have that $F(x)=F(y)$ whenever $type(x)=type(y)$ and $x\cap (F(x)+1) = y \cap (F(x) + 1)$.
     
@@ -34,15 +37,19 @@ Koepke's mutual stationarity result in (todo: cite koepke_omega1) implicitly rep
   \begin{enumerate}
     \item For $x\in[\kappa]^{<\omega}$, $type(x)$ is the (non-decreasing, eventually stabilizing) sequence that tells you, at point $\alpha$, how many elements of $x$ there are below $\kappa_\alpha$.
     
-    \item Projection captures a notion of subsequence; for instance, if $x=\seq{\kappa_0,\kappa_1,\dots,\kappa_{20}}$ and $a$ is the even numbers, then $x\upharpoonright a=\seq{\kappa_0,\kappa_2,\kappa_4,\dots,\kappa_{18},\kappa_{20}}$, and e.g. $\kappa_1\notin x\upharpoonright a$ because $o.t.(x\cap \kappa_1)=o.t.(\{\kappa_0\})=1\notin a$.
+    % projection temporarily removed
+    % \item Projection captures a notion of subsequence; for instance, if $x=\seq{\kappa_0,\kappa_1,\dots,\kappa_{20}}$ and $a$ is the even numbers, then $x\upharpoonright a=\seq{\kappa_0,\kappa_2,\kappa_4,\dots,\kappa_{18},\kappa_{20}}$, and e.g. $\kappa_1\notin x\upharpoonright a$ because $o.t.(x\cap \kappa_1)=o.t.(\{\kappa_0\})=1\notin a$.
     
-    Based on this observation, we may equivalently say that if $x=\seq{x_i \mid 0\leq i<n}$ written in increasing order, then $x \upharpoonright a=\{x_j \mid 0\leq j<n, \ j\in a\}$.
+    % Based on this observation, we may equivalently say that if $x=\seq{x_i \mid 0\leq i<n}$ written in increasing order, then $x \upharpoonright a=\{x_j \mid 0\leq j<n, \ j\in a\}$.
     
     \item In the definition of mutually homogeneous, the restriction $x\cap (F(x)+1) = y \cap (F(x) + 1)$ is equivalent to $F(x)<\min(x \Delta y)$ (the symmetric difference).
     
-    The idea here is that a sequence is mutually homogeneous for $F$ if $F$'s values on the (finite subsets picked from the) sequence depend only on type and a generalization of regressiveness. In a sense, this is exactly the behavior one would want out of a Skolem function on a structure with many large order-indiscernibles, which is exactly how the (todo: cite Foreman, Magidor, Canonical Structures II) result proceeds.
+    The idea here is that a sequence is mutually homogeneous for $F$ if $F$'s values on the (finite subsets picked from the) sequence depend only on type and a generalization of regressiveness. In a sense, this is exactly the behavior one would want out of a Skolem function on a structure with many large order-indiscernibles, which is exactly how \thref{ms_measurables} and \thref{ms_prikry} proceed.
+  \end{enumerate}
 \end{remark}
 
+% more projection stuff commented out
+\begin{comment}
 It may be more natural to think about types as follows:
 
 \begin{definition}
@@ -72,8 +79,9 @@ This leads to the following remark:
   \]
   where for all but finitely many $\alpha$, $\binom{sig(t')(\alpha)}{sig(t)(\alpha)} = 1$. In particular, the number of such maps $\upharpoonright a$ is finite.
 \end{remark}
+\end{comment}
 
-Our use case for mutually homogeneous sequences is to build a form of indiscernible sequence for a given model $\mathcal{M}$:
+Our use case for mutually homogeneous sequences is to build order indiscernibles for a given model $\mathcal{M}$:
 
 \begin{definition}\thlabel{mutually_homogeneous_for_structure}
   Let $\theta\geq \kappa$, and let $\mathcal{M}$ be a model of domain $V_\theta$ (or $H_\theta$ or $\theta$) with signature of size less than $\kappa_0$.
@@ -87,7 +95,7 @@ Our use case for mutually homogeneous sequences is to build a form of indiscerni
 \end{definition}
 
 \begin{remark}\thlabel{rmk_construct_mh_for_structure}
-  If $\seq{\kappa_\alpha \mid \alpha\in \lambda \cap Succ}$ is mutually Ramsey such that each $I_\alpha\subseteq \kappa_\alpha$ may be chosen to be club (or measure one in $V$ for some appropriate notion of ``measure one") in $\kappa_\alpha$,
+  If $\seq{\kappa_\alpha \mid \alpha\in \lambda \cap Succ}$ is mutually Ramsey such that each $I_\alpha\subseteq \kappa_\alpha$ may be chosen to be club (or measure one for some appropriate notion of ``measure one") in $\kappa_\alpha$,
   then constructing a mutually homogeneous system for $\mathcal{M}$ is straightforward, albeit with the following adjustment needed for the formulas $\phi$:
   
   We may view each formula $\phi$ restricted to parameters chosen from $[\kappa]^{<\omega}$ as a function $\phi:[\kappa]^{<\omega} \to \{0,1,2\}$ defined by: 
@@ -100,11 +108,11 @@ Our use case for mutually homogeneous sequences is to build a form of indiscerni
   \]
   Then as long as we have that $\seq{I_\alpha \mid \alpha\in \lambda \cap Succ}$ is mutually homogeneous for $\phi$ and that $0,1,2\notin I_0$, we have that $y\cap (\phi(x)+1)=\emptyset$ for every $x,y\in [\kappa]^{<\omega}$; therefore, if $type(x)=type(y)$ then $\phi(x)=\phi(y)$.
   
-  So to obtain a mutually homogeneous system for $\mathcal{M}$, we construct mutually homogeneous systems of clubs for $F$ and for each $\phi$ and each $g$ as in \thref{mutually_homogeneous_for_structure}, of which there will be less than $\kappa_0$-many, and take their intersection.
+  So to obtain a mutually homogeneous system for $\mathcal{M}$, we construct mutually homogeneous systems of clubs (or measure one sets) for $F$ and for each $\phi$ and each $g$ as in \thref{mutually_homogeneous_for_structure}, of which there will be less than $\kappa_0$-many, and take their intersection.
 \end{remark}
 
 The (Foreman, Magidor, Canonical Structures II) result on Prikry generics fundamentally relies only on arguments involving such $F:[\kappa]^{<\omega}\to \kappa$. 
-Koepke has arguments pertaining to such $F$ and in a much earlier paper proved the following:
+Koepke has arguments pertaining to such $F$ and in a much earlier paper (todo: cite koepke-free-subset) proved the following:
 
 \begin{theorem}[Koepke 1984; also Koepke 2007, Proposition 2.3]\thlabel{koepke_mr}
   Let $V[G]$ be a Prikry generic model for $\kappa$ over $V$, and let $\seq{\kappa_n \mid n<\omega}$ be a Prikry generic sequence for $\kappa$.
