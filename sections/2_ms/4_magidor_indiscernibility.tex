@@ -1,4 +1,93 @@
 \section{An Indiscernibility Result Applicable to Magidor Forcing}
 \label{ms:simultaneous_indiscernibility}
 
-Describes the homogeneity result needed for arguing Magidor generics satisfy MS.
+To argue for the mutual stationarity property for Magidor generic sequences, we need an as of yet unpublished simultaneous homogeneity result for multiple normal measures on $\kappa$.
+We first argue an ``easy" version for $[\kappa]^{<\omega}$ that pulls at most one ordinal from each measure on $\kappa$, and then generalize to larger sequences.
+
+\begin{definition}
+  Let $\seq{X_i\mid 0\leq i<n}$ be sets of ordinals.
+  Then we write 
+  \[
+    \prod^\uparrow_{0\leq i<n} X_i
+  \]
+  to denote all $n$-length increasing sequences $\beta_0<\dots<\beta_{n-1}$ where $\beta_i\in X_i$.
+\end{definition}
+
+\begin{lemma}\thlabel{simult_indisc_easy}
+  Suppose $\overrightarrow{U}=\seq{U_\alpha \mid \alpha<\lambda}$ is a sequence of normal measures on $\kappa$ and suppose that $f:[\kappa]^{<\omega}\to\kappa$ is regressive, i.e. for all $x$, $f(x)<\min(x)$.
+  
+  Then there is an $\overrightarrow{H}=\seq{H_\alpha\mid \alpha<\lambda}$ where each $H_\alpha\in U_\alpha$, 
+  such that for every $n$ and every $\alpha_0<\dots<\alpha_{n-1}$,
+  \[f\upharpoonright \prod^\uparrow_{0\leq i<n} H_{\alpha_i}\]
+  is constant.
+\end{lemma}
+
+\begin{proof}
+  We proceed by induction on $n$, for all such $f$ simultaneously. 
+  The need for all functions simultaneously will be apparent during the inductive step.
+  
+  If $n=1$, then we need $\tensor*[^1]{\overrightarrow{H}}{}=\seq{\tensor*[^1]{H}{_\alpha}\mid \alpha<\lambda}$ such that for each $\alpha$, $f\upharpoonright \tensor*[^1]{H}{_\alpha}$ is constant. 
+  This follows readily by Fodor's theorem, since all the $U_\alpha$'s are $\kappa$-complete and normal.
+  
+  For the induction hypothesis, suppose that for every $g:[\kappa]^k\to\kappa$ regressive, there is an $\tensor*[^k]{\overrightarrow{H}}{}$ such that for each $\alpha_0<\dots<\alpha_{k-1}$, $g\upharpoonright\prod^\uparrow_{0\leq i<k} \tensor*[^k]{H}{_{\alpha_i}}$ is constant.
+  
+  For each $\beta_0<\kappa$, let $\tensor*[_{\beta_0}]{f}{}:[\kappa\setminus \{\beta_0\}]^k\to\kappa$, $\tensor*[_{\beta_0}]{f}{}(X)=f(\{\beta_0\}\sqcup X)$.
+  
+  Since $f$ is regressive, so is $\tensor*[_{\beta_0}]{f}{}$; so by the induction hypothesis, for each $\beta_0$, there is a sequence $\tensor*[^{k}_{\beta_0}]{\overrightarrow{H}}{}$ such that for every $\alpha_1<\dots<\alpha_k$, $\tensor*[_{\beta_0}]{f}{}\upharpoonright \prod^\uparrow_{1\leq i<k+1} \tensor*[^{k}_{\beta_0}]{H}{_{\alpha_i}}$ is constant, say with value $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)$.
+  
+  Let $g_{\alpha_1,\dots,\alpha_k}:\kappa\to\kappa$, $g_{\alpha_1,\dots,\alpha_k}(\beta)=\gamma_{\alpha_1,\dots,\alpha_k}(\beta)$.
+  Since $g_{\alpha_1,\dots,\alpha_k}$ is regressive,
+  for each $\alpha<\alpha_1$, there is an $A_{\alpha,\dots,\alpha_k}\in U_{\alpha}$ such that $g_{\alpha_1,\dots,\alpha_k}$ is constant on $A_{\alpha,\dots,\alpha_k}$, say with value $\delta_{\alpha,\dots,\alpha_k}$.
+  
+  Let \[
+    A_{\alpha}=\left(\bigcap_{\alpha<\alpha_1<\dots<\alpha_k<\lambda} A_{\alpha,\alpha_1,\dots,\alpha_k}\right)
+  \]
+  Furthermore, let $\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}=\tensor*[^{k}_{\beta}]{H}{_\alpha}\cap A_\alpha$ and define
+  $$\tensor*[^{k+1}]{H}{_\alpha}=\Delta_{\beta<\kappa}\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}$$
+  Then $\tensor*[^{k+1}]{H}{_\alpha}$ is in $U_\alpha$, and we now verify that $\tensor*[^{k+1}]{\overrightarrow{H}}{}$ has the appropriate homogeneity.
+  Suppose that $\alpha_0<\dots<\alpha_k$.
+  We wish to verify that for every $\beta_i\in \tensor*[^{k+1}]{H}{_{\alpha_i}}$, $\beta_i<\beta_{i+1}$, we have $f(\{\beta_0,\dots,\beta_k\})=\delta_{\alpha_0,\dots,\alpha_k}$.
+  To see this, observe that for each possible choice of $\beta_0$, $f(\{\beta_0,\dots,\beta_k\})=\tensor*[_{\beta_0}]{f}{}(\{\beta_1,\dots,\beta_k\})$;
+  since $\beta_i<\beta_{i+1}$, for $i\geq 1$ we have that $\beta_i\in \tensor*[^{k}_{\beta_0}]{H}{_{\alpha_i}}$.
+  Hence $f(\{\beta_0,\dots,\beta_k\})=\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)$.
+  But since $\beta_0\in A_{\alpha_0}$, we have that in fact $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)=\delta_{\alpha_0,\dots,\alpha_k}$ as desired.
+  
+  In the end, our desired $H_\alpha$ is $\bigcap_{n<\omega} \tensor*[^n]{H}{_\alpha}$.
+\end{proof}
+
+While \thref{simult_indisc_easy} has some utility, we will need the following more general multi-arity version:
+
+\begin{definition}
+  Let $\seq{X_i\mid 0\leq i<n}$ be sets of ordinals and let $k_0,\dots,k_{n-1}$ be natural numbers.
+  Then we write 
+  \[
+    \prod^\uparrow_{0\leq i<n} X_{i}^{k_i}
+  \]
+  to denote the collection of all $\overrightarrow{\beta_0},\dots,\overrightarrow{\beta_{n-1}}$ which are $k_0,\dots,k_{n-1}$-ary increasing sequences such that $\overrightarrow{\beta_i}\subseteq X_{i}$ and $\max \overrightarrow{\beta_i}<\min \overrightarrow{\beta_{i+1}}$.
+\end{definition}
+
+\begin{lemma}\thlabel{simult_indisc_useful}
+  Suppose $\overrightarrow{U}=\seq{U_\alpha \mid \alpha<\lambda}$ is a system of normal measures on $\kappa$ and suppose that $f:[\kappa]^{<\omega}\to\kappa$ is regressive.
+  
+  Then there is an $\overrightarrow{H}=\seq{H_\alpha\mid \alpha<\lambda}$ where each $H_\alpha\in U_\alpha$, 
+  such that for every $n$ and for every $k_0,\dots,k_{n-1}$,
+  for every $\alpha_0<\dots<\alpha_{n-1}$,
+  \[
+    f\upharpoonright \prod^\uparrow_{0\leq i<n} H_{\alpha_i}^{k_i}
+  \]
+  is constant.
+\end{lemma}
+
+There was nothing saying that a normal measure \emph{can't} repeat itself in the statement of \thref{simult_indisc_easy}.
+That leads to the following short proof, where we repeat the same normal measure $\omega$-many times consecutively:
+
+\begin{proof}
+  Apply \thref{simult_indisc_easy} to the sequence
+  $\vec{U}'=\seq{U'_{\omega\cdot\alpha+k} \mid k<\omega, \alpha<\lambda}$
+  where $U'_{\omega\cdot\alpha+k}=U_\alpha$ for all $k$.
+  
+  This gives a sequence $\seq{H'_{\omega\cdot\alpha+k}\mid k<\omega,\alpha<\lambda}$ with the homogeneity result for $\vec{U}'$ as in \thref{simult_indisc_easy}.
+  To obtain homogeneity as desired for $\vec{U}$,
+  we will have that $H_\alpha=\bigcap_{k<\omega} H'_{\omega\cdot\alpha+k}$.
+\end{proof}
+
