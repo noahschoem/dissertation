@@ -1,4 +1,43 @@
 \section{Mitchell order}
 \label{forcing:mitchell}
 
-% Obviously, Mitchell order.
+(TODO: cite this entire section)
+
+By elementary arguments, for any normal measure $U$, $U\notin Ult(V,U)$ (c.f. for instance (todo: cite Jech).
+Thus if $U$ is the only normal measure on $\kappa$, then $\kappa$ is nonmeasurable in $Ult(V,U)$.
+So if $\kappa$ remains measurable in $Ult(V,U)$, then $\kappa$ must admit two normal measures; further, by elementarity, $U$-many cardinals below $\kappa$ are also measurable.
+So already the strength of $``\kappa\text{ is measurable in }Ult(V,U)"$ is much stronger than a single measurable.
+
+Mitchell rank and Mitchell order give a precise notion of this additional large cardinal strength:
+\begin{definition}[Mitchell order]
+  Let $\kappa$ be a cardinal, and let $U_0$, $U_1$ be normal measures on $\kappa$.
+  Then we say that $U_0\prec U_1$ if $U_0\in Ult(V,U_1)$.
+\end{definition}
+
+Mitchell order admits a notion of Mitchell rank:
+\begin{proposition}
+  $\prec$ is well-founded.
+\end{proposition}
+
+\begin{definition}
+  If $\kappa$ is a cardinal, then $o(\kappa)$, the Mitchell order of $\kappa$, is the supremum of all valid order types of $\prec$-well-ordered sequences on $\kappa$. 
+\end{definition}
+
+If $o(\kappa)=2$ witnessed by $U_0\prec U_1$, then by definition of $Ult(V,U_1)$, there is some function $r$ with domain $\kappa$ such that $[r]_{U_1}=U_0$.
+
+In particular, by elementarity, $U_1$-many $\delta<\kappa$ are measurable, with measure $r(\delta)=\{A\cap \delta \mid A\in U_0\}$.
+  
+If furthermore $o(\kappa)=2$ witnessed by $U_0\prec U_1\prec U_2$, then $U_2$-many $\delta<\kappa$ are measurable of Mitchell rank $1$, and some function $r$ on $\kappa$ can somehow simultaneously represent both $U_0$ and $U_1$ for $U_2$, and $U_0$ for $U_1$.
+
+For larger Mitchell ranks and orders, we have the following abstraction that generalizes the above $r$, which can be found in (todo: cite mitchell hbc, beginning IMT)
+
+\begin{definition}[Coherent system of nufs]
+  A \emph{coherent sequence of measures on} (a measurable) $\kappa$ (with positive Mitchell order) is a function $\mathcal{U}$ for which:
+  \begin{enumerate}
+    \item $\mathcal{U}=\seq{\mathcal{U}_{(\alpha,\eta)} \mid \alpha\leq\kappa \text{ is measurable, }\mathcal{U}_{(\alpha,\eta)}\text{ is a normal measure on }\alpha \text{, and }\eta<o^{\mathcal{U}}(\alpha)}$
+    where $o^{\mathcal{U}}(\alpha)$ is some ordinal
+    \item (Coherence) For all such $\alpha$, $\eta$, if $U=\mathcal{U}_{(\alpha,\eta)}$ then $o^{j_U(\mathcal{U})}(\alpha)=\eta$ and $j_U(\mathcal{U})_{(\alpha,\zeta)}=\mathcal{U}_{(\alpha,\zeta)}$ for all $\zeta<\eta$.
+  \end{enumerate}
+\end{definition}
+
+Coherent systems will become important when we wish to introduce Magidor forcing.
