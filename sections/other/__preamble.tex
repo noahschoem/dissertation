@@ -10,7 +10,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{verbatim}
+\usepackage{verbatim} %% comments
 \usepackage{euler}
 \usepackage[xindy={glsnumbers=false},nonumberlist,acronym,nopostdot,nogroupskip,nomain]{glossaries}
 \usepackage{xspace}
@@ -18,13 +18,14 @@
 \usepackage{float}
 \usepackage{flushend}
 \usepackage{footnote}
-\usepackage{enumitem}
+\usepackage{enumerate}
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{tensor}
 \usepackage{theoremref}
 \usepackage{url}
 \usepackage{caption}
 \usepackage{graphicx}
+\usepackage{scalerel} %% math operator scaling
 
 % Theorems, propositions, and other useful environments
 
@@ -32,6 +33,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
