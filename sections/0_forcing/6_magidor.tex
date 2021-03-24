@@ -301,7 +301,7 @@ As with Prikry forcing, the open dense version translates into a sentential vers
 
 Further arguments along similar lines as in \thref{magidor_prikry_type_open_dense} yields an even stronger Prikry-type lemma in which we may change the initial part of a condition:
 
-\begin{lemma}[Prikry-type lemma, head-change version]
+\begin{lemma}[Prikry-type lemma, tail-change version]
   \thlabel{magidor_prikry_type_open_dense_better}
   Let $D$ be an open dense set, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
   Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and for every $b$, if $(g,H)$ is a $b$-step extension of $(f,B)$ and $(g,H)\in D$, then every $b\setminus (dom(g)\cap \beta)$-step extension of $(g,H)_\beta \frown (f,B)^\beta$ is also in $D$.
@@ -326,7 +326,7 @@ This appears as Theorem 3.5 of \cite{fuchs_magidor}, and we give a proof here:
 \end{proof}
 
 
-\begin{lemma}[Prikry-type lemma, head-change sentential version]\thlabel{magidor_prikry_type_sentential_better}
+\begin{lemma}[Prikry-type lemma, tail-change sentential version]\thlabel{magidor_prikry_type_sentential_better}
   Let $\sigma$ be a sentence of the forcing language, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
   Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, then $(g,H)_\beta \frown (f,B)^\beta$ also decides $\sigma$ the same way.
 \end{lemma}
@@ -400,9 +400,6 @@ The converse is also true in the following sense:
 A proof can be found in \cite{fuchs_magidor} that, at its core, makes use of \thref{magidor_prikry_type_open_dense} and \thref{magidor_prikry_type_open_dense_better}.
 We present an alternative, more direct proof here:
 
-(TODO: prove that this is a filter.
-TODO: also try proving genericity. Perhaps by induction on $\lambda$; try the case of $\lambda=\omega$, see if you can induct to $\omega+\omega$, and then limit of limits such as $\omega^2$.)
-
 \begin{proof}
   $H$ is a filter, as by construction $(\emptyset,\seq{Y_\xi\mid \xi<\lambda})\in H$ and $H$ is clearly upwards closed. 
   As for downwards directedness, if $p,q\in H$ then $stem(p)$ and $stem(q)$ are finite segments of the same sequence, hence $p\compat q$ and the intersection of $meas(p)$ and $meas(q)$ contains every $\beta_\eta$ for $\eta\notin dom(p\cup q)$. Thus $p\land q\in H$.
@@ -448,30 +445,34 @@ TODO: also try proving genericity. Perhaps by induction on $\lambda$; try the ca
   
   But then
   \[
-    \mathcal{D}' := \left\{(p)_{\lambda_\rho} \mid p\in \mathcal{D}, \ (p)^{\lambda_\rho}\leq(\emptyset,B)^{\lambda_\rho}, \rho\in dom(stem(p)), \text{ and }stem(p)(\rho)=\lambda_\rho\right\}
+    \mathcal{D}' := \left\{(p)_{\lambda_\rho} \mid p\in \mathcal{D},\ (p)^{\lambda_\rho}\leq (\emptyset,B)^{\lambda_\rho}, \text{ and }stem(p)(\lambda_\rho)=\beta_{\lambda_\rho}\right\}
   \]
-  is open dense in $\mathbb{M}\left(\vec{U}\right)_{(\rho,\lambda_\rho)}$, and since $\vec{\beta}\upharpoonright \rho$ is geometric for $\mathbb{M}\left(\vec{U}\right)_{(\rho,\lambda_\rho)}$,
-  by the induction hypothesis let $(f,A)$ be such that $(f,A)_{\lambda_\rho}\in H_\rho\cap \mathcal{D}'$.
-  In particular, this means that $f\upharpoonright \rho\subseteq \vec{\beta}\upharpoonright \rho$,
-  for all $\xi\in dom(A)\cap \rho$, $\beta_\xi\in A(\xi)$,
-  and for all $\xi\in dom(f)\setminus \lambda_\rho$, $f(\xi)\in B(\xi)$.
+  is open dense in $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$, and since $\vec{\beta}\upharpoonright \lambda_\rho$ is geometric for $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$,
+  by the induction hypothesis let $(f,A)\in \mathbb{M}\left(\vec{U}\right)$ be such that $(f,A)\in \mathcal{D}$,
+  $(f,A)^{\lambda_\rho}\leq (\emptyset,B)^{\lambda_\rho}$,
+  and $(f,A)_{\lambda_\rho}\in H_\rho\cap \mathcal{D}'$.
+  In particular, this means that $f\upharpoonright \lambda_\rho \subseteq \vec{\beta}\upharpoonright \lambda_\rho$;
+  for all $\xi\in dom(f)$ with $\xi\geq \lambda_\rho$, $f(\xi)\in B(\xi)$;
+  and for all $\xi\in dom(A)$, $\beta_\xi\in A(\xi)$.
   
-  \begin{comment}let $a_g$, $A_g$ be such that every $a_g$-step extension of $(g,A_g)$ is in $\mathcal{D}$.
-%   Let $B$ be a measure one system for $\mathbb{M}\left(\vec{U}\right)$ given by
-%   \[
-%     B(\eta)=\diagcap_g A_g(\eta)
-%   \]
-  By \thref{magidor_diagonalization}, let $(\emptyset,B)$ diagonalize the family $\seq{(g,A_g) \mid g \text{ a stem}}$;
-  that is, for every $g\in \prod_{\eta<\lambda} B(\eta)$, $(g,B\upharpoonright (\lambda\setminus dom(g)))\leq^* (g,A_g)$.
-  But then by geometricity, let $\lambda_\rho$ be the least limit ordinal such that for all $\xi\geq \lambda_\rho$, $\beta_\xi\in B(\xi)$.
-  By assumption on $\vec{\beta}$, $\vec{\beta}\upharpoonright \lambda_\rho$ is geometric for $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$ and thus $H_{\rho}$ is $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$-generic over $V$; however, (something's still not right. how decompose and argue meets $\mathcal{D}$?)
-  \end{comment}
+  Let $g=f \upharpoonright (\lambda_\rho+1)$; we claim that $(f,A)\leq (g,A_g)$.
+  To see this, observe that by definition $g\subseteq f$.
+  To see that $A(\xi)\subseteq A_g(\xi)$ for all relevant $\xi$, note that for $\xi<\lambda_\rho$, $A_g(\xi)=Y_\xi \cap g(\xi)$ which is maximal, hence $A(\xi)\subseteq A_g(\xi)$, and for $\xi>\lambda_\rho$, $A(\xi)\subseteq B(\xi)$ since $(f,A)^{\lambda_\rho}\leq(\emptyset,B)^{\lambda_\rho}$ and thus $A(\xi)\subseteq A_g(\xi)$.
+  As for the stem extension, if $\xi\in dom(f)\setminus dom(g)$, then $\xi>\lambda_\rho$ and therefore, since $(f,A)^{\lambda_\rho}\leq(\emptyset,B)^{\lambda_\rho}$, $f(\xi)\in B(\xi)$ and hence $f(\xi)\in A_g(\xi)$.
+  
+  But $(f,A)\in \mathcal{D}$! So let $b=dom(f)\setminus dom(g)$;
+  then by the tail-change property of $(g,A_g)$, every $b$-step extension of $(f,A)_{\lambda_\rho} \frown (g,A_g)^{\lambda_\rho}=(f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho}$ is also in $\mathcal{D}$.
+  Let $p=((f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho})\frown (\vec{\beta}\upharpoonright b$.
+  Then $p$ is a $b$-step extension of $(f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho}$, so lies in $\mathcal{D}$;
+  by construction of $f$, $stem(p)$ is a finite subsegment of $\vec{\beta}$;
+  and by construction of $A$, $A_g$, and $B$, for all relevant $\xi$, $\beta_\xi\in meas(p)(\xi)$.
+  Therefore, $p\in H$, and also $p\in\mathcal{D}$ as desired.
 \end{proof}
 
-At the very least, our tools yield the following lemma that says geometric sequences actually meet $V$-measure one systems cofinitely instead of just coboundedly.
-This helps for arguing mutual stationarity results for restricted cofinality below $\beta_0$, by a lemma from the original mutual stationarity paper of \cite{foreman_magidor_ns_ns}.
+We additionally have the following lemma that says geometric sequences actually meet $V$-measure one systems cofinitely instead of just coboundedly.
+This will help with arguing mutual stationarity results for Magidor generics, and may also help with restricted cofinality results below $\beta_0$, by a lemma from the original mutual stationarity paper of \cite{foreman_magidor_ns_ns}.
 
-(N. B. This is corollary 7.6 of Fuchs.)
+This also appears as Corollary 7.6 of \cite{fuchs_magidor}; we give our own proof here.
 
 \begin{lemma}\thlabel{magidor_geometric_cofinite_meet}
   Let $\vec{\beta}=\seq{\beta_\xi \mid \xi<\lambda}$ be geometric, and let $Z\in \prod_{\xi<\lambda} U_\xi$ with each $Z(\xi)\subseteq Y_\xi$.
