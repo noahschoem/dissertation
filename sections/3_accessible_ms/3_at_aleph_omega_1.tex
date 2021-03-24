@@ -411,27 +411,50 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   \]
   Then
   \begin{enumerate}
-    \item $\vec{\beta}$ is increasing, normal, and has supremum $\kappa$
+    \item \label{magidor_collapse_generic_implies_geometric:sequence} $\vec{\beta}$ is increasing, normal, and has supremum $\kappa$
   
-    \item for all $\seq{A_\eta \middle| \eta<\lambda}\in V$ with each $A_\eta\in U_\eta$, for coboundedly many $\zeta<\lambda$, $\beta_\zeta\in A_\zeta$
+    \item \label{magidor_collapse_generic_implies_geometric:measures} for all $\seq{A_\eta \middle| \eta<\lambda}\in V$ with each $A_\eta\in U_\eta$, for coboundedly many $\zeta<\lambda$, $\beta_\zeta\in A_\zeta$
     
-    \item for all $\eta$, $F_\eta$ is $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic
+    \item \label{magidor_collapse_generic_implies_geometric:collapses} for all $\eta$, $F_\eta$ is $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$
     
     \item \label{magidor_collapse_generic_implies_geometric:collapse_futures} 
     for all $\seq{C_\eta\middle| \eta<\lambda}$ in $V$ with each $C_\eta$ a map from a measure one set in $U_\eta$ to collapses such that each $[C_\eta]\in K_\eta$: for coboundedly many $\zeta<\lambda$, $C_\zeta(\beta_\zeta)\in F_\zeta$
     
     \item and the above items reflect down to each limit ordinal $\eta<\lambda$ with respect to the reflected measures $r$ and reflected guiding generics $k$.
+    More precisely, if $\eta$ is a limit ordinal below $\lambda$, then:
+    \begin{enumerate}
+      \item \label{magidor_collapse_generic_implies_geometric:refl_measures} for each $\seq{A_\zeta\mid \zeta<\eta}$ in $V$ with each $A_\eta$ in $r^\eta_\zeta(\beta_\eta)$, for coboundedly many $\zeta$, $\beta_\zeta\in A_\zeta$;
+      
+      \item \label{magidor_collapse_generic_implies_geometric:refl_collapse_futures}
+      for all $\seq{C_\zeta \mid \zeta<\eta}$ in $V$ with each $C_\zeta$ a map from a measure one set in $r^\eta_\zeta(\beta_\eta)$ to collapses such that each $[C_\eta]\in k^\eta_\zeta(\beta_\eta)$: for coboundedly many $\zeta<\eta$, $C_\zeta(\beta_\eta)\in F_\zeta$
+    \end{enumerate}
   \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-  These all follow from standard density and factoring arguments (c.f. \thref{magidor_generic_implies_geometric}), but with collapses included.
+  Items \ref{magidor_collapse_generic_implies_geometric:sequence}, \ref{magidor_collapse_generic_implies_geometric:measures}, and \ref{magidor_collapse_generic_implies_geometric:refl_measures}
+  follow from standard density and factoring arguments for Magidor forcing (c.f. \thref{magidor_generic_implies_geometric}).
+  In the casee of \ref{magidor_collapse_generic_implies_geometric:refl_measures}, we factor to $\mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)}$, which is its own Magidor forcing with guided interleaved collapses.
+  
+  Item \ref{magidor_collapse_generic_implies_geometric:collapses} follows since below the weakest $p$ for which $f^p(\eta)=\beta_\eta$ and $f^p(\eta+1)=\beta_{\eta+1}$, the collection 
+  \[
+    \{c^q(\eta) \mid q\leq p\}
+  \]
+  is equal to $Col(\beta_\eta^+,<\beta_{\eta+1})$.
   
   Item \ref{magidor_collapse_generic_implies_geometric:collapse_futures} follows from the fact that given such $\seq{C_\eta \middle| \eta<\lambda}$, since the guiding generics are filters, 
   \[
     \left\{p\in\mathbb{MC}(\vec{U}) \middle| \forall \eta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\eta)]_{U_\eta}<[C_\eta]_{U_\eta} \right\}
   \]
   is dense.
+  
+  Finally, Item \ref{magidor_collapse_generic_implies_geometric:refl_collapse_futures} follows from reflection and factoring:
+  let $\eta$ be a limit point and work in $\mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)}$.
+  Then 
+  \[
+    \left\{p\in \mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)} \middle|  \forall \zeta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\zeta)]_{r_\zeta^\eta(\beta_\eta)}<[C_\eta]_{r_\zeta^\eta(\beta_\eta)}\right\}
+  \]
+  is dense in $\mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)}$.
 \end{proof}
   
 The following converse seems plausible:
