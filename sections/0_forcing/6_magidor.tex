@@ -222,7 +222,8 @@ Before we state and prove Prikry-type lemmata for Magidor forcing, it is worth f
 
 \begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_prikry_type_open_dense}
   Let $D$ be an open dense set and $p=(g,H)$ a condition.
-  Then there is an $a\in \lambda^{<\omega}$ and an $r\leq^* p$ such that every $a$-step extension of $r$ is in $D$.
+  Then there is an $a\in \lambda^{<\omega}$ and an $r\leq^* p$ such that every $a$-step extension of $r$ is in $D$;
+  furthermore, for every $b\subseteq [dom(H)]^{<\omega}$, either every $b$-step extension of $r$ is in $\mathcal{D}$, or none are.
 \end{lemma}
 
 \begin{proof}
@@ -278,14 +279,18 @@ Before we state and prove Prikry-type lemmata for Magidor forcing, it is worth f
   By iterated use of the above claim, we fix a $\kappa$-length enumeration of $[A]^{<\omega}$ and obtain a $\leq^*$-decreasing sequence $\seq{p_a\mid a\subseteq [A]^{<\omega}}$ with $p_a\leq^* p'$ such that every $a$-step extension of $p_a$ is in $D$ or none are.
   
   Let $r$ be a $\leq^*$-lower bound of the $p_a$'s, obtained by taking diagonal intersections over the measure components of the $p_a$'s.
-  Since $D$ is open dense, let $q\in D$ be below $r$, let $a$ be such that $q$ is an $a$-step extension of $r$.
+  Then by construction of $r$, for any $b$, every $b$-step extension of $r$ is below $p_b$ so either every $b$-step extension of $r$ is in $D$, or none are.
+  
+  Since $D$ is open dense, let $q\in D$ be below $r$, and let $a$ be such that $q$ is an $a$-step extension of $r$.
   Then since some $a$-step extension of $q_a$ is in $D$, we have that all $a$-step extensions of $q_a$ are in $D$ and hence so are all $a$-step extensions of $r$.
 \end{proof}
 
-\begin{corollary}[Prikry-type lemma, sentential version I]\thlabel{magidor_prikry_type_sentential}
+As with Prikry forcing, the open dense version translates into a sentential version for every sentence of the forcing language:
+
+\begin{lemma}[Prikry-type lemma, sentential version]\thlabel{magidor_prikry_type_sentential}
   Let $\sigma$ be a sentence of the forcing language, and let $(f,A)\in \mathbb{M}\left(\vec{U}\right)$.
   Then there is an $(f,B)\leq^*(f,A)$ such that $(f,B)$ decides $\sigma$.
-\end{corollary}
+\end{lemma}
   
 \begin{proof}
   Since the collection of conditions deciding $\sigma$ is open dense, by \thref{magidor_prikry_type_open_dense}, there is some $(f,A')\leq^* (f,A)$ and some $a$ such that every $a$-step extension of $(f,A')$ decides $\sigma$.
@@ -294,16 +299,18 @@ Before we state and prove Prikry-type lemmata for Magidor forcing, it is worth f
   But then $(f,B)$ decides $\sigma$ that way as well.
 \end{proof}
 
-Further arguments along similar lines yields an even stronger sentential Prikry-type lemma:
-\begin{lemma}[Prikry-type lemma, sentential version II]\thlabel{magidor_prikry_type_sentential_better}
-  Let $\sigma$ be a sentence of the forcing language, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
-  Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, then $(g,H)_\beta \frown (f,B)^\beta$ also decides $\sigma$ the same way.
+Further arguments along similar lines as in \thref{magidor_prikry_type_open_dense} yields an even stronger Prikry-type lemma in which we may change the initial part of a condition:
+
+\begin{lemma}[Prikry-type lemma, head-change version]
+  \thlabel{magidor_prikry_type_open_dense_better}
+  Let $D$ be an open dense set, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
+  Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and for every $b$, if $(g,H)$ is a $b$-step extension of $(f,B)$ and $(g,H)\in D$, then every $b\setminus (dom(g)\cap \beta)$-step extension of $(g,H)_\beta \frown (f,B)^\beta$ is also in $D$.
 \end{lemma}
-This appears as Lemma 4.5 of \cite{magidor_chg_cof}, and we give a proof here:
+This appears as Theorem 3.5 of \cite{fuchs_magidor}, and we give a proof here:
 
 \begin{proof}
   For ease of notation, let $f(\beta)=\rho$.
-  For each $r\leq (f,A)_\beta$ in $\mathbb{M}(\vec{U})_{(\beta,\rho)}$, by \thref{magidor_prikry_type_sentential}, let $p_r\leq^* r \frown (f,A)^\beta$ (in the full $\mathbb{M}(\vec{U})$) be such that $p_r$ decides $\sigma$.
+  For each $r\leq (f,A)_\beta$ in $\mathbb{M}(\vec{U})_{(\beta,\rho)}$, by \thref{magidor_prikry_type_open_dense}, let $p_r\leq^* r \frown (f,A)^\beta$ (in the full $\mathbb{M}(\vec{U})$) be such that for every $b$, either every $b$-step extension of $p_r$ is in $D$, or none are.
   By construction, for each such $r$, $(p_r)_\beta\leq^* r$ and $(p_r)^\beta = (f,meas(p_r))^\beta$.
   
   Let $q_r=(f,A)_\beta \frown (p_r)^\beta$; note that $q_r\leq^* (f,A)$ by construction.
@@ -314,9 +321,16 @@ This appears as Lemma 4.5 of \cite{magidor_chg_cof}, and we give a proof here:
       \bigcap_r meas(q_r)(\gamma) & \gamma>\beta \\
     \end{cases}
   \]
-  To complete the argument, if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, let $r=(g,H)_\beta$.
-  Then by construction, $(g,H)\leq r \frown (f,B)^\beta\leq p_r$ which decides $\sigma$, and thus $(g,H)$ and $(g,H)_\beta \frown (f,B)^\beta$ must decide $\sigma$ the same way.
+  To complete the argument, if $(g,H)\leq (f,B)$ and $(g,H)\in D$, let $r=(g,H)_\beta$ and let $b$ be such that $(g,H)$ is a $b$-step extension of $(f,B)$.
+  Then by construction, $(g,H)\leq r \frown (f,B)^\beta\leq p_r$ and by definition of $p_r$, every $b$-step extension of $p_r$ (in particular, any $b\setminus (dom(g)\cap \beta)$-step extension of $r \frown (f,B)^\beta$) is also in $D$.
 \end{proof}
+
+
+\begin{lemma}[Prikry-type lemma, head-change sentential version]\thlabel{magidor_prikry_type_sentential_better}
+  Let $\sigma$ be a sentence of the forcing language, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
+  Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, then $(g,H)_\beta \frown (f,B)^\beta$ also decides $\sigma$ the same way.
+\end{lemma}
+This appears as Lemma 4.5 of \cite{magidor_chg_cof}, and is a measure-one concentration corollary of \thref{magidor_prikry_type_open_dense_better} along the lines of the proof of \thref{magidor_prikry_type_sentential}.
 
 Observe that a $\mathbb{M}\left(\vec{U}\right)$-generic adds a sequence $\seq{\alpha_\eta \mid \eta<\lambda} = \bigcup_{(g,H)\in G} g$ strictly increasing, normal, and with supremum $\kappa$. As with Prikry forcing, Magidor forcing preserves cardinals:
 \begin{lemma}\thlabel{magidor_preserves_cardinals}
@@ -356,7 +370,6 @@ We make this precise:
   Then $\vec{\beta}$ is geometric.
 \end{proposition}
 
-(TODO: flesh out the limit reflection argument. Say why it's the same. Can do the special case of $g=((\xi,\beta_\xi))$, and spell it out by naming the relevant dense set.)
 \begin{proof}
   When $\xi=\lambda$, $\{(g,H) \mid \forall \eta>\max(dom(g)), \ H(\eta)\subseteq A_\eta\}$ is open dense by measure-one set intersection.
   
@@ -384,15 +397,14 @@ The converse is also true in the following sense:
   Then $H$ is $\mathbb{M}(\vec{U})$-generic over $V$.
 \end{proposition}
 
-A proof can be found in \cite{fuchs_magidor} that makes use of much stronger Prikry-type lemmas than \thref{magidor_prikry_type_open_dense} and \thref{magidor_prikry_type_sentential_better};
-these stronger Prikry-type lemmas handle the cases where for a particular $(f,A)$ and $\seq{B_\eta \mid \eta<\xi}\in V$, there are nonzero (but coboundedly many) $\eta\in dom(A)$ but $\beta_\eta\notin B_\eta$.
-We present an alternative proof here:
+A proof can be found in \cite{fuchs_magidor} that, at its core, makes use of \thref{magidor_prikry_type_open_dense} and \thref{magidor_prikry_type_open_dense_better}.
+We present an alternative, more direct proof here:
 
 (TODO: prove that this is a filter.
 TODO: also try proving genericity. Perhaps by induction on $\lambda$; try the case of $\lambda=\omega$, see if you can induct to $\omega+\omega$, and then limit of limits such as $\omega^2$.)
 
 \begin{proof}
-  $H$ is a filter, as by construction $(\emptyset,\seq{Y_\xi\mid \xi<\lambda}\in H$ and $H$ is clearly upwards closed. 
+  $H$ is a filter, as by construction $(\emptyset,\seq{Y_\xi\mid \xi<\lambda})\in H$ and $H$ is clearly upwards closed. 
   As for downwards directedness, if $p,q\in H$ then $stem(p)$ and $stem(q)$ are finite segments of the same sequence, hence $p\compat q$ and the intersection of $meas(p)$ and $meas(q)$ contains every $\beta_\eta$ for $\eta\notin dom(p\cup q)$. Thus $p\land q\in H$.
   
   Genericity is more complicated and proceeds by transfinite induction on the length of $\vec{U}$ and the factoring of \thref{magidor_factoring}. 
@@ -423,8 +435,28 @@ TODO: also try proving genericity. Perhaps by induction on $\lambda$; try the ca
   So by the Product Lemma, $H=H_g\times H^g$ is $\mathbb{M}\left(\seq{U_\eta \mid \eta<\lambda}\right)$-generic over $V$.
   
   For the limit case, suppose that $\lambda=\sup_{\rho<\tau} \lambda_\rho$ for some $\tau\leq\lambda$ regular.
-  Further suppose that for all $\rho<\tau$, $\vec{\beta}\upharpoonright \lambda_\rho$ induces $H_\rho$ an $\mathbb{M}\left(\vec{U}\right)_{(\rho,\beta_{\lambda_\rho})}$-generic over $V$ (and by size bounds, over intermediate extensions as well) (with product decomposition as above).
-  Let $\mathcal{D}$ be open dense; for each $\mathbb{M}\left(\vec{U}\right)$-stem $g$, by \thref{magidor_prikry_type_open_dense}, let $a_g$, $A_g$ be such that every $a_g$-step extension of $(g,A_g)$ is in $\mathcal{D}$.
+  Further suppose that for all $\rho<\tau$, $\vec{\beta}\upharpoonright \lambda_\rho$ induces $H_\rho$ an $\mathbb{M}\left(\vec{U}\right)_{(\rho,\beta_{\lambda_\rho})}$-generic over $V$, and by size bounds, over intermediate extensions as well.
+  Let $\mathcal{D}$ be open dense; for each $\mathbb{M}\left(\vec{U}\right)$-stem $g$, by \thref{magidor_prikry_type_open_dense_better}, let $A_g$ be such that:
+  \begin{itemize}
+    \item $(g,A_g)$ is an $\mathbb{M}\left(\vec{U}\right)$-condition
+    \item letting $\beta=\max dom(g)$, $(g,A_g)_\beta = ((\emptyset,\vec{Y})\frown g)_\beta$
+    \item for every $b\subseteq [dom(A_g)]^{<\omega}$, if $(g',H)$ is a $b$-step extension of $(g,A_g)$ and $(g',H)\in \mathcal{D}$ then every $b\setminus (dom(g')\cap \beta)$-step extension of $(g',H)_\beta \frown (g,A_g)^\beta$ is also in $\mathcal{D}$
+  \end{itemize}
+  By \thref{magidor_diagonalization}, let $(\emptyset,B)$ diagonalize the family $\seq{(g,A_g) \mid g \text{ a stem}}$;
+  that is, for every $g\in \prod_{\eta<\lambda} B(\eta)$, $(g,B\upharpoonright (\lambda\setminus dom(g)))\leq^* (g,A_g)$.
+  But then by geometricity, let $\lambda_\rho$ be the least limit ordinal such that for all $\xi\geq \lambda_\rho$, $\beta_\xi\in B(\xi)$.
+  
+  But then
+  \[
+    \mathcal{D}' := \left\{(p)_{\lambda_\rho} \mid p\in \mathcal{D}, \ (p)^{\lambda_\rho}\leq(\emptyset,B)^{\lambda_\rho}, \rho\in dom(stem(p)), \text{ and }stem(p)(\rho)=\lambda_\rho\right\}
+  \]
+  is open dense in $\mathbb{M}\left(\vec{U}\right)_{(\rho,\lambda_\rho)}$, and since $\vec{\beta}\upharpoonright \rho$ is geometric for $\mathbb{M}\left(\vec{U}\right)_{(\rho,\lambda_\rho)}$,
+  by the induction hypothesis let $(f,A)$ be such that $(f,A)_{\lambda_\rho}\in H_\rho\cap \mathcal{D}'$.
+  In particular, this means that $f\upharpoonright \rho\subseteq \vec{\beta}\upharpoonright \rho$,
+  for all $\xi\in dom(A)\cap \rho$, $\beta_\xi\in A(\xi)$,
+  and for all $\xi\in dom(f)\setminus \lambda_\rho$, $f(\xi)\in B(\xi)$.
+  
+  \begin{comment}let $a_g$, $A_g$ be such that every $a_g$-step extension of $(g,A_g)$ is in $\mathcal{D}$.
 %   Let $B$ be a measure one system for $\mathbb{M}\left(\vec{U}\right)$ given by
 %   \[
 %     B(\eta)=\diagcap_g A_g(\eta)
@@ -433,11 +465,13 @@ TODO: also try proving genericity. Perhaps by induction on $\lambda$; try the ca
   that is, for every $g\in \prod_{\eta<\lambda} B(\eta)$, $(g,B\upharpoonright (\lambda\setminus dom(g)))\leq^* (g,A_g)$.
   But then by geometricity, let $\lambda_\rho$ be the least limit ordinal such that for all $\xi\geq \lambda_\rho$, $\beta_\xi\in B(\xi)$.
   By assumption on $\vec{\beta}$, $\vec{\beta}\upharpoonright \lambda_\rho$ is geometric for $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$ and thus $H_{\rho}$ is $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$-generic over $V$; however, (something's still not right. how decompose and argue meets $\mathcal{D}$?)
+  \end{comment}
 \end{proof}
-
 
 At the very least, our tools yield the following lemma that says geometric sequences actually meet $V$-measure one systems cofinitely instead of just coboundedly.
 This helps for arguing mutual stationarity results for restricted cofinality below $\beta_0$, by a lemma from the original mutual stationarity paper of \cite{foreman_magidor_ns_ns}.
+
+(N. B. This is corollary 7.6 of Fuchs.)
 
 \begin{lemma}\thlabel{magidor_geometric_cofinite_meet}
   Let $\vec{\beta}=\seq{\beta_\xi \mid \xi<\lambda}$ be geometric, and let $Z\in \prod_{\xi<\lambda} U_\xi$ with each $Z(\xi)\subseteq Y_\xi$.
