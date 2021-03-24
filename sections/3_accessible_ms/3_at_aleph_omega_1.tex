@@ -457,10 +457,9 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   is dense in $\mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)}$.
 \end{proof}
   
-The following converse seems plausible:
-(TODO: upgrade from conjecture to lemma, and write up a 1-ish page proof. Can even just appeal to ``like the Magidor Prikry-prop / diag'n" and run the induction argument.)
+As with Magidor forcing, the above is a precise characterization of genericity for $\mathbb{MC}(\vec{U})$:
   
-\begin{conjecture}
+\begin{theorem}
   In $V^{\mathbb{MC}(\vec{U})}$, suppose $\seq{\beta_\eta \mid \eta<\lambda}$ is increasing, normal, and has limit $\kappa$, and for each $\eta$, suppose $F_\eta$ be $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$.
   
   Suppose the conclusion of \thref{magidor_collapse_generic_implies_geometric} applies to $\seq{\beta_\eta \mid \eta<\lambda}$ and the $F_\eta$'s, and define
@@ -470,16 +469,20 @@ The following converse seems plausible:
         f\text{ is a finite subsequence of }\vec{\beta}, \\
         \forall \alpha\in dom(f) \ c(\alpha)\in F_\alpha \\
         A\in V \text{ and }dom(A)=\lambda\setminus dom(f), \\        
-        \forall \eta \in dom(A) \ A(\eta)\in U_\eta \text{ or the relevant }r^\gamma_\eta(\beta_\eta), \\
+        \forall \eta \in dom(A) \ A(\eta)\in U_\eta \text{ or the relevant }r^\gamma_\eta(\beta_\gamma), \\
         \forall \eta\in dom(A) \ \beta_\eta\in A(\eta), \\
-        C\in V \text{ and }\forall \eta \in dom(A) \ [C(\eta)]_{U_\eta}\in K_\eta (\text{ or }r^\gamma_\eta(\beta_\eta),k^\gamma_\eta(\beta_\eta)
+        C\in V \text{ and }\forall \eta \in dom(A) \ [C(\eta)]_{U_\eta}\in K_\eta (\text{ or }r^\gamma_\eta(\beta_\gamma),k^\gamma_\eta(\beta_\gamma)
       \end{array}
     \right\}
   \]
   Then $H$ is $\mathbb{MC}(\vec{U})$-generic over $V$.
-\end{conjecture}
+\end{theorem}
 
-The real work in proving this conjecture is emulating the argument of \cite{fuchs_magidor}, but with the interleaved collapses.
+As with the characterization of genericity for Magidor forcing (c.f. \thref{magidor_geometric_iff_generic}), the proof is by induction on the length of $\vec{U}$.
+
+\begin{proof}
+  Will be forthcoming.
+\end{proof}
 
 \begin{conjecture}
   In $V^{\mathbb{MC}(\vec{U})}$ with $\lambda=\omega_1$, 
