@@ -143,6 +143,7 @@ The diagonalization lemma for $\mathbb{MC}(\vec{U})$ requires more assumptions t
 However, a Prikry-type property still holds, and through its proof we can extract a partial diagonalization lemma.
 \begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_collapse_prikry_open_dense}
   If $p$ is a condition and $\mathcal{D}$ is an open dense set, then there is a direct extension $r\leq^* p$ and an $a\in [\lambda]^{<\omega}$ such that every $a$-step extension of $r$ is in $\mathcal{D}$.
+  Furthermore, for every $b\in[\lambda]^{<\omega}$ for which $p$ admits $b$-step extensions, either every $b$-step extension of $p$ is in $\mathcal{D}$, or none are.
 \end{lemma}
 
 Before we prove this, we will introduce some terminology for families of direct extensions of a fixed condition:
@@ -348,23 +349,30 @@ Combining elements of the aforementioned proof yields the following restricted d
   Then there is some $q\leq^* p$ such that whenever $q\frown\vec{\nu}$ is a valid condition, $q\frown \vec{\nu}\leq^* p_{\vec{\nu}}$
 \end{lemma}
 
-And as with vanilla Magidor forcing, we obtain the sentential versions of the Prikry lemma:
+And as with vanilla Magidor forcing, we obtain the sentential version of the Prikry lemma.
+
+The proof is functionally the same as in \thref{magidor_prikry_type_sentential}, but with collapse terms $c$ and $C$ that may need further extension.
 
 \begin{lemma}[Prikry-type lemma, sentential version I]\thlabel{magidor_collapse_prikry_sentential}
   Let $p\in\mathbb{MC}(\vec{U})$, and let $\sigma$ be a sentence of the forcing language. 
   Then some $q\leq^* p$ decides $\sigma$.
 \end{lemma}
 
-The proof is functionally the same as in \thref{magidor_prikry_type_sentential}, but with collapse terms $c$ and $C$ that may need further extension.
+Further arguments along the lines of \thref{magidor_prikry_type_open_dense_better} yield a tail-change version:
 
-A similar tail-change lemma applies equally well:
-
-\begin{lemma}[Prikry-type lemma, sentential version II]\thlabel{magidor_collapse_prikry_sentential_better}
-  Let $\sigma$ be a sentence of the forcing language, let $p\in \mathbb{MC}(\vec{U})$, and let $\beta\in dom(f^p)$.
-  Then there is some $q\leq^* p$ such that $q\upharpoonright \beta=p\upharpoonright \beta$ and if $r\leq q$ such that $r$ decides $\sigma$, then $(r\upharpoonright \beta ) \frown (q \upharpoonright [\beta,\lambda))$ decides $\sigma$ the same way.
+\begin{lemma}[Prikry-type lemma, tail-change version]\thlabel{magidor_collapse_prikry_open_dense_better}
+  If $p$ is a condition, $\mathcal{D}$ is an open dense set, and $\beta\in dom(f^p)$,
+  then there is a direct extension $q\leq^* p$ such that $(q)_{\beta} = (p)_{\beta}$ and whenever $a\in [dom(A^p)]^{<\omega}$, if $r$ is an $a$-step extension of $q$ and $r\in \mathcal{D}$, then every $a\setminus (dom(r^p)\cap \beta)$-step extension of $(r)_\beta \frown (q)^\beta$ is also in $\mathcal{D}$.
 \end{lemma}
 
-Likewise, this proof is similar to \thref{magidor_prikry_type_sentential_better}, except with more care needed during the diagonalization step.
+Likewise, we have a similar sentential version with tail changes:
+
+\begin{lemma}[Prikry-type lemma, tail-change sentential version]\thlabel{magidor_collapse_prikry_sentential_better}
+  Let $\sigma$ be a sentence of the forcing language, let $p\in \mathbb{MC}(\vec{U})$, and let $\beta\in dom(f^p)$.
+  Then there is some $q\leq^* p$ such that $(q)_\beta=(p)_\beta$ and if $r\leq q$ such that $r$ decides $\sigma$, then $(r)_\beta \frown (q)^\beta$ decides $\sigma$ the same way.
+\end{lemma}
+
+This proof is similar to \thref{magidor_prikry_type_sentential_better}, except with more care needed during the diagonalization step to concentrate the already-chosen collapse terms.
 
 As for cardinal arithmetic in $V^{\mathbb{MC}(\vec{U})}$, we have a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, collapses of cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$, and preservation of all other cardinals. 
 Explicitly:
@@ -381,21 +389,6 @@ Explicitly:
 
 The collapsing part is easy to see, as $G$ adds $Col(\beta_\eta^+,<\beta_{\eta+1})$-generics for every $\eta$.
 Much as in vanilla Magidor forcing, the preservation argument emulates \thref{magidor_preserves_cardinals} with the help of \thref{magidor_collapse_prikry_sentential_better}.
-
-% TODO: Char'n of genericity. Basically refer up to vanilla Magidor. Here, it's like Prop 2.3 of Combos at alephomega, plus with reflection.
-% c.f. meeting chat log:
-\begin{comment}
-11:39:11 From Dima Sinapova To Everyone : for each [b_\eta]\middle| \eta<\lambda, each [b_\eta]\in K_\eta
-11:39:41 From Dima Sinapova To Everyone : for all large $\eta$, $b_\eta(\beta_\eta)\in c^*_\eta$
-11:40:16 From Dima Sinapova To Everyone : rewrite the above with \xi replacing \lambda, limit \xi
-11:40:29 From Dima Sinapova To Everyone : and K^\eta_\xi replacing K_\eta
-11:41:16 From Dima Sinapova To Everyone : use $K_\eta<K_\xi$
-11:41:41 From Dima Sinapova To Everyone : for \eta<\xi, \xi limit fixed
-11:42:18 From Dima Sinapova To Everyone : K_\eta =  [f]_{U_\xi}
-11:42:53 From Dima Sinapova To Everyone : look at f(\beta_\eta)
-11:43:23 From Dima Sinapova To Everyone : K^\eta_\xi = f(\beta_\eta)
-c^*_\eta is generic for Col(\beta_\eta^++, <\beta_{\eta+1}) 
-\end{comment}
 
 As for a characterization of genericity along the lines of \thref{magidor_geometric_iff_generic}, we have that the Magidor generic sequence is geometric, along with a geometricity notion for the collapses, as follows:
 
@@ -481,7 +474,7 @@ As with Magidor forcing, the above is a precise characterization of genericity f
 As with the characterization of genericity for Magidor forcing (c.f. \thref{magidor_geometric_iff_generic}), the proof is by induction on the length of $\vec{U}$.
 
 \begin{proof}
-  Will be forthcoming.
+  Will be forthcoming, and utilizes \thref{magidor_collapse_prikry_open_dense_better} for the limit step.
 \end{proof}
 
 \begin{conjecture}
