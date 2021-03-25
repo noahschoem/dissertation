@@ -1,7 +1,117 @@
 \section{Stationary Sets}
 \label{forcing:stat}
 
-% cover the basics of stationary sets
+Solovay's Splitting Theorem for stationary sets accounts for the first major anti-saturation result in set theory.
+We will elaborate on the anti-saturation in Section \ref{forcing:ideals_measures} and present the core concepts and behaviors surrounding closed unbounded sets and stationary sets here;
+further elaboration can be found in standard references such as \cite{jech_set_theory}, Chapter 8.
 
-Most of this section can be pulled verbatim from Jech. But these fundamental theorems are useful to achieve (relative) self-containment.
-Plus, arcana can go here, like clubs on $P_\kappa(\lambda)$.
+\begin{definition}
+  Let $\kappa$ be a regular uncountable cardinal.
+  Then a $C\subseteq \kappa$ is
+  \begin{itemize}
+    \item \emph{closed} if whenever $\rho$ is a limit ordinal below $\kappa$ and $C\cap \rho$ is unbounded in $\rho$, then $\rho\in C$
+    \item \emph{unbounded} if whenever $\rho<\kappa$ there is some $\rho'\in C\setminus (\rho+1)$ (i.e. some $\rho'>\rho$ such that $\rho'\in C$)
+    \item \emph{club} if both closed and unbounded
+  \end{itemize}
+\end{definition}
+
+The intersection of any two clubs is club, and furthermore:
+\begin{proposition}\thlabel{clubs_are_complete}
+  Let $\tau<\kappa$ and let $\seq{C_\eta \mid \eta<\tau}$ be a family of club subsets of $\kappa$.
+  Then 
+  \[
+    \bigcap_{\eta<\tau} C_\eta
+  \]
+  is also club.
+\end{proposition}
+
+While the intersection of $\kappa$-many clubs is not necessarily club, there is an approximate version:
+\begin{definition}[Diagonal intersection]
+  Let $\seq{X_\eta \mid \eta<\lambda}$ be a family of sets of ordinals, with $\lambda$ some ordinal.
+  Then their \emph{diagonal intersection} is
+  \[
+    \diagcap_{\eta<\lambda} X_\eta := \left\{\beta\in Ord \middle| \forall \alpha<\beta \ \beta\in X_\alpha \right\}
+  \]
+\end{definition}
+
+\begin{proposition}\thlabel{clubs_are_normal}
+  Let $\seq{C_\eta \mid \eta<\kappa}$ be a family of club subsets of $\kappa$.
+  Then
+  \[
+    \diagcap_{\eta<\kappa} C_\eta
+  \]
+  is also club.
+\end{proposition}
+
+One may think of the club subsets of $\kappa$ as the ``large" subsets, in a way that will be made precise in Section \ref{forcing:ideals_measures}.
+The ``non-small" sets are then the stationary sets, and the ``small" sets nonstationary:
+\begin{definition}
+  Let $S\subseteq \kappa$. We say $S$ is \emph{stationary} if for every $C\subseteq \kappa$ club, $S\cap C\neq\emptyset$;
+  and we say $S$ is \emph{nonstationary} if $S$ is not stationary.
+\end{definition}
+
+Since the intersection of two clubs is club, $S\cap C$ is also stationary for any stationary $S$ and club $C$.
+
+Stationary sets admit the following homogeneity result, which, as we will elaborate on in Section \ref{forcing:ideals_measures}, is in a sense equivalent to \thref{clubs_are_normal}:
+
+\begin{theorem}[Fodor's Theorem]
+  Let $S$ be stationary and let $f:S\to\kappa$ be regressive (i.e. for every $\alpha\in S$, $f(\alpha)<\alpha$).
+  Then there is some $T\subseteq S$ stationary such that $f\upharpoonright T$ is constant.
+\end{theorem}
+
+We think of stationary sets as ``non-small" instead of ``large" because any stationary set splits into two disjoint stationary sets.
+In fact, more is possible, as shown by Solovay in \cite{solovay_split}:
+\begin{theorem}[Solovay's Splitting Theorem]\thlabel{solovay_splitting_theorem}
+  For any $S$ a stationary subset of $\kappa$, there exists a family $\seq{T_\alpha \mid \alpha<\kappa}$ of disjoint stationary subsets of $S$ such that
+  \[
+    S=\bigsqcup_{\alpha<\kappa} T_\alpha
+  \]
+\end{theorem}
+
+There are analogous notions of club and stationary on more general set algebras:
+
+\begin{definition}
+  Let $\kappa$ be a regular cardinal and let $\lambda$ be any cardial with $\lambda\geq \kappa$.
+  We write $\mathcal{P}_\kappa(\lambda)$ to mean the collection of subsets of $\lambda$ of cardinality less than $\kappa$.
+  Then:
+  \begin{itemize}
+    \item A collection $C\subseteq \mathcal{P}_\kappa(\lambda)$ is \emph{closed} if for any $\tau<\kappa$ and any $\subseteq$-increasing chain $\seq{x_\alpha \mid \alpha<\tau}$ of elements of $C$,
+    \[
+      \bigcup_{\alpha<\tau} x_\alpha
+    \]
+    is also in $C$
+    \item A collection $C\subseteq \mathcal{P}_\kappa(\lambda)$ is \emph{unbounded} if for any $x\in \mathcal{P}_\kappa(\lambda)$ there is some $y\in \mathcal{P}_\kappa(\lambda)$ with $y\supseteq x$ and $y\in C$
+    \item If $C$ is both closed and unbounded then $C$ is \emph{club}
+    \item And $S\subseteq \mathcal{P}_\kappa(\lambda)$ is \emph{stationary} if $S\cap C\neq\emptyset$ for every club $C$.
+  \end{itemize}
+\end{definition}
+
+Similar intersection results hold:
+\begin{proposition}
+  If $\tau<\kappa$ and $\seq{C_\alpha \mid \alpha<\tau}$ is a family of clubs then
+  \[
+    \bigcap_{\alpha<\tau} C_\alpha
+  \]
+  is also club.
+\end{proposition}
+
+Fodor's Theorem, with a modified notion of $\diagcap$, also holds:
+\begin{definition}
+  Let $\seq{X_\alpha \mid \alpha<\kappa}$ be a family of subsets of $\mathcal{P}_\kappa(\lambda)$.
+  Then
+  \[
+    \diagcap_{\alpha<\kappa} X_\alpha := \left\{x\in \mathcal{P}_\kappa(\lambda) \middle| x\in \bigcap_{a\in x} X_a\right\}
+  \]
+\end{definition}
+
+\begin{proposition}
+  If $\seq{C_\alpha \mid \alpha<\kappa}$ is a family of club sets on $\mathcal{P}_\kappa(\lambda)$ then
+  \[
+    \diagcap_{\alpha<\kappa} C_\alpha
+  \]
+  is also club.
+\end{proposition}
+
+\begin{theorem}[Fodor's Theorem]
+  If $S$ is a stationary subset of $\mathcal{P}_\kappa(\lambda)$, $f:S\to \mathcal{P}_\kappa(\lambda)$, and $f$ is regressive (i.e. $f(x)\in x$ for every nonempty $x\in S$) then there is a stationary $T\subseteq S$ such that $f\upharpoonright T$ is constant.
+\end{theorem}
