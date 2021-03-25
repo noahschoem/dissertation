@@ -1,8 +1,240 @@
 \section{Ideals, Measures, and Ultrapowers}
 \label{forcing:ideals_measures}
 
-% Define filters & ideals on cardinals, perhapse mention similar applies to other set algebras like []^{}, completeness, normality, saturation
-% discuss ultrapowers, both inhouse & generic.
-% maybe even some of the j() & ultrapower properties?
+We have already seen clubs and nonstationary sets in Section \ref{forcing:stat}.
+Their properties generalize to the notions of filter and ideal.
+See \cite{jech_set_theory}, Chapter 7, for further elaboration on filters and ideals, and \cite{jech_set_theory}, Chapters 10, 12, and 17 for measurable cardinals and ultrapowers.
+We summarize the fundamentals here.
 
-% Here would be a good place for Foreman duality, saturation, presaturation.
+\begin{definition}
+  Let $\mathcal{F}$ be a collection of subsets of $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$). Then $\mathcal{F}$ is a \emph{filter} if
+  \begin{itemize}
+    \item $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$) is in $\mathcal{F}$, and $\emptyset$ is not in $\mathcal{F}$
+    \item $\mathcal{F}$ is upwards closed under $\subseteq$
+    \item whenever $A$, $B$ are in $\mathcal{F}$ then $A\cap B$ is also in $\mathcal{F}$
+  \end{itemize}
+  We say $\mathcal{F}$ is \emph{ultra} (equivalently, maximal) if for every $A\subseteq \kappa$ (or $\mathcal{P}_\kappa(\lambda)$), either $A$ is in $\mathcal{F}$, or $A^c$, its complement, is in $\mathcal{F}$.
+  
+  And we say $\mathcal{F}$ is \emph{nonprincipal} if there is no $X\subseteq \kappa$ (or $\mathcal{P}_\kappa(\lambda)$) such that for all $Y\in\mathcal{F}$, $X\subseteq Y$.
+\end{definition}
+
+By the Axiom of Choice, every cardinal and every powerset algebra admits a nonprincipal ultrafilter.
+
+The dual notion of a filter is an \emph{ideal}:
+
+\begin{definition}
+  Let $\mathcal{I}$ be a collection of subsets of $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$). Then $\mathcal{I}$ is an \emph{ideal} if
+  \begin{itemize}
+    \item $\emptyset$ is in $\mathcal{I}$, and $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$) is not in $\mathcal{I}$
+    \item $\mathcal{F}$ is downwards closed under $\subseteq$
+    \item whenever $A$, $B$ are in $\mathcal{I}$ then $A\cup B$ is also in $\mathcal{I}$
+  \end{itemize}
+  We say $\mathcal{I}$ is \emph{prime} (equivalently, maximal) if for every $A\subseteq \kappa$ (or $\mathcal{P}_\kappa(\lambda)$), either $A$ is in $\mathcal{I}$, or $A^\complement$, its complement, is in $\mathcal{I}$.
+  
+  And we say $\mathcal{I}$ is \emph{nonprincipal} if there is no $X\subseteq \kappa$ (or $\mathcal{P}_\kappa(\lambda)$) such that for all $Y\in\mathcal{I}$, $Y\subseteq X$.
+\end{definition}
+
+\begin{remark}
+  Whenever $\mathcal{F}$ is a filter, its dual ideal is given by 
+  \[
+    \overset{\smile}{\mathcal{F}}:=\left\{X^\complement \mid X\in \mathcal{F}\right\}
+  \]
+  Likewise, if $\mathcal{I}$ is an ideal, its dual filter is given by
+  \[
+    \overset{\smile}{\mathcal{I}}:=\left\{X^\complement \mid X\in \mathcal{I}\right\}
+  \]
+\end{remark}
+For each $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$), the club filter $\mathcal{C}_\kappa$ ($\mathcal{C}_{\mathcal{P}_\kappa(\lambda)}$), consisting of all subsets on $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$) including a club, is a nonprincipal filter.
+
+Likewise, the nonstationary ideal $NS_\kappa$ ($NS_{\mathcal{P}_\kappa(\lambda))}$) consisting of all nonstationary subsets of $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$) is a nonprincipal ideal,
+and furthermore, $\overset{\smile}{NS}_\kappa=\mathcal{C}_\kappa$ (and likewise for ${\mathcal{P}_\kappa(\lambda))}$).
+
+\begin{remark}
+  The stationary sets we may write as $(NS_\kappa)^+$; in general, whenever $\mathcal{I}$ is an ideal, we write $\mathcal{I}^+$ to denote the collection of all $S$ such that for every $C\in\overset{\smile}{\mathcal{I}}$, $S\cap C\neq\emptyset$.
+\end{remark}
+
+Both the nonstationary ideal and the club filter have much stronger closure properties:
+
+\begin{definition}[closure]
+  Let $\mathcal{F}$ be a filter and let $\tau$ be a cardinal.
+  Then we say that $\mathcal{F}$ is $\tau$-closed if for every $\rho<\tau$ and every family $\seq{A_\alpha \mid \alpha<\rho}$ of sets in $\mathcal{F}$,
+  \[
+    \bigcap_{\alpha<\rho} A_\alpha
+  \]
+  is also in $\mathcal{F}$.
+  
+  Likewise, if $\mathcal{I}$ is an ideal, then $\mathcal{I}$ is $\tau$-closed if for every $\rho<\tau$ and every family $\seq{J_\alpha \mid \alpha<\rho}$ of sets in $\mathcal{I}$,
+  \[
+    \bigcap_{\alpha<\rho} J_\alpha
+  \]
+  is also in $\mathcal{I}$.
+\end{definition}
+
+Both $\mathcal{C}_\kappa$ ($\mathcal{C}_{\mathcal{P}_\kappa(\lambda)}$) and $NS_\kappa$ ($NS_{\mathcal{P}_\kappa(\lambda))}$) are $\kappa$-closed by \thref{clubs_are_complete}, and by \thref{clubs_are_normal}, are additionally \emph{normal}:
+
+\begin{definition}
+  If $\mathcal{F}$ is a filter on $\kappa$ (or $\mathcal{P}_\kappa(\lambda)$, then we say that $\mathcal{F}$ is \emph{normal} if for any $\seq{A_\alpha \mid \alpha<\kappa}$ of sets in $\mathcal{F}$,
+  \[
+    \diagcap_{\alpha<\kappa} A_\alpha
+  \]
+  is also in $\mathcal{F}$.
+  
+  We say that $\mathcal{I}$ is \emph{normal} if its dual filter is normal.
+\end{definition}
+
+And Fodor's Theorem generalizes to arbitrary filters and ideals:
+\begin{theorem}[Fodor's Theorem]
+  Let $\mathcal{I}$ be a $\kappa$-complete ideal.
+  Then $\mathcal{I}$ is normal if and only if for every $f:S\to \kappa$ ($\mathcal{P}_\kappa(\lambda)$) regressive with $S\in \mathcal{I}^+$, there is some $T\subseteq S$ with $T\in \mathcal{I}^+$ such that $f\upharpoonright T$ is constant.
+\end{theorem}
+
+As we have seen, the existence of nonprincipal ultrafilters (equivalently prime ideals) and $\kappa$-complete normal filters (ideals) are both theorems of $\mathrm{ZFC}$.
+Combining the two, however, is a large cardinal hypothesis:
+
+\begin{definition}
+  Let $\kappa$ be a cardinal. Then $\kappa$ is \emph{measurable} if there is a normal measure, i.e. $\kappa$-complete normal nonprincipal ultrafilter, $U$ on $\kappa$.
+\end{definition}
+
+From a measurable cardinal, we may build an ultrapower of $V$ as follows:
+
+\begin{definition}
+  Let $U$ be a normal measure on $\kappa$.
+  Then $Ult(V,U)$ is the proper class model of set theory for which:
+  \begin{itemize}
+    \item the elements are of the form $[f]_U$, the equivalence class of all $f:\kappa \to V$ where $[f]_U=[g]_U$ if for $U$-many $\alpha$, $f(\alpha)=g(\alpha)$, i.e. $\{\alpha<\kappa \mid f(\alpha)=g(\alpha)\}\in U$
+    \item and $\in^*$, the binary membership relation, is given by $[f]_U \in^* [g]_U$ if for $U$-many $\alpha$, $f(\alpha)\in g(\alpha)$
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Łoś' Theorem]
+  For any formula with parameters $\phi(\overrightarrow{x})$, for any $\overrightarrow{[f]}$, $Ult(V,U)\models \phi(\overrightarrow{[f]})$ if and only if for $U$-many $\alpha$, $V\models \phi(\overrightarrow{f(\alpha)})$.
+\end{theorem}
+
+Since $U$ is countably complete, $\in^*$ in $Ult(V,U)$ is well-founded, and therefore, by the Mostowski Collapsing Theorem, its transitive collapse $M$ is a $\in$-model of set theory. 
+By Łoś' Theorem, $M$ is also a model of $\mathrm{ZFC}$.
+
+Further, $M$ is a class model since the class map $\rho\mapsto [\alpha\mapsto \rho]_U$ maps to $M$-ordinals and is injective.
+By the $\kappa$-completeness, for all $\rho<\kappa$, $[\alpha\mapsto\rho]_U=\rho$; however $[\alpha\mapsto\kappa]_U>\kappa$.
+By normality, $\kappa\in M$ since $[\alpha\mapsto\alpha]_U=\kappa$.
+
+There are some additional behavior properties of $M$ that are standard and easy to prove, which we encapsulate in the following equivalent definition of measurable cardinal:
+
+\begin{proposition}
+  A cardinal $\kappa$ is measurable if and only if there is a transitive class model $M\subseteq V$ and an elementary map $j:V\to M$ such that 
+  \begin{itemize}
+    \item $\kappa$ is the least ordinal for which $j(\kappa)>\kappa$
+    \item $M$ is closed uner $\kappa$-sequences from $V$, i.e. $V\models M^\kappa \subseteq M$
+  \end{itemize}
+\end{proposition}
+
+For the converse, if $j:V\to M$ is such an elementary embedding, then $U=\{A\subseteq \kappa \mid \kappa\in j(A)\}$ is a normal measure on $\kappa$.
+
+Even if a nonprincipal filter (e.g. the club filter) is not maximal, we can use forcing to define a form of ultrapower.
+We summarize the core ideas and results we need of these generic ultrapowers; see \cite{foreman_ideals_gen_ees} for a more comprehensive overview.
+
+\begin{proposition}
+  Let $\mathcal{I}$ be a nonprincipal ideal on $\kappa$.
+  Then the poset $\mathcal{B}_{\mathcal{I}}$, defined by
+  \[
+    \mathcal{B}_{\mathcal{I}}=\left\{[A]_{\overset{\smile}{\mathcal{I}}} \mid A\in \mathcal{I}^+\right\}
+  \]
+  with partial order $[A]_{\overset{\smile}{\mathcal{I}}} \leq [B]_{\overset{\smile}{\mathcal{I}}}$ if $B\setminus A \in \mathcal{I}$, is a separative notion of forcing.
+  Let $G$ be $\mathcal{B}_{\mathcal{I}}$-generic over $V$.
+  Then for every $X\in V$, $X\subseteq \kappa$, either $[X]\in G$ or $[X^\complement]\in G$, so $G$ is a $V$-ultrafilter.
+  Thus in $V[G]$ we may define $Ult(V,G)$ and obtain an elementary embedding $j:V\to Ult(V,G)$.
+  
+  Further, if $\mathcal{I}$ is $\kappa$-complete then $G$ is $V$-$\kappa$-complete, and if $\mathcal{I}$ is normal then $G$ is $V$-normal.
+\end{proposition}
+
+We will variously refer to the generic ultrapower as $Ult(V,G)$ or $Ult(V,\mathcal{I})$, depending on context,
+and will also write $j_I$ to denote $j_G:V\to Ult(V,G)$ the generic ultrapower elementary embedding.
+
+The generic ultrapower is not always well-founded; this is a special property that gets its own name:
+
+\begin{definition}[Definition 2.4 of \cite{foreman_ideals_gen_ees}]
+  An ideal $\mathcal{I}$ is said to be \emph{precipitous} if whenever $G$ is a $\mathcal{B}_{\mathcal{I}}$-generic object over $V$,
+  $Ult(V,G)$ is well-founded.
+\end{definition}
+
+A cardinal $\kappa$ admits a precipitous ideal if and only if $\kappa$ is measurable in some inner model;
+however, precipitous ideals need not be prime, and with large cardinals it is possible to force $NS_\kappa$ to be precipitous.
+
+We now turn to saturation, which in certain cases acts as a strong form of precipitousness:
+
+\begin{definition}
+  Let $\mu$ be a cardinal and let $\mathcal{I}$ be an ideal. 
+  Then we say that $\mathcal{I}$ is \emph{$\mu$-saturated} if $\mathcal{B}_{\mathcal{I}}$ has the $\mu$-chain condition; that is, if for any family $\seq{J_\alpha \mid \alpha<\mu}$ of $\mathcal{I}^+$-sets, there are $\alpha\neq\beta$ such that $J_\alpha \cap J_\beta \in \mathcal{I}^+$.
+  
+  We say that the \emph{saturation} of $\mathcal{I}$, written $sat(\mathcal{I})$, is the least $\mu$ such that $\mathcal{I}$ is $\mu$-saturated.
+\end{definition}
+
+Clearly any ideal on $\kappa$ is $(2^\kappa)^+$-saturated, and a prime ideal is $2$-saturated.
+
+As for why saturation acts as a strong form of precipitousness:
+\begin{theorem}
+  Let $\mathcal{I}$ be a $\kappa$-complete (nonprincipal) ideal on $\kappa$.
+  Then if $sat(\mathcal{I})\leq\kappa^+$, then $\mathcal{I}$ is precipitous.
+\end{theorem}
+
+Saturated ideals also lead to a measurable-like closure of the generic ultrapower:
+
+\begin{fact}\label{foreman_ideals_gen_ees:ultrapower-closure}
+  If $\mathcal{I}$ is a $\kappa$-complete, $\kappa^+$-saturated ideal in $V$,
+  and if $G$ is a $\mathcal{B}_{\mathcal{I}}$-generic filter over $V$,
+  then in $V[G]$, $Ult(V,G)^\kappa\subseteq Ult(V,G)$; that is, $Ult(V,G)$ is closed under $\kappa$-sequences from $V[G]$.
+\end{fact}
+
+This follows from Propositions 2.9 and 2.14 of \cite{foreman_ideals_gen_ees}.
+
+By the relevant chain condition, we see that if $\mathcal{I}$ is precipitous, then $\mathcal{I}$ also preserves $sat(\mathcal{I})$; this motivates a principle intermediate between saturation and precipitousness:
+
+\begin{definition}
+  Let $\mathcal{I}$ be a $\kappa$-complete (nonprincipal) ideal on $\kappa$, and let $\mu$ be a regular cardinal.
+  Then $\mathcal{I}$ is $\mu$-presaturated if $\mathcal{I}$ is precipitous and $\mathcal{B}_{\mathcal{I}}$ preserves $\mu$.
+\end{definition}
+
+We make the following caveat about presaturation for ideals versus presaturation for posets:
+
+\begin{caveat}
+  In contrast to the definition for a general poset in (TODO: x-ref),
+  only for precipitous ideals $I$ is it the case that $I$ is $\mu$-presaturated if and only if $\mathcal{B}_I$ is $\mu$-presaturated as a forcing poset.
+\end{caveat}
+
+Solovay's Splitting theorem can now be rephrased as an anti-saturation result:
+
+\begin{proposition}
+  For every stationary $S$, $\mathbb{B}_{NS_\kappa}$ is not $\kappa$-saturated below $S$.
+\end{proposition}
+
+This result can be argued purely using generic ultrapowers:
+\begin{proof}[Proof sketch]
+  Suppose for sake of contradiction that $NS_\kappa$ is $\kappa$-saturated.
+  Then a $V$-generic filter $G$ for $\mathbb{B}_{NS_\kappa}$ is a $V$-$\kappa$-complete $V$-normal $V$-ultrafilter with wellfounded ultrapower $Ult(V,G)$.
+  Ultrapower arguments then yield a stationary set $S\subseteq\kappa$ in $V$ that is no longer stationary in $Ult(V,G)$, hence is nonstationary in $V[G]$. 
+  But since $NS_\kappa$ was assumed to be $\kappa$-saturated, our forcing has the $\kappa$-chain condition and hence $S$ must be stationary in $V[G]$; this is a contradiction.
+\end{proof}
+
+As for other results about the nonsaturation of nonstationary ideals, Gitik and Shelah, in \cite{gitik_shelah_less_sat} showed that when $\kappa>\omega_1$, $NS_\kappa$ is not $\kappa^+$-saturated.
+However, it is consistent (e.g. in the presence of Martin's Maximum, c.f. \cite{foreman_magidor_shelah_martin_max}) that $NS_{\omega_1}$ is $\omega_2$-saturated.
+Likewise, for $\lambda\geq\kappa\geq\omega_1$, the nonstationary ideal on $\mathcal{P}_\kappa(\lambda)$ (for $\lambda\geq\kappa$) is known not to be $\kappa^+$-saturated. 
+Burke, Foreman, Gitik, Magidor, Matsubara, and Shelah proved this over much time and many papers; a summary and the proof of the case $\kappa=\lambda=\omega_1$ can be found in \cite{foreman_magidor_ns_ns}.
+We will discuss and extend methods from \cite{foreman_magidor_ns_ns} in Chapters \ref{ms} and \ref{accessible_ms}.
+
+However, there are still useful arguments that can be written \emph{just} from having that $\mathbb{B}_{NS_\kappa}$ is precipitous.
+For example, this simplifies Silver's original argument in \cite{silver_sch} that if $SCH$ fails at a singular cardinal, then the first singular cardinal at which $SCH$ fails must have countable cofinality.
+Precipitousness results concerning nonstationary ideals have a long history;
+the precipitousness of $NS_\kappa$ is consistent relative to a measurable for $\kappa=\omega_1$.
+Consistency results can be found in \cite{cummings_itd_forcing_ees}) and  \cite{foreman_ideals_gen_ees}.
+
+To compute saturation (and other) properties on ideals in generic extensions, we may use Foreman's Duality Theorems.
+Let $\mathbb{P}$ be a notion of forcing and let $\mathcal{I}$ be a precipitous ideal in $V$;
+we write $\overline{\mathcal{I}}$ to denote $\{A\in V^{\mathbb{P}} \mid \exists X\in \mathcal{I} \ A\subseteq X\}$.
+Then Foreman's Duality Theorems (the many forms of which can be found in \cite{foreman_ideals_gen_ees}, Chapter 7.4) allow for the computation of various (including saturation) properties of $\overline{\mathcal{I}}$, roughly as follows:
+
+\begin{theorem}
+  Under certain assumptions, there exist conditions $R\in \mathbb{P} * \dot{\overline{\mathcal{I}}}$ and $S\in \mathcal{I} * \dot{j_{\mathcal{I}}(\mathbb{P})}$ such that
+  \[
+    \left(\mathbb{P} * \dot{\overline{\mathcal{I}}}\right)/R \cong
+    \left(\mathcal{I} * \dot{j_{\mathcal{I}}(\mathbb{P})}\right)/S
+  \]
+\end{theorem}

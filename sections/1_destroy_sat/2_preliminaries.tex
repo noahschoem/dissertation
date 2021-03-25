@@ -7,52 +7,11 @@ Especially some of the notational bs like $Reg_\kappa$, $V^{\mathbb{P}}$.
 
 Also for subject matter: ideals, cplteness, normality, cc, presat, closure, precipitousness, generic ultrapowers, Foreman duality.)
 
-Here are some definitions, theorems, and notations we use.
+Much of the necessary background can be found in Chapter \ref{forcing}; we cover more chapter-specific background here.
 
 For a cardinal $\kappa$, we will write $Reg_\kappa$ for the set of regular cardinals below $\kappa$, and $cof(\kappa)$ for the proper class of cardinals of cofinality $\kappa$.
 
 If $\mathbb{P}$ is a notion of forcing in $V$, we will variously use $V^\mathbb{P}$ or $V[G]$ to refer to the generic extension of $V$ by $\mathbb{P}$.
-
-We will further take for granted that the reader is familiar with forcing, iterated forcing, and ultrapowers.
-
-\begin{definition}[ideals]
-Let $\kappa$ be a cardinal.
-An \emph{ideal} $I$ on $\kappa$ is a subset of $\mathcal{P}(\kappa)$ such that:
-\begin{enumerate}
-\item $\emptyset\in I$, $\kappa\notin I$
-\item If $A\in I$ and $B\subseteq A$ then $B\in I$
-\item If $A,B\in I$ then $A\cup B\in I$
-\end{enumerate}
-
-For $\mu\in Reg_\kappa$, the ideal $I$ is said to be \emph{$\mu$-complete} if whenever $\lambda\in Reg_\mu$ and $\seq{A_\alpha \mid \alpha<\lambda}\subseteq I$ then
-\[\bigcup_{\alpha<\lambda} A_\alpha\]
-is also in $I$.
-
-The ideal $I$ is said to be \emph{normal} if whenever $\seq{A_\alpha\mid \alpha<\kappa}\subseteq I$, we have that the diagonal union
-\[\nabla_{\alpha<\kappa} A_\alpha:=\{\beta<\kappa \mid \exists \alpha<\beta \ \beta\in A_\alpha\}\]
-is also in $I$.
-\end{definition}
-
-An ideal is \emph{principal} if it contains a cofinite set; for our purposes, ideals are always assumed to be nonprincipal.
-
-
-For an ideal $I$ on $\kappa$, we define $I^+:=\{S\subseteq \kappa \mid S\notin I\}$.
-
-
-For example, $NS_\kappa$, the collection of nonstationary sets on $\kappa$, forms a normal ideal; its dual filter is the club filter on $\kappa$, and $(NS_\kappa)^+$ is the collection of stationary sets on $\kappa$.
-
-\begin{definition}
-If $I$ is an ideal on $\kappa$ then we may define an equivalence relation $\simeq_I$ on $\mathcal{P}(\kappa)$ by $A\simeq B$ if and only if $(A\setminus B)\cup (B\setminus A)\in I$.
-
-We say that $A\leq_I B$ if $A\setminus B\in I$.
-
-We may consider the equivalence classes $\mathcal{P}(\kappa)/I:=\{[A]_{\simeq_I}\mid A\subseteq \kappa\}$ as a poset with partial order $\leq_I$.
-\end{definition}
-
-
-Given $I$ an ideal on $\kappa$, we will write $\mathcal{B}_I:=\left(\mathcal{P}(\kappa)/I\right)\setminus [\emptyset]_{\simeq_I}$; when thinking of $\mathcal{B}_I$ as a poset, we will implicitly use the partial ordering $\leq_I$ and in many cases, $\mathcal{B}_I$ will be a separative notion of forcing (or even a complete Boolean algebra).
-
-The above two definitions are Definitions 2.1, 2.17, and 2.18\footnote{In \cite{foreman_ideals_gen_ees}, a different version of normality is taken to be definitional, and the equivalence of these two versions is Proposition 2.19 of \cite{foreman_ideals_gen_ees}.} of \cite{foreman_ideals_gen_ees}.
 
 The following definition summarizes some forcing properties of posets that will come in handy:
 
@@ -70,26 +29,7 @@ there are densely many $p\in\mathbb{P}$ such that for all $\alpha$, $\{q\in A_\a
 \end{enumerate}
 \end{definition}
 
-Some of these properties have analogues for ideals as well.
-To begin with, if $I$ is a $\kappa$-complete ideal on $\kappa$ then a $\mathcal{B}_I$-generic object induces a $V$-$\kappa$-complete ultrafilter $U$ on $\kappa$ from which the ultrafilter $Ult(V,U)$ may be formed.
-If $I$ is additionally normal, then $U$ will be $V$-normal.
-
-\begin{definition}[Definition 2.4 of \cite{foreman_ideals_gen_ees}]
-An ideal $I$ is said to be \emph{precipitous} if whenever $U$ is a $\mathcal{B}_I$-generic object over $V$,
-$Ult(V,U)$ is well-founded.
-\end{definition}
-
-For $I$ an ideal on $\kappa$, we will say that $I$ is defined to be \emph{$\mu$-saturated} if $\mathcal{B}_I$ has the $\mu$-cc.
-It is well known that a $\mu$-saturated ideal is precipitous and $\mu$-preserving, i.e. that $V^{\mathcal{B}_I}\models``\mu\text{ is a cardinal}"$.
-However, we make the following caveat:
-
-\begin{caveat}
-In contrast to the above definition, an ideal $I$ is defined to be $\mu$-presaturated if $I$ is precipitous and $\mu$-preserving.
-
-Only for precipitous ideals $I$ is it the case that $I$ is $\mu$-presaturated if and only if $\mathcal{B}_I$ is $\mu$-presaturated as a forcing poset.
-\end{caveat}
-
-Presaturation can be pushed downwards through an iteration:
+For arbitrary posets, presaturation can be pushed downwards through a two-step iteration:
 
 \begin{lemma}[Lemma 2.12 of \cite{cox_eskew_kill_sat_save_presat}]\label{pushpresatdown}
 If $\mathbb{P} * \dot{\mathbb{Q}}$ is $\kappa$-presaturated then $\mathbb{P}$ is $\kappa$-presaturated and $1_\mathbb{P}\forces \dot{\mathbb{Q}}$ is $\kappa$-presaturated.
@@ -97,7 +37,7 @@ If $\mathbb{P} * \dot{\mathbb{Q}}$ is $\kappa$-presaturated then $\mathbb{P}$ is
 
 Whether the converse holds is currently an open problem; this appears as Question 8.6 of \cite{cox_eskew_kill_sat_save_presat}. 
 
-Next we go over the notion of properness and relate properness and closedness to presaturation.
+Forcing poset closure, and properness, relate to presaturation; we now summarize what properness is, and how both closure and properness relate to presaturation.
 
 Let $\delta$ be regular uncountable, and let $H\supsetneq\delta$.
 Then we write $\mathcal{P}_\delta(H)$ for all subsets of $H$ of size $<\delta$, and $\mathcal{P}^*_\delta(H)$ to denote the set of all $x\in \mathcal{P}_\delta(H)$ such that $x\cap\delta\in\delta$.
@@ -186,20 +126,9 @@ then $\mathbb{P}$ is $\lambda$-presaturated.
 
 This appears as Fact 2.11 in \cite{cox_eskew_kill_sat_save_presat}, which in turn is a generalization of Theorem 4.3 of \cite{baumgartner_taylor_sat_gen_ees_two}.
 
-\begin{fact}\label{foreman_ideals_gen_ees:ultrapower-closure}
-For a $\kappa$-complete, $\kappa^+$-saturated ideal $I\in V$,
-if $U$ is a $\mathcal{B}_I$-generic filter over $V$
-then in $V[U]$, $^\kappa Ult(V,U)\subseteq Ult(V,U)$; that is, $Ult(V,U)$ is closed under $\kappa$-sequences from $V[U]$.
-\end{fact}
+In line with Section \ref{forcing:ideals_measures}, if $I\in V$ is an ideal on $\kappa$ and $\mathbb{P}$ is a notion of forcing understood from context, then we will write $\overline{I}:=\left\{N\in \mathcal{P}^{V^\mathbb{P}}(\kappa)\mid \exists A\in I \ N\subseteq A\right\}$.
 
-This follows from Propositions 2.9 and 2.14 of \cite{foreman_ideals_gen_ees}.
-
-
-We will sometimes write $Ult(V,I)$ to denote $Ult(V,U)$, and will also write $j_I$ to denote $j_U:V\to Ult(V,U)$.
-
-If $I\in V$ is an ideal on $\kappa$ and $\mathbb{P}$ is a notion of forcing understood from context, then we will write $\overline{I}:=\left\{N\in \mathcal{P}^{V^\mathbb{P}}(\kappa)\mid \exists A\in I \ N\subseteq A\right\}$.
-
-The following two simplified versions of Foreman's Duality Theorem will be useful later:
+To compute presaturation properties of ideals, these are the two forms of Foreman's Duality Theorem that we will use:
 
 \begin{lemma}\label{foreman_ideals_gen_ees:groundideals}
 For a $\kappa$-complete, $\kappa^+$ saturated $I\in V$, $\overline{I}$ is $\kappa^+$-saturated in $V^\mathbb{Q}$ if and only if $\forces_{\mathcal{B}_I} \dot{j}_I(\mathbb{Q})$ is $\kappa^+$-cc.
