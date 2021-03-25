@@ -19,12 +19,7 @@ Work in $Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[C
 \end{lemma}
 
 \begin{proof}
-  Observe that there are at most $(2^\kappa)^V$-many antichains of $Col(\kappa^+,<j_{U_\lambda}(\kappa))$ in the ultrapower; 
-  this is since each such antichain is of the form $[f]$, where $f$ is a function with domain $\kappa$ such that for all $\alpha$, $f(\alpha)$ is an antichain of $Col(\alpha^+,<\kappa)$.
-  
-  Let $\seq{A_\beta \middle| \beta<2^\kappa}$ be a $V$-enumeration of all antichains of $Col(\kappa^+,<j_{U_\lambda}(\kappa))$ in the ultrapower.
-  By $GCH$, since $|j(\kappa)|=\kappa^+$, we have exactly $\kappa^+$-many antichains and since $Col(\kappa^+,<j_{U_\lambda}(\kappa))$ is $\kappa+1$-closed and the ultrapower is closed under $\kappa$-sequences, we may iteratively build a descending chain $K'=\seq{p_\beta\middle| \beta<\kappa^+}$ such that for every maximal antichain $A_\beta$ in the ultrapower, $p_\beta\in A_\beta$ or is stronger than some condition in $A_\beta$.
-  Then $K$, the upwards closure of $K'$, is as desired.
+  This is \thref{exists_guide_generic}.
 \end{proof}
 
 \begin{lemma}\thlabel{coherence_guiding_generic_family}
@@ -457,7 +452,7 @@ As with Magidor forcing, the above is a precise characterization of genericity f
   
   Suppose the conclusion of \thref{magidor_collapse_generic_implies_geometric} applies to $\seq{\beta_\eta \mid \eta<\lambda}$ and the $F_\eta$'s, and define
   \[
-    H=\left\{(f,c,A,C) \middle|
+    H=\left\{(f,c,A,C)\in \mathbb{MC}(\vec{U}) \middle|
       \begin{array}{l}
         f\text{ is a finite subsequence of }\vec{\beta}, \\
         \forall \alpha\in dom(f) \ c(\alpha)\in F_\alpha \\
