@@ -9,7 +9,7 @@ A good summary can be found in \cite{jech_set_theory}, Chapter 21; as our result
   Let $U$ be a normal measure on $\kappa$.
   Then we define the forcing $\mathbb{P}(U)$ by:
   \begin{enumerate}
-    \item Conditions are of the form $(s,A)$ where $s\in [\kappa]^{<\omega}$, $A\in U$, and $\max(s)<\min(A)$
+    \item Conditions are of the form $(s,A)$ where $s\in [\kappa]^{<\omega}$ is strictly increasing, $A\in U$, and $\max(s)<\min(A)$
     \item The condition $(t,B)\leq (s,A)$ if $t\supseteq s$, $B\subseteq A$, and for all $\rho\in t\setminus s$, $\rho\in A$
   \end{enumerate}
 \end{definition}
@@ -35,7 +35,7 @@ As for preservation of cardinals below $\kappa$\footnote{
   which is enough to show preservation of $\kappa$, as the limit of cardinals is also a cardinal
 }, we use the fact that $\leq^*$ is quite powerful.
 
-\begin{lemma}[Prikry property, open dense version]
+\begin{lemma}[Prikry property, open dense version]\thlabel{prikry_prikry_type_open_dense}
   Let $p\in\mathbb{P}(U)$, and let $D$ be an open dense subset of $\mathbb{P}(U)$.
   Then there is a $q\leq^* p$ and an $n<\omega$ such that every $n$-step extension of $q$ is in $D$.
 \end{lemma}
@@ -61,3 +61,132 @@ As a corollary, direct extensions are sufficient to decide sentences in the forc
   Let $p\forces \dot{X}\subseteq \tau$ for some $\tau<\kappa$.
   For each $\alpha<\tau$, there is some $p_\alpha \leq^* p$ deciding $``\alpha\in\dot{X}"$; then since $U$ is $\kappa$-complete, the greatest lower bound $q$ of $\seq{p_\alpha \mid \alpha<\tau}$ suffices to define $\dot{X}$ entirely within $V$.
 \end{proof}
+
+Prikry forcing is a key ingredient in proving the consistency of the failure of the Singular Cardinals Hypothesis, which follows from larger cardinals than a single measurable.
+Indeed, the general reference \cite{jech_set_theory} posits the following:
+
+\begin{proposition}[Corollary 21.13 of \cite{jech_set_theory}]
+  Let $\kappa$ be supercompact.
+  Then after forcing to make $\kappa$ measurable such that $2^\kappa>\kappa^+$ and singularizing $\kappa$ with Prikry forcing, $SCH$ fails at $\kappa$.
+\end{proposition}
+
+As we will generalize in Section \ref{forcing:magidor}, Prikry forcing admits a neat characterization of genericity, courtesy of Mathias in \cite{mathias_prikry_genericity_charn}:
+
+\begin{proposition}
+  If $\seq{\beta_n\mid n<\omega}$ is $\mathbb{P}(U)$-generic then for all $A\in U$, for cofinitely many $n$, $\beta_n\in A$.
+  
+  Conversely, suppose $\vec{\gamma}=\seq{\gamma_n\mid n<\omega}\in V^{\mathbb{P}(U)}$ is such that for every $A\in U$, for cofinitely many $n$, $\gamma_n\in A$.
+  Let 
+  \[
+    H=\left\{(s,A)\mid s\text{ a finite initial segment of }\vec{\gamma}, \ A\in U,\text{ and }\forall n\geq lh(s) \ \gamma_n\in A\right\}
+  \]
+  Then $H$ is $\mathbb{P}(U)$-generic over $V$.
+\end{proposition}
+
+(TODO: cite this next part)
+
+If one wishes to simultaneously singularize $\kappa$ while collapsing cardinals below to make $\kappa$ into $\aleph_\omega$, then one may adjust the definition of Prikry forcing to interleave collapses between the Prikry points.
+To ensure a Prikry-type property as in \thref{prikry_prikry_type_open_dense}, one may use the technique of \emph{guiding generics}.
+We will generalize this to uncountable cofinality in Section \ref{accessible_ms:at_aleph_omega_1}.
+
+(this comes from Cummings' slide deck, at \url{https://math.unt.edu/sites/www.math.unt.edu/files/users/cdv0008/James\%20Cummings.pdf}; not quite sure how to cite, will look up Chicago manual of style later.)
+
+\begin{proposition}\thlabel{exists_guide_generic}
+  Let $\kappa$ be measurable with normal measure $U$, let $j:V\to Ult(V,U)$ be the measure embedding associated with $U$, and assume $GCH$.
+  Then there is a $K\in V$ such that $K$ is $Col(\kappa^+,<j(\kappa))^{Ult(V,U)}$-generic over $V$.
+\end{proposition}
+
+(TODO: double check? Cummings claims in his slide deck that this should be doable for $Col(\kappa^{++},<j(\kappa))$ but not necessarily for $Col(\kappa^+,<j(\kappa))$.)
+
+\begin{proof}
+  Observe that there are at most $(2^\kappa)^V$-many antichains of $Col(\kappa^+,<j(\kappa))$ in the ultrapower; 
+  this is since each such antichain is of the form $[f]$, where $f$ is a function with domain $\kappa$ such that for all $\alpha$, $f(\alpha)$ is an antichain of $Col(\alpha^+,<\kappa)$.
+  
+  Let $\seq{A_\beta \middle| \beta<2^\kappa}$ be a $V$-enumeration of all antichains of $Col(\kappa^+,<j(\kappa))$ in the ultrapower.
+  By $GCH$, since $|j(\kappa)|=\kappa^+$, we have exactly $\kappa^+$-many antichains and since $Col(\kappa^+,<j(\kappa))$ is $\kappa+1$-closed and the ultrapower is closed under $\kappa$-sequences, we may iteratively build a descending chain $K'=\seq{p_\beta\middle| \beta<\kappa^+}$ such that for every maximal antichain $A_\beta$ in the ultrapower, $p_\beta\in A_\beta$ or is stronger than some condition in $A_\beta$.
+  Then $K$, the upwards closure of $K'$, is as desired.
+\end{proof}
+
+\begin{definition}[Prikry with guided interleaved collapses]
+  Let $U$ be a normal measure on $\kappa$, and let $K$ be as in \thref{exists_guide_generic}.
+  Then we define $\mathbb{PC}(U)$ by:
+  \begin{enumerate}
+    \item Conditions are of the form $(s,c,A,C)$ where
+    \begin{itemize}
+      \item $s\in [\kappa]^{<\omega}$ is strictly increasing and $s(0)=\omega_1$
+      \item $\max(s)<\min(A)$
+      \item $dom(c)=dom(s)$, and for each $n<lh(s)-1$, $c(n)\in Col(s(n)^+,<s(n+1))$, and $c(lh(s)-1)\in Col(s(lh(s)-1)^+,<\kappa)$
+      \item $C$ is a function with domain $A$, $C(\rho)\in Col(\rho^+,<\kappa)$ for each $\rho\in A$, and $[C]_U\in K$
+    \end{itemize}
+    \item We say $(s',c',A',C')\leq (s,c,A,C)$ if 
+    \begin{itemize}
+      \item $s'\subseteq s$
+      \item for each $n<lh(s)$, $c'(n)\leq c(n)$ in the relevant collapse forcing
+      \item for each $n\in [lh(s),lh(s'))$, $s'(n)\in A$ and $\sup(c(n))<s'(n)$
+      \item $A'\subseteq A$
+      \item $[C']\leq [C]$
+    \end{itemize}
+    In the case that $s'=s$, we say $(s',c',A',C')\leq^* (s,c,A,C)$.
+      
+    In the case that $|s'|=|s|+n$, we say that $(s',c',A',C')$ is an $n$-step extension of $(s,c,A,C)$.
+  \end{enumerate}
+\end{definition}
+
+Conditions with the same $s$ need not be compatible due to their collapse terms being incompatible.
+However, the use of the guiding generic still grants us a Prikry-type property:
+\begin{lemma}
+  For every $p\in\mathbb{PC}(U)$ and every dense set $D$ there is a $q\leq^* p$ and an $n$ such that every $n$-step extension of $q$ is in $D$.
+\end{lemma}
+
+\begin{corollary}
+  Let $G$ be $\mathbb{PC}(U)$-generic over $V$ and let
+  \[
+    \seq{\beta_n\mid n<\omega}=\bigcup_{(s,c,A,C)\in G}s
+  \]
+  Then each $\beta_n$ and $\beta_n^+$ is preserved, as are all cardinals $\geq \kappa$.
+  
+  Further, for every $\rho\in [\beta_n^+,\beta_{n+1}]$ for some $n$, $|\rho|^{V[G]}=\beta_n^+$;
+  hence $\kappa=(\aleph_\omega)^{V[G]}$.
+\end{corollary}
+
+A proof is outlined in (TODO: cite Cummings slides, or Gitik-Sharon "On SCH and AP").
+
+Similar to Prikry forcing, we get the following generic object:
+
+\begin{proposition}
+  Let $G$ be $\mathbb{PC}(U)$-generic over $V$; let 
+  \[
+    \seq{\beta_n\mid n<\omega}=\bigcup_{(s,c,A,C)\in G}s
+  \]
+  and for each $n$ let
+  \[
+    F_n=\left\{c(n) \mid \exists s,A,C \ (s,c,A,C)\in G \text{ and }n\in dom(c)\right\}
+  \]
+  Then
+  \begin{enumerate}
+    \item for all $A\in U$, for cofinitely many $n$, $\beta_n\in A$
+    \item $F_n$ is $Col(\beta_n^+,<\beta_{n+1})$-generic over $V$ and if $C\in V$ with $[C]\in K$, then for cofinitely many $n$, $C(\beta_n)\in F_n$
+  \end{enumerate}
+\end{proposition}
+
+Conversely:
+\begin{proposition}
+  Work in $V^{\mathbb{PC}(U)}$; let $\vec{\gamma}\seq{\gamma_n\mid n<\omega}$ be a strictly increasing sequence with limit $\kappa$ such that for each $A\in U$, for cofinitely many $n$, $\gamma_n\in A$.
+  Let $G_n$ be $Col(\gamma_n^+,<\gamma_{n+1})$-generic over $V$ such that for all $C\in V$ with $[C]\in K$, for cofinitely many $n$, $C(\gamma_n)\in G_n$.
+  
+  Let (TODO: finish)
+  \[
+    H=\left\{(s,c,A,C)\in\mathbb{PC}(U) \middle| 
+    \begin{array}{l}
+      s\text{ is a finite initial segment of }\vec{\gamma},\\
+      \forall n\in dom(s) \ c(n) \in G_n, \\
+      A\in U\text{ with }\min(A)>\sup c(lh(s)-1), \\
+      \forall n\geq lh(s) \ \gamma_n\in A,\\
+      C\in V \text{ and }[C]\in K     
+    \end{array}
+    \right\}
+  \]
+  Then $H$ is $\mathbb{PC}(U)$-generic over $V$.
+\end{proposition}
+
+The proof is similar to the argument found in (TODO: cite Cummings slides, or Gitik-Sharon "On SCH and AP", or Sinapova-Unger, "Combinatorics at $\aleph_\omega$)
