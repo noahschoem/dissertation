@@ -1,2 +1,91 @@
 \section{Preserving Presaturation}
 \label{destroy_sat:preserve_presat}
+
+We now prove Theorem \ref{bigthm}\ref{bigthm:savepresat}.
+
+\begin{proof}[Proof of Theorem  \ref{bigthm}\ref{bigthm:savepresat}]
+Let $I\in V$ be a $\kappa$-complete, normal, $\kappa^+$-saturated ideal in $V$ concentrating on regulars.
+Work in $V^{\mathcal{B}_I}$ and let $U$ be the generic ultrafilter. 
+
+\begin{comment}
+We have two cases:
+\begin{enumerate}
+
+\item[Case 1:] $\mathcal{B}_I\forces``\kappa\text{ singular}"$.
+Then $\dot{j}_I(\mathbb{Q})(\kappa)$ is the trivial forcing and hence by Lemma \ref{jQ-ultVI}, $\dot{j}_I(\mathbb{Q})=\mathbb{Q} * \dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is an Easton support iteration 
+$\seq{\mathbb{R}_\lambda * \mathbb{C}(\lambda) \mid \lambda\in[\kappa^+,j(\kappa))}$, such that if $\lambda$ is regular, $\mathbb{C}(\lambda)=\mathbb{P}(\lambda)$, and $\mathbb{C}(\lambda)$ is the trivial forcing otherwise.
+Hence $\dot{\mathbb{R}}$ is $\kappa^+$-directed closed.
+The argument then proceeds similarly as in the next case.
+
+\item[Case 2:] 
+
+$\mathcal{B}_I\forces``\kappa\text{ regular}"$.
+\end{comment}
+Then in $Ult(V,U)$, by Lemma \ref{jQ-ultVI}, $\dot{j}_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{P}(\kappa)}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is an Easton support iteration $\seq{\mathbb{R}_\lambda * \mathbb{C}(\lambda) \mid \lambda\in[\kappa^+,j(\kappa))}$, such that if $\lambda$ is regular, $\mathbb{C}(\lambda)=\mathbb{P}(\lambda)$, and $\mathbb{C}(\lambda)$ is the trivial forcing otherwise.
+
+We will argue that $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\kappa^+$-proper on a stationary set, and hence is $\kappa^+$-presaturated.
+
+Observe that $\mathcal{B}_I$ is $\kappa^+$-cc. Hence, $Ult(V,U)$, $\mathbb{Q}$ is still $\kappa^+$-cc. 
+Thus, in $Ult(V,U)$, $\mathcal{B}_I * \mathbb{Q}$ is $\kappa^+$-cc and hence is $\kappa^+$-proper on $\mathcal{P}^*_{\kappa^+}(H_\theta)$ for all sufficiently large $\theta$.
+
+The difficulty comes in assuring $\mathbb{P}(\kappa)$ and $\dot{\mathbb{R}}$ preserve the properness on a stationary set.
+
+Work in $Ult(V,U)^{\mathbb{Q}}$. Here, $\mathbb{P}(\kappa)$ is proper on 
+$$\mathcal{S}:={\{M\prec (H_\theta,\in,\kappa^+)\mid |M|=|M\cap\kappa^+|=\kappa\text{ and }M\cap\kappa^+\in cof(\kappa)\}}$$
+and by the $<\kappa^+$-directed closedness of $\dot{\mathbb{R}}$ and Fact \ref{principle-A}, $\forces_{\mathbb{P}(\kappa)}\dot{\mathbb{R}}\text{ proper on }\check{IA}_{<\kappa^+}$.
+But not only is $\mathcal{S}$ stationary, $\mathcal{S}$ is a club subset of $\mathcal{P}^*_{\kappa^+}(H_\theta) \upharpoonright cof(\kappa)$, and hence $\mathcal{S}\cap IA_{<\kappa^+}$ is also stationary.
+
+% aside: was originally seen from Lemma 2.5 of Foreman-Magidor \cite{foreman_magidor_lcs_ctx_ch}, which is that $\mathcal{S}\cap IA_{<\kappa^+}$ is stationary iff $\mathcal{S}$ remains stationary after collapsing $H_\theta$ to size $\kappa^+$. The latter is a short argument from the definitions, but the above avoids an awkward aside.)
+
+Thus $\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)$ is $\kappa^+$-proper on a stationary subset of $\mathcal{P}_{\kappa^+}^*(H_\theta)^V$, hence is $\kappa^+$-presaturated.
+But by Theorem \ref{easyduality}, $\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)\cong \mathbb{Q}*\dot{\mathcal{B}_{\overline{I}}}$;
+then by Lemma \ref{pushpresatdown}, $\overline{I}$ is $\kappa^+$-presaturated.
+% Might be a little more worth saying here, i.e. that \mathcal{S} lives in V and P^*_\kappa^+(H_\theta), \mathcal{S}, and IA_<\kappa^+ are all relatively unchanged by \kappa^+-cc forcings.
+% \end{enumerate}
+\end{proof}
+
+A more general argument will prove Theorem \ref{savemorepresat}:
+
+\begin{proof}[Proof of Theorem \ref{savemorepresat}]
+As in the proof of Theorem \ref{bigthm}\ref{bigthm:savepresat}, we may without loss of generality suppose that $I$ concentrates on regular cardinals below $\kappa$; else $\delta$ will be singular, so $\dot{j}_I(\mathbb{Q})(\delta)$ will be trivial.
+
+This argument breaks into two cases.
+
+\begin{enumerate}
+
+\item [Case 1:] $\delta$ inaccessible. 
+By Theorem \ref{easyduality} we once again have that
+\[\mathcal{B}(\mathbb{Q} * \mathcal{B}_{\overline{I}})\cong \mathcal{B}(\mathcal{B}_I * \dot{j}_I(\mathbb{Q}))\]
+and by a slight modification of Lemma \ref{jQ-ultVI},
+\[j_I(\mathbb{Q})=\check{\mathbb{Q}} * \dot{(j_I(\mathbb{Q}))}\upharpoonright [\kappa,\delta) * \dot{\mathbb{P}(\delta)} * \dot{(j_I(\mathbb{Q}))}\upharpoonright [\delta^+,j_I(\kappa))\]
+where
+\begin{itemize}
+\item $\check{\mathbb{Q}}$ is $\kappa$-cc, hence $\delta$-cc
+\item $\dot{(j_I(\mathbb{Q}))}\upharpoonright [\kappa,\delta)$ is forced to be an Easton support iteration of $\delta$-cc posets
+\item $\dot{\mathbb{P}(\delta)}$ is forced to be $<\delta$-directed closed
+\item $\dot{(j_I(\mathbb{Q}))}\upharpoonright [\delta^+,j_I(\kappa))$ is forced to be an Easton support iteration of $<\delta^+$-directed closed posets
+\end{itemize}
+
+Hence by Lemma \ref{lemma-iaposets}, $\mathcal{B}(\mathcal{B}_I * \dot{j}_I(\mathbb{Q}))$ is $\delta$-presaturated.
+
+But then by Theorem \ref{easyduality}, $\mathcal{B}(\mathbb{Q} * \mathcal{B}_{\overline{I}})$ is $\delta$-presaturated, 
+and so by Lemma \ref{pushpresatdown}, in $V^{\mathbb{Q}}$, $\mathcal{B}_{\overline{I}}$ is $\delta$-presaturated.
+
+\item [Case 2:] $\delta$ is a successor cardinal with $\rho^+=\delta$.
+Theorem \ref{easyduality} and Lemma \ref{jQ-ultVI} now give that
+\[j_I(\mathbb{Q})=\check{\mathbb{Q}} * (\dot{j_I(\mathbb{Q})}) \upharpoonright [\kappa,\rho) * \dot{\mathbb{P}(\rho)} * \dot{j_I(\mathbb{Q})} \upharpoonright [\delta,j_I(\kappa))\]
+where
+\begin{itemize}
+\item $\check{\mathbb{Q}}$ is $\delta$-cc
+\item $(\dot{j_I(\mathbb{Q})}) \upharpoonright [\kappa,\rho)$ is an Easton support iteration of $\delta$-cc posets
+\item $\mathbb{P}(\rho)$ is proper on $\mathcal{S}:={\{M\prec (H_\theta,\in,\delta)\mid |M|=|M\cap\delta|=\rho\text{ and }M\cap\delta\in cof(\rho)\}}$
+\item $j_I(\mathbb{Q}) \upharpoonright [\delta,j_I(\kappa))$ is an Easton support iteration of $<\delta$-directed closed posets
+\end{itemize}
+Here, we have that in $V$, $\mathcal{B}_I$ is proper on $IA_{<\delta}$ by assumption.
+Additionally, in $Ult(V,U)^\mathbb{Q}$, $j_I(\mathbb{Q})$ is proper on $\mathcal{S} \cap IA_{<\delta}$ which is also stationary in $\mathcal{P}^*_{\delta}(H_\theta)$ for sufficiently large $\theta$; this is by Lemma \ref{lemma-iaposets}.
+
+Thus $\mathcal{B}_I * \dot{j_I(\mathbb{Q})}$ is $\delta$-proper on a stationary set, hence, by Lemma \ref{lemma-iaposets}, is $\delta$-presaturated.
+
+Theorem \ref{easyduality} and Lemma \ref{pushpresatdown} then tell us that $\mathcal{B}_I$ is $\delta$-presaturated.
+\end{enumerate}
+\end{proof}

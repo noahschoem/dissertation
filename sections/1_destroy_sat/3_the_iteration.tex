@@ -1,4 +1,183 @@
 \section{Iterating the Generalized Baumgartner-Taylor Poset}
 \label{destroy_sat:the_itern}
 
-Here's where we describe the generalized Baumgartner-Taylor iteration.
+Through the rest of this paper, suppose GCH and fix $\kappa$ to be a Mahlo cardinal.
+We do this because by assuming that $V$ admits a $\kappa$-complete, normal, $\kappa^+$-saturated ideal on $\kappa$ concentrating on regular cardinals below $\kappa$, we have that $\kappa$ is Mahlo.
+
+Over cardinals below $\kappa$, we will define a forcing iteration that will destroy $\kappa^+$-saturation but preserve $\kappa^+$-presaturation for ideals on $\kappa$, concentrating on regulars by adding, for each $\mu<\kappa$, $\mu$ regular, a club subset  $C_\mu$ of $\mu^+$ using $<\mu$-conditions.
+This club $C_\mu$ will fail to contain certain ground model sets, 
+in the sense that if $X\in V$ and $|X|\geq \mu$ then $X\not\subseteq C_\mu$.
+
+Towards this end:
+
+\begin{definition}\label{defpmu}
+  Let $\mu<\kappa$ be a regular cardinal.
+  Let $\mathbb{P}(\mu)$ be the collection of all conditions $(s,f)$ such that:
+  \begin{enumerate}[label={(\arabic*)}]
+    \item $s\in [\mu^+\setminus \mu]^{<\mu}$\label{defpmu:s}
+    \item $f:s\to [\mu^+\setminus \mu]^{<\mu}$ and if $\xi,\xi'\in s$ with $\xi<\xi'$ then $f(\xi)\subseteq\xi'$.\label{defpmu:f}
+  \end{enumerate}
+  We say $(s,f)\leq (t,g)$ if $s\supseteq t$ and whenever $\xi\in t$, $f(\xi)\supseteq g(\xi)$.
+\end{definition}
+
+For each $(s,f)\in \mathbb{P}(\mu)$, $s$ can be thought of as approximating $\dot{C_\mu}$, in the sense that $(s,f)\forces s\subseteq \dot{C_\mu}$
+(in fact, we will later define $C_\mu=\bigcup_{(s,f)\in G} s$, for $G$ a $\mathbb{P}(\mu)$-generic filter over $V$).
+
+Additionally, $f$ can be thought of as ``banning" certain ordinals from ever appearing in $\dot{C_\mu}$, in the sense that if $\alpha\in s$, $\beta>\alpha$, and $f(\alpha)\ni\beta$, then:
+\begin{itemize}
+\item it must be the case that $s\cap (\alpha,\beta]=\emptyset$. Otherwise, if $\gamma \in s\cap(\alpha,\beta]$, we would have that $\beta\in f(\alpha)$ and $\beta\notin\gamma$. Hence $f(\alpha)\not\subseteq\gamma$, contradicting conditionhood of $(s,f)$. 
+
+\item Additionally, $(s,f)\forces \dot{C_\mu} \cap (\alpha,\beta]=\emptyset$. This is since for every $(t,g)\leq (s,f)$, $\beta\in g(\alpha)$; hence $t\cap (\alpha,\beta]=\emptyset$.
+
+\end{itemize}
+
+\begin{lemma}\label{pmuisnice}If $\mu$ is a regular cardinal, then $\mathbb{P}(\mu)$ has the following properties:
+  \begin{enumerate}[label={(\arabic*)}]
+    \item $|\mathbb{P}(\mu)|=\mu^+$ hence $\mathbb{P}(\mu)$ has the $\mu^{++}$-cc. \label{pmuisnice:cc}
+    \item $\mathbb{P}(\mu)$ is $<\mu$-directed closed. \label{pmuisnice:dircl}
+    \item If $\theta\geq\mu^{++}$, $M\prec (H_\theta,\in,\mu^+)$, and $M\cap \mu^+\in \mu^+\cap cof(\mu)$, then $\mathbb{P}(\mu)$ is strongly proper for $M$. Hence $\mathbb{P}(\mu)$ preserves $\mu^+$. \label{pmuisnice:proper}
+    \item If $G$ is $\mathbb{P}(\mu)$-generic over $V$, then in $V[G]$, we have that 
+    \[C_\mu:=\bigcup_{(s,f)\in G} s\]
+    is a club subset of $\mu^+$ such that if $X\in V$ and $|X|^V\geq \mu$, then $X\not\subseteq C_\mu$. \label{pmuisnice:club}
+    \item $\mathbb{P}(\mu)$ is not $\mu^+$-cc below any condition. \label{pmuisnice:notcc}
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The proofs are exactly as in Lemma 4.4 in \cite{cox_eskew_kill_sat_save_presat}, where here \ref{pmuisnice:cc} follows from assuming GCH.
+
+For the sake of clarity, we will prove \ref{pmuisnice:proper} and \ref{pmuisnice:club}.
+
+To see that \ref{pmuisnice:proper} holds, let $\theta\geq \mu^{++}$, $M\prec (H_\theta,\in,\mu^+)$, and $M\cap \mu^+\in \mu^+\cap cof(\mu)$; suppose that $(s,f)\in \mathbb{P}(\mu)\cap M$.
+Observe that $\mu^{<\mu}=\mu$ and $M\prec (H_\theta,\in,\mu^+,\mu)$.
+Let $\delta=M\cap \mu^+$; since $(\mu^+)^{<\mu}=\mu^+$ as witnessed in $H_\theta$, we have that there is a bijection $\phi:\mu^+\to [\mu^+]^{<\mu}$ such that $\phi\in M$. 
+Without loss of generality, we may assume that for each $\beta<\mu^+$ with $cf(\beta)=\mu$, $\phi\upharpoonright \beta$ surjects onto $[\beta]^{<\mu}$.
+
+We wish to show that $^{<\mu} (M\cap \mu^+)\subseteq M$.
+Let $\delta=M\cap \mu^+$ and suppose that $b\in [\delta]^{<\mu}$. 
+Since $cf(\delta)=\mu$, we have that $\sup b < \delta$.
+But then by choice of $\phi$, there is an $\alpha<\sup b$ such that $\phi(\alpha)=\beta$, and since $\sup b<\delta$, $\alpha\in M$.
+Thus $b\in M$, and so we have shown
+\[^{<\mu}(M\cap \mu^+)\subseteq M\]
+Since $|s|<\mu\subseteq M\cap \mu^+$, we thus have that $s\subseteq M$ and hence $M\cap \mu^+\notin s=dom(f)$.
+Further, if $\xi\in s$ then $f(\xi)\in M\cap [\mu^+]^{<\mu}$; since $\mu\subseteq M$ and $\theta$ is sufficiently large, $f(\xi)\subseteq M\cap\mu^+$.
+
+Thus the following condition $(s',f')$ extends $(s,f)$:
+\[(s',f'):=\left(s\frown \left(M\cap \mu^+\right),f\frown \left(M\cap \mu^+\mapsto \{M\cap \mu^+\}\right)\right)\]
+We now must argue that $(s',f')$ is a strong master condition for $(M,\mathbb{P}(\mu))$. 
+Let $(t,h)\leq (s',f')$. 
+Then $t_M:=t\cap M$ is a $<\mu$-sized subset of $M\cap \mu^+$, hence $t_M\in M$.
+Further, since $(t,h)\leq (s',f')$, we have that $M\cap\mu^+\in t$.
+Hence, as $(t,h)$ is a condition in $\mathbb{P}(\mu)$ (namely, by part \ref{defpmu:f} of Definition \ref{defpmu}), $(h\upharpoonright t_M):t_M \to [M\cap \mu^+]^{<\mu}$.
+Thus $(t_M,h\upharpoonright t_M)\in M\cap \mathbb{P}(\mu)$.
+
+To complete the proof of strong properness, let $(u,g)\in M\cap\mathbb{P}(\mu)$, $(u,g)\leq (t_M,h\upharpoonright t_M)$.
+Then let $F:u\cup t \to [\mu^+]^{<\mu}$, $F(\xi)=g(\xi)$ if $\xi\in u$, and $F(\xi)=h(\xi)$ otherwise.
+Then $(u\cup t, F)\in\mathbb{P}(\mu)$ and $(u\cup t, F)\leq (u,g),(t,h)$. 
+
+Since $(u,g)$ was arbitrary, we have shown that every extension of $(t_M,h\upharpoonright t_M)$ in $\mathbb{P}(\mu)\cap M$ is compatible with $(t,h)$.
+Thus $(s',f')$ is a strong master condition. This completes our proof of \ref{pmuisnice:proper}.
+
+
+To see that \ref{pmuisnice:club} holds, we have three things to show:
+\begin{enumerate}[label={(\roman*)}]
+\item $C_\mu$ is unbounded in $\mu^+$
+\item $C_\mu$ is closed
+\item If $X\in V$ and $|X|^V\geq\mu$ then $X\not\subseteq C_\mu$
+\end{enumerate}
+
+To see (i), let $(s,f)\in \mathbb{P}(\mu)$ and let $\alpha<\mu^+$. 
+By definition of $\mathbb{P}(\mu)$, $|s|<\mu$ and for each $\beta\in s$, $f(\beta)$ is a $<\mu$-sized subset of $\mu^+$. 
+Hence $\sup_{\beta\in s} \sup f(\beta)<\mu^+$, so let $\delta$ be such that $\sup_{\beta\in s} \sup f(\beta)<\delta<\mu^+$.
+Then 
+\[p:=(s\frown \delta, f \frown (\delta\mapsto \emptyset))\]
+is a condition below $(s,f)$ such that $p\forces \delta\in \dot{C_\mu}$; thus $C_\mu$ is unbounded.
+
+To see (ii), we argue contrapositively. Let $\beta\in \mu^+\setminus (\mu+1)$ and suppose $(s,f)\in\mathbb{P}(\mu)$ is such that $(s,f)\forces \check{\beta}\notin \dot{C_\mu}$. We will argue that $(s,f)\forces \check{\beta}\notin Lim(\dot{C_\mu})$.
+Observe that there must be an $\alpha\in s\cap\beta$ such that $f(\alpha)\not\subseteq\beta$; for otherwise, we would have that for all $\alpha \in s\cap \beta$, $f(\alpha)\subseteq\beta$, hence $\left(s\frown \beta, f\frown(\beta\mapsto\emptyset)\right)$ would be a condition below $(s,f)$ forcing $\beta\in\dot{C_\mu}$.
+By conditionhood of $(s,f)$, there is a unique such $\alpha$ and $\alpha$ is the largest element of $s\cap\beta$.
+Additionally, no extension $(t,g)$ of $(s,f)$ can have that $t\cap (\alpha,\beta)\neq\emptyset$, and hence $(s,f)\forces``\check{\alpha}\text{ is the largest element of }\dot{C_\mu}\cap\check{\beta}"$.
+Thus $(s,f)\forces\check{\beta}\notin Lim(\dot{C_\mu})$.
+
+
+To see (iii), let $X\in V$ with $|X|^V\geq \mu$ and let $(s,f)\in \mathbb{P}(\mu)$. 
+Observe that without loss of generality we may assume that $X\subseteq \mu^+\setminus (\mu+1)$.
+Further, by taking an initial segment of $X$ we may assume that $otp(X)=\mu$ and hence that $cf(\sup(X))=\mu$.
+Since $|s|<\mu$ and $\sup(X)$ has cofinality $\mu$, $s\cap \sup(X)$ is bounded below $\sup(X)$. 
+
+Now we have two cases. If there is a $\xi\in s\cap \sup(X)$ such that $f(\xi)\not\subseteq \sup(X)$, let $\rho\in f(\xi)\setminus\sup(X)$.
+Then $(s,f)\forces \dot{C_\mu}\cap (\xi,\rho]=\emptyset$ and hence $(s,f)\forces``\dot{C_\mu}\cap \check{X}\text{ is bounded below }\sup(\check{X})"$. 
+Thus $X\not\subseteq C_\mu$.
+
+Otherwise, let $\zeta=\sup\{\sup f(\xi) \mid \xi\in s\cap \sup(X)\}$.
+Since each $f(\xi)\subseteq \sup(X)$ and $\mu$ is regular, $\zeta<\sup(X)$.
+Let $p=(s\frown \zeta,f\frown (\zeta\mapsto\{\sup(X)\}))$.
+Then $p\leq (s,f)$ and $p\forces \max(\dot{C_\mu}\cap \sup(X))=\zeta$.
+Hence $p\forces X\not\subseteq \dot{C_\mu}$.
+Thus $X\not\subseteq C_\mu$. This completes our proof of \ref{pmuisnice:club}.
+\end{proof}
+
+\begin{definition}
+  We define an Easton support iteration forcing $\mathbb{Q}=\seq{\mathbb{Q}_\mu * \dot{\mathbb{C}}(\mu) \mid \mu<\kappa}$ as follows:
+  
+  For each $\mu<\kappa$, if $\mu$ is regular in $V^{\mathbb{Q}_\mu}$, let $\mathbb{C}(\mu)=\mathbb{P}(\mu)$ as above, and otherwise let $\mathbb{C}(\mu)$ be the trivial forcing. 
+\end{definition}
+
+\begin{proposition}
+If $\nu\leq\kappa$ is regular in $V$, then $\nu$ is still regular in $V^{\mathbb{Q}_\nu}$.\label{itn-regularity}
+\end{proposition}
+
+\begin{proof}
+This breaks into three cases:
+\begin{enumerate}
+\item $\nu=\tau^+$, for $\tau$ a regular cardinal
+\item $\nu=\lambda^+$, for $\lambda$ a singular cardinal
+\item $\nu$ is inaccessible
+\end{enumerate}
+
+If $\nu=\tau^+$ where $\tau$ is regular, we may decompose $\mathbb{Q}_\nu$ as 
+\[\mathbb{Q}_\tau * \dot{\mathbb{C}}(\tau)\]
+Since $\tau$ is regular, $|\mathbb{Q}_\tau|=\tau$ hence is $\nu$-cc. Thus $\mathbb{Q}_\tau$ preserves $\nu$.
+By Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{C}}(\tau)$ preserves $\nu$.
+Thus $\dot{\mathbb{Q}}_{\nu}$ preserves $\nu$.
+
+If $\nu=\lambda^+$ where $\lambda$ is singular, we have that $\mathbb{Q}_\nu=\mathbb{Q}_\lambda$ since none of the ordinals in $[\lambda,\nu)$ are regular. 
+Here, the situation is more complicated, since now $|\mathbb{Q}_\lambda|=\lambda^+=\nu$. So we must verify more directly that $\nu$ is preserved.
+
+So observe that if $\nu$ is collapsed, then $V^{\mathbb{Q}_\lambda}\models |\nu|\leq |\lambda|$ and since $\lambda$ is singular, we would have a $\mathbb{Q}_\lambda$-name $\dot{f}:\check{\delta}\to\check{\nu}$ for a cofinal sequence in $\check{\nu}$ for some regular cardinal $\delta<\lambda$.
+
+But we may decompose $\mathbb{Q}_\lambda$ into 
+\[\mathbb{Q}_{\delta}*\dot{\mathbb{C}}(\delta)*\dot{\mathbb{Q}}_{>\delta^+}\]
+Now, $\dot{\mathbb{Q}}_{>\delta^+}$ is $<\delta^+$-directed closed, so $\dot{\mathbb{Q}}_{>\delta}$ could not have added such an $f$.
+Additionally, $\dot{\mathbb{C}}(\delta)$ satisfies the $\delta^{++}$-cc, hence is $\nu$-cc. Thus $\dot{\mathbb{C}}(\delta)$ also could not have added $f$.
+Finally, $|\mathbb{Q}_\delta|=\delta$ so $\mathbb{Q}_\delta$ satisfies the $\delta^+$-cc, hence is also $\nu$-cc. Thus $\mathbb{Q}_\delta$ could not have added such an $f$ either. 
+
+As in the successor of a regular case, $\dot{\mathbb{C}}(\nu)$ and $\dot{\mathbb{Q}}_{\geq\nu}$ preserve $\nu$ as well.
+
+And in the case where $\nu$ is inaccessible, suppose that in $V^{\mathbb{Q}_\nu}$ that $cf(\check{\nu})=\check{\delta}<\check{\nu}$.
+Then $\mathbb{Q}_\nu$ decomposes, as in the successor of a singular case, into
+$$\mathbb{Q}_\delta * \dot{\mathbb{C}}(\delta) * \dot{\mathbb{Q}}_{>\delta^+}$$
+The analysis is exactly as in the successor of a singular case.
+\end{proof}
+
+This shows that whenever $\nu$ is regular in $V$, $\nu$ remains regular in $V^{\mathbb{Q}_\nu}$ and we will now write $\mathbb{P}(\nu)$ rather than $\mathbb{C}(\nu)$.
+
+\begin{corollary}
+  $\mathbb{Q}$ preserves cardinals.
+\end{corollary}
+
+\begin{proof}
+Since $\kappa$ is inaccessible, $\mathbb{Q}=\mathbb{Q}_\kappa$  preserves $\kappa$ by Proposition \ref{itn-regularity}.
+Since $|\mathbb{Q}|=\kappa$, $\mathbb{Q}$ preserves cardinals $>\kappa$.
+
+For $\nu<\kappa$ regular, we have that $\mathbb{Q}=\mathbb{Q}_\nu * \dot{\mathbb{P}}(\nu)*\dot{\mathbb{Q}}_{>\nu}$.
+By the preceding proposition, $\mathbb{Q}_\nu$ preserves $\nu$. By Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{P}}(\nu)$ preserves $\nu$. And by Lemma \ref{pmuisnice}\ref{pmuisnice:dircl}, $\dot{\mathbb{Q}}_{>\nu}$ is $<\nu^+$-directed closed hence preserves $\nu$.
+\end{proof}
+
+\begin{remark}
+Note that $|\mathbb{Q}|=\kappa$ so $\mathbb{Q}$ preserves $GCH_{\geq\kappa}$.
+
+By Lemma \ref{pmuisnice}, each $\mathbb{P}(\mu)$, $\mu<\kappa$ regular, preserves $GCH$; hence $\mathbb{Q}$ preserves $GCH_{<\kappa}$ as well.
+
+Since $\kappa$ is Mahlo, $\mathbb{Q}$ is $\kappa$-cc.
+\end{remark}

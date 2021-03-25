@@ -1,4 +1,218 @@
 \section{Chapter-specific preliminaries}
 \label{destroy_sat:preliminaries}
 
-Put the section-specific background here, i.e. stuff that's not fundamental enough to go in the intro but is only applicable to this chapter.
+(TODO: Put the section-specific background here, i.e. stuff that's not fundamental enough to go in the intro but is only applicable to this chapter, and separate out the rest.
+
+Especially some of the notational bs like $Reg_\kappa$, $V^{\mathbb{P}}$.
+
+Also for subject matter: ideals, cplteness, normality, cc, presat, closure, precipitousness, generic ultrapowers, Foreman duality.)
+
+Here are some definitions, theorems, and notations we use.
+
+For a cardinal $\kappa$, we will write $Reg_\kappa$ for the set of regular cardinals below $\kappa$, and $cof(\kappa)$ for the proper class of cardinals of cofinality $\kappa$.
+
+If $\mathbb{P}$ is a notion of forcing in $V$, we will variously use $V^\mathbb{P}$ or $V[G]$ to refer to the generic extension of $V$ by $\mathbb{P}$.
+
+We will further take for granted that the reader is familiar with forcing, iterated forcing, and ultrapowers.
+
+\begin{definition}[ideals]
+Let $\kappa$ be a cardinal.
+An \emph{ideal} $I$ on $\kappa$ is a subset of $\mathcal{P}(\kappa)$ such that:
+\begin{enumerate}
+\item $\emptyset\in I$, $\kappa\notin I$
+\item If $A\in I$ and $B\subseteq A$ then $B\in I$
+\item If $A,B\in I$ then $A\cup B\in I$
+\end{enumerate}
+
+For $\mu\in Reg_\kappa$, the ideal $I$ is said to be \emph{$\mu$-complete} if whenever $\lambda\in Reg_\mu$ and $\seq{A_\alpha \mid \alpha<\lambda}\subseteq I$ then
+\[\bigcup_{\alpha<\lambda} A_\alpha\]
+is also in $I$.
+
+The ideal $I$ is said to be \emph{normal} if whenever $\seq{A_\alpha\mid \alpha<\kappa}\subseteq I$, we have that the diagonal union
+\[\nabla_{\alpha<\kappa} A_\alpha:=\{\beta<\kappa \mid \exists \alpha<\beta \ \beta\in A_\alpha\}\]
+is also in $I$.
+\end{definition}
+
+An ideal is \emph{principal} if it contains a cofinite set; for our purposes, ideals are always assumed to be nonprincipal.
+
+
+For an ideal $I$ on $\kappa$, we define $I^+:=\{S\subseteq \kappa \mid S\notin I\}$.
+
+
+For example, $NS_\kappa$, the collection of nonstationary sets on $\kappa$, forms a normal ideal; its dual filter is the club filter on $\kappa$, and $(NS_\kappa)^+$ is the collection of stationary sets on $\kappa$.
+
+\begin{definition}
+If $I$ is an ideal on $\kappa$ then we may define an equivalence relation $\simeq_I$ on $\mathcal{P}(\kappa)$ by $A\simeq B$ if and only if $(A\setminus B)\cup (B\setminus A)\in I$.
+
+We say that $A\leq_I B$ if $A\setminus B\in I$.
+
+We may consider the equivalence classes $\mathcal{P}(\kappa)/I:=\{[A]_{\simeq_I}\mid A\subseteq \kappa\}$ as a poset with partial order $\leq_I$.
+\end{definition}
+
+
+Given $I$ an ideal on $\kappa$, we will write $\mathcal{B}_I:=\left(\mathcal{P}(\kappa)/I\right)\setminus [\emptyset]_{\simeq_I}$; when thinking of $\mathcal{B}_I$ as a poset, we will implicitly use the partial ordering $\leq_I$ and in many cases, $\mathcal{B}_I$ will be a separative notion of forcing (or even a complete Boolean algebra).
+
+The above two definitions are Definitions 2.1, 2.17, and 2.18\footnote{In \cite{foreman_ideals_gen_ees}, a different version of normality is taken to be definitional, and the equivalence of these two versions is Proposition 2.19 of \cite{foreman_ideals_gen_ees}.} of \cite{foreman_ideals_gen_ees}.
+
+The following definition summarizes some forcing properties of posets that will come in handy:
+
+\begin{definition}[Chain condition, presaturation, and closure]
+Let $(\mathbb{P},\leq)$ be a poset. We say that:
+\begin{enumerate}[label={(\roman*)}]
+\item (\cite{baumgartner_taylor_sat_gen_ees_two}, as Theorem 4.2) $\mathbb{P}$ is \emph{$\mu$-presaturated} if for every $\lambda<\mu$ and every family $\seq{A_\alpha \mid \alpha<\lambda}$ of antichains,
+there are densely many $p\in\mathbb{P}$ such that for all $\alpha$, $\{q\in A_\alpha \mid p\compat q\}$ has cardinality $<\mu$. Note that $\mu$-cc implies $\mu$-presaturation.
+
+\item $\mathbb{P}$ is \emph{$<\kappa$-closed} if whenever $\tau<\kappa$ and $\seq{p_\alpha \mid \alpha<\tau}$ is a $\leq$-decreasing sequence in $\mathbb{P}$, there is a $p\in\mathbb{P}$ such that $p\leq p_\alpha$ for all $\alpha<\tau$
+
+\item $\mathbb{P}$ is \emph{$<\kappa$-directed closed} ($<\kappa$-dc) if whenever $D\subseteq \mathbb{P}$ is a directed set\footnote{that is, for all $p,q\in D$, there is an $r\in D$ such that $r\leq p,q$} with $|D|<\kappa$, there is a $q\in \mathbb{P}$ such that whenever $p\in D$, $q\leq p$
+
+\item $\mathbb{P}$ is \emph{$\mu$-preserving} (for $\mu$ a $V$-cardinal) if $V^\mathbb{P}\models ``\check{\mu}\text{ is a cardinal}"$
+\end{enumerate}
+\end{definition}
+
+Some of these properties have analogues for ideals as well.
+To begin with, if $I$ is a $\kappa$-complete ideal on $\kappa$ then a $\mathcal{B}_I$-generic object induces a $V$-$\kappa$-complete ultrafilter $U$ on $\kappa$ from which the ultrafilter $Ult(V,U)$ may be formed.
+If $I$ is additionally normal, then $U$ will be $V$-normal.
+
+\begin{definition}[Definition 2.4 of \cite{foreman_ideals_gen_ees}]
+An ideal $I$ is said to be \emph{precipitous} if whenever $U$ is a $\mathcal{B}_I$-generic object over $V$,
+$Ult(V,U)$ is well-founded.
+\end{definition}
+
+For $I$ an ideal on $\kappa$, we will say that $I$ is defined to be \emph{$\mu$-saturated} if $\mathcal{B}_I$ has the $\mu$-cc.
+It is well known that a $\mu$-saturated ideal is precipitous and $\mu$-preserving, i.e. that $V^{\mathcal{B}_I}\models``\mu\text{ is a cardinal}"$.
+However, we make the following caveat:
+
+\begin{caveat}
+In contrast to the above definition, an ideal $I$ is defined to be $\mu$-presaturated if $I$ is precipitous and $\mu$-preserving.
+
+Only for precipitous ideals $I$ is it the case that $I$ is $\mu$-presaturated if and only if $\mathcal{B}_I$ is $\mu$-presaturated as a forcing poset.
+\end{caveat}
+
+Presaturation can be pushed downwards through an iteration:
+
+\begin{lemma}[Lemma 2.12 of \cite{cox_eskew_kill_sat_save_presat}]\label{pushpresatdown}
+If $\mathbb{P} * \dot{\mathbb{Q}}$ is $\kappa$-presaturated then $\mathbb{P}$ is $\kappa$-presaturated and $1_\mathbb{P}\forces \dot{\mathbb{Q}}$ is $\kappa$-presaturated.
+\end{lemma}
+
+Whether the converse holds is currently an open problem; this appears as Question 8.6 of \cite{cox_eskew_kill_sat_save_presat}. 
+
+Next we go over the notion of properness and relate properness and closedness to presaturation.
+
+Let $\delta$ be regular uncountable, and let $H\supsetneq\delta$.
+Then we write $\mathcal{P}_\delta(H)$ for all subsets of $H$ of size $<\delta$, and $\mathcal{P}^*_\delta(H)$ to denote the set of all $x\in \mathcal{P}_\delta(H)$ such that $x\cap\delta\in\delta$.
+
+\begin{definition}
+Let $\mathbb{P}$ be a notion of forcing, $\theta$ sufficiently large so that $\mathbb{P}\in H_\theta$, and $M\prec (H_\theta,\in,\mathbb{P})$. 
+
+We say that $p\in\mathbb{P}$ is an \emph{$(M,\mathbb{P})$-master condition} if for every dense $D\in M$, $D\cap M$ is predense below $p$; equivalently, $p\forces_{\mathbb{P}} M[\dot{G}_{\mathbb{P}}]\cap V=M$. 
+
+Additionally, we say that $p$ is an \emph{$(M,\mathbb{P})$-strong master condition} if for every $p'\leq p$, there is some $p'_M\in M\cap\mathbb{P}$ such that every extension of $p'_M$ in $M\cap\mathbb{P}$ is compatible with $p'$. 
+\footnote{It is straightforward to see that strong master conditions are also master conditions.}
+
+Further, $\mathbb{P}$ is \emph{(strongly) proper with respect to $M$} if every $p\in M\cap\mathbb{P}$ has a $q\leq p$ such that $q$ is an $(M,\mathbb{P})$-(strong) master condition.
+
+We say that $\mathbb{P}$ is \emph{(strongly) $\delta$-proper on a stationary set} if there is a stationary subset $S$ of $\mathcal{P}^*_\delta(H_\theta)$ such that for every $M\in S$, $M\prec (H_\theta,\in,\mathbb{P})$ and $\mathbb{P}$ is (strongly) proper with respect to $M$.
+\end{definition}
+
+Note that $\{M\in \mathcal{P}^*_\delta(H_\theta)\mid M\prec (H_\theta,\in,\mathbb{P})\}$ is a club subset of $\mathcal{P}^*_\delta(H_\theta)$; so a forcing being $\delta$-proper on a stationary set really only depends on the properness condition.
+
+\begin{fact}
+If $\mathbb{P}$ is $\delta$-proper on a stationary set, then $\mathbb{P}$ is $\delta$-presaturated.
+\end{fact}
+
+This fact appears as Fact 2.8 of \cite{cox_eskew_kill_sat_save_presat}, with proof; their proof, in turn, generalizes a result of Foreman and Magidor in the case of $\delta=\omega_1$ (namely, Proposition 3.2 of \cite{foreman_magidor_lcs_ctx_ch}).
+
+For the posets we will be working with, we will have a specific stationary subset witnessing $\delta$-properness:
+
+\begin{definition}
+For $\delta$ regular and $\theta>>\delta$, we say that $IA_{<\delta}\subseteq \mathcal{P}^*_\delta(H_\theta)$, 
+the ``internally approachable sets of length $<\delta$", 
+is the collection of all $M\in \mathcal{P}^*_\delta(H_\theta)$, with $|M|=|M\cap \delta|$, that are \emph{internally approachable},
+i.e. such that there is a $\zeta<\delta$ and a continuous $\subseteq$-increasing sequence $\seq{N_\alpha\mid \alpha<\zeta}$ whose union is $M$, such that $\vec{N}\upharpoonright \alpha\in M$ for all $\alpha<\zeta$.
+\end{definition}
+
+In a sense, internal approachability is preserved by any generic extension:
+
+\begin{fact}\label{principle-A}
+Suppose $\mathbb{P}$ is a poset, $M\prec(H_\theta,\in,\mathbb{P})$, $\seq{N_\alpha\mid\alpha<\zeta}$ witnesses that $M\in IA_{<\delta}$, and $G$ is $(V,\mathbb{P})$-generic.
+Then in $V[G]$, $\seq{N_\alpha[G]\mid \alpha<\zeta}$ witnesses that $M[G]\in IA_{<\delta}$. (Without loss of generality, we may assume that $\mathbb{P}\in N_0$.)
+\end{fact}
+
+It is a standard fact that $IA_{<\delta}$ is stationary.
+The following lemma makes clear its utility:
+
+\begin{lemma}\label{lemma-iaposets}
+Let $\delta$ be regular and uncountable. Then:
+\begin{enumerate}[label={(\roman*)}]
+\item\label{lemma-iaposets:cc}
+If $\mathbb{P}$ is $\delta$-cc and $M\prec (H_\theta,\in,\mathbb{P})$ is an element of $\mathcal{P}^*_\delta(H_\theta)$ (i.e. if $M\cap\delta\in\delta$), then $1_\mathbb{P}$ is an $(M,\mathbb{P})$-master condition; in particular $\mathbb{P}$ is $\delta$-proper on $\mathcal{P}^*_\delta(H_\theta)$.
+
+\item\label{lemma-iaposets:closed}
+If $\mathbb{Q}$ is $<\delta$-closed then $\mathbb{Q}$ is $\delta$-proper on $IA_{<\delta}$.
+
+\item\label{lemma-iaposets:iter}
+If $\mathbb{P}$ is $\delta$-proper on $IA_{<\delta}$ and $\forces_\mathbb{P}``\dot{\mathbb{Q}}\text{ is }\delta\text{-cc}$ or $\forces_\mathbb{P}``\dot{\mathbb{Q}}\text{ is }<\delta\text{-closed}$ then $\mathbb{P}*\mathbb{\dot{Q}}$ is $\delta$-proper on $IA_{<\delta}$.
+\end{enumerate}
+\end{lemma}
+
+This is roughly Fact 2.9 out of \cite{cox_eskew_kill_sat_save_presat}. The following proof is largely reproduced from \cite{cox_eskew_kill_sat_save_presat} as well.
+
+\begin{proof}
+For part \ref{lemma-iaposets:cc}, let $A\in M$ be a maximal antichain in $\mathbb{P}$.
+Since $|A|<\delta$ and $M\cap\delta\in\delta$, we have that $A\subseteq M$.
+Thus $1_\mathbb{P}\forces M[\dot{G}]\cap\check{V}=M$, so $1_\mathbb{P}$ is a master condition for $M$.
+
+Part \ref{lemma-iaposets:closed} is due to Foreman and Magidor in \cite{foreman_magidor_lcs_ctx_ch}. %I can't specifically find it here, but Cox & Eskew say it's in there.
+
+As for part \ref{lemma-iaposets:iter}, let $G$ be $\mathbb{P}$-generic over $V$.
+Suppose that $M\prec (H_\theta,\in,\mathbb{P}*\dot{\mathbb{Q}})$ and $M\in IA_{<\delta}$.
+By Fact \ref{principle-A}, combined with \ref{lemma-iaposets:cc} and \ref{lemma-iaposets:closed},
+$\mathbb{P}$ forces that $\dot{\mathbb{Q}}$ is proper with respect to $M[\dot{G}]$.
+Hence $\mathbb{P}*\dot{\mathbb{Q}}$ is proper with respect to $M$.
+\end{proof}
+
+Presaturation has a useful corollary:
+\begin{fact}
+If $\mathbb{P}$ is $\lambda$-presaturated for $\lambda$ regular then 
+\[\forces_{\mathbb{P}} cof^V(\geq\lambda)=cof^{V[\dot{G}]}(\geq\lambda)\]
+\end{fact}
+The above fact has a partial converse. We will not make use of it, but it is another known way to argue that certain iterations of presaturated forcings are presaturated:
+\begin{fact}\label{cof->presat}
+If $\mathbb{P}$ is $\lambda^{+\omega}$-cc for some regular $\lambda\geq\omega_1$ and
+\[\forall n\in\omega \ \forces_{\mathbb{P}} cf^{V[\dot{G}]}\left(\left(\lambda^{+n}\right)^V\right)\geq\lambda\]
+then $\mathbb{P}$ is $\lambda$-presaturated.
+\end{fact}
+
+This appears as Fact 2.11 in \cite{cox_eskew_kill_sat_save_presat}, which in turn is a generalization of Theorem 4.3 of \cite{baumgartner_taylor_sat_gen_ees_two}.
+
+\begin{fact}\label{foreman_ideals_gen_ees:ultrapower-closure}
+For a $\kappa$-complete, $\kappa^+$-saturated ideal $I\in V$,
+if $U$ is a $\mathcal{B}_I$-generic filter over $V$
+then in $V[U]$, $^\kappa Ult(V,U)\subseteq Ult(V,U)$; that is, $Ult(V,U)$ is closed under $\kappa$-sequences from $V[U]$.
+\end{fact}
+
+This follows from Propositions 2.9 and 2.14 of \cite{foreman_ideals_gen_ees}.
+
+
+We will sometimes write $Ult(V,I)$ to denote $Ult(V,U)$, and will also write $j_I$ to denote $j_U:V\to Ult(V,U)$.
+
+If $I\in V$ is an ideal on $\kappa$ and $\mathbb{P}$ is a notion of forcing understood from context, then we will write $\overline{I}:=\left\{N\in \mathcal{P}^{V^\mathbb{P}}(\kappa)\mid \exists A\in I \ N\subseteq A\right\}$.
+
+The following two simplified versions of Foreman's Duality Theorem will be useful later:
+
+\begin{lemma}\label{foreman_ideals_gen_ees:groundideals}
+For a $\kappa$-complete, $\kappa^+$ saturated $I\in V$, $\overline{I}$ is $\kappa^+$-saturated in $V^\mathbb{Q}$ if and only if $\forces_{\mathcal{B}_I} \dot{j}_I(\mathbb{Q})$ is $\kappa^+$-cc.
+\end{lemma}
+ 
+This appears as Corollary 7.21 in \cite{foreman_ideals_gen_ees}.
+
+\begin{theorem}
+\label{easyduality}
+Let $I$ be a $\kappa$-complete normal precipitous ideal in $V$ and $\mathbb{Q}$ be a $\kappa$-cc poset. 
+Then $\overline{I}$ is precipitous and there is a canonical isomorphism witnessing that
+\[\mathcal{B}\left(\mathbb{Q} * \mathcal{B}_{\overline{I}}\right)\cong \mathcal{B}\left(\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)\right)\]
+where $\mathcal{B}(\mathbb{P})$ refers to the Boolean completion of $\mathbb{P}$.
+\end{theorem}
+
+This statement appears in \cite{cox_eskew_kill_sat_save_presat} as Fact 2.24, and is a corollary of Theorem 7.14 of \cite{foreman_ideals_gen_ees}.

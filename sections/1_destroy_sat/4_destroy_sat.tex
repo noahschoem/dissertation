@@ -1,2 +1,80 @@
 \section{Destroying Saturation}
 \label{destroy_sat:destroy_sat}
+
+Since $\mathbb{Q}$ projects to each $\mathbb{Q}_\mu * \dot{\mathbb{P}}(\mu)$, $\mu<\kappa$ regular, we may, for each such $\mu$, let $G_\mu$ be the restriction of the $\mathbb{Q}$-generic $G$ to $\mathbb{P}(\mu)$ and define 
+$C_\mu=\{\xi \mid \exists (s,f)\in G_\mu \ \xi\in s\}$.
+By Lemma \ref{pmuisnice}\ref{pmuisnice:club}, $C_\mu$ is a club subset of $\mu^+$ in $V^{\mathbb{Q}_{\mu}*\dot{\mathbb{P}}(\mu)}$ and for every $X\in V^{\mathbb{Q}_{\mu}}$ such that $X\subseteq [\mu,\mu^+)$ and $X$ has $V^{\mathbb{Q}_{\mu}}$-cardinality $\geq\mu$, $X\not\subseteq C_\mu$. 
+
+As a warmup to proving Theorem \ref{bigthm}\ref{bigthm:killsat}, we argue the following:
+
+\begin{proposition}\label{ground-killsat}
+Suppose that $I\in V$ is $\kappa$-complete, normal, $\kappa^+$-saturated, and concentrates on $Reg_\kappa$. 
+Then in $V^\mathbb{Q}$, $\overline{I}$ is not $\kappa^+$-saturated.
+\end{proposition}
+
+Before we prove this, it will be helpful to isolate a lemma on what $j_I(\mathbb{Q})$ looks like in $Ult(V,I)$:
+
+\begin{lemma}\label{jQ-ultVI}
+Let $I$ be a $\kappa$-complete, normal, fine precipitous ideal concentrating on regulars.
+Then in $Ult(V,I)$, 
+$j_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is a name for an Easton support iteration $\seq{\mathbb{R}_\lambda * \dot{\mathbb{C}}(\lambda) \mid \lambda\in[\kappa,j(\kappa))}$, such that if $\lambda$ is regular, $\mathbb{C}(\lambda)=\mathbb{P}(\lambda)$, and $\mathbb{C}(\lambda)$ is the trivial forcing otherwise.
+\end{lemma}
+
+\begin{proof}
+This follows from the elementarity of $j_I$, and since $I$ concentrates on regulars, $\kappa$ is regular in $Ult(V,I)$.
+\end{proof}
+
+\begin{remark}
+Since we are assuming $V\models GCH$, as with ultrapowers from a measurable cardinal, we will have that if $I$ is a $\kappa$-complete normal precipitous ideal in $V$, then in $V^{\mathcal{B}_I}$, $|j_I(\kappa)|=2^\kappa=\kappa^+$.
+However, by elementarity, in $Ult(V,I)$, $j_I(\kappa)$ is inaccessible.
+\end{remark}
+
+\begin{remark}
+This is unlike a $\lambda$-complete, $\lambda^+$-saturated ideal $J$ on $\lambda$ a successor cardinal;
+for $\lambda$ a successor cardinal, we would have that $j_J(\lambda)=\lambda^+$. The argument can be found in \cite{foreman_ideals_gen_ees}.
+\end{remark}
+
+\begin{proof}[Proof of Proposition \ref{ground-killsat}]
+By Lemma \ref{jQ-ultVI}, in $V^{\mathcal{B}_I}$, $\dot{j}_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is an Easton support iteration $\seq{\mathbb{R}_\lambda * \dot{\mathbb{C}}(\lambda) \mid \lambda\in[\kappa,j_I(\kappa))}$ as in the lemma.
+
+Since $\mathbb{P}(\alpha)$ is not $\kappa^+$-saturated for all $\alpha\in [\kappa,j_I(\kappa))$ regular, $j_I(\mathbb{Q})$ is not $\kappa^+$-saturated.
+
+So by Lemma \ref{foreman_ideals_gen_ees:groundideals}, in $V^\mathbb{Q}$, $\overline{I}$ is not $\kappa^+$-saturated.
+\end{proof}
+
+We now prove Theorem \ref{bigthm}\ref{bigthm:killsat}.
+
+\begin{proof}[Proof of Theorem \ref{bigthm}\ref{bigthm:killsat}]
+Let $G$ be $\mathbb{Q}$-generic, and suppose that in $V[G]$ there is a $\kappa$-complete, $\kappa^+$-saturated ideal $\mathcal{J}$ on $\kappa$ concentrating on regular cardinals below $\kappa$.
+
+Let $U$ be $P(\kappa)/\mathcal{J}$-generic over $V[G]$, and let $j:V[G]\to Ult(V[G],U)$ be the generic ultrapower.
+
+Let $N=\bigcup_{\alpha\in ORD} j(V_\alpha)$. Then $j(\mathbb{Q})\in N$ and hence $Ult(V[G],U)=N[g']$ for some $g'\in V[G*U]$ which is $j(\mathbb{Q})$-generic over $N$.
+
+Observe that $\kappa$ is still inaccessible in $N[g']$ by inaccessibility in $V[G]$, by being the critical point of $j$, and since $\mathcal{J}$ concentrates on regulars.
+Since $j(\kappa)>\kappa$ and $j(\kappa)$ is a cardinal in $N[g']$, $j(\kappa)> (\kappa^+)^{N[g']}\geq (\kappa^+)^{V[G]}$ (by $\kappa$-closure and $\kappa^+$-saturation of $\mathcal{J}$).
+Further, by the usual ultrapower argument, $|j(\kappa)|\leq 2^\kappa=\kappa^+$. 
+
+So $j(\kappa)$ is not a cardinal in $V$, but by Fact \ref{foreman_ideals_gen_ees:ultrapower-closure}, $N[g']$ is closed under $\kappa$-sequences from $V[G]$.
+
+Work in $N[g']$. Let $g'$ be the projection of $j(\mathbb{Q})$ to $\mathbb{P}(\kappa)$, and let 
+\[C_\kappa=\bigcup_{(s,f)\in g'} s\]
+Then
+\begin{equation}\label{eqn:ng'defc}
+N[g']\models C_\kappa\text{ is club in }\kappa^+ \text{ and } \forall  X \in N |X|^N\geq\kappa, \ X \not\subseteq C_\kappa
+\end{equation}
+
+Since $V[G*U]$ is a $\kappa^+$-cc extension of $V$, we may let $D\in V$ be such that in $V[G*U]$, $D$ is a club subset of $C_\kappa$. 
+Let $E\subseteq D$ be in $V$, $(o.t.(E))^V=\kappa$, $\alpha=\sup E$; since $cf(\alpha)=\kappa$, let $\phi:\kappa\to\alpha$ be a normal increasing sequence.
+
+Let $E'=lim(E)\cap ran(\phi)$.
+
+Then $E'\subseteq D$ and $|E'|^V=\kappa$ since $\kappa$ is inaccessible.
+Further, $j(\phi)\in N$ and $j(\phi)\upharpoonright \kappa:\kappa\to j"\alpha$ is also in $N$.
+
+Thus $ran(j(\phi)\upharpoonright \kappa)\in N$ and $j"E'\subseteq ran(j(\phi)\upharpoonright \kappa)\subseteq j"\alpha$.
+
+But $j"E'=ran(j(\phi)\upharpoonright \kappa) \cap j(E')\in N$; and since $E'=\{\beta\in ran(\phi)\mid j(\beta)\in j(E')\}$, we have that $E'$ is a subset of $C_\kappa$ with $|E'|^N=\kappa$ and $E'\subseteq[\kappa,\kappa^+)$. 
+
+This contradicts Statement (\ref{eqn:ng'defc}), and hence $\mathcal{J}$ cannot be $\kappa^+$-saturated.
+\end{proof}
