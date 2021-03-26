@@ -1,41 +1,7 @@
 \section{Chapter-specific preliminaries}
 \label{destroy_sat:preliminaries}
 
-(TODO: Put the section-specific background here, i.e. stuff that's not fundamental enough to go in the intro but is only applicable to this chapter, and separate out the rest.
-
-Especially some of the notational bs like $Reg_\kappa$, $V^{\mathbb{P}}$.
-
-Also for subject matter: ideals, cplteness, normality, cc, presat, closure, precipitousness, generic ultrapowers, Foreman duality.)
-
-Much of the necessary background can be found in Chapter \ref{forcing}; we cover more chapter-specific background here.
-
-For a cardinal $\kappa$, we will write $Reg_\kappa$ for the set of regular cardinals below $\kappa$, and $cof(\kappa)$ for the proper class of cardinals of cofinality $\kappa$.
-
-If $\mathbb{P}$ is a notion of forcing in $V$, we will variously use $V^\mathbb{P}$ or $V[G]$ to refer to the generic extension of $V$ by $\mathbb{P}$.
-
-The following definition summarizes some forcing properties of posets that will come in handy:
-
-\begin{definition}[Chain condition, presaturation, and closure]
-Let $(\mathbb{P},\leq)$ be a poset. We say that:
-\begin{enumerate}[label={(\roman*)}]
-\item (\cite{baumgartner_taylor_sat_gen_ees_two}, as Theorem 4.2) $\mathbb{P}$ is \emph{$\mu$-presaturated} if for every $\lambda<\mu$ and every family $\seq{A_\alpha \mid \alpha<\lambda}$ of antichains,
-there are densely many $p\in\mathbb{P}$ such that for all $\alpha$, $\{q\in A_\alpha \mid p\compat q\}$ has cardinality $<\mu$. Note that $\mu$-cc implies $\mu$-presaturation.
-
-\item $\mathbb{P}$ is \emph{$<\kappa$-closed} if whenever $\tau<\kappa$ and $\seq{p_\alpha \mid \alpha<\tau}$ is a $\leq$-decreasing sequence in $\mathbb{P}$, there is a $p\in\mathbb{P}$ such that $p\leq p_\alpha$ for all $\alpha<\tau$
-
-\item $\mathbb{P}$ is \emph{$<\kappa$-directed closed} ($<\kappa$-dc) if whenever $D\subseteq \mathbb{P}$ is a directed set\footnote{that is, for all $p,q\in D$, there is an $r\in D$ such that $r\leq p,q$} with $|D|<\kappa$, there is a $q\in \mathbb{P}$ such that whenever $p\in D$, $q\leq p$
-
-\item $\mathbb{P}$ is \emph{$\mu$-preserving} (for $\mu$ a $V$-cardinal) if $V^\mathbb{P}\models ``\check{\mu}\text{ is a cardinal}"$
-\end{enumerate}
-\end{definition}
-
-For arbitrary posets, presaturation can be pushed downwards through a two-step iteration:
-
-\begin{lemma}[Lemma 2.12 of \cite{cox_eskew_kill_sat_save_presat}]\label{pushpresatdown}
-If $\mathbb{P} * \dot{\mathbb{Q}}$ is $\kappa$-presaturated then $\mathbb{P}$ is $\kappa$-presaturated and $1_\mathbb{P}\forces \dot{\mathbb{Q}}$ is $\kappa$-presaturated.
-\end{lemma}
-
-Whether the converse holds is currently an open problem; this appears as Question 8.6 of \cite{cox_eskew_kill_sat_save_presat}. 
+Much of the necessary background can be found in Chapter \ref{forcing}; we cover more chapter-specific preliminaries here.
 
 Forcing poset closure, and properness, relate to presaturation; we now summarize what properness is, and how both closure and properness relate to presaturation.
 
@@ -112,7 +78,7 @@ $\mathbb{P}$ forces that $\dot{\mathbb{Q}}$ is proper with respect to $M[\dot{G}
 Hence $\mathbb{P}*\dot{\mathbb{Q}}$ is proper with respect to $M$.
 \end{proof}
 
-Presaturation has a useful corollary:
+Presaturation comes with some partial cofinality preservation:
 \begin{fact}
 If $\mathbb{P}$ is $\lambda$-presaturated for $\lambda$ regular then 
 \[\forces_{\mathbb{P}} cof^V(\geq\lambda)=cof^{V[\dot{G}]}(\geq\lambda)\]
