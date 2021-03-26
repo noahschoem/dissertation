@@ -91,23 +91,6 @@ We define Magidor with interleaved collapses in full generality; for our purpose
   We'll say that the \emph{stem} of $p$ is $f^p$.
 \end{remark}
 
-\begin{definition}
-  Let $p$ be a condition, let $\alpha \in dom(A^q)$, and let $\nu\in A^q(\alpha)$.
-  Then we may define the condition $p\frown (\alpha,\nu)$ as the weakest extension $q$ of $p$ such $f^q(\alpha)=\nu$, namely:
-  \begin{itemize}
-    \item $f^{p\frown (\alpha,\nu)}=f^p \frown (\alpha,\nu)$
-    \item $c^{p\frown (\alpha,\nu)}=c^p \frown (\alpha,C^p(\alpha)(\nu))$
-    \item For $\beta>\alpha$, $A^{p\frown (\alpha,\nu)}(\beta)=A^p(\beta)\setminus \sup(C^p(\alpha)(\nu))$ and $C^{p\frown (\alpha,\nu)}(\beta)=C^p(\beta) \upharpoonright A^{p\frown (\alpha,\nu)}(\beta)$
-    \item For $\beta<\alpha$, $A^{p\frown (\alpha,\nu)}(\beta)=A^p(\beta)\cap \nu \cap \{\mu \in Z_\beta \cap \nu \mid \sup C^p(\beta)(\mu)<\nu\}$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), this is in $r_\beta^\alpha(\nu)$
-    \item and for $\beta<\alpha$, $C^{p\frown (\alpha,\nu)}(\beta)=C^p(\beta)\upharpoonright A^{p\frown (\alpha,\nu)}(\beta)$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), $[C^{p\frown (\alpha,\nu)}(\beta)]_{r_\beta^\alpha(\nu)}\in k_\beta^\alpha(\nu)$ as needed
-  \end{itemize}
-  and we may define, for each $a\in [dom(A^p)]^{<\omega}$ and each strictly increasing $\vec{\nu}\in \prod_{\alpha\in a} A^p(\alpha)$, $p\frown \vec{\nu}$ similarly.
-\end{definition}
-
-\begin{definition}
-  Let $a\in [\lambda\cup\{-1\}]^{<\omega}$, let $b\subseteq a \cup \{-1\}$, and let $p,q$ be conditions with $q\leq p$. We'll say that $q$ is an $a$-step extension of $p$ if $dom(f^q)=dom(f^p)\sqcup a$.
-\end{definition}
-
 %% TODO: poset combinatorics. MS in the generic extension.
 
 Observe that $\mathbb{MC}\left(\vec{U}\right)$ has the $\kappa^+$-cc essentially for the same reasons as classical Magidor forcing.
@@ -162,6 +145,30 @@ The factoring will also allow us to inductively prove a characterization of gene
 The diagonalization lemma for $\mathbb{MC}\left(\vec{U}\right)$ requires more assumptions than with $\mathbb{M}(\vec{U})$; due to the introduction of collapse terms, not every indexed family of step extensions below $p$ can be diagonalized.
 
 However, a Prikry-type property still holds, and through its proof we can extract a partial diagonalization lemma.
+
+As with Magidor forcing, the step extensions in question for the Prikry lemma are $a$-step extensions:
+
+\begin{definition}
+  Let $a\in [\lambda\cup\{-1\}]^{<\omega}$, let $b\subseteq a \cup \{-1\}$, and let $p,q$ be conditions with $q\leq p$. We'll say that $q$ is an $a$-step extension of $p$ if $dom(f^q)=dom(f^p)\sqcup a$.
+\end{definition}
+
+Note that $a$-step extensions, like direct extensions, may additionally extend the $c$-terms.
+
+Also as with Magidor forcing, we want a notion of minimal extension $p\frown \vec{\nu}$ for which $f^{p\frown \vec{\nu}}=f^p \frown \vec{\nu}$:
+
+\begin{definition}
+  Let $p$ be a condition, let $\alpha \in dom(A^q)$, and let $\nu\in A^q(\alpha)$.
+  Then we may define the condition $p\frown (\alpha,\nu)$ as the weakest extension $q$ of $p$ such $f^q(\alpha)=\nu$, namely:
+  \begin{itemize}
+    \item $f^{p\frown (\alpha,\nu)}=f^p \frown (\alpha,\nu)$
+    \item $c^{p\frown (\alpha,\nu)}=c^p \frown (\alpha,C^p(\alpha)(\nu))$
+    \item For $\beta>\alpha$, $A^{p\frown (\alpha,\nu)}(\beta)=A^p(\beta)\setminus \sup(C^p(\alpha)(\nu))$ and $C^{p\frown (\alpha,\nu)}(\beta)=C^p(\beta) \upharpoonright A^{p\frown (\alpha,\nu)}(\beta)$
+    \item For $\beta<\alpha$, $A^{p\frown (\alpha,\nu)}(\beta)=A^p(\beta)\cap \nu \cap \{\mu \in Z_\beta \cap \nu \mid \sup C^p(\beta)(\mu)<\nu\}$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), this is in $r_\beta^\alpha(\nu)$
+    \item and for $\beta<\alpha$, $C^{p\frown (\alpha,\nu)}(\beta)=C^p(\beta)\upharpoonright A^{p\frown (\alpha,\nu)}(\beta)$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), $[C^{p\frown (\alpha,\nu)}(\beta)]_{r_\beta^\alpha(\nu)}\in k_\beta^\alpha(\nu)$ as needed
+  \end{itemize}
+  and we may define, for each $a\in [dom(A^p)]^{<\omega}$ and each strictly increasing $\vec{\nu}\in \prod_{\alpha\in a} A^p(\alpha)$, $p\frown \vec{\nu}$ similarly.
+\end{definition}
+
 \begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_collapse_prikry_open_dense}
   If $p$ is a condition and $\mathcal{D}$ is an open dense set, then there is a direct extension $r\leq^* p$ and an $a\in [\lambda]^{<\omega}$ such that every $a$-step extension of $r$ is in $\mathcal{D}$.
   Furthermore, for every $b\in[\lambda]^{<\omega}$ for which $p$ admits $b$-step extensions, either every $b$-step extension of $p$ is in $\mathcal{D}$, or none are.
