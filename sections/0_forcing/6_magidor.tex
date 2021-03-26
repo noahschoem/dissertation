@@ -443,11 +443,13 @@ We present an alternative, more direct proof here:
   By definition, $p$ is an $a_g$-step extension of $(g,A_g)$ so lies in $\mathcal{D}$.
   Furthermore, by definition of $H$, $p\in H$ and thus $H\cap \mathcal{D}\neq\emptyset$.
   
-  For the successor step, suppose $\lambda=\bar{\lambda}+\omega$ for some limit $\bar{\lambda}$ such that the result is true for any $\mathbb{M}\left(\seq{U_\eta\mid \eta<\bar{\lambda}}\right)$.
+  For the successor step, suppose $\lambda=\bar{\lambda}+\omega$ for some limit $\bar{\lambda}$ such that the result is true for any Magidor forcing defined on a system of measures of length $\bar{\lambda}$.
   Let $\seq{\beta_\eta\mid \eta<\lambda}$ be geometric for $\mathbb{M}(\seq{U_\eta \mid \eta<\lambda})$.
   Let $g=\seq{(\bar{\lambda},\beta_{\bar{\lambda}})}$ and in line with the factoring of \thref{magidor_factoring}, consider $\mathbb{M}(\vec{U})_g \times \mathbb{M}(\vec{U})^g$.
-  By geometricity and induction, the resulting $H_g$ defined from $\seq{\beta_\eta \mid \eta<\bar{\lambda}}$ is $\mathbb{M}\left(\seq{U_\eta\mid \eta<\bar{\lambda}}\right)$-generic over $V$; since $\mathbb{M}\left(\seq{U_\eta\mid \eta<\bar{\lambda}}\right)$ is $\beta_{\bar{\lambda}}^+$-cc, and by our base case, the filter $H^g$ defined from $\seq{\beta_{\bar{\lambda}+n}\mid n<\omega}$ is $\mathbb{M}\left(\seq{U_{\bar{\lambda}+n} \mid n<\omega}\right)$-generic over $V[H_g]$.
-  So by the Product Lemma, $H=H_g\times H^g$ is $\mathbb{M}\left(\seq{U_\eta \mid \eta<\lambda}\right)$-generic over $V$.
+  Then $\mathbb{M}\left(\vec{U}\right)_g=\mathbb{M}\left( \seq{r_\eta^{\bar{\lambda}}(\beta_{\bar{\lambda}}) \mid \eta<\bar{\lambda}} \right)$ is itself a Magidor forcing of length $\bar{\lambda}$, and by definition of geometricity, $\seq{\beta_\eta \mid \eta<\bar{\lambda}}$ is geometric over $\mathbb{M}\left(\vec{U}\right)_g$.
+  Thus, by induction, the resulting $H_g$ defined from $\seq{\beta_\eta \mid \eta<\bar{\lambda}}$ is $\mathbb{M}\left(\vec{U}\right)_g$-generic over $V$.
+  Since $\seq{\beta_{\bar{\lambda}+n}\mid n<\omega}$ is geometric over $\mathbb{M}\left(\vec{U}\right)^g=\mathbb{M}\left(\seq{U_{\bar{\lambda}+n} \mid n<\omega}\right)$, by arguing exactly as in the base case, the filter $H^g$ defined from $\seq{\beta_{\bar{\lambda}+n}\mid n<\omega}$ is $\mathbb{M}\left(\seq{U_{\bar{\lambda}+n} \mid n<\omega}\right)$-generic over $V$.
+  However, since $\mathbb{M}\left(\vec{U}\right)_g$ is $\beta_{\bar{\lambda}}^+$-cc, $H^g$ is actually $\mathbb{M}\left(\vec{U}\right)^g$-generic over $V[H_g]$ and so by the Product Lemma, $H=H_g\times H^g$ and is $\mathbb{M}\left(\seq{U_\eta \mid \eta<\lambda}\right)$-generic over $V$.
   
   For the limit case, suppose that $\lambda=\sup_{\rho<\tau} \lambda_\rho$ for some $\tau\leq\lambda$ regular.
   Further suppose that for all $\rho<\tau$, $\vec{\beta}\upharpoonright \lambda_\rho$ induces $H_\rho$ an $\mathbb{M}\left(\vec{U}\right)_{(\rho,\beta_{\lambda_\rho})}$-generic over $V$, and by size bounds, over intermediate extensions as well.
