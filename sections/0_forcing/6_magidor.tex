@@ -420,18 +420,17 @@ A proof can be found in \cite{fuchs_magidor} that, at its core, makes use of \th
 We present an alternative, more direct proof here:
 
 \begin{proof}
-  $H$ is a filter, as by construction $(\emptyset,\seq{Y_\xi\mid \xi<\lambda})\in H$ and $H$ is clearly upwards closed. 
+  $H$ is a filter, as by construction the empty condition $1_{\mathbb{M}\left(\vec{U}\right)}\in H$ and $H$ is clearly upwards closed. 
   As for downwards directedness, if $p,q\in H$ then $stem(p)$ and $stem(q)$ are finite segments of the same sequence, hence $p\compat q$ and the intersection of $meas(p)$ and $meas(q)$ contains every $\beta_\eta$ for $\eta\notin dom(p\cup q)$. Thus $p\land q\in H$.
   
   Genericity is more complicated and proceeds by transfinite induction on the length of $\vec{U}$ and the factoring of \thref{magidor_factoring}. 
   
   Our base case is when $\lambda=\omega$ and we are considering $\mathbb{M}(\seq{U_n\mid n<\omega})$.
   Let $\mathcal{D}\in V$ be open dense in $\mathbb{M}(\seq{U_n\mid n<\omega})$.
-  Let $\vec{Y}=\seq{Y_n\mid n<\omega}$ be as in \thref{mitchell_rep_coherence_sets}.
   For each $g\in V$ an initial segment of $\seq{\beta_n\mid n<\omega}$\footnote{
     Since $\lambda=\omega$, we may without loss of generality extend each $g$ a finite subsequence of $\seq{\beta_n\mid n<\omega}$ to an initial subsequence.
   },
-  by \thref{magidor_prikry_type_open_dense}, let $a_g$, $A_g$ be such that $(g,A_g)\leq^* (g,\vec{Y}\upharpoonright (\omega\setminus dom(g)))$ and every $a_g$-step extension of 
+  by \thref{magidor_prikry_type_open_dense}, let $a_g$, $A_g$ be such that $(g,A_g)\leq^* 1_{\mathbb{M}\left(\vec{U}\right)} \frown g$ and every $a_g$-step extension of 
   $(g,A_g)$ is in $\mathcal{D}$; without loss of generality, $a_g=[\max(dom(g))+1,k_g]$ for some $k_g<\omega$.
   Let $B$ be a measure one system given by 
   \[
