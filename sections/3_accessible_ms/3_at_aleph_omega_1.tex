@@ -154,9 +154,10 @@ As with Magidor forcing, we have notions of how to project conditions, and a fac
     \mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}=\mathbb{MC}\left(\seq{U_\gamma \mid \beta<\gamma<\lambda}\right)
   \]
   (restricted to stems above $\rho$) with guiding generics $\seq{K_\gamma \mid \gamma<\lambda}$.
-  
-  Thus, as with $\mathbb{M}(\vec{U})$, many preservation arguments that work for $\mathbb{MC}\left(\vec{U}\right)$ still reflect downwards.
 \end{fact}
+
+As with $\mathbb{M}\left(\vec{U}\right)$, due to the factoring of \thref{magidor_collapse_factoring}, many preservation arguments that work for $\mathbb{MC}\left(\vec{U}\right)$ still reflect downwards.
+The factoring will also allow us to inductively prove a characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$ in \thref{magidor_collapse_generic_iff_geometric}.
 
 The diagonalization lemma for $\mathbb{MC}\left(\vec{U}\right)$ requires more assumptions than with $\mathbb{M}(\vec{U})$; due to the introduction of collapse terms, not every indexed family of step extensions below $p$ can be diagonalized.
 
@@ -472,7 +473,7 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   
 As with Magidor forcing, the above is a precise characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$:
   
-\begin{theorem}
+\begin{theorem}\thlabel{magidor_collapse_generic_iff_geometric}
   In $V^{\mathbb{MC}\left(\vec{U}\right)}$, suppose $\seq{\beta_\eta \mid \eta<\lambda}$ is increasing, normal, and has limit $\kappa$, and for each $\eta$, suppose $F_\eta$ be $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$.
   
   Suppose the conclusion of \thref{magidor_collapse_generic_implies_geometric} applies to $\seq{\beta_\eta \mid \eta<\lambda}$ and the $F_\eta$'s, and define
