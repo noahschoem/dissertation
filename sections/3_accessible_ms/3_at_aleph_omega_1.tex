@@ -7,7 +7,7 @@ This is ongoing work, and a first proof of concept would be to achieve $MS(\seq{
 
 While we have not achieved this, we have developed an as of yet unpublished Magidor-like forcing that singularizes $\kappa$ and collapses below to make $\kappa$ into $\aleph_{\omega_1}$.
 
-As an additional result, we state and partially prove a characterization of genericity for such forcing, along the lines of a diagonal Prikry forcing appearing in \cite{sinapova_unger_combos_aleph_omega} and \cite{fuchs_magidor}.
+As an additional result, we state and partially prove a characterization of genericity for such forcing, along the lines of a diagonal Prikry forcing appearing in \cite{sinapova_unger_combos} and \cite{fuchs_magidor}.
 
 We fix $\vec{U}=\seq{U_\xi \middle| \xi<\lambda}$, $\lambda<\kappa$, $Y_\xi$, and $\seq{r_\beta^\alpha \middle| \beta<\alpha<\lambda}$ as in Section 1, with $\lambda\leq \omega_1$ a limit ordinal.
 
@@ -53,7 +53,7 @@ In summary, conditions will similar to Magidor forcing to add a sequence $\seq{\
 
 We define Magidor with interleaved collapses in full generality; for our purposes, we will later restrict $\lambda$ to be $\omega$ or $\omega_1$.
 \begin{definition}
-  $\mathbb{MC}(\vec{U})$: conditions are of the form $(f,c,A,C)$ where:
+  $\mathbb{MC}\left(\vec{U}\right)$: conditions are of the form $(f,c,A,C)$ where:
   \begin{enumerate}
     \item $dom(f),dom(c)\in [\lambda\sqcup\{-1\}]^{<\omega}$, $dom(f)=dom(c)$, and $dom(A)=dom(C)=\lambda\setminus dom(f)$, and $f(-1)=\omega_1$. We will write $dom^+(f)$ to mean $dom(f)\cap Ord$, and similarly for $dom(c)$.
     \item For $\xi\in dom^+(f)$, $f(\xi)\in Z_\xi$, $f(\xi)>\lambda$, and $f$ is strictly increasing
@@ -83,7 +83,7 @@ We define Magidor with interleaved collapses in full generality; for our purpose
 \end{definition}
 
 \begin{remark}
-  For ease of notation, and in accordance with conventions found in \cite{gitik_prikry_type}, we may write a condition $p\in \mathbb{MC}(\vec{U})$ as
+  For ease of notation, and in accordance with conventions found in \cite{gitik_prikry_type_forcings}, we may write a condition $p\in \mathbb{MC}\left(\vec{U}\right)$ as
   \[
     p=(f^p,c^p,A^p,C^p)
   \]
@@ -110,11 +110,11 @@ We define Magidor with interleaved collapses in full generality; for our purpose
 
 %% TODO: poset combinatorics. MS in the generic extension.
 
-Observe that $\mathbb{MC}(\vec{U})$ has the $\kappa^+$-cc essentially for the same reasons as classical Magidor forcing.
+Observe that $\mathbb{MC}\left(\vec{U}\right)$ has the $\kappa^+$-cc essentially for the same reasons as classical Magidor forcing.
 Note that two conditions with the same Magidor stem need not be compatible due to their collapse terms being incompatible:
 
 \begin{proposition}
-  $\mathbb{MC}(\vec{U})$ has the $\kappa^+$-cc.
+  $\mathbb{MC}\left(\vec{U}\right)$ has the $\kappa^+$-cc.
 \end{proposition}
 
 \begin{proof}
@@ -123,17 +123,42 @@ Note that two conditions with the same Magidor stem need not be compatible due t
 \end{proof}
 
 % TODO: make more explicit; separate into a \thlabel-able remark or proposition, elaborate (i.e. say below any Magidor point etc), and \thref the vanilla M(U) version
-\begin{remark}\thlabel{magidor_collapse_factoring}
-  As with vanilla Magidor forcing (c.f. \thref{magidor_factoring}),
-  due to our use of the reflected guiding generics $\seq{k_\alpha^\beta\middle| \alpha<\beta, \beta<\lambda}$, for each $\beta$ and each $\rho\in Y_\xi$, relative to the weakest $p$ for which $f^p(\beta)=\rho$, 
-  \[
-    \mathbb{MC}(\vec{U}) / p=\mathbb{MC}(\vec{U})_{(\gamma,\delta)}\times\mathbb{MC}(\vec{U})^{(\gamma,\delta)}
-  \]
-  so $\mathbb{MC}(\vec{U})$ factors.
-  Thus, as with $\mathbb{M}(\vec{U})$, many preservation arguments that work for $\mathbb{MC}(\vec{U})$ still reflect downwards.
-\end{remark}
+As with Magidor forcing, we have notions of how to project conditions, and a factoring property:
 
-The diagonalization lemma for $\mathbb{MC}(\vec{U})$ requires more assumptions than with $\mathbb{M}(\vec{U})$; due to the introduction of collapse terms, not every indexed family of step extensions below $p$ can be diagonalized.
+\begin{definition}\thlabel{magidor_collapse_condition_projection}
+  Let $p=(f,c,A,C)\in \mathbb{M}\left(\vec{U}\right)$ and let $\xi<\lambda$.
+  Then we may define the following:
+  \begin{itemize}
+    \item $(p)_\xi=(f,c,A,C)_\xi=(f\upharpoonright (\xi+1), c \upharpoonright (\xi+1),A\upharpoonright (\xi+1), C\upharpoonright (\xi+1))$
+    \item $(p)^\xi=(f,c,A,C)^\xi=(f\upharpoonright (\lambda \setminus (\xi+1)), c \upharpoonright (\lambda \setminus (\xi+1)), A\upharpoonright (\lambda\setminus (\xi+1)), C\upharpoonright (\lambda \setminus (\xi+1)))$
+    \item $\mathbb{MC}\left(\vec{U}\right)_{(\xi,\beta)}=\{(f,c,A,C)_\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
+    \item $\mathbb{MC}\left(\vec{U}\right)^{(\xi,\beta)}=\{(f,c,A,C)^\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
+  \end{itemize}
+\end{definition}
+
+\begin{fact}\thlabel{magidor_collapse_factoring}
+  As with vanilla Magidor forcing (c.f. \thref{magidor_factoring}),
+  due to our use of the reflected guiding generics $\seq{k_\alpha^\beta\middle| \alpha<\beta, \beta<\lambda}$, for each $\beta$ and each $\rho\in Y_\beta$, relative to the weakest $p$ for which $f^p(\beta)=\rho$, 
+  \[
+    \mathbb{MC}\left(\vec{U}\right) / p=\mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}\times\mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}
+  \]
+  so $\mathbb{MC}\left(\vec{U}\right)$ factors.
+  
+  In particular, 
+  \[
+    \mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}=\mathbb{MC}\left(\seq{r_\alpha^\beta(\rho) \mid \alpha<\beta}\right)
+  \]
+  with guiding generics $\seq{k_\alpha^\beta(\rho) \mid \alpha<\beta}$,
+  and
+  \[
+    \mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}=\mathbb{MC}\left(\seq{U_\gamma \mid \beta<\gamma<\lambda}\right)
+  \]
+  (restricted to stems above $\rho$) with guiding generics $\seq{K_\gamma \mid \gamma<\lambda}$.
+  
+  Thus, as with $\mathbb{M}(\vec{U})$, many preservation arguments that work for $\mathbb{MC}\left(\vec{U}\right)$ still reflect downwards.
+\end{fact}
+
+The diagonalization lemma for $\mathbb{MC}\left(\vec{U}\right)$ requires more assumptions than with $\mathbb{M}(\vec{U})$; due to the introduction of collapse terms, not every indexed family of step extensions below $p$ can be diagonalized.
 
 However, a Prikry-type property still holds, and through its proof we can extract a partial diagonalization lemma.
 \begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_collapse_prikry_open_dense}
@@ -144,7 +169,7 @@ However, a Prikry-type property still holds, and through its proof we can extrac
 Before we prove this, we will introduce some terminology for families of direct extensions of a fixed condition:
 
 \begin{definition}\thlabel{family_meets_dense_set_below}
-  Let $p\in\mathbb{MC}(\vec{U})$, let $\mathcal{D}$ be an open dense set, and let
+  Let $p\in\mathbb{MC}\left(\vec{U}\right)$, let $\mathcal{D}$ be an open dense set, and let
   \[
     E=\left\{\vec{\nu}:a\to \kappa \middle| a\in [dom(A^p)]^{<\omega}, \vec{\nu}\in \prod_{\alpha\in a} A^p(\alpha),\text{ and }p\frown\vec{\nu}\text{ is a condition below }p\right\}
   \]
@@ -168,7 +193,7 @@ Before we prove this, we will introduce some terminology for families of direct 
     (or $k_\alpha^\beta(\rho)$ if applicable).
   \end{claim}
   \begin{proof}[Proof of \thref{magidor_collapse_meets_dense_generic_one_step}]
-    Without loss of generality, we argue for $\alpha>\max dom(f^p)$; for smaller $\alpha$, due to \thref{magidor_collapse_factoring}, we may factor and work over $\mathbb{MC}(\vec{U})_{(\alpha,f^p(\alpha))}$ and $\mathbb{MC}(\vec{U})^{(\alpha,f^p(\alpha))}$.
+    Without loss of generality, we argue for $\alpha>\max dom(f^p)$; for smaller $\alpha$, due to \thref{magidor_collapse_factoring}, we may factor and work over $\mathbb{MC}\left(\vec{U}\right)_{(\alpha,f^p(\alpha))}$ and $\mathbb{MC}\left(\vec{U}\right)^{(\alpha,f^p(\alpha))}$.
     
     Let $\mathcal{D}^*\subseteq Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ be given by
     \[
@@ -329,7 +354,7 @@ Before we prove this, we will introduce some terminology for families of direct 
 Combining elements of the aforementioned proof yields the following restricted diagonalization lemma:
 
 \begin{lemma}[Diagonalization Lemma]
-  Let $p\in\mathbb{MC}(\vec{U})$; let 
+  Let $p\in\mathbb{MC}\left(\vec{U}\right)$; let 
   \[
     E=\left\{\vec{\nu}:a\to\kappa \middle| a\in [dom(A^p)]^{<\omega}, \vec{\nu}\in \prod_{\alpha \in a} A^p(\alpha), \text{ and }p\frown \vec{\nu}\text{ is a condition below }p\right\}
   \]
@@ -349,7 +374,7 @@ And as with vanilla Magidor forcing, we obtain the sentential version of the Pri
 The proof is functionally the same as in \thref{magidor_prikry_type_sentential}, but with collapse terms $c$ and $C$ that may need further extension.
 
 \begin{lemma}[Prikry-type lemma, sentential version I]\thlabel{magidor_collapse_prikry_sentential}
-  Let $p\in\mathbb{MC}(\vec{U})$, and let $\sigma$ be a sentence of the forcing language. 
+  Let $p\in\mathbb{MC}\left(\vec{U}\right)$, and let $\sigma$ be a sentence of the forcing language. 
   Then some $q\leq^* p$ decides $\sigma$.
 \end{lemma}
 
@@ -363,17 +388,17 @@ Further arguments along the lines of \thref{magidor_prikry_type_open_dense_bette
 Likewise, we have a similar sentential version with tail changes:
 
 \begin{lemma}[Prikry-type lemma, tail-change sentential version]\thlabel{magidor_collapse_prikry_sentential_better}
-  Let $\sigma$ be a sentence of the forcing language, let $p\in \mathbb{MC}(\vec{U})$, and let $\beta\in dom(f^p)$.
+  Let $\sigma$ be a sentence of the forcing language, let $p\in \mathbb{MC}\left(\vec{U}\right)$, and let $\beta\in dom(f^p)$.
   Then there is some $q\leq^* p$ such that $(q)_\beta=(p)_\beta$ and if $r\leq q$ such that $r$ decides $\sigma$, then $(r)_\beta \frown (q)^\beta$ decides $\sigma$ the same way.
 \end{lemma}
 
 This proof is similar to \thref{magidor_prikry_type_sentential_better}, except with more care needed during the diagonalization step to concentrate the already-chosen collapse terms.
 
-As for cardinal arithmetic in $V^{\mathbb{MC}(\vec{U})}$, we have a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, collapses of cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$, and preservation of all other cardinals. 
+As for cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$, we have a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, collapses of cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$, and preservation of all other cardinals. 
 Explicitly:
 
 \begin{lemma}
-  Let $\delta$ be a $V$-cardinal and let $\seq{\beta_\eta \middle| \eta<\lambda}$ be the Magidor sequence added by some $\mathbb{MC}(\vec{U})$-generic $G$. Then:
+  Let $\delta$ be a $V$-cardinal and let $\seq{\beta_\eta \middle| \eta<\lambda}$ be the Magidor sequence added by some $\mathbb{MC}\left(\vec{U}\right)$-generic $G$. Then:
   \begin{enumerate}
     \item If $\delta\in (\beta_\eta^+,\beta_{\eta+1})$ for some $\eta$, then $\delta$ is collapsed to size $\beta_\eta^+$
     \item If $\delta=\beta_\eta$ for some $\eta$ or $\delta=\kappa$, then $\delta$ is preserved
@@ -388,7 +413,7 @@ Much as in vanilla Magidor forcing, the preservation argument emulates \thref{ma
 As for a characterization of genericity along the lines of \thref{magidor_geometric_iff_generic}, we have that the Magidor generic sequence is geometric, along with a geometricity notion for the collapses, as follows:
 
 \begin{proposition} \thlabel{magidor_collapse_generic_implies_geometric}
-  Let $G$ be $\mathbb{MC}(\vec{U})$-generic.
+  Let $G$ be $\mathbb{MC}\left(\vec{U}\right)$-generic.
   Let
   \[
     \vec{\beta}=\seq{\beta_\eta \middle| \eta<\lambda} = \bigcup_{p\in G} f^p
@@ -422,7 +447,7 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
 \begin{proof}
   Items \ref{magidor_collapse_generic_implies_geometric:sequence}, \ref{magidor_collapse_generic_implies_geometric:measures}, and \ref{magidor_collapse_generic_implies_geometric:refl_measures}
   follow from standard density and factoring arguments for Magidor forcing (c.f. \thref{magidor_generic_implies_geometric}).
-  In the casee of \ref{magidor_collapse_generic_implies_geometric:refl_measures}, we factor to $\mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)}$, which is its own Magidor forcing with guided interleaved collapses.
+  In the casee of \ref{magidor_collapse_generic_implies_geometric:refl_measures}, we factor to $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$, which is its own Magidor forcing with guided interleaved collapses.
   
   Item \ref{magidor_collapse_generic_implies_geometric:collapses} follows since below the weakest $p$ for which $f^p(\eta)=\beta_\eta$ and $f^p(\eta+1)=\beta_{\eta+1}$, the collection 
   \[
@@ -432,27 +457,27 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   
   Item \ref{magidor_collapse_generic_implies_geometric:collapse_futures} follows from the fact that given such $\seq{C_\eta \middle| \eta<\lambda}$, since the guiding generics are filters, 
   \[
-    \left\{p\in\mathbb{MC}(\vec{U}) \middle| \forall \eta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\eta)]_{U_\eta}<[C_\eta]_{U_\eta} \right\}
+    \left\{p\in\mathbb{MC}\left(\vec{U}\right) \middle| \forall \eta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\eta)]_{U_\eta}<[C_\eta]_{U_\eta} \right\}
   \]
   is dense.
   
   Finally, Item \ref{magidor_collapse_generic_implies_geometric:refl_collapse_futures} follows from reflection and factoring:
-  let $\eta$ be a limit point and work in $\mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)}$.
+  let $\eta$ be a limit point and work in $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$.
   Then 
   \[
-    \left\{p\in \mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)} \middle|  \forall \zeta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\zeta)]_{r_\zeta^\eta(\beta_\eta)}<[C_\eta]_{r_\zeta^\eta(\beta_\eta)}\right\}
+    \left\{p\in \mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)} \middle|  \forall \zeta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\zeta)]_{r_\zeta^\eta(\beta_\eta)}<[C_\eta]_{r_\zeta^\eta(\beta_\eta)}\right\}
   \]
-  is dense in $\mathbb{MC}(\vec{U})_{(\eta,\beta_\eta)}$.
+  is dense in $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$.
 \end{proof}
   
-As with Magidor forcing, the above is a precise characterization of genericity for $\mathbb{MC}(\vec{U})$:
+As with Magidor forcing, the above is a precise characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$:
   
 \begin{theorem}
-  In $V^{\mathbb{MC}(\vec{U})}$, suppose $\seq{\beta_\eta \mid \eta<\lambda}$ is increasing, normal, and has limit $\kappa$, and for each $\eta$, suppose $F_\eta$ be $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$.
+  In $V^{\mathbb{MC}\left(\vec{U}\right)}$, suppose $\seq{\beta_\eta \mid \eta<\lambda}$ is increasing, normal, and has limit $\kappa$, and for each $\eta$, suppose $F_\eta$ be $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$.
   
   Suppose the conclusion of \thref{magidor_collapse_generic_implies_geometric} applies to $\seq{\beta_\eta \mid \eta<\lambda}$ and the $F_\eta$'s, and define
   \[
-    H=\left\{(f,c,A,C)\in \mathbb{MC}(\vec{U}) \middle|
+    H=\left\{(f,c,A,C)\in \mathbb{MC}\left(\vec{U}\right) \middle|
       \begin{array}{l}
         f\text{ is a finite subsequence of }\vec{\beta}, \\
         \forall \alpha\in dom(f) \ c(\alpha)\in F_\alpha \\
@@ -463,7 +488,7 @@ As with Magidor forcing, the above is a precise characterization of genericity f
       \end{array}
     \right\}
   \]
-  Then $H$ is $\mathbb{MC}(\vec{U})$-generic over $V$.
+  Then $H$ is $\mathbb{MC}\left(\vec{U}\right)$-generic over $V$.
 \end{theorem}
 
 As with the characterization of genericity for Magidor forcing (c.f. \thref{magidor_geometric_iff_generic}), the proof is by induction on the length of $\vec{U}$.
@@ -473,7 +498,7 @@ As with the characterization of genericity for Magidor forcing (c.f. \thref{magi
 \end{proof}
 
 \begin{conjecture}
-  In $V^{\mathbb{MC}(\vec{U})}$ with $\lambda=\omega_1$, 
+  In $V^{\mathbb{MC}\left(\vec{U}\right)}$ with $\lambda=\omega_1$, 
   \[
     MS(\seq{\aleph_{2n+3}\middle| n<\omega}\frown \seq{\aleph_{\alpha+2n}\middle| \omega\leq\alpha<\omega_1,n<\omega};\omega_1)
   \]
