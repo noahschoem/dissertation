@@ -2,7 +2,6 @@
 \label{forcing:magidor}
 
 Magidor forcing is a standard tool for singularizing cardinals to have uncountable cofinality without collapsing cardinals.
-
 The original approach for Magidor forcing found in  \cite{magidor_chg_cof} uses a system of representatives $r$ for normal measures below $\kappa$ the measurable cardinal we wish to singularize to cofinality $\lambda<\kappa$.
 The relevant properties follow from a coherent system of measures:
 
@@ -41,6 +40,8 @@ Keeping this in mind, we will fix some measure-one sets witnessing useful cohere
   \end{itemize}
 \end{remark}
 
+From now on, unless otherwise stated, we will assume our measure one sets are included in some $Y_\xi$, and any ordinal $\rho$ strictly between $\lambda$ and $\kappa$ lives in some $Y_\xi$.
+
 \begin{definition}[Magidor forcing, $\mathbb{M}\left(\vec{U}\right)$: conditions]\thlabel{def_mag_forcing}
   Conditions are ordered pairs $(f,A)$ where:
   \begin{enumerate}
@@ -68,20 +69,8 @@ Keeping this in mind, we will fix some measure-one sets witnessing useful cohere
 
 For notational convenience, if $p=(f,A)$ we will say that $f$ is the \emph{stem} of $p$, and write $stem(p)$ to mean $f$.
 Additionally, we will say that $A$ is the \emph{measure component} of $p$ and write $meas(p)$ to mean $A$\footnote{
-  We will use an alternative convention $p=(f^p,A^p)$ in line with (todo: cite gitik HBC) in a future section, when $stem$ and $meas$ become too cumbersome.
+  We will use an alternative convention $p=(f^p,A^p)$ in line with \cite{gitik_prikry_type_forcings} in a future section, when $stem$ and $meas$ become too cumbersome.
 }.
-
-\begin{remark}\thlabel{magidor_weakest_step_extension}
-  If $p=(f,A)$, $\vec{\nu}:a\to \kappa$ for some $a\in[A]^{<\omega}$, and there is some $B$ for which $(f\frown \vec{\nu},B)$ is a condition below $p$,
-  we write $p\frown \vec{\nu}$ to mean the weakest such $(f\frown \vec{\nu},A')$ below $p$.
-  Namely, for $\xi>\max dom(f\frown \vec{\nu})$, ${A'(\xi)=A(\xi)\setminus (f\frown\vec{v}(\xi)+1)}$, and for $\xi<\max dom(f\frown \vec{\nu})$:
-  for $\tau$ being the least domain element of $f\frown \vec{\nu}$ bigger than $\xi$:
-  \begin{itemize}
-    \item if $\tau\in dom(\nu)$, we have that $A'(\xi)=A(\xi)\cap \tau$; since $[\alpha \mapsto A(\xi) \cap \alpha]_{r_\xi^\tau (\nu(\tau))}=A(\xi)$ and $\nu(\tau)\in Y_\tau$, $A'(\xi)\in r_\xi^\tau (\nu(\tau))$ and is the $\subseteq$-largest such.
-    
-    \item if $\tau\in dom(f)$, then $A'(\xi)=A(\xi)$.
-  \end{itemize}
-\end{remark}
 
 \begin{remark}
   There are several non-obvious reasons why we use $\seq{Y_\xi \mid \xi<\lambda}$.
@@ -105,26 +94,39 @@ Here's some heuristic information on how $\mathbb{M}\left(\vec{U}\right)$ behave
   As with Prikry forcing, incompatible conditions must have different stems so antichains are no larger than $\left|\kappa^{[\lambda]^{<\omega}}\right|=\kappa$.
 \end{proof}
 
-$\mathbb{M}\left(\vec{U}\right)$ itself factors into different forcings below each point, as follows:
+Crucially, $\mathbb{M}\left(\vec{U}\right)$ itself factors into different Magidor forcings below each point, as follows:
 
-\begin{definition}
+\begin{definition}\thlabel{magidor_condition_projection}
   Let $p=(f,A)\in \mathbb{M}\left(\vec{U}\right)$ and let $\xi<\lambda$.
   Then we may define the following:
   \begin{itemize}
-    \item $p_\xi=(f,A)_\xi=(f\upharpoonright (\xi+1),A\upharpoonright (\xi+1))$
-    \item $p^\xi=(f,A)^\xi=(f\upharpoonright (\lambda \setminus (\xi+1)), A\upharpoonright (\lambda\setminus (\xi+1)))$
-    \item $\mathbb{M}\left(\vec{U}\right)_{\xi,\beta}=\{(f,A)_\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
-    \item $\mathbb{M}\left(\vec{U}\right)^{\xi,\beta}=\{(f,A)^\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
+    \item $(p)_\xi=(f,A)_\xi=(f\upharpoonright (\xi+1),A\upharpoonright (\xi+1))$
+    \item $(p)^\xi=(f,A)^\xi=(f\upharpoonright (\lambda \setminus (\xi+1)), A\upharpoonright (\lambda\setminus (\xi+1)))$
+    \item $\mathbb{M}\left(\vec{U}\right)_{(\xi,\beta)}=\{(f,A)_\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
+    \item $\mathbb{M}\left(\vec{U}\right)^{(\xi,\beta)}=\{(f,A)^\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
   \end{itemize}
 \end{definition}
 
-\begin{remark}\thlabel{magidor_factoring}
+\begin{fact}\thlabel{magidor_factoring}
   Observe that by choice of $Y_\xi$'s, relative to the weakest $A$ for which $p=((\xi,\beta),A)$,
-  we have that $\mathbb{M}\left(\vec{U}\right) / p\cong \mathbb{M}\left(\vec{U}\right)_{\xi,\beta} \times \mathbb{M}\left(\vec{U}\right)^{\xi,\beta}$.
-  In particular, in $V$, $\mathbb{M}\left(\vec{U}\right)_{\xi,\beta}$ has the $\beta^+$-cc and $(\mathbb{M}\left(\vec{U}\right)^{\xi,\beta},\leq^*)$ is $<\beta^+$-directed closed.
+  we have that $\mathbb{M}\left(\vec{U}\right) / p\cong \mathbb{M}\left(\vec{U}\right)_{(\xi,\beta)} \times \mathbb{M}\left(\vec{U}\right)^{(\xi,\beta)}$, which are themselves Magidor forcings.
+  In particular,
+  \[
+    \mathbb{M}\left(\vec{U}\right)_{(\xi,\beta)}=\mathbb{M}\left( \seq{ r_\zeta^\xi(\beta) \mid \zeta<\xi } \right)
+  \]
+  and has the $\beta^+$-cc.
   
-  Additionally, by \thref{product_cc_closed}, after forcing with $\mathbb{M}\left(\vec{U}\right)_{\xi,\beta}$, the partial order $(\mathbb{M}\left(\vec{U}\right)^{\xi,\beta},\leq^*)$ remains $<\beta^+$-distributive.
-\end{remark}
+  Additionally,
+  \[
+    \mathbb{M}\left(\vec{U}\right)^{(\xi,\beta)}=\mathbb{M}\left( \seq{ U'_\chi \mid \xi<\chi<\lambda} \right)
+  \]
+  where for $\xi<\chi<\lambda$, $U'_\chi=\{A \setminus (\beta+1) \mid A\in U_\chi\}$.
+  Furthermore, $\left(\mathbb{M}\left(\vec{U}\right)^{(\xi,\beta)},\leq^*\right)$ is $<\beta^+$-directed closed by closure of the measures and size of the cardinals in each $U'_\chi$.
+  
+  Note that by \thref{product_cc_closed}, after forcing with $\mathbb{M}\left(\vec{U}\right)_{(\xi,\beta)}$, the partial order ${\left(\mathbb{M}\left(\vec{U}\right)^{(\xi,\beta)},\leq^*\right)}$ remains $<\beta^+$-distributive.
+  
+  A similar factoring applies to any finite stem, not just $(\xi,\beta)$.
+\end{fact}
 
 Magidor forcing admits an analogue of the Prikry lemma.
 Recall that in Prikry forcing, for every condition $p$ and every dense subset $D$, there is an $n$ and a $q\leq^* p$ such that every $n$-step extension of $q$ is in $D$.
@@ -136,7 +138,20 @@ Whereas an $n$-step extension of Prikry tacked on $n$ new ordinals at the end, a
   If $(f,A)\in \mathbb{M}\left(\vec{U}\right)$ and $a\subseteq dom(A)$, we say that $(g,B)$ is an $a$-step extension of $(f,A)$ if $(g,B)\leq (f,A)$ and $dom(g)=dom(f)\sqcup a$.
 \end{definition}
 
-Before we state and prove Prikry-type lemmata for Magidor forcing, it is worth formalizing how we may diagonalize over all possible extensions:
+Before we state and prove Prikry-type lemmata for Magidor forcing, it is worth formalizing how we may diagonalize over all possible extensions.
+We will further want a notion of \emph{minimal} extension, where we wish to extend e.g. $(f,A)$ to $(f\frown \vec{\nu},A')$ for some $\vec{\nu}$, and $A'$ altered as little as possible from $A$:
+
+\begin{remark}\thlabel{magidor_weakest_step_extension}
+  If $p=(f,A)$, $\vec{\nu}:a\to \kappa$ for some $a\in[A]^{<\omega}$, and there is some $B$ for which $(f\frown \vec{\nu},B)$ is a condition below $p$,
+  we write $p\frown \vec{\nu}$ to mean the weakest such $(f\frown \vec{\nu},A')$ below $p$.
+  Namely, for $\xi>\max dom(f\frown \vec{\nu})$, ${A'(\xi)=A(\xi)\setminus (f\frown\vec{v}(\xi)+1)}$, and for $\xi<\max dom(f\frown \vec{\nu})$:
+  for $\tau$ being the least domain element of $f\frown \vec{\nu}$ bigger than $\xi$:
+  \begin{itemize}
+    \item if $\tau\in dom(\nu)$, we have that $A'(\xi)=A(\xi)\cap \tau$; since $[\alpha \mapsto A(\xi) \cap \alpha]_{r_\xi^\tau (\nu(\tau))}=A(\xi)$ and $\nu(\tau)\in Y_\tau$, $A'(\xi)\in r_\xi^\tau (\nu(\tau))$ and is the $\subseteq$-largest such.
+    
+    \item if $\tau\in dom(f)$, then $A'(\xi)=A(\xi)$.
+  \end{itemize}
+\end{remark}
 
 \begin{lemma}[Diagonalization Lemma]\thlabel{magidor_diagonalization}
   Let $p=(g,H)\in \mathbb{M}(\vec{U})$ and let 
@@ -362,22 +377,27 @@ We make this precise:
   for coboundedly many $\eta<\xi$, $\beta_\eta\in A_\eta$.
 \end{definition}
 
-\begin{proposition}\thlabel{magidor_generic_implies_geometric}
+\begin{lemma}\thlabel{magidor_generic_implies_geometric}
   Let $G$ be $\mathbb{M}(\vec{U})$-generic and let
   \[
     \vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}=:\bigcup_{(f,A)\in G} f
   \]
   Then $\vec{\beta}$ is geometric.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
-  When $\xi=\lambda$, $\{(g,H) \mid \forall \eta>\max(dom(g)), \ H(\eta)\subseteq A_\eta\}$ is open dense by measure-one set intersection.
+  When $\xi=\lambda$, for each $A$, the set 
+  \[
+    \mathcal{D}=\{(g,H) \mid \forall \eta>\max(dom(g)), \ H(\eta)\subseteq A_\eta\}
+  \]
+  is dense by measure-one set intersection; namely if $(g,H)\in \mathbb{M}\left(\vec{U}\right)$, then $(g,(H \upharpoonright \max dom(g)) \frown \seq{H(\xi)\cap A(\xi) \mid \xi>\max dom(g)})\in \mathcal{D}$.
+  Thus if $(f,A)\in\mathcal{D}\cap G$, then by definition of $\leq$, for all $\xi>\max dom(f)$, $\beta_\xi \in A(\xi)$.
   
   For $\xi<\lambda$ limit, the same applies in $\mathbb{M}(\vec{U})_{(\xi,\beta_\xi)}$: within $V$, the set 
   \[
     \{(g,H) \mid g(\xi)=\beta_\xi \text{ and }\forall \zeta\in \left((\max dom(g))\cap \xi, \xi\right) \ H(\eta)\subseteq A_\eta\}
   \]
-  is open dense in $\mathbb{M}(\vec{U})_{(\xi,\beta_\xi)}$, hence is open dense below the weakest condition $p$ in the full $\mathbb{M}(\vec{U})$ with $stem(p)(\xi)=\beta_\xi$.
+  is dense in $\mathbb{M}(\vec{U})_{(\xi,\beta_\xi)}$, hence is dense below the weakest condition $p$ in the full $\mathbb{M}(\vec{U})$ with $stem(p)(\xi)=\beta_\xi$.
 \end{proof}
 
 The converse is also true in the following sense:
