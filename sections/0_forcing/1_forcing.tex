@@ -58,3 +58,89 @@ The proofs are standard; see \cite{jech_set_theory}, Chapters 14 and 15, for mor
 The usual posets for collapsing cardinals are the L\'evy collapsing posets $Col(\tau,\lambda)$ and $Col(\tau,<\lambda)$.
 In brief, $Col(\tau,\lambda)$ is a $\tau$-directed closed, $\lambda^+$-cc forcing notion such that for every $\rho\in Card^V \cap [\tau,\lambda]$, $|\rho]^{V^{Col(\tau,\lambda)}}=\tau$
 If $\lambda$ is inaccessible, then $Col(\tau,<\lambda)$ is a $\tau$-directed closed, $\lambda$-cc forcing such that for every $\rho\in Card^V \cap [\tau,\lambda)$, $|\rho]^{V^{Col(\tau,\lambda)}}=\tau$.
+
+Often, we will wish to force with multiple forcings simultaneously, or in succession.
+If both $\mathbb{P}$ and $\mathbb{Q}$ are in $V$, then we will want to force with their \emph{product}; if instead $\mathbb{Q}\in V^{\mathbb{P}}$, then we will use \emph{iteration}.
+
+\cite{jech_set_theory}, Chapter 15, is a standard reference for product forcing.
+For iteration forcing, this section draws from \cite{baumgartner_iterated_forcing}.
+
+\begin{definition}[Product Forcing]
+  If $\mathbb{P}$ and $\mathbb{Q}$ are in $V$, then the poset $\mathbb{P}\times \mathbb{Q}$ consists of conditions of the form $(p,q)$ where $p\in \mathbb{P}$ and $q\in \mathbb{Q}$, and $(p',q')\leq (p,q)$ if $p'\leq p$ and $q'\leq q$.
+\end{definition}
+
+The following forcing theorem characterizes what a $\mathbb{P}\times \mathbb{Q}$-generic looks like:
+
+\begin{theorem}[Product Theorem]
+  Let $G\subseteq \mathbb{P}\times \mathbb{Q}$.
+  Then $G$ is $\mathbb{P}\times \mathbb{Q}$-generic over $V$ if and only if $G=G_1 \times G_2$ where $G_1$ is $\mathbb{P}$-generic over $V$ and $G_2$ is $\mathbb{Q}$-generic over $V^{\mathbb{P}}$, and in such case $V[G]=V[G_1][G_2]$.
+\end{theorem}
+
+Larger products are possible, but beyond our scope.
+As for properties preserved by product forcing:
+\begin{proposition}
+  Let $\tau$ be a regular cardinal, and suppose $\mathbb{P}$ and $\mathbb{Q}$ are both $\tau$-closed. Then $\mathbb{P}\times \mathbb{Q}$ is also $\tau$-closed.
+\end{proposition}
+
+\begin{proposition}[Easton's Lemma, c.f. \cite{jech_set_theory}, Lemma 15.19]\thlabel{product_cc_closed}
+  Let $\tau$ be regular, and suppose $\mathbb{P}$ is $\tau^+$-cc and $\mathbb{Q}$ is $\tau$-closed.
+  Then in $V^{\mathbb{P}}$, $\mathbb{Q}$ remains $\tau$-distributive.
+\end{proposition}
+
+In the event that $\mathbb{Q}\in V^{\mathbb{P}}\setminus V$, we may use the notion of two-step iteration:
+
+\begin{definition}
+  The two-step iteration $\mathbb{P} * \dot{\mathbb{Q}}$ is given by conditions of the form $(p,\dot{q})$ where $p\in\mathbb{P}$ and $p\forces_{\mathbb{P}}\dot{q}\in \dot{\mathbb{Q}}$, and $(p',\dot{q}')\leq (p,q)$ if $p'\leq p$ and $p'\forces_{\mathbb{P}} \dot{q}'\leq \dot{q}$
+\end{definition}
+
+The following characterizes generic extensions of two-step iterations:
+\begin{proposition}
+  Let $G\subseteq \mathbb{P} * \dot{\mathbb{Q}}$.
+  Then $G$ is $\mathbb{P} * \dot{\mathbb{Q}}$-generic over $V$ if and only if $G_1:=\{p\mid \exists \dot{q}\in\dot{\mathbb{Q}} \ (p,\dot{q})\in G\}$ is $\mathbb{P}$-generic over $V$; and $G_2:=\{\dot{q} \mid \exists p\in G_1 \ (p,\dot{q})\in G\}$, as interpreted in $V[G_1]$, is $\mathbb{Q}$-generic over $V[G_1]$.
+  If so, we write $G=G_1 * G_2$.
+\end{proposition}
+
+Iteration is better behaved than product:
+\begin{proposition}
+  If $\mathbb{P}$ is $\tau$-cc and $1_{\mathbb{P}}\forces_{\mathbb{P}} \dot{\mathbb{Q}}\text{ is }\tau\text{-cc}$ then $\mathbb{P} * \dot{\mathbb{Q}}$ is $\tau$-cc; the converse is also true.
+  
+  The same is also true for $\tau$-closed.
+\end{proposition}
+
+Presaturation can be pushed downwards through a two-step iteration:
+
+\begin{lemma}[Lemma 2.12 of \cite{cox_eskew_kill_sat_save_presat}]\label{pushpresatdown}
+If $\mathbb{P} * \dot{\mathbb{Q}}$ is $\kappa$-presaturated then $\mathbb{P}$ is $\kappa$-presaturated and $1_\mathbb{P}\forces \dot{\mathbb{Q}}$ is $\kappa$-presaturated.
+\end{lemma}
+
+Whether the converse holds is, to the author's knowledge, an open problem; this appears as Question 8.6 of \cite{cox_eskew_kill_sat_save_presat}. 
+
+Longer iterations are possible:
+\begin{definition}
+  Let $\tau$ be some ordinal. Then a $\tau$-length iteration, written $\seq{\mathbb{P}_\alpha, \dot{\mathbb{Q}}_\alpha\mid \alpha<\tau}$, is a notion of forcing for which:
+  \begin{enumerate}
+    \item $\mathbb{P}_0\in V$
+    \item For all $\alpha>0$, $\dot{\mathbb{Q}}_\alpha$ is a forcing in $V^{\mathbb{P}_\alpha}$ with $P_{\alpha+1}=\mathbb{P}_\alpha * \dot{\mathbb{Q}}_\alpha$
+    \item If $\alpha$ is a limit ordinal, then $\mathbb{P}_\alpha$ is some $\alpha$-sequence of $\mathbb{P}_\beta$-terms for $\beta<\alpha$
+  \end{enumerate}
+\end{definition}
+
+The behavior of a forcing iteration entirely depends on $\mathbb{P}_0$, the $\mathbb{Q}$'s, and what exactly happens at limit stages:
+\begin{definition}
+  \begin{enumerate}
+    \item A forcing iteration is said to be of finite (countable) support if for each $\alpha$ limit, only finitely (countably) many forcing terms drawn from the $\mathbb{P}_\beta$'s, $\beta<\alpha$, are allowed to be nontrivial.
+    \item A forcing notion is of direct support if for each $\alpha$ limit, only boundedly many $\mathbb{P}_\beta$-terms below are nontrivial.
+    \item A forcing iteration is of inverse support if for each $\alpha$ limit, every term drawn from the $\mathbb{P}_\beta$'s below may be nontrivial.
+    \item And a forcing iteration is of Easton support if the iteration is of direct support at regular cardinals, and of inverse support at singular limit ordinals.
+  \end{enumerate}
+\end{definition}
+
+We will care primarily about Easton support products, and have the following theorem about their preservation of closure and chain condition:
+
+\begin{proposition}
+  Any Easton support iteration of $\tau$-closed forcings is $\tau$-closed.
+\end{proposition}
+
+\begin{proposition}
+  If $\lambda$ is a Mahlo cardinal (i.e. has stationarily many regular, equivalently inaccessible cardinals below), then any $\lambda$-length Easton support iteration of $\lambda$-cc forcings is $\lambda$-cc.
+\end{proposition}
