@@ -139,9 +139,9 @@ Whereas an $n$-step extension of Prikry tacked on $n$ new ordinals at the end, a
 \end{definition}
 
 Before we state and prove Prikry-type lemmata for Magidor forcing, it is worth formalizing how we may diagonalize over all possible extensions.
-We will further want a notion of \emph{minimal} extension, where we wish to extend e.g. $(f,A)$ to $(f\frown \vec{\nu},A')$ for some $\vec{\nu}$, and $A'$ altered as little as possible from $A$:
+We will want a notion of \emph{minimal} extension, where we wish to extend e.g. $(f,A)$ to $(f\frown \vec{\nu},A')$ for some $\vec{\nu}$, and $A'$ altered as little as possible from $A$:
 
-\begin{remark}\thlabel{magidor_weakest_step_extension}
+\begin{definition}\thlabel{magidor_weakest_step_extension}
   If $p=(f,A)$, $\vec{\nu}:a\to \kappa$ for some $a\in[A]^{<\omega}$, and there is some $B$ for which $(f\frown \vec{\nu},B)$ is a condition below $p$,
   we write $p\frown \vec{\nu}$ to mean the weakest such $(f\frown \vec{\nu},A')$ below $p$.
   Namely, for $\xi>\max dom(f\frown \vec{\nu})$, ${A'(\xi)=A(\xi)\setminus (f\frown\vec{v}(\xi)+1)}$, and for $\xi<\max dom(f\frown \vec{\nu})$:
@@ -151,7 +151,7 @@ We will further want a notion of \emph{minimal} extension, where we wish to exte
     
     \item if $\tau\in dom(f)$, then $A'(\xi)=A(\xi)$.
   \end{itemize}
-\end{remark}
+\end{definition}
 
 \begin{lemma}[Diagonalization Lemma]\thlabel{magidor_diagonalization}
   Let $p=(g,H)\in \mathbb{M}(\vec{U})$ and let 
@@ -401,21 +401,20 @@ We make this precise:
 \end{proof}
 
 The converse is also true in the following sense:
-\begin{proposition}\thlabel{magidor_geometric_iff_generic}
+\begin{theorem}\thlabel{magidor_geometric_iff_generic}
   Suppose $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}\in V[G]$ is geometric.
   Let 
   \[
     H=
-    \left\{(f,A) \middle|
+    \left\{(f,A)\in\mathbb{M}\left(\vec{U}\right) \middle|
       \begin{array}{l}
-        f\text{ is a finite subsequence of }\vec{\beta}, \\ dom(A)=\lambda\setminus dom(f), \\        
-        \forall \eta \in dom(A) \ A(\eta)\in U_\eta \text{ or the relevant }r^\gamma_\eta(\beta_\gamma), \\
-        \text{ and }\beta_\eta\in A(\eta)
+        \forall \eta \in dom(f) \ f(\eta)=\beta_\eta \\ 
+        \text{and } \forall \eta\in dom(A) \ \beta_\eta\in A(\eta)
       \end{array}
     \right\}
   \]
   Then $H$ is $\mathbb{M}(\vec{U})$-generic over $V$.
-\end{proposition}
+\end{theorem}
 
 A proof can be found in \cite{fuchs_magidor} that, at its core, makes use of \thref{magidor_prikry_type_open_dense} and \thref{magidor_prikry_type_open_dense_better}.
 We present an alternative, more direct proof here:
