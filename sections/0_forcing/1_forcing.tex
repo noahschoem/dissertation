@@ -1,6 +1,65 @@
 \section{Forcing}
 \label{forcing:forcing}
 
-% cover the basics of forcing. Forcing axiom, perhaps a bit about collapse forcings.
+We will assume knowledge of forcing; for a detailed summary, see for instance \cite{jech_set_theory}, Chapter 13.
+Here we just recall the forcing and iterated forcing specifics necessary for our purposes.
+
+Just to review, here is the core theorem of forcing:
+
+\begin{theorem}[Forcing and Generic Model Theorem]
+  Let $V$ be a universe of $\mathrm{ZFC}$ and let $(\mathbb{P},<)$ be a notion of forcing.
+  Then there is a universe $V^\mathbb{P}=V[G]$ of $\mathrm{ZFC}$ given by the addition of a new set $G$ such that
+  \begin{enumerate}
+    \item $Ord^V=Ord^{V[G]}$
+    \item If $W\supseteq V$, $W\models ZFC$ and $G\in W$, then $V[G]\subseteq W$
+    \item $G$ is $\mathbb{P}$-generic over $V$, that is, for every dense subset (equivalently, every maximal antichain) $D$ of $\mathbb{P}$ in $V$, $G\cap D\neq\emptyset$
+  \end{enumerate}
+  And the theory of $V[G]$ may be understood by the forcing relation $\forces_{\mathbb{P}}$, entirely definable in $V$, because for each formula $\varphi$,
+  \[
+    V[G]\models \varphi \iff \exists p\in G \ p\forces \varphi
+  \]
+\end{theorem}
+
+\begin{remark}
+  We adopt the convention that for $p$, $q\in \mathbb{P}$, $q\leq p$ means that $q$ is a \emph{stronger} condition than $p$.
+\end{remark}
+
+If $\tau$ is an ordinal and $\tau\in Reg^V$ (i.e. $\tau$ is a regular cardinal in $V$), it is not necessarily the case that $\tau\in Reg^{V^{\mathbb{P}}}$ (or is even a cardinal).
+Certain nice combinatorial properties guarantee that $\tau$ remains a cardinal after forcing.
+We outline some key such properties:
+
+\begin{definition}[Chain condition, presaturation, and closure]
+  Let $(\mathbb{P},\leq)$ be a poset and let $\tau$ be a cardinal. We say that:
+  \begin{enumerate}[label={(\roman*)}]
+    \item $\mathbb{P}$ has the \emph{$\tau$-chain condition} (is $\tau$-cc) if every antichain of $\mathbb{P}$ is of size less than $\tau$
+    
+    \item $\mathbb{P}$ is \emph{$\tau$-directed closed} (i.e $<\tau$-directed closed, written $\tau$-dc, $<\tau$-dc) if whenever $D\subseteq \mathbb{P}$ is a directed set\footnote{that is, for all $p,q\in D$, there is an $r\in D$ such that $r\leq p,q$} with $|D|<\tau$, there is a $q\in \mathbb{P}$ such that whenever $p\in D$, $q\leq p$
+    
+    \item $\mathbb{P}$ is \emph{$\tau$-closed} (i.e. $<\tau$-closed) if whenever $\rho<\tau$ and $\seq{p_\alpha \mid \alpha<\rho}$ is a $\leq$-decreasing sequence in $\mathbb{P}$, there is a $p\in\mathbb{P}$ such that $p\leq p_\alpha$ for all $\alpha<\rho$
+    
+    \item $\mathbb{P}$ is \emph{$\tau$-distributive} if for every $\dot{f}:\check{\tau}\to\check{V}$ in $V^{\mathbb{P}}$, $\dot{f}\in \check{V}$; equivalently if the intersection of $\tau$-many open dense subsets of $\mathbb{P}$ is dense\footnote{
+      Note this is unlike the other properties here in that this is an $=\tau$ principle as opposed to a $<\tau$ principle.
+      We write ``$<\tau$-distributive" to mean ``for all $\tau'<\tau$, $\mathbb{P}$ is $\tau'$-distributive".
+    }
+    
+    \item $\mathbb{P}$ is \emph{$\tau$-presaturated} (i.e. $<\tau$-presaturated) if for every $\lambda<\tau$ and every family $\seq{A_\alpha \mid \alpha<\lambda}$ of antichains,
+    there are densely many $p\in\mathbb{P}$ such that for all $\alpha$, $\{q\in A_\alpha \mid p\compat q\}$ has cardinality $<\tau$. Note that $\tau$-cc implies $\tau$-presaturation.    
+
+    \item $\mathbb{P}$ is \emph{$\tau$-preserving} if $V^\mathbb{P}\models ``\check{\tau}\text{ is a cardinal}"$
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  If $\mathbb{P}$ is $\tau$-cc, $\tau$-dc, $\tau$-closed, $<\tau$-distributive, $\tau$-distributive, or $\tau$-presaturated, then $\mathbb{P}$ is $\tau$-preserving.
+\end{proposition}
+
+The proofs are standard; see \cite{jech_set_theory}, Chapters 14 and 15, for more details.
+
+The usual posets for collapsing cardinals are the L\'evy collapsing posets $Col(\tau,\lambda)$ and $Col(\tau,<\lambda)$.
+In brief, $Col(\tau,\lambda)$ is a $\tau$-directed closed, $\lambda^+$-cc forcing notion such that for every $\rho\in Card^V \cap [\tau,\lambda]$, $|\rho]^{V^{Col(\tau,\lambda)}}=\tau$
+If $\lambda$ is inaccessible, then $Col(\tau,<\lambda)$ is a $\tau$-directed closed, $\lambda$-cc forcing such that for every $\rho\in Card^V \cap [\tau,\lambda)$, $|\rho]^{V^{Col(\tau,\lambda)}}=\tau$.
+
+
+Will cover the barest fundamentals of forcing. Forcing axiom, perhaps a bit about L\'evy collapse forcings.
 
 (Dummy citation just to make the pdf build: \cite{portal})
