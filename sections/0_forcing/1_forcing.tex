@@ -21,7 +21,16 @@ Just to review, here is the core theorem of forcing:
 \end{theorem}
 
 \begin{remark}
-  We adopt the convention that for $p$, $q\in \mathbb{P}$, $q\leq p$ means that $q$ is a \emph{stronger} condition than $p$.
+  Here are some notations and conventions:
+  \begin{itemize}
+    \item We adopt the convention that for $p$, $q\in \mathbb{P}$, $q\leq p$ means that $q$ is a \emph{stronger} condition than $p$.
+    
+    \item If $p$, $q$ are compatible, we write $p\compat q$ to denote this, otherwise $p$, $q$ are incompatible, denoted by $p\incompat q$.
+    
+    \item If $p\compat q$, we use $p\land q$ to denote the weakest $r$ such that $r\leq p$ and $r\leq q$.
+    
+    \item For any $p$, $q$, we use $p\lor q$ to denote the strongest $r$ such that $p\leq r$ and $q\leq r$.
+  \end{itemize}
 \end{remark}
 
 If $\tau$ is an ordinal and $\tau\in Reg^V$ (i.e. $\tau$ is a regular cardinal in $V$), it is not necessarily the case that $\tau\in Reg^{V^{\mathbb{P}}}$ (or is even a cardinal).
