@@ -237,8 +237,7 @@ We will want a notion of \emph{minimal} extension, where we wish to extend e.g. 
 
 \begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_prikry_type_open_dense}
   Let $D$ be an open dense set and $p=(g,H)$ a condition.
-  Then there is an $a\in \lambda^{<\omega}$ and an $r\leq^* p$ such that every $a$-step extension of $r$ is in $D$;
-  furthermore, for every $b\subseteq [dom(H)]^{<\omega}$, either every $b$-step extension of $r$ is in $\mathcal{D}$, or none are.
+  Then there is an $a\in \lambda^{<\omega}$ and an $r\leq^* p$ such that every $a$-step extension of $r$ is in $D$.
 \end{lemma}
 
 \begin{proof}
@@ -300,6 +299,13 @@ We will want a notion of \emph{minimal} extension, where we wish to extend e.g. 
   Then since some $a$-step extension of $q_a$ is in $D$, we have that all $a$-step extensions of $q_a$ are in $D$ and hence so are all $a$-step extensions of $r$.
 \end{proof}
 
+A careful reading of the above argument actually gives something stronger:
+
+\begin{lemma}\thlabel{magidor_prikry_type_open_dense_addendum}
+  Let $D$ be an open dense set, $p=(g,H)$ be a condition, and $r\leq^* p$ be as in the proof of \thref{magidor_prikry_type_open_dense}.
+  Then for every $b\subseteq [dom(H)]^{<\omega}$, either every $b$-step extension of $r$ is in $\mathcal{D}$, or none are.
+\end{lemma}
+
 As with Prikry forcing, the open dense version translates into a sentential version for every sentence of the forcing language:
 
 \begin{lemma}[Prikry-type lemma, sentential version]\thlabel{magidor_prikry_type_sentential}
@@ -325,7 +331,7 @@ This appears as Theorem 3.5 of \cite{fuchs_magidor}, and we give a proof here:
 
 \begin{proof}
   For ease of notation, let $f(\beta)=\rho$.
-  For each $r\leq (f,A)_\beta$ in $\mathbb{M}(\vec{U})_{(\beta,\rho)}$, by \thref{magidor_prikry_type_open_dense}, let $p_r\leq^* r \frown (f,A)^\beta$ (in the full $\mathbb{M}(\vec{U})$) be such that for every $b$, either every $b$-step extension of $p_r$ is in $D$, or none are.
+  For each $r\leq (f,A)_\beta$ in $\mathbb{M}(\vec{U})_{(\beta,\rho)}$, by \thref{magidor_prikry_type_open_dense_addendum}, let $p_r\leq^* r \frown (f,A)^\beta$ (in the full $\mathbb{M}(\vec{U})$) be such that for every $b$, either every $b$-step extension of $p_r$ is in $D$, or none are.
   By construction, for each such $r$, $(p_r)_\beta\leq^* r$ and $(p_r)^\beta = (f,meas(p_r))^\beta$.
   
   Let $q_r=(f,A)_\beta \frown (p_r)^\beta$; note that $q_r\leq^* (f,A)$ by construction.
