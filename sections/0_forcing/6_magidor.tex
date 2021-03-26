@@ -451,13 +451,17 @@ We present an alternative, more direct proof here:
   Since $\seq{\beta_{\bar{\lambda}+n}\mid n<\omega}$ is geometric over $\mathbb{M}\left(\vec{U}\right)^g=\mathbb{M}\left(\seq{U_{\bar{\lambda}+n} \mid n<\omega}\right)$, by arguing exactly as in the base case, the filter $H^g$ defined from $\seq{\beta_{\bar{\lambda}+n}\mid n<\omega}$ is $\mathbb{M}\left(\seq{U_{\bar{\lambda}+n} \mid n<\omega}\right)$-generic over $V$.
   However, since $\mathbb{M}\left(\vec{U}\right)_g$ is $\beta_{\bar{\lambda}}^+$-cc, $H^g$ is actually $\mathbb{M}\left(\vec{U}\right)^g$-generic over $V[H_g]$ and so by the Product Lemma, $H=H_g\times H^g$ and is $\mathbb{M}\left(\seq{U_\eta \mid \eta<\lambda}\right)$-generic over $V$.
   
-  For the limit case, suppose that $\lambda=\sup_{\rho<\tau} \lambda_\rho$ for some $\tau\leq\lambda$ regular.
-  Further suppose that for all $\rho<\tau$, $\vec{\beta}\upharpoonright \lambda_\rho$ induces $H_\rho$ an $\mathbb{M}\left(\vec{U}\right)_{(\rho,\beta_{\lambda_\rho})}$-generic over $V$, and by size bounds, over intermediate extensions as well.
+  For the limit case, suppose that $\lambda=\sup_{\rho<\tau} \lambda_\rho$ for some $\tau\leq\lambda$ regular, where each $\lambda_\rho$ is a limit ordinal;
+  our induction hypothesis is now that for all $\rho<\tau$, whenever $\vec{\beta}$ is of length $\lambda_\rho$ and is geometric for some Magidor forcing $\mathbb{M}$ of length $\lambda_\rho$, the resulting filter $H_\rho$ defined from $\vec{\beta}$ is $\mathbb{M}$-generic over $V$.
+  Note furthermore that if $\rho<\rho'$ then by the Product Lemma and chain condition, $H_{\rho'}=H_\rho \times H'$ for some $H_\rho$ $\mathbb{M}_{(\lambda_\rho,\beta_{\lambda_\rho})}$-generic over $V$ and some $H'$ $\mathbb{M}^{(\lambda_\rho,\beta_{\lambda_\rho})}$-generic over $V[H_\rho]$.
+  
   Let $\mathcal{D}$ be open dense; for each $\mathbb{M}\left(\vec{U}\right)$-stem $g$, by \thref{magidor_prikry_type_open_dense_better}, let $A_g$ be such that:
   \begin{itemize}
     \item $(g,A_g)$ is an $\mathbb{M}\left(\vec{U}\right)$-condition
-    \item letting $\beta=\max dom(g)$, $(g,A_g)_\beta = ((\emptyset,\vec{Y})\frown g)_\beta$
-    \item for every $b\subseteq [dom(A_g)]^{<\omega}$, if $(g',H)$ is a $b$-step extension of $(g,A_g)$ and $(g',H)\in \mathcal{D}$ then every $b\setminus (dom(g')\cap \beta)$-step extension of $(g',H)_\beta \frown (g,A_g)^\beta$ is also in $\mathcal{D}$
+    \item letting $\delta=\max dom(g)$, $(g,A_g)_\delta = (1_{\mathbb{M}\left(\vec{U}\right)}\frown g)_\delta$\footnote{
+      Recall from \thref{magidor_condition_projection} that $(f,A)_\delta = (f \upharpoonright \delta+1, A \upharpoonright \delta+1)$.
+    }
+    \item (tail-change property) for every $b\subseteq [dom(A_g)]^{<\omega}$, if $(g',H)$ is a $b$-step extension of $(g,A_g)$ and $(g',H)\in \mathcal{D}$ then every $b\setminus (dom(g')\cap \delta)$-step extension of $(g',H)_\delta \frown (g,A_g)^\delta$ is also in $\mathcal{D}$
   \end{itemize}
   By \thref{magidor_diagonalization}, let $(\emptyset,B)$ diagonalize the family $\seq{(g,A_g) \mid g \text{ a stem}}$;
   that is, for every $g\in \prod_{\eta<\lambda} B(\eta)$, $(g,B\upharpoonright (\lambda\setminus dom(g)))\leq^* (g,A_g)$.
@@ -465,10 +469,10 @@ We present an alternative, more direct proof here:
   
   But then
   \[
-    \mathcal{D}' := \left\{(p)_{\lambda_\rho} \mid p\in \mathcal{D},\ (p)^{\lambda_\rho}\leq (\emptyset,B)^{\lambda_\rho}, \text{ and }stem(p)(\lambda_\rho)=\beta_{\lambda_\rho}\right\}
+    \mathcal{D}' := \left\{(f,A)_{\lambda_\rho} \mid (f,A)\in \mathcal{D},\ (f,A)^{\lambda_\rho}\leq (\emptyset,B)^{\lambda_\rho}, \text{ and }f(\lambda_\rho)=\beta_{\lambda_\rho}\right\}
   \]
   is open dense in $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$, and since $\vec{\beta}\upharpoonright \lambda_\rho$ is geometric for $\mathbb{M}\left(\vec{U}\right)_{(\lambda_\rho,\beta_{\lambda_\rho})}$,
-  by the induction hypothesis let $(f,A)\in \mathbb{M}\left(\vec{U}\right)$ be such that $(f,A)\in \mathcal{D}$,
+  by genericity of $H_\rho$ let $(f,A)\in \mathbb{M}\left(\vec{U}\right)$ be such that $(f,A)\in \mathcal{D}$,
   $(f,A)^{\lambda_\rho}\leq (\emptyset,B)^{\lambda_\rho}$,
   and $(f,A)_{\lambda_\rho}\in H_\rho\cap \mathcal{D}'$.
   In particular, this means that $f\upharpoonright \lambda_\rho \subseteq \vec{\beta}\upharpoonright \lambda_\rho$;
@@ -482,11 +486,11 @@ We present an alternative, more direct proof here:
   
   But $(f,A)\in \mathcal{D}$! So let $b=dom(f)\setminus dom(g)$;
   then by the tail-change property of $(g,A_g)$, every $b$-step extension of $(f,A)_{\lambda_\rho} \frown (g,A_g)^{\lambda_\rho}=(f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho}$ is also in $\mathcal{D}$.
-  Let $p=((f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho})\frown (\vec{\beta}\upharpoonright b$.
-  Then $p$ is a $b$-step extension of $(f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho}$, so lies in $\mathcal{D}$;
-  by construction of $f$, $stem(p)$ is a finite subsegment of $\vec{\beta}$;
-  and by construction of $A$, $A_g$, and $B$, for all relevant $\xi$, $\beta_\xi\in meas(p)(\xi)$.
-  Therefore, $p\in H$, and also $p\in\mathcal{D}$ as desired.
+  Let $(h,C)=((f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho})\frown (\vec{\beta}\upharpoonright b)$.
+  Then $(h,C)$ is a $b$-step extension of $(f,A)_{\lambda_\rho} \frown (\emptyset,A_g)^{\lambda_\rho}$, so lies in $\mathcal{D}$;
+  by construction of $f$, $h$ is a finite subsegment of $\vec{\beta}$;
+  and by construction of $A$, $A_g$, and $B$, for all relevant $\xi$, $\beta_\xi\in C(\xi)$.
+  Therefore, $(h,C)\in H$, and also $(h,C)\in\mathcal{D}$ as desired.
 \end{proof}
 
 We additionally have the following lemma that says geometric sequences actually meet $V$-measure one systems cofinitely instead of just coboundedly.
