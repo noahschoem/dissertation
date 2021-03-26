@@ -62,13 +62,14 @@ As a corollary, direct extensions are sufficient to decide sentences in the forc
   For each $\alpha<\tau$, there is some $p_\alpha \leq^* p$ deciding $``\alpha\in\dot{X}"$; then since $U$ is $\kappa$-complete, the greatest lower bound $q$ of $\seq{p_\alpha \mid \alpha<\tau}$ suffices to define $\dot{X}$ entirely within $V$.
 \end{proof}
 
-Prikry forcing is a key ingredient in proving the consistency of the failure of the Singular Cardinals Hypothesis, which follows from larger cardinals than a single measurable.
-Indeed, the general reference \cite{jech_set_theory} posits the following:
+Prikry forcing is a key ingredient in proving the consistency of the failure of the Singular Cardinals Hypothesis, which follows from larger cardinals than a single measurable:
 
-\begin{proposition}[Corollary 21.13 of \cite{jech_set_theory}]
+\begin{fact}
   Let $\kappa$ be supercompact.
   Then after forcing to make $\kappa$ measurable such that $2^\kappa>\kappa^+$ and singularizing $\kappa$ with Prikry forcing, $SCH$ fails at $\kappa$.
-\end{proposition}
+\end{fact}
+
+The argument is originally due to Magidor; subsequent work by Gitik, Woodin, and Mitchell across several papers showed that the large cardinal hypothesis of $\kappa$ measurable with $o(\kappa)=\kappa^{++}$ is necessary and sufficient.
 
 As we will generalize in Section \ref{forcing:magidor}, Prikry forcing admits a neat characterization of genericity, courtesy of Mathias in \cite{mathias_prikry_genericity_charn}:
 
@@ -83,20 +84,16 @@ As we will generalize in Section \ref{forcing:magidor}, Prikry forcing admits a 
   Then $H$ is $\mathbb{P}(U)$-generic over $V$.
 \end{proposition}
 
-(TODO: cite this next part)
-
 If one wishes to simultaneously singularize $\kappa$ while collapsing cardinals below to make $\kappa$ into $\aleph_\omega$, then one may adjust the definition of Prikry forcing to interleave collapses between the Prikry points.
 To ensure a Prikry-type property as in \thref{prikry_prikry_type_open_dense}, one may use the technique of \emph{guiding generics}.
 We will generalize this to uncountable cofinality in Section \ref{accessible_ms:at_aleph_omega_1}.
 
-(this comes from Cummings' slide deck, at \url{https://math.unt.edu/sites/www.math.unt.edu/files/users/cdv0008/James\%20Cummings.pdf}; not quite sure how to cite, will look up Chicago manual of style later.)
+This particular forcing is well documented in \cite{cummings_prikry_slides}.
 
 \begin{proposition}\thlabel{exists_guide_generic}
   Let $\kappa$ be measurable with normal measure $U$, let $j:V\to Ult(V,U)$ be the measure embedding associated with $U$, and assume $GCH$.
   Then there is a $K\in V$ such that $K$ is $Col(\kappa^+,<j(\kappa))^{Ult(V,U)}$-generic over $V$.
 \end{proposition}
-
-(TODO: double check? Cummings claims in his slide deck that this should be doable for $Col(\kappa^{++},<j(\kappa))$ but not necessarily for $Col(\kappa^+,<j(\kappa))$.)
 
 \begin{proof}
   Observe that there are at most $(2^\kappa)^V$-many antichains of $Col(\kappa^+,<j(\kappa))$ in the ultrapower; 
@@ -106,6 +103,8 @@ We will generalize this to uncountable cofinality in Section \ref{accessible_ms:
   By $GCH$, since $|j(\kappa)|=\kappa^+$, we have exactly $\kappa^+$-many antichains and since $Col(\kappa^+,<j(\kappa))$ is $\kappa+1$-closed and the ultrapower is closed under $\kappa$-sequences, we may iteratively build a descending chain $K'=\seq{p_\beta\middle| \beta<\kappa^+}$ such that for every maximal antichain $A_\beta$ in the ultrapower, $p_\beta\in A_\beta$ or is stronger than some condition in $A_\beta$.
   Then $K$, the upwards closure of $K'$, is as desired.
 \end{proof}
+
+With such $K$, we may define a Prikry-type forcing with interleaved collapses chosen from $K$:
 
 \begin{definition}[Prikry with guided interleaved collapses]
   Let $U$ be a normal measure on $\kappa$, and let $K$ be as in \thref{exists_guide_generic}.
@@ -149,7 +148,7 @@ However, the use of the guiding generic still grants us a Prikry-type property:
   hence $\kappa=(\aleph_\omega)^{V[G]}$.
 \end{corollary}
 
-A proof is outlined in (TODO: cite Cummings slides, or Gitik-Sharon "On SCH and AP").
+A proof is outlined in \cite{cummings_prikry_slides}.
 
 Similar to Prikry forcing, we get the following generic object:
 
@@ -171,22 +170,19 @@ Similar to Prikry forcing, we get the following generic object:
 
 Conversely:
 \begin{proposition}
-  Work in $V^{\mathbb{PC}(U)}$; let $\vec{\gamma}\seq{\gamma_n\mid n<\omega}$ be a strictly increasing sequence with limit $\kappa$ such that for each $A\in U$, for cofinitely many $n$, $\gamma_n\in A$.
+  Work in $V^{\mathbb{PC}(U)}$; let $\vec{\gamma}=\seq{\gamma_n\mid n<\omega}$ be a strictly increasing sequence with limit $\kappa$ such that for each $A\in U$, for cofinitely many $n$, $\gamma_n\in A$.
   Let $G_n$ be $Col(\gamma_n^+,<\gamma_{n+1})$-generic over $V$ such that for all $C\in V$ with $[C]\in K$, for cofinitely many $n$, $C(\gamma_n)\in G_n$.
   
-  Let (TODO: finish)
+  Let
   \[
     H=\left\{(s,c,A,C)\in\mathbb{PC}(U) \middle| 
     \begin{array}{l}
-      s\text{ is a finite initial segment of }\vec{\gamma},\\
-      \forall n\in dom(s) \ c(n) \in G_n, \\
-      A\in U\text{ with }\min(A)>\sup c(lh(s)-1), \\
-      \forall n\geq lh(s) \ \gamma_n\in A,\\
-      C\in V \text{ and }[C]\in K     
+      \forall n<lh(s) \ s(n)=\gamma_n\text{ and }c(n)\in G_n,\\
+      \text{ and }\forall n\geq lh(s) \ \gamma_n\in A\text{ and }C(\gamma_n)\in G_n\\    
     \end{array}
     \right\}
   \]
   Then $H$ is $\mathbb{PC}(U)$-generic over $V$.
 \end{proposition}
 
-The proof is similar to the argument found in (TODO: cite Cummings slides, or Gitik-Sharon "On SCH and AP", or Sinapova-Unger, "Combinatorics at $\aleph_\omega$)
+The proof is essentially the argument found in \cite{sinapova_unger_combos}.
