@@ -537,12 +537,10 @@ As a result, we have the following cardinal arithmetic in $V^{\mathbb{MC}\left(\
   Thus in $V[G]$, $\kappa=(\aleph_\lambda)^{V[G]}$.
 \end{lemma}
 
-The collapsing part is easy to see, as $G$ adds $Col(\beta_\eta^+,<\beta_{\eta+1})$-generics for every $\eta$.
+The collapsing part is easy to see from \thref{magidor_collapse_generic_implies_geometric}, as $G$ adds $Col(\beta_\eta^+,<\beta_{\eta+1})$-generics for every $\eta$.
 Much as in vanilla Magidor forcing, the preservation argument emulates \thref{magidor_preserves_cardinals} with the help of \thref{magidor_collapse_prikry_sentential_better}.
 
 As for a characterization of genericity along the lines of \thref{magidor_geometric_iff_generic}, we have that the Magidor generic sequence is geometric, along with a geometricity notion for the collapses, as follows:
-  
-As with Magidor forcing, the above is a precise characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$:
   
 \begin{theorem}\thlabel{magidor_collapse_generic_iff_geometric}
   In $V^{\mathbb{MC}\left(\vec{U}\right)}$, suppose $\seq{\beta_\eta \mid \eta<\lambda}$ is increasing, normal, and has limit $\kappa$, and for each $\eta$, suppose $F_\eta$ be $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$.
@@ -551,12 +549,9 @@ As with Magidor forcing, the above is a precise characterization of genericity f
   \[
     H=\left\{(f,c,A,C)\in \mathbb{MC}\left(\vec{U}\right) \middle|
       \begin{array}{l}
-        f\text{ is a finite subsequence of }\vec{\beta}, \\
-        \forall \alpha\in dom(f) \ c(\alpha)\in F_\alpha \\
-        A\in V \text{ and }dom(A)=\lambda\setminus dom(f), \\        
-        \forall \eta \in dom(A) \ A(\eta)\in U_\eta \text{ or the relevant }r^\gamma_\eta(\beta_\gamma), \\
-        \forall \eta\in dom(A) \ \beta_\eta\in A(\eta), \\
-        C\in V \text{ and }\forall \eta \in dom(A) \ [C(\eta)]_{U_\eta}\in K_\eta (\text{ or }r^\gamma_\eta(\beta_\gamma),k^\gamma_\eta(\beta_\gamma)
+        \forall \eta\in dom(f) \ f(\eta)=\beta_\eta, \\
+        \forall \eta\in dom(f) \ c(\eta)\in F_\eta, \\
+        \text{ and }forall \eta\in dom(A), \ \beta_\eta\in A(\eta) \text{ and }C(\eta)(\beta_\eta)\in F_\eta\\
       \end{array}
     \right\}
   \]
