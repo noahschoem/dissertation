@@ -454,10 +454,11 @@ Likewise, we have a similar sentential version with tail changes:
   Then there is some $q\leq^* p$ such that $(q)_\beta=(p)_\beta$ and if $r\leq q$ such that $r$ decides $\sigma$, then $(r)_\beta \frown (q)^\beta$ decides $\sigma$ the same way.
 \end{lemma}
 
-This proof is similar to \thref{magidor_prikry_type_sentential_better}, except with more care needed during the diagonalization step to concentrate the already-chosen collapse terms.
+This proof is identical to the analogous argument for $\mathbb{M}\left(\vec{U}\right)$ (c.f.  \thref{magidor_prikry_type_sentential_better}):
 
 \begin{proof}
-  TODO: WRITE ME!
+  Since the collection of conditions deciding $\sigma$ is open dense, by \thref{magidor_collapse_prikry_open_dense_better}, let $q\leq^* p$ be such that $(q)_\beta=(p)_\beta$ and whenever $r\leq^* q$ and $r\compat \sigma$, $(r)_\beta \frown(q)^\beta \compat \sigma$.
+  But then $r\leq (r)_\beta \frown(q)^\beta$, so however $r$ decides $\sigma$ must also be how $(r)_\beta \frown(q)^\beta$ decides $\sigma$.
 \end{proof}
 
 As for cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$, an $\mathbb{MC}\left(\vec{U}\right)$-generic object adds a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, and collapses cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$:
