@@ -440,25 +440,9 @@ This proof is similar to \thref{magidor_prikry_type_sentential_better}, except w
   TODO: WRITE ME!
 \end{proof}
 
-As for cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$, we have a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, collapses of cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$, and preservation of all other cardinals. 
-Explicitly:
+As for cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$, an $\mathbb{MC}\left(\vec{U}\right)$-generic object adds a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, and collapses cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$:
 
-\begin{lemma}
-  Let $\delta$ be a $V$-cardinal and let $\seq{\beta_\eta \middle| \eta<\lambda}$ be the Magidor sequence added by some $\mathbb{MC}\left(\vec{U}\right)$-generic $G$. Then:
-  \begin{enumerate}
-    \item If $\delta\in (\beta_\eta^+,\beta_{\eta+1})$ for some $\eta$, then $\delta$ is collapsed to size $\beta_\eta^+$
-    \item If $\delta=\beta_\eta$ for some $\eta$ or $\delta=\kappa$, then $\delta$ is preserved
-    \item If $\delta=\beta_{\eta+1}$ for some $\eta$ or $\delta=\beta_0$ or $\delta\leq \omega_2$ or $\delta>\kappa$, then $\delta$ is $V[G]$-regular.
-  \end{enumerate}
-  Thus in $V[G]$, $\kappa=(\aleph_\lambda)^{V[G]}$.
-\end{lemma}
-
-The collapsing part is easy to see, as $G$ adds $Col(\beta_\eta^+,<\beta_{\eta+1})$-generics for every $\eta$.
-Much as in vanilla Magidor forcing, the preservation argument emulates \thref{magidor_preserves_cardinals} with the help of \thref{magidor_collapse_prikry_sentential_better}.
-
-As for a characterization of genericity along the lines of \thref{magidor_geometric_iff_generic}, we have that the Magidor generic sequence is geometric, along with a geometricity notion for the collapses, as follows:
-
-\begin{proposition} \thlabel{magidor_collapse_generic_implies_geometric}
+\begin{lemma} \thlabel{magidor_collapse_generic_implies_geometric}
   Let $G$ be $\mathbb{MC}\left(\vec{U}\right)$-generic.
   Let
   \[
@@ -488,7 +472,7 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
       for all $\seq{C_\zeta \mid \zeta<\eta}$ in $V$ with each $C_\zeta$ a map from a measure one set in $r^\eta_\zeta(\beta_\eta)$ to collapses such that each $[C_\eta]\in k^\eta_\zeta(\beta_\eta)$: for coboundedly many $\zeta<\eta$, $C_\zeta(\beta_\eta)\in F_\zeta$
     \end{enumerate}
   \end{enumerate}
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
   Items \ref{magidor_collapse_generic_implies_geometric:sequence}, \ref{magidor_collapse_generic_implies_geometric:measures}, and \ref{magidor_collapse_generic_implies_geometric:refl_measures}
@@ -515,6 +499,23 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   \]
   is dense in $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$.
 \end{proof}
+
+As a result, we have the following cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$:
+
+\begin{lemma}
+  Let $\delta$ be a $V$-cardinal and let $\seq{\beta_\eta \middle| \eta<\lambda}$ be the Magidor sequence added by some $\mathbb{MC}\left(\vec{U}\right)$-generic $G$. Then:
+  \begin{enumerate}
+    \item If $\delta\in (\beta_\eta^+,\beta_{\eta+1})$ for some $\eta$, then $\delta$ is collapsed to size $\beta_\eta^+$
+    \item If $\delta=\beta_\eta$ for some $\eta$ or $\delta=\kappa$, then $\delta$ is preserved
+    \item If $\delta=\beta_{\eta+1}$ for some $\eta$ or $\delta=\beta_0$ or $\delta\leq \omega_2$ or $\delta>\kappa$, then $\delta$ is $V[G]$-regular.
+  \end{enumerate}
+  Thus in $V[G]$, $\kappa=(\aleph_\lambda)^{V[G]}$.
+\end{lemma}
+
+The collapsing part is easy to see, as $G$ adds $Col(\beta_\eta^+,<\beta_{\eta+1})$-generics for every $\eta$.
+Much as in vanilla Magidor forcing, the preservation argument emulates \thref{magidor_preserves_cardinals} with the help of \thref{magidor_collapse_prikry_sentential_better}.
+
+As for a characterization of genericity along the lines of \thref{magidor_geometric_iff_generic}, we have that the Magidor generic sequence is geometric, along with a geometricity notion for the collapses, as follows:
   
 As with Magidor forcing, the above is a precise characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$:
   
