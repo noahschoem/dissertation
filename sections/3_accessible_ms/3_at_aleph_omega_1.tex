@@ -466,38 +466,63 @@ As for cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$, an $\mathbb
     \item and the above items reflect down to each limit ordinal $\eta<\lambda$ with respect to the reflected measures $r$ and reflected guiding generics $k$.
     More precisely, if $\eta$ is a limit ordinal below $\lambda$, then:
     \begin{enumerate}
+      \item \label{magidor_collapse_generic_implies_geometric:refl_sequence} $\seq{\beta_\zeta \mid \zeta<\eta}$ is increasing, normal, and has supremum $\beta_\eta$;
+      
       \item \label{magidor_collapse_generic_implies_geometric:refl_measures} for each $\seq{A_\zeta\mid \zeta<\eta}$ in $V$ with each $A_\eta$ in $r^\eta_\zeta(\beta_\eta)$, for coboundedly many $\zeta$, $\beta_\zeta\in A_\zeta$;
       
       \item \label{magidor_collapse_generic_implies_geometric:refl_collapse_futures}
-      for all $\seq{C_\zeta \mid \zeta<\eta}$ in $V$ with each $C_\zeta$ a map from a measure one set in $r^\eta_\zeta(\beta_\eta)$ to collapses such that each $[C_\eta]\in k^\eta_\zeta(\beta_\eta)$: for coboundedly many $\zeta<\eta$, $C_\zeta(\beta_\eta)\in F_\zeta$
+      for all $\seq{C_\zeta \mid \zeta<\eta}$ in $V$ with each $C_\zeta$ a map from a measure one set in $r^\eta_\zeta(\beta_\eta)$ to collapses such that each $[C_\eta]\in k^\eta_\zeta(\beta_\eta)$: for coboundedly many $\zeta<\eta$, $C_\zeta(\beta_\zeta)\in F_\zeta$
     \end{enumerate}
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  Items \ref{magidor_collapse_generic_implies_geometric:sequence}, \ref{magidor_collapse_generic_implies_geometric:measures}, and \ref{magidor_collapse_generic_implies_geometric:refl_measures}
-  follow from standard density and factoring arguments for Magidor forcing (c.f. \thref{magidor_generic_implies_geometric}).
-  In the casee of \ref{magidor_collapse_generic_implies_geometric:refl_measures}, we factor to $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$, which is its own Magidor forcing with guided interleaved collapses.
-  
-  Item \ref{magidor_collapse_generic_implies_geometric:collapses} follows since below the weakest $p$ for which $f^p(\eta)=\beta_\eta$ and $f^p(\eta+1)=\beta_{\eta+1}$, the collection 
+  Items \ref{magidor_collapse_generic_implies_geometric:sequence}, \ref{magidor_collapse_generic_implies_geometric:measures},
+  \ref{magidor_collapse_generic_implies_geometric:refl_sequence},
+  and \ref{magidor_collapse_generic_implies_geometric:refl_measures}
+  are exactly as in the standard density and/or factoring arguments for Magidor forcings (c.f. \thref{magidor_generic_implies_geometric}).
+  For completeness, we argue Item \ref{magidor_collapse_generic_implies_geometric:measures}.
+  For each such $\seq{A_\eta \mid \eta<\lambda}$ with each $A_\eta\in U_\eta$, the set
   \[
-    \{c^q(\eta) \mid q\leq p\}
+    \mathcal{D}_2=\{p \mid \forall \eta>\max dom(f^p) \ A^p(\eta)\subseteq A_\eta\}
   \]
-  is equal to $Col(\beta_\eta^+,<\beta_{\eta+1})$.
+  is open dense; simply take, for each such $p$, the weakest direct extension $q\leq^* p$ where for each such $\eta$, $A^q(\eta)=A^p(\eta)\cap A_\eta$.
+  Then if $r\in \mathcal{D}_2\cap G$, by definition of $\beta$, $\beta_\eta\in A_\eta$ for all $\eta>\max dom(f^r)$.
+  
+  In the case of \ref{magidor_collapse_generic_implies_geometric:refl_measures}, we factor to $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}=\mathbb{MC}\left( \seq{r_\zeta^\eta(\beta_\eta) \mid \zeta<\eta} \right)$, which is its own Magidor forcing with guided interleaved collapses, and argue similarly as for Item \ref{magidor_collapse_generic_implies_geometric:measures}.
+  
+  Item \ref{magidor_collapse_generic_implies_geometric:collapses} follows since below the weakest $p$ for which $f^p(\eta)=\beta_\eta$ and $f^p(\eta+1)=\beta_{\eta+1}$, the map
+  \[
+    q \mapsto c^q(\eta) \text{ with domain } q\leq p
+  \]
+  is a projection map from $\mathbb{MC}\left(\vec{U}\right)/p$ to $Col(\beta_\eta^+,<\beta_{\eta+1})$.
   
   Item \ref{magidor_collapse_generic_implies_geometric:collapse_futures} follows from the fact that given such $\seq{C_\eta \middle| \eta<\lambda}$, since the guiding generics are filters, 
   \[
-    \left\{p\in\mathbb{MC}\left(\vec{U}\right) \middle| \forall \eta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\eta)]_{U_\eta}<[C_\eta]_{U_\eta} \right\}
+    \mathcal{D}_4=\left\{p\in\mathbb{MC}\left(\vec{U}\right) \middle| 
+      \begin{array}{l}
+        \forall \eta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\eta)]_{U_\eta}<[C_\eta]_{U_\eta} \\
+        \text{ as witnessed by }A^p(\eta)
+      \end{array}
+    \right\}
   \]
-  is dense.
+  is dense, as whenever $p$ is a condition and $\eta>\max dom(f^p)$, $[C^p(\eta)]\in K_\eta$ hence $[C^p(\eta)]\compat [C_\eta]$. 
+  So let $r\in \mathcal{D}_4 \cap G$.
+  For each $\eta>\max dom(f^r)$ such that $\beta_\eta\in A^r(\eta)$, by genericity, there must be some $r'\leq r$ such that $r'\in G$ and both $\eta$ and $\eta+1$ are in $dom(f^{r'})$.
+  But then by genericity, $c^{r'}(\eta)\in F_\eta$, and since $r'\leq r$, we get that $F_\eta \ni c^{r'}(\eta)\leq C^r(\beta_\eta)\leq C_\eta(\beta_\eta)\in F_\eta$.
   
   Finally, Item \ref{magidor_collapse_generic_implies_geometric:refl_collapse_futures} follows from reflection and factoring:
   let $\eta$ be a limit point and work in $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$.
   Then 
   \[
-    \left\{p\in \mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)} \middle|  \forall \zeta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\zeta)]_{r_\zeta^\eta(\beta_\eta)}<[C_\eta]_{r_\zeta^\eta(\beta_\eta)}\right\}
+    \mathcal{D}_{5c}=\left\{p\in \mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)} \middle| 
+      \begin{array}{l}
+        \forall \zeta \in dom(A^p) \setminus (\max dom(f^p)+1) \ [C^p(\zeta)]_{r_\zeta^\eta(\beta_\eta)}<[C_\eta]_{r_\zeta^\eta(\beta_\eta)} \\
+        \text{ as witnessed by }A^p(\eta)
+      \end{array}
+    \right\}
   \]
-  is dense in $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$.
+  is dense in $\mathbb{MC}\left(\vec{U}\right)_{(\eta,\beta_\eta)}$, and we may argue as in Item \ref{magidor_collapse_generic_implies_geometric:collapse_futures}.
 \end{proof}
 
 As a result, we have the following cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$:
