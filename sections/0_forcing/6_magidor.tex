@@ -313,6 +313,10 @@ As with Prikry forcing, the open dense version translates into a sentential vers
   Then there is an $(f,B)\leq^*(f,A)$ such that $(f,B)$ decides $\sigma$.
 \end{lemma}
   
+The proof may be done by induction: for such $(f,A)$, let $(f,B)\leq^* (f,A)$ and $a\subseteq[\lambda]^{<\omega}$ be such that every $a$-step extension of $(f,B)$ decides $\sigma$.
+The argument then proceeds by induction on $|a|$.
+But the crux of the argument is really a measure-one concentration:
+  
 \begin{proof}
   Since the collection of conditions deciding $\sigma$ is open dense, by \thref{magidor_prikry_type_open_dense}, there is some $(f,A')\leq^* (f,A)$ and some $a$ such that every $a$-step extension of $(f,A')$ decides $\sigma$.
   But then, by a similar argument as in \thref{magidor_stepwise_density_hom}, one of either $\sigma$ or $\lnot\sigma$ is forced measure one-often below $(f,A')$. 
