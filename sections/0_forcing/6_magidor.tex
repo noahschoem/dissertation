@@ -355,7 +355,12 @@ This appears as Theorem 3.5 of \cite{fuchs_magidor}, and we give a proof here:
   Let $\sigma$ be a sentence of the forcing language, let $(f,A)\in \mathbb{M}(\vec{U})$, and let $\beta\in dom(f)$.
   Then there is an $(f,B)\leq^* (f,A)$ such that $(f,B)_\beta = (f,A)_\beta$ and if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, then $(g,H)_\beta \frown (f,B)^\beta$ also decides $\sigma$ the same way.
 \end{lemma}
-This appears as Lemma 4.5 of \cite{magidor_chg_cof}, and is a measure-one concentration corollary of \thref{magidor_prikry_type_open_dense_better} along the lines of the proof of \thref{magidor_prikry_type_sentential}.
+This appears as Lemma 4.5 of \cite{magidor_chg_cof}, and has a short proof:
+
+\begin{proof}
+  As the collection of conditions deciding $\sigma$ is open dense, by \thref{magidor_prikry_type_open_dense_better}, let $(f,B)\leq^* (f,A)$ be such that $(f,B)_\beta \leq^* (f,A)_\beta$ and whenever $(g,H)\leq (f,B)$ and $(g,H) \compat \sigma$, then also $(g,H)_\beta \frown (f,B)^\beta \compat \sigma$.
+  But since $(g,H)\leq (g,H)_\beta \frown (f,B)^\beta$, $(g,H)_\beta \frown (f,B)^\beta$ must decide $\sigma$ the same way as $(g,H)$.
+\end{proof}
 
 Observe that a $\mathbb{M}\left(\vec{U}\right)$-generic adds a sequence $\seq{\alpha_\eta \mid \eta<\lambda} = \bigcup_{(g,H)\in G} g$ strictly increasing, normal, and with supremum $\kappa$. As with Prikry forcing, Magidor forcing preserves cardinals:
 \begin{lemma}\thlabel{magidor_preserves_cardinals}
