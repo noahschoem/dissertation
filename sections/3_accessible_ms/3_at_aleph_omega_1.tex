@@ -391,7 +391,7 @@ And as with vanilla Magidor forcing, we obtain the sentential version of the Pri
 
 The proof is functionally the same as in \thref{magidor_prikry_type_sentential}:
 
-\begin{lemma}[Prikry-type lemma, sentential version I]\thlabel{magidor_collapse_prikry_sentential}
+\begin{lemma}[Prikry-type lemma, sentential version]\thlabel{magidor_collapse_prikry_sentential}
   Let $p\in\mathbb{MC}\left(\vec{U}\right)$, and let $\sigma$ be a sentence of the forcing language. 
   Then there is some $r\leq^* p$ such that $r$ decides $\sigma$.
 \end{lemma}
@@ -428,8 +428,24 @@ Further arguments along the lines of \thref{magidor_prikry_type_open_dense_bette
   then there is a direct extension $q\leq^* p$ such that $(q)_{\beta} = (p)_{\beta}$ and whenever $a\in [dom(A^p)]^{<\omega}$, if $r$ is an $a$-step extension of $q$ and $r\in \mathcal{D}$, then every $a\setminus (dom(r^p)\cap \beta)$-step extension of $(r)_\beta \frown (q)^\beta$ is also in $\mathcal{D}$.
 \end{lemma}
 
+The proof is almost identical to the analogue for $\mathbb{M}\left(\vec{U}\right)$ (c.f.  \thref{magidor_prikry_type_open_dense_better}).
+The core difference here is in assuring that the collapse terms are compatible.
+
 \begin{proof}
-  TODO: WRITE ME!
+  For ease of notation, let $f^p(\beta)=\rho$.
+  For each $r\leq (p)_{(\beta,\rho)}$ in $\mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}$, by \thref{magidor_collapse_prikry_open_dense_addendum}, let $p_r\leq^* r \frown (p)^\beta$ (in the full $\mathbb{MC}\left(\vec{U}\right)$) be such that for every $b$, either every $b$-step extension of $p_r$ is in $\mathcal{D}$, or none are.
+  By construction, for each $r$, $(p_r)_\beta \leq^* r$ and $(p_r)^\beta = (f^p,c^{p_r},A^{p_r},C^{p_r})^\beta$.
+  
+  We will additionally need that the $c^{p_r}$'s are all compatible on $[\beta,\lambda)$.
+  By constructing the $p_r$'s along a well-ordering of all such $r$ (of which there are at most $\rho$-many by size of  $\mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}$), we may additionally arrange that the $c^{p_r}\upharpoonright [\beta,\lambda)$'s form a $\rho$-length descending chain in the relevant collapse forcings.
+  
+  For each $r$, let $q_r=(p)_\beta \frown (p_r)^\beta$; note that $q_r\leq^* p$ by construction. 
+  But there are only $\rho$-many such $r$, and the $c^{p_r}$'s form a $\rho$-length descending chain in $(\rho+1)$-closed collapse forcings.
+  Thus the family of $(p_r)^\beta$'s forms a $\rho$-length descending chain the $(\rho+1)$-closed forcing $\mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}$, and thus there is a $\leq^*$-lower bound $q$ of the $q_r$'s.
+  
+  But then $q$ is as desired. To see this, suppose $q'\leq q$ and $q'\in\mathcal{D}$.
+  Let $r=(q')_\beta$, and let $b$ be such that $q'$ is a $b$-step extension of $q$.
+  Then by construction, $q'\leq r \frown (q)^\beta\leq p_r$, and by definition of $p_r$, every $b$-step extension of $p_r$, and hence any $b\setminus (dom(r^p) \cap\beta)$-step extension of $r \frown (q)^\beta$, is also in $\mathcal{D}$.
 \end{proof}
 Likewise, we have a similar sentential version with tail changes:
 
