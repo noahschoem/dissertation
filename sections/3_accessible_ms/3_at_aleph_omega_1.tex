@@ -171,7 +171,6 @@ Also as with Magidor forcing, we want a notion of minimal extension $p\frown \ve
 
 \begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_collapse_prikry_open_dense}
   If $p$ is a condition and $\mathcal{D}$ is an open dense set, then there is a direct extension $r\leq^* p$ and an $a\in [\lambda]^{<\omega}$ such that every $a$-step extension of $r$ is in $\mathcal{D}$.
-  Furthermore, for every $b\in[\lambda]^{<\omega}$ for which $p$ admits $b$-step extensions, either every $b$-step extension of $p$ is in $\mathcal{D}$, or none are.
 \end{lemma}
 
 Before we prove this, we will introduce some terminology for families of direct extensions of a fixed condition:
@@ -377,14 +376,46 @@ Combining elements of the aforementioned proof yields the following restricted d
   Then there is some $q\leq^* p$ such that whenever $q\frown\vec{\nu}$ is a valid condition, $q\frown \vec{\nu}\leq^* p_{\vec{\nu}}$
 \end{lemma}
 
+And in the course of proving \thref{magidor_collapse_prikry_open_dense}, we obtain simultaneous homogeneity for all step extensions:
+
+\begin{lemma}\thlabel{magidor_collapse_prikry_open_dense_addendum}
+  Let $\mathcal{D}$ be open dense, let $p$ be a condition, and let $r\leq^* p$ be as in the proof of \thref{magidor_collapse_prikry_open_dense}.
+  Then for every $b\in[\lambda]^{<\omega}$ for which $p$ admits $b$-step extensions, either every $b$-step extension of $r$ is in $\mathcal{D}$, or none are.
+\end{lemma}
+
 And as with vanilla Magidor forcing, we obtain the sentential version of the Prikry lemma.
 
-The proof is functionally the same as in \thref{magidor_prikry_type_sentential}, but with collapse terms $c$ and $C$ that may need further extension.
+The proof is functionally the same as in \thref{magidor_prikry_type_sentential}:
 
 \begin{lemma}[Prikry-type lemma, sentential version I]\thlabel{magidor_collapse_prikry_sentential}
   Let $p\in\mathbb{MC}\left(\vec{U}\right)$, and let $\sigma$ be a sentence of the forcing language. 
-  Then some $q\leq^* p$ decides $\sigma$.
+  Then there is some $r\leq^* p$ such that $r$ decides $\sigma$.
 \end{lemma}
+
+\begin{proof}
+  Since the collection of conditions deciding $\sigma$ is open dense, by \thref{magidor_collapse_prikry_open_dense}, there is some $q\leq^* p$ and some $a$ such that every $a$-step extension of $q$ decides $\sigma$.
+  
+  We argue for the case of $a=\{\alpha\}$; the rest are by induction and proceed much like in vanilla Magidor forcing (c.f. \thref{magidor_prikry_type_sentential}).
+  
+  Let 
+  \[
+    A_{\sigma}=\left\{\nu\in A^q(\alpha) \mid q \frown (\alpha,\nu)\forces \sigma\right\}
+  \]
+  and let
+  \[
+    A_{\lnot\sigma}=\left\{\nu\in A^q(\alpha) \mid q \frown (\alpha,\nu)\forces \sigma\right\}
+  \]
+  Exactly one of $A_\sigma$ and $A_{\lnot\sigma}$ is measure one; if without loss of generality $A_\sigma$ is measure one, then let 
+  \[
+    A'(\beta)=\begin{cases}
+      A(\beta) & \beta\neq\alpha \\
+      A_\sigma & \beta=\alpha \\
+    \end{cases}
+  \]
+  and for each $\beta\in dom(A')$, let $C'(\beta)=C(\beta)\upharpoonright A'(\beta)$.
+  Then every $a$-step extension of $(f^r,c^r,A',C')$ forces $\sigma$, and thus $(f^r,c^r,A',C')\forces \sigma$.
+  Note that no extension is needed to $c^r$; thus the induction steps may proceed only on the $A^{\circ}$-component with appropriate domain restriction on the $C^{\circ}$-component.
+\end{proof}
 
 Further arguments along the lines of \thref{magidor_prikry_type_open_dense_better} yield a tail-change version:
 
@@ -393,6 +424,9 @@ Further arguments along the lines of \thref{magidor_prikry_type_open_dense_bette
   then there is a direct extension $q\leq^* p$ such that $(q)_{\beta} = (p)_{\beta}$ and whenever $a\in [dom(A^p)]^{<\omega}$, if $r$ is an $a$-step extension of $q$ and $r\in \mathcal{D}$, then every $a\setminus (dom(r^p)\cap \beta)$-step extension of $(r)_\beta \frown (q)^\beta$ is also in $\mathcal{D}$.
 \end{lemma}
 
+\begin{proof}
+  TODO: WRITE ME!
+\end{proof}
 Likewise, we have a similar sentential version with tail changes:
 
 \begin{lemma}[Prikry-type lemma, tail-change sentential version]\thlabel{magidor_collapse_prikry_sentential_better}
@@ -401,6 +435,10 @@ Likewise, we have a similar sentential version with tail changes:
 \end{lemma}
 
 This proof is similar to \thref{magidor_prikry_type_sentential_better}, except with more care needed during the diagonalization step to concentrate the already-chosen collapse terms.
+
+\begin{proof}
+  TODO: WRITE ME!
+\end{proof}
 
 As for cardinal arithmetic in $V^{\mathbb{MC}\left(\vec{U}\right)}$, we have a Magidor sequence $\seq{\beta_\eta \middle| \eta<\lambda}$, collapses of cardinals in $(\beta_\eta^+,\beta_{\eta+1})$ for every $\eta \in \lambda \cup\{-1\}$, and preservation of all other cardinals. 
 Explicitly:
