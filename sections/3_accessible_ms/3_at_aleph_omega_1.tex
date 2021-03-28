@@ -1,15 +1,10 @@
-\section{Down to $\aleph_{\omega_1}$}
+\section{Defining the Forcing}
 \label{accessible_ms:at_aleph_omega_1}
 
-To achieve mutual stationarity properties at accessible cardinals of uncountable cofinality, we develop a forcing that will simultaneously singularize a cardinal $\kappa$ and collapse cardinals below to make $\kappa$ the new $\aleph_{\omega_1}$.
-
-This is ongoing work, and a first proof of concept would be to achieve $MS(\seq{\aleph_{2n+3}\middle| n<\omega}\frown \seq{\aleph_{\alpha+2n}\middle| \omega\leq\alpha<\omega_1,n<\omega};\omega_1)$.
-
-While we have not achieved this, we have developed an as of yet unpublished Magidor-like forcing that singularizes $\kappa$ and collapses below to make $\kappa$ into $\aleph_{\omega_1}$.
-
-As an additional result, we state and partially prove a characterization of genericity for such forcing, along the lines of a diagonal Prikry forcing appearing in \cite{sinapova_unger_combos} and \cite{fuchs_magidor}.
-
-Suppose $\mathrm{GCH}$; we fix $\vec{U}=\seq{U_\xi \middle| \xi\leq\lambda}$ a Mitchell order-increasing system of measure, $\lambda<\kappa$, $Y_\xi$, and $\seq{r_\beta^\alpha \middle| \beta<\alpha<\lambda}$ as in Section 1, with $\lambda\leq \omega_1$ a limit ordinal.
+Throughout this section, suppose $\mathrm{GCH}$.
+We fix $\vec{U}=\seq{U_\xi \middle| \xi\leq\lambda}$ a Mitchell order-increasing system of measure, $\lambda<\kappa$, $\seq{Y_\xi\mid \xi<\lambda}$, and $\seq{r_\beta^\alpha \middle| \beta<\alpha<\lambda}$ as in Section \ref{forcing:magidor}\footnote{
+  In brief, this assures that the ordinals in each $Y_\xi$ is measurable of Mitchell order $\xi$, as witnessed by the $r$-sequence of measure representatives, and with reflection in the $r$-measures.
+}.
 
 Work in $Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[Col(\alpha^+,<\kappa)]_{U_\lambda}$.
 
@@ -39,6 +34,11 @@ Work in $Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[C
   
   The second and third items are measure-one reflections of the first.
 \end{proof}
+
+\begin{remark}
+  Our only use of $\mathrm{GCH}$ is to construct the sequence $\seq{K_\alpha \mid \alpha\leq \lambda}$ via the appropriate closure of measure ultrapowers.
+  In the absence of $\mathrm{GCH}$, stronger large cardinal hypotheses suffice to have ultrapowers with the appropriate closure.
+\end{remark}
 
 The above coherent family of ultrapower collapse-generics allows us to define a Magidor-style forcing with interleaved collapses, where the collapses are ``guided" by the ultrapower generics.
 In summary, conditions will similar to Magidor forcing to add a sequence $\seq{\kappa_\alpha \middle| \alpha<\omega_1}$ with supremum $\kappa$, but:
