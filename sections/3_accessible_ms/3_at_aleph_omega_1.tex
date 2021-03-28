@@ -41,20 +41,19 @@ Work in $Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[C
 \end{remark}
 
 The above coherent family of ultrapower collapse-generics allows us to define a Magidor-style forcing with interleaved collapses, where the collapses are ``guided" by the ultrapower generics.
-In summary, conditions will similar to Magidor forcing to add a sequence $\seq{\kappa_\alpha \middle| \alpha<\omega_1}$ with supremum $\kappa$, but:
+In summary, conditions will similar to Magidor forcing to add a sequence $\seq{\kappa_\alpha \middle| \alpha<\lambda}$ with supremum $\kappa$, but:
 \begin{itemize}
-  \item $\kappa_0$ will be the new $\aleph_3$,
-  \item between any two adjacent Magidor points $\kappa_\alpha$ and $\kappa_{\alpha+1}$ we will also force with $Col(\kappa_\alpha^+,<\kappa_{\alpha+1})$,
+  \item $\kappa_0$ will be the new $\lambda^{++}$,
+  \item between any two adjacent Magidor points $\kappa_\alpha$ and $\kappa_{\alpha+1}$ we will also force with ${Col(\kappa_\alpha^+,<\kappa_{\alpha+1})}$,
   \item extension will be as in Magidor forcing, but additionally we may stregthen collapses, and we don't allow already-collapsed ordinals to become future Magidor points,
-  \item when we add new points to the growing finite subfamily of the Magidor sequence, we must also carefully choose new collapse terms below and above,
+  \item when we add new points to the growing finite subfamily of the Magidor sequence, we must also choose new collapse terms to be below some condition below the relevant guiding generic in a sense;
   \item and the conditions are restricted in such a way as to ensure that no Magidor sequence point gets collapsed, and that the poset still has a Prikry-type property.
 \end{itemize}
 
-We define Magidor with interleaved collapses in full generality; for our purposes, we will later restrict $\lambda$ to be $\omega$ or $\omega_1$.
 \begin{definition}
   $\mathbb{MC}\left(\vec{U}\right)$: conditions are of the form $(f,c,A,C)$ where:
   \begin{enumerate}
-    \item $dom(f),dom(c)\in [\lambda\sqcup\{-1\}]^{<\omega}$, $dom(f)=dom(c)$, and $dom(A)=dom(C)=\lambda\setminus dom(f)$, and $f(-1)=\omega_1$. We will write $dom^+(f)$ to mean $dom(f)\cap Ord$, and similarly for $dom(c)$.
+    \item $dom(f),dom(c)\in [\lambda\sqcup\{-1\}]^{<\omega}$, $dom(f)=dom(c)$, and $dom(A)=dom(C)=\lambda\setminus dom(f)$, and $f(-1)=\lambda^+$. We will write $dom^+(f)$ to mean $dom(f)\cap Ord$, and similarly for $dom(c)$.
     \item For $\xi\in dom^+(f)$, $f(\xi)\in Z_\xi$, $f(\xi)>\lambda$, and $f$ is strictly increasing
     \item for $\xi\in dom(A)$ with $\xi<\max dom^+(f)$, let $\tau=\min\{dom^+(f)\setminus (\xi+1)\}$.
     Then $A(\xi)\in r^\tau_\xi(f(\tau))$.
