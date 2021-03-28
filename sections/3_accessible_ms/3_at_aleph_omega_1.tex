@@ -567,7 +567,7 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   
 \begin{theorem}\thlabel{magidor_collapse_generic_iff_geometric}
   In $V^{\mathbb{MC}\left(\vec{U}\right)}$, suppose $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}$ is increasing, normal, and has limit $\kappa$, and for each $\eta$, suppose $F_\eta$ be $Col(\beta_\eta^+,<\beta_{\eta+1})$-filters. 
-  Suppose furthermore that $\vec{\beta}$, $\seq{F_\eta \mid \eta<\lambda}$ is geometric (note that this means each $F_\eta$ is $Col(\beta_\eta^+,<\beta_{\eta+1}$-generic over $V$\footnote{
+  Suppose furthermore that $\vec{\beta}$, $\seq{F_\eta \mid \eta<\lambda}$ is geometric (note that this means each $F_\eta$ is $Col(\beta_\eta^+,<\beta_{\eta+1})$-generic over $V$\footnote{
     Note that since $Col(\beta_\eta^+,<\beta_{\eta+1})$ is $\beta_{\eta+1}$-cc, we have that whenever $\eta<\eta'$, $F_{\eta'}$ is $Col(\beta_{\eta'}^+,<\beta_{\eta'+1})$-generic over $V[F_\eta]$. So no additional work is needed to attain mutual genericity for the $F_\eta$'s.
   }).
   
@@ -587,14 +587,14 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
 \begin{proof}
   As with the characterization of genericity for Magidor forcing (c.f. \thref{magidor_geometric_iff_generic}), the proof is by induction on the length of $\vec{U}$.
 
-  Our base case is when $\lambda=\omega$, and our forcing is $\mathbb{MC}\left(\seq{U_n\mid n<\omega}\right)$ with $\seq{\beta_n\mid n<\omega}$, $F_n$ for each $n<\omega$, and to which the conclusions of \thref{magidor_collapse_generic_implies_geometric} apply.
+  Our base case is when $\lambda=\omega$, and our forcing is $\mathbb{MC}\left(\seq{U_n\mid n<\omega}\right)$;
+  let $\seq{\beta_n\mid n<\omega}$, and $F_n$ for each $n<\omega$, be such that the conclusions of \thref{magidor_collapse_generic_implies_geometric} apply.
   Let $\mathcal{D}\subseteq \mathbb{MC}\left(\seq{U_n\mid n<\omega}\right)$ be open dense.
   For each $g$ a valid stem, by \thref{magidor_collapse_prikry_open_dense}, fix some $c_g$, some condition $p_{g,c_g}=(g,c_g,A^{g,c_g},C^{g,c_g})$ and an $a_g\in [\omega]^{<\omega}$ such that every $a_g$-step extension of $p_{g,c_g}$ is in $\mathcal{D}$.
   Without loss of generality, we suppose that $a_g=[lh(g),lh(g)+m_g)$ for some $m_g\in \omega$.
   
-  By arguing as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may choose $c_g$'s such that for each $a\in[\omega]^{<\omega}$ and each $n\in a$,
-  $[c_g(\alpha)\mid dom(g)=a]_{U_n}\in K_n$.
-  Thus by \thref{magidor_collapse_modified_diagonalization}, there is a condition $p$ with $f^p=((-1,\omega_1))$ such that for every $g$ for which $p\frown g\leq p$, $p\frown g \leq^* p_{g,c_g}$.
+  By Item \ref{magidor_collapse_generic_implies_geometric:collapses}, by arguing as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may choose $c_g$'s such the family of $\seq{p_{g,c_g}\mid g\text{ a stem}}$ meets the necessary conditions for our diagonalization lemma \thref{magidor_collapse_modified_diagonalization}.
+  Thus by \thref{magidor_collapse_modified_diagonalization}, there is a condition $p$ with $f^p=((-1,\lambda))$ such that for every $g$ for which $p\frown g\leq p$, $p\frown g \leq^* p_{g,c_g}$.
   
   By geometricity for $\vec{\beta}$ (namely Item \ref{magidor_collapse_generic_implies_geometric:measures}) and for the collapses (Item \ref{magidor_collapse_generic_implies_geometric:collapse_futures}, there is an $m\in \omega$ such that for all $n\geq m$, $\beta_n\in A^p(n)$ and $C^p(n)(\beta_n)\in F_n$. 
   
@@ -610,12 +610,10 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   For $l\leq lh(g)$, by the genericity of the $F_n$'s, and since our choices for $c_g$ ranged over a dense subset of $\prod_{l\leq lh(g)} Col(\beta_l^+,\beta_{l+1})$, we can arrange to have $c^r(l)\in F_l$.
   This concludes the base case.
   
-  For the inductive steps, the argument proceeds almost exactly as in the Magidor forcing (c.f. \thref{magidor_geometric_iff_generic}).
-  
-  For the successor step, suppose that $\lambda=\bar{\lambda}+\omega$ and suppose the result is true for any forcing of the form $\mathbb{MC}\left(\seq{U'_\eta \mid \eta\leq \bar{\lambda}}\right)$.
-  Let $\vec{U}=\seq{U_\eta \mid \eta\leq \lambda}$, and let $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}$ and $\seq{F_\eta \mid \eta<\lambda}$ be geometric for $\mathbb{MC}\left(\vec{U}\right)$, with induced filter $H$.
+  For the successor step, suppose that $\lambda=\bar{\lambda}+\omega$ and suppose the result is true for any forcing of the form $\mathbb{MC}\left(\seq{U'_\eta \mid \eta<\bar{\lambda}}\right)$.
+  Let $\vec{U}=\seq{U_\eta \mid \eta< \lambda}$, and let $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}$ and $\seq{F_\eta \mid \eta<\lambda}$ be geometric for $\mathbb{MC}\left(\vec{U}\right)$, with induced filter $H$.
   Let $g=\seq{(\bar{\lambda},\beta_{\bar{\lambda}})}$, and in line with the factoring of \thref{magidor_collapse_factoring}, consider $\mathbb{MC}\left(\vec{U}\right)_g \times \mathbb{MC}\left(\vec{U}\right)^g$.
-  Then the induction hypothesis applies to $\mathbb{MC}\left(\vec{U}\right)_g=\mathbb{MC}\left(\seq{r_\eta^{\bar{\lambda}}(\beta_{\bar{\lambda}}) \mid \eta\leq \lambda}\right)$, 
+  Then the induction hypothesis applies to $\mathbb{MC}\left(\vec{U}\right)_g=\mathbb{MC}\left(\seq{r_\eta^{\bar{\lambda}}(\beta_{\bar{\lambda}}) \mid \eta< \lambda}\right)$, 
   and since $\seq{\beta_\eta \mid \eta<\bar{\lambda}}$ and $\seq{F_\eta \mid \eta<\bar{\lambda}}$ are geometric for $\mathbb{MC}\left(\vec{U}\right)_g$, 
   the resulting forcing $H_g$ defined from $\seq{\beta_\eta \mid \eta<\bar{\lambda}}$ and $\seq{F_\eta \mid \eta<\bar{\lambda}}$ is generic over $V$.
   Since $\mathbb{MC}\left(\vec{U}\right)^g=\mathbb{MC}\left(\seq{U_{\bar{\lambda}+n} \mid n<\omega}\right)$,
@@ -626,7 +624,7 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   This concludes the successor step.
   
   For the limit step, let $\lambda=\sup_{\rho<\tau} \lambda_\rho$ with each $\lambda_\rho$ a limit ordinal.
-  Our induction hypothesis is now that for each $\rho<\tau$ and for each $\seq{\beta_\eta \mid \eta<\lambda_\rho}$ and $\seq{F_\eta \mid \eta<\lambda_\rho}$ geometric for some Magidor collapse forcing $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_\rho}\right)$, the resulting filter $H_\rho$ is $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_\rho}\right)$-generic over $V$;
+  Our induction hypothesis is now that for each $\rho<\tau$ and for each $\seq{\beta_\eta \mid \eta<\lambda_\rho}$ and $\seq{F_\eta \mid \eta<\lambda_\rho}$ geometric for some Magidor collapse forcing $\mathbb{MC}\left(\seq{U_\eta \mid \eta< \lambda_\rho}\right)$, the resulting filter $H_\rho$ is $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_\rho}\right)$-generic over $V$;
   note that if $\rho<\rho'$ then by the Product Lemma and appropriate chain condition, $H_{\rho}=H_{\rho'} \times H'$ for some $H_{\rho'}$ $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_{\rho'}}\right)_{(\lambda_{\rho},\beta_{\lambda_{\rho}})}$-generic over $V$ and some $H'$ $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_{\rho'}}\right)^{(\lambda_\rho,\beta_{\lambda_\rho})}$-generic over $V[H_{\rho}]$.
   
   Let $\seq{\beta_\eta \mid \eta<\lambda}$ and $\seq{F_\eta \mid \eta<\lambda}$ be geometric for some Magidor collapse forcing $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda}\right)$.
@@ -637,15 +635,16 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   take $p_g=(f,c,A_g,C_g)$ such that
   \begin{itemize}
     \item $p_g\in \mathbb{MC}\left(\seq{U_\eta \mid \eta\leq\lambda}\right)$
-    \item letting $\delta=\max dom(f)$, $(p_g)_\delta = \left(1_{\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq\lambda}\right)}\right)_\delta$
+    \item letting $\delta=\max dom(f)$, $(p_g)_\delta = \left(1_{\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)}\right)_\delta$
     \item (tail-change property) for every $b\subseteq [dom(A_g)]^{<\omega}$, if $q$ is a $b$-step extension of $p_g$ and $q\in\mathcal{D}$ then every $b\setminus (dom(f^q)\cap \delta)$-step extension of $(q)_\delta \frown (p_g)^\delta$ is also in $\mathcal{D}$
   \end{itemize}
-  By arguing as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may restrict our attention to a subfamily of the $p_{(f,c)}$'s (including every possible $f$) which satisfies the hypotheses of \thref{magidor_collapse_modified_diagonalization}.
-  So by \thref{magidor_collapse_modified_diagonalization}, let $q$ be such that $f^q=\seq{(-1,\omega_1)}$ and whenever $g$ is a valid stem and collapse term by which to extend $q$, $q \frown g\leq^* p_g$.
+  By arguing as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may choose for every $f$ a $c_f$ such that $\seq{p_{(f,c_f)} \mid f\text{ a stem}}$ satisfies the hypotheses of \thref{magidor_collapse_modified_diagonalization}.
+  (Note that before we used the notation $\vec{\nu}$ for $f$.)
+  So by \thref{magidor_collapse_modified_diagonalization}, let $q$ be such that $f^q=\seq{(-1,\lambda)}$ and whenever $f$ is a valid stem by which to extend $q$, $q \frown (f,c_f)\leq^* p_g$.
   
   By geometricity, let $\rho$ be an ordinal such that for all $\eta\geq \lambda_\rho$, $\beta_\eta\in A^q(\eta)$ and $C^q(\eta)(\beta_\eta)\in F_\eta$.
   
-  By the induction hypothesis appled to $\seq{\beta_\eta \mid \eta<\lambda_\rho}$ and $\seq{F_\eta \mid \eta<\lambda_\rho}$, we induce $H_\rho$ a $\mathbb{MC}\left(\seq{r_\eta^{\lambda_\rho}(\beta_{\lambda_\rho}) \mid \eta\leq \lambda_\rho}\right)$-generic filter over $V$.
+  By the induction hypothesis appled to $\seq{\beta_\eta \mid \eta<\lambda_\rho}$ and $\seq{F_\eta \mid \eta<\lambda_\rho}$, we induce $H_\rho$ a $\mathbb{MC}\left(\seq{r_\eta^{\lambda_\rho}(\beta_{\lambda_\rho}) \mid \eta<\lambda_\rho}\right)$-generic filter over $V$.
   
   Let
   \[
@@ -653,7 +652,7 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   \]
   (Recall that $(p)_{\lambda_\rho}$ is essentially $p\upharpoonright (\lambda_\rho + 1)$; see \thref{magidor_collapse_condition_projection} for a complete description.)
   
-  Since $c^q(-1)=1_{Col(\omega_2,<\kappa)}$, $\mathcal{D}'$ is open dense in $\mathbb{MC}\left(\seq{r_\eta^{\lambda_\rho}(\beta_{\lambda_\rho}) \mid \eta\leq \lambda_\rho}\right)$, let $r\in\mathcal{D}$ be such that $r\leq q$ and $(r)_{\lambda_\rho}\in H_\rho\cap \mathcal{D}'$ and for all $\xi\geq \lambda_\rho$, $\beta_\xi\in A^r(\xi)$ and $C^r(\xi)(\beta_\xi)\in F_\xi$.
+  Since $c^q(-1)=1_{Col(\lambda^+,<\kappa)}$, $\mathcal{D}'$ is open dense in $\mathbb{MC}\left(\seq{r_\eta^{\lambda_\rho}(\beta_{\lambda_\rho}) \mid \eta<\lambda_\rho}\right)$, let $r\in\mathcal{D}$ be such that $r\leq q$ and $(r)_{\lambda_\rho}\in H_\rho\cap \mathcal{D}'$ and for all $\xi\geq \lambda_\rho$, $\beta_\xi\in A^r(\xi)$ and $C^r(\xi)(\beta_\xi)\in F_\xi$.
   
   Let $g=(f^r \upharpoonright (\lambda_\rho+1),c\upharpoonright (\lambda_\rho+1))$.
   Then by construction of $r$, $r\leq p_g$; however, $r\in \mathcal{D}$, so letting $b=dom(r)\setminus dom(f^{p_g})$, by the tail-change property of $p_g$, every $b$-step extension of $(r)_{\lambda_\rho} \frown (p_g)^{\lambda_\rho}$ is also in $\mathcal{D}$.
