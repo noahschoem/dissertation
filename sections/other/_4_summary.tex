@@ -1,47 +1,29 @@
 \summary
 
-My thesis consists of novel anti-saturation results on ideals.
+This thesis consists primarily of anti-saturation results on ideals.
 
-After a brief introduction covering historical context and the preliminaries necessary to understand the thesis,
-we begin by extending an anti-saturation result for ideals on the successors of regular cardinals to inaccessibles, encapsulated in the following two theorems:
-
-\begin{thm}
-Suppose $V$ is a universe of $ZFC$ with an inaccessible cardinal $\kappa$ admitting $\kappa$-complete, normal, $\kappa^+$-saturated ideals on $\kappa$ concentrating on inaccessible cardinals below $\kappa$ (i.e. such that $Inacc_\kappa\in I^+$).
-Then there is a poset $\mathbb{Q}$ such that:
-\begin{enumerate}[label={(\roman*)}]
-\item $V^\mathbb{Q}\models``\text{there are no }\kappa\text{-complete, }\kappa^+\text{-saturated ideals on }\kappa \text{  concentrating on regular cardinals}"$ \label{bigthm:killsat}
-\item If $I\in V$ is a $\kappa$-complete, normal, $\kappa^+$-saturated ideal on $\kappa$ concentrating on regular cardinals, 
-then $V^\mathbb{Q}\models``\overline{I}\text{ is }\kappa^+\text{-presaturated}"$ \label{bigthm:savepresat}
-\end{enumerate}
-where $\overline{I}=\{A\in \mathcal{P}^{V^\mathbb{Q}}(\kappa) \mid \exists N\in I \ A\subseteq N\}$.
-\end{thm}
+After a brief introduction covering historical context and necessary preliminaries,
+we extend an anti-saturation result for ideals on the successors of regular cardinals to inaccessibles:
 
 \begin{thm}
-With the same assumptions, there is a $\mathbb{Q}$ such that if $\delta>\kappa$ is a regular cardinal, $I\in V$ is normal, fine, $\delta$-presaturated ideal of uniform completeness $\kappa$ on some algebra of sets $Z$ concentrating on inaccessible cardinals below $\kappa$ (i.e. $\{z\in Z \mid z\cap \kappa \in \kappa \text{ is inaccessible}\}$ is in its dual filter) such that
-\begin{itemize}
-\item $\forces_{\mathcal{B}_I} |\dot{j}_I(\kappa)|=\delta<\dot{j}_I(\kappa)$
-where $\dot{j}_I$ is a name for the generic elementary embedding $j_I:V\to M$ added by $\mathcal{B}_I:=\mathcal{P}(Z)/I$;
-\item $\mathcal{B}_I$ is proper on $IA_{<\delta}$;
-\end{itemize}
-then in $V^\mathbb{Q}$,
-\begin{itemize}
-\item $\overline{I}$ is not $\delta$-saturated
-\item but $\overline{I}$ is $\delta$-presaturated
-\end{itemize}
-where $\overline{I}$ is as above.
+  Suppose $V$ is a universe of $ZFC+GCH$ with an inaccessible cardinal $\kappa$ admitting $\kappa$-complete, normal, $\kappa^+$-saturated ideals on $\kappa$ concentrating on regular cardinals below $\kappa$.
+  Then there is a generic extension $V^{\mathbb{Q}}$ in which
+  \begin{enumerate}[label={(\roman*)}]
+  \item there are no $\kappa$-complete, $\kappa^+$-saturated ideals on $\kappa$ concentrating on regular cardinals,
+  \item but if $I\in V$ is a $\kappa$-complete, normal, $\kappa^+$-saturated ideal on $\kappa$ concentrating on regular cardinals, 
+  then $V^\mathbb{Q}\models``\overline{I}\text{ is }\kappa^+\text{-presaturated}"$
+  \end{enumerate}
 \end{thm}
 
-We then turn to mutually stationary sequences and $MS(\seq{\kappa_\alpha \mid \alpha<\mu, \ \kappa_\alpha\text{ successor}})$, the principle that every family $S_\alpha\subseteq \kappa_\alpha$ of stationary sets is mutually stationary.
-
-We prove:
+We then turn to mutually stationary sequences, and prove:
 \begin{thm}
   Let $\seq{\beta_\alpha \mid \alpha<\lambda}$ be a sequence generic for a Magidor forcing $\mathbb{M}\left(\vec{U}\right)$ of length $\lambda$.
-  Then there is a cofinite subset $K$ of $\seq{\beta_\alpha \mid \alpha\text{ successor}<\lambda}$ such that every family $S_\alpha\subseteq \beta_\alpha\in K$ of stationary sets is mutually stationary.
+  Then there is a cofinite subset $K$ of $\seq{\beta_\alpha \mid \alpha<\lambda, \alpha\text{ successor}}$ such that every family $S_\alpha\subseteq \beta_\alpha\in K$ of stationary sets is mutually stationary.
 \end{thm}
 
-Finally, we describe progress on a project to obtain 
-\[
-  MS\left(\seq{\aleph_{2n+3}\middle| n<\omega}\frown \seq{\aleph_{\alpha+2n}\middle| \omega\leq\alpha<\omega_1,n<\omega};\omega_1\right)
-\]
-a mutual stationarity result at $\aleph_{\omega_1}$, on every other successor cardinal below, for stationary subsets consisting of fixed cofinalith $\omega_1$.
-To that end, we describe a Magidor-type forcing $\mathbb{MC}\left(\vec{U}\right)$ that changes a measurable cardinal $\kappa$ into $\aleph_{\omega_1}$, and state and prove Prikry-type lemmata (\thref{magidor_collapse_prikry_open_dense} and \thref{magidor_collapse_prikry_open_dense_better}) and prove a characterization of genericy for $\mathbb{MC}\left(\vec{U}\right)$ in \thref{magidor_collapse_generic_implies_geometric} and \thref{magidor_collapse_generic_iff_geometric}.
+Finally we develop a novel Magidor-like forcing with interleaved collapses and guiding generics $\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)$ and state and prove a characterization of genericity:
+
+\begin{thm}
+  Let $\vec{\beta}=\seq{\beta_\eta\mid \eta<\lambda}$ and $\vec{F}=\seq{F_\eta\mid \eta<\lambda}$ be in $V^{\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)}$.
+  Then $(\vec{\beta},\vec{F})$ is $\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)$-generic over $V$ precisely when at each limt ordinal $\eta\leq \lambda$, $\vec{\beta}\upharpoonright \eta$ meets $\seq{U_\zeta \mid \zeta<\eta}$ coboundedly often, and $\seq{F_\zeta\mid \zeta<\eta}$ meets the guiding generics coboundedly often.
+\end{thm}
