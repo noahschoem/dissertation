@@ -51,7 +51,7 @@ this was the content of Question 8.5 of \cite{cox_eskew_kill_sat_save_presat} an
 This paper's central result establishes that Question \ref{foremanq13} is consistently false at $\kappa$ inaccessible, by way of partially extending the arguments and results of Theorem 4.1 of \cite{cox_eskew_kill_sat_save_presat}:
 
 \begin{theorem}\thlabel{bigthm}
-Suppose $V$ is a universe of $ZFC+GCH$ with an inaccessible cardinal $\kappa$ admitting $\kappa$-complete, normal, $\kappa^+$-saturated ideals on $\kappa$ concentrating on regular cardinals below $\kappa$ (i.e. such that $Reg_\kappa\in I^+$).
+Suppose $V$ is a universe of $ZFC+GCH$ with an inaccessible cardinal $\kappa$ admitting $\kappa$-complete, normal, $\kappa^+$-saturated ideals on $\kappa$ concentrating on inaccessible cardinals below $\kappa$ (i.e. such that $Inacc_\kappa\in I^+$).
 Then there is a poset $\mathbb{Q}$ such that:
 \begin{enumerate}[label={(\roman*)}]
 \item $V^\mathbb{Q}\models``\text{there are no }\kappa\text{-complete, }\kappa^+\text{-saturated ideals on }\kappa \text{  concentrating on regular cardinals}"$ \label{bigthm:killsat}
@@ -66,7 +66,7 @@ We can further generalize Theorem \ref{bigthm}\ref{bigthm:savepresat} as follows
 (TODO: fix this theorem; c.f. JSL feedback)
 
 \begin{theorem}\thlabel{savemorepresat}
-With the same assumptions, there is a $\mathbb{Q}$ such that if $\delta>\kappa$ is a regular cardinal, $I\in V$ is normal, fine, $\delta$-presaturated ideal on $Z$ of uniform completeness $\kappa$ concentrating on regular cardinals below $\kappa$ such that
+With the same assumptions, there is a $\mathbb{Q}$ such that if $\delta>\kappa$ is a regular cardinal, $I\in V$ is normal, fine, $\delta$-presaturated ideal of uniform completeness $\kappa$ on some algebra of sets $Z$ concentrating on inaccessible cardinals below $\kappa$ (i.e. $\{z\in Z \mid z\cap \kappa \in \kappa \text{ is inaccessible}\}$ is in its dual filter) such that
 \begin{itemize}
 \item $\forces_{\mathcal{B}_I} |\dot{j}_I(\kappa)|=\delta<\dot{j}_I(\kappa)$
 where $\dot{j}_I$ is a name for the generic elementary embedding $j_I:V\to M$ added by $\mathcal{B}_I:=\mathcal{P}(Z)/I$;
