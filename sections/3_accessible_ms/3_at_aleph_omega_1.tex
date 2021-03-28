@@ -54,7 +54,7 @@ In summary, conditions will similar to Magidor forcing to add a sequence $\seq{\
   $\mathbb{MC}\left(\vec{U}\right)$: conditions are of the form $(f,c,A,C)$ where:
   \begin{enumerate}
     \item $dom(f),dom(c)\in [\lambda\sqcup\{-1\}]^{<\omega}$, $dom(f)=dom(c)$, and $dom(A)=dom(C)=\lambda\setminus dom(f)$, and $f(-1)=\lambda^+$. We will write $dom^+(f)$ to mean $dom(f)\cap Ord$, and similarly for $dom(c)$.
-    \item For $\xi\in dom^+(f)$, $f(\xi)\in Z_\xi$, $f(\xi)>\lambda$, and $f$ is strictly increasing
+    \item For $\xi\in dom^+(f)$, $f(\xi)\in Z_\xi$, $f(\xi)>\lambda^+$, and $f$ is strictly increasing
     \item for $\xi\in dom(A)$ with $\xi<\max dom^+(f)$, let $\tau=\min\{dom^+(f)\setminus (\xi+1)\}$.
     Then $A(\xi)\in r^\tau_\xi(f(\tau))$.
     \item For $\xi\in dom(A)$ with $\xi>\max dom^+(f)$, $A(\xi)\in U_\xi$; with $\tau=\max (dom^+(f)\cap \xi)$, we further require that $A(\xi)\subseteq Z_\xi\setminus(f(\tau)+1)$.
@@ -135,10 +135,7 @@ As with Magidor forcing, we have notions of how to project conditions, and a fac
   \[
     \mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}=\mathbb{MC}\left(\seq{U_\gamma \mid \beta<\gamma<\lambda}\right)
   \]
-  (restricted to stems above $\rho$) with guiding generics $\seq{K_\gamma \mid \gamma<\lambda}$\footnote{
-    We make the caveat that for $\mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}$, we take for all conditions $p$, $f^p(-1)=\rho$, and $c^p(-1)\in Col(\rho^+,<\kappa)$.
-    Otherwise the analysis for $\mathbb{MC}\left(\vec{U}\right)$ and $\mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}$ is identical.
-  }.
+  (restricted to stems above $\rho^+$) with guiding generics $\seq{K_\gamma \mid \gamma<\lambda}$.
 \end{fact}
 
 As with $\mathbb{M}\left(\vec{U}\right)$, due to the factoring of \thref{magidor_collapse_factoring}, many preservation arguments that work for $\mathbb{MC}\left(\vec{U}\right)$ still reflect downwards.
