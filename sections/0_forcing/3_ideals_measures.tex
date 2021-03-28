@@ -141,7 +141,7 @@ We summarize the core ideas and results we need of these generic ultrapowers; se
   with partial order $[A]_{\overset{\smile}{\mathcal{I}}} \leq [B]_{\overset{\smile}{\mathcal{I}}}$ if $B\setminus A \in \mathcal{I}$, is a separative notion of forcing.
   Let $G$ be $\mathcal{B}_{\mathcal{I}}$-generic over $V$.
   Then for every $X\in V$, $X\subseteq \kappa$, either $[X]\in G$ or $[X^\complement]\in G$, so $G$ is a $V$-ultrafilter.
-  Thus in $V[G]$ we may define $Ult(V,G)$ and obtain an elementary embedding $j:V\to Ult(V,G)$.
+  Thus in $V[G]$ we may define $Ult(V,G)$ and obtain an elementary embedding $j_{\mathcal{I}}:V\to Ult(V,G)$.
   
   Further, if $\mathcal{I}$ is $\kappa$-complete then $G$ is $V$-$\kappa$-complete, and if $\mathcal{I}$ is normal then $G$ is $V$-normal, and $G=\{X\subseteq \kappa \mid \kappa\in j(X)\}$.
 \end{proposition}
@@ -232,12 +232,19 @@ Precipitousness results concerning nonstationary ideals have a long history, and
 To compute saturation (and other) properties on ideals in generic extensions, we may use Foreman's Duality Theorems.
 Let $\mathbb{P}$ be a notion of forcing and let $\mathcal{I}$ be a precipitous ideal in $V$;
 we write $\overline{\mathcal{I}}$ to denote $\{A\in V^{\mathbb{P}} \mid \exists X\in \mathcal{I} \ A\subseteq X\}$.
-Then Foreman's Duality Theorems (the many forms of which can be found in \cite{foreman_ideals_gen_ees}, Chapter 7.4) allow for the computation of various (including saturation) properties of $\overline{\mathcal{I}}$, roughly as follows:
+Then Foreman's Duality Theorems (the many forms of which can be found in \cite{foreman_ideals_gen_ees}, Chapter 7.4) allow for the computation of various (including saturation) properties of $\overline{\mathcal{I}}$.
+We will be using special cases of this fairly general formulation, which appears as Theorem 7.14 of \cite{foreman_ideals_gen_ees}:
 
 \begin{theorem}
-  Under certain assumptions, there exist conditions $R\in \mathbb{P} * \dot{\overline{\mathcal{I}}}$ and $S\in \mathcal{I} * \dot{j_{\mathcal{I}}(\mathbb{P})}$ such that
+  Let $\mathcal{I}$ be precipitous on a set algebra $A$, $\mathbb{P}$ is a poset, and there is a condition $\dot{m} \in \dot{j_{\mathcal{I}}(\mathbb{P})}$ such that the embedding
   \[
-    \left(\mathbb{P} * \dot{\overline{\mathcal{I}}}\right)/R \cong
-    \left(\mathcal{I} * \dot{j_{\mathcal{I}}(\mathbb{P})}\right)/S
+    id \times \dot{j}_{\mathcal{I}}: (A / \mathcal{I}) \times \mathbb{P} \to (A / \mathcal{I}) \times j(\mathbb{P}) / m
+  \]
+  is regular.
+  
+  Then there exist conditions $R\in \mathbb{P} * \dot{A/\overline{\mathcal{I}}}$ and $S\in (A/\mathcal{I}) * \dot{j_{\mathcal{I}}(\mathbb{P})}$ such that
+  \[
+    \left(\mathbb{P} * \dot{A/\overline{\mathcal{I}}}\right)/R \cong
+    \left(A/\mathcal{I} * \dot{j_{\mathcal{I}}(\mathbb{P})}\right)/S
   \]
 \end{theorem}
