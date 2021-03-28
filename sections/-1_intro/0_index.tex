@@ -1,28 +1,122 @@
 \chapter{Introduction}
 \label{intro}
 
-Introductory chapter that puts everything in context.
-\begin{comment}
-  Dima recommends:
-  
-  intro can list char'n of magcoll geny as a key result)
-  For the intro, summarize your results (destroy sat at inacc, Mag gen & MS, magcoll charn of geny)
-    Don't go further back than Cohen. Talk about failure of CH, GCH, powerset. Easton's Thm for regs.
-    For sings, much more interesting. Can't just use Cohen poset, need large cards. Magidor, from s.c. and later by Mitchell, Woodin, reduced and made optimal (to o(kappa)=kappa++).
-    We combine techniques of forcings and large cardinals, where LCs are strengthenings of ZFC, (ConZFC or Konig infinity lemma), and much stronger ones that satisfy omega-like compactness results. (Can even note that omega is in a sense a "ctble inaccessible)
-    (Mention cpctness props, incl stat refl'n for reg cards)
-    
-    For very large cards, have a measure-like object, equiv. to j:VtoM eltary. Stronger closure properties of M (more V-like) === larger cards.
-    
-    M equiv to taking the "ultrapower"; can also get *an* ultrapower by *forcing* with an ideal that gives a gen filter that is V-ultra, so gives j:VtoM in gen ext.
-    Want to investigate properties of such ultrapowers; properties of such ideals tell props of their gen ults.
-    
-    Now we can describe antisaturation results.
-    Tie MS to being both a cpctness property, and an antisat result for NS.
-    
-    Then describe the organization:
-    Preliminaries are prelims; cover basics, note interesting stuff in Mag forcing ch.
-    destroy_sat covers getting nonsat'd but still nice ideals at an inaccessible cardinal and was first my preprint on the arXiv.
-    MS chapter describes MS, and also new result that mag gens satisfy MS like Prikry gens.
-    accesssible_MS describes ongoing pf of concept project to get MS results at aleph_omega_1. Here we define and prove results about a novel Magidor-type forcing with intercoll & guide gen, incl. a proof of its charn of geny.  
-\end{comment}
+% 
+% Dima recommends:
+% 
+% intro can list char'n of magcoll geny as a key result)
+% For the intro, summarize your results (destroy sat at inacc, Mag gen & MS, magcoll charn of geny)
+%   Don't go further back than Cohen. Talk about failure of CH, GCH, powerset. Easton's Thm for regs.
+
+Ever since Cohen proved the independence of the Continuum Hypothesis from $\mathrm{ZFC}$, set theorists have greatly expanded on his method of forcing to discover ever more complex phenomena in the multiverse of set theories.
+
+A proof or disproof of the Continuum Hypothesis ($\mathrm{CH}$), the statement that $2^{\aleph_0}=\aleph_1$, had been on mathematicians' radar since the nineteenth century, but Cohen finally proved its undecidability.
+In brief, Cohen's method of forcing starts with a universe $V$ of $\mathrm{ZFC}$ and, using tools entirely within $V$, interprets a new universe with entirely new objects.
+Cohen's methods allow for the creation of a universe in which $\mathrm{CH}$ holds\footnote{
+  While G\"odel's Constructible universe $L$ also achieves this, Cohen's method allows for a more uniform treatment.
+}.
+Furthermore, forcing with the combinatorial object $Add(\omega,1)$ can create a new universe $V^{Add(\omega,1)}$ with a real number not present in $V$.
+And forcing with $Add(\omega,\omega_2)$ can create real numbers on a scale hitherto undreamt of, so much that $V^{Add(\omega,\omega_2)}\models \card{\mathcal{P}({\aleph_0})}\geq\aleph_2$.
+
+The question then arose of whether similar independence results could hold at other cardinals, and for regular cardinals Easton quickly characterized the exact behavior of the powerset operator.
+A regular cardinal $\kappa$ is one for which any $<\kappa$-sized union of $<\kappa$-sized sets is of size $<\kappa$.
+For instance (under $\mathrm{ZFC}$) $\omega_1$ is regular, as is $\omega_{\alpha+n}$ for any $n<\omega$, however $\aleph_\omega$ is not, as $\aleph_\omega=\bigcup_{n<\omega} \aleph_n$.
+So we say that $\aleph_\omega$ is singular, with cofinality $\cof(\aleph_\omega)=\omega$; likewise $\cf(\aleph_{\omega+\omega})=\omega$ and $\cf(\aleph_{\omega_1})=\omega_1$.
+
+In brief, Easton showed, using Cohen's tools and a universe satisfying $\mathrm{GCH}$ (i.e. for every $\kappa$, $2^\kappa=\kappa^+$),
+that besides the following three properties of the powerset function applying to every regular $\kappa$, $\lambda$:
+\begin{enumerate}
+  \item (Cantor's Theorem) $2^\kappa>\kappa$
+  \item (Cofinality) $\cf(2^\kappa)>\kappa$
+  \item (K\"onig's Cardinality Lemma) if $\kappa\leq \lambda$ then $2^\kappa\leq 2^\lambda$
+\end{enumerate}
+\emph{any} behavior for the powerset operator is possible.
+
+%   For sings, much more interesting. Can't just use Cohen poset, need large cards. Magidor, from s.c. and later by Mitchell, Woodin, reduced and made optimal (to o(kappa)=kappa++).
+
+%   We combine techniques of forcings and large cardinals, where LCs are strengthenings of ZFC, (ConZFC or Konig infinity lemma), and much stronger ones that satisfy omega-like compactness results. (Can even note that omega is in a sense a "ctble inaccessible)
+%   (Mention cpctness props, incl stat refl'n for reg cards)
+
+For the powerset at singular cardinals, the situation is far more complicated and consistency results here require large cardinals.
+Here, we investigate $\mathrm{SCH}$, the principle that if $\kappa$ is a singular strong limit cardinal, then $2^\kappa=\kappa^+$.
+Unlike with $\mathrm{GCH}$, Easton's method preserves $\mathrm{SCH}$.
+As Silver showed, the powerset operator on large cardinals is much more restricted, in that if $\mathrm{SCH}$ fails, then the first cardinal at which $\mathrm{SCH}$ fails must have countable cofinality.
+Later results by Shelah's $\mathrm{PCF}$ theory gave even stronger restrictions.
+As for the necessity of large cardinals, Jensen's Covering Lemma proves that if $\mathrm{SCH}$ fails, then many large cardinal hypotheses must be consistent.
+
+In short, a large cardinal $\kappa$ is a cardinal so large that $V_\kappa \models \mathrm{ZFC}$, in particular one whose existence proves the consistency of $\mathrm{ZFC}$.
+Since $\omega$'s existence proves the consistency of $\mathrm{ZFC}-\mathrm{Infinity}$, $\omega$ may be considered \emph{almost} a large cardinal.
+Several large cardinal axioms are generalizations of compactness-style phenomena holding at $\omega$.
+For example, weak compactness, the principle that $\kappa$ is inaccessible and $\kappa\rightarrow(\kappa)^2_2$, is a generalization of Ramsey's theorem that $\omega\rightarrow(\omega)^2_2$.
+
+Combining Cohen's method of forcing with large cardinals will often partially preserve some of the large cardinal's properties in the extended universe.
+This following example is due to Mitchell: if $\kappa$ is weakly compact, then every stationary subset of $\kappa$ \emph{reflects}, that is, if $S\subseteq \kappa$ is stationary, then there is some $\alpha<\kappa$ such that $S\cap \alpha$ is stationary in $\alpha$.
+An appropriate forcing $\mathbb{P}$ in which $V^{\mathbb{P}}\models \kappa=\aleph_2$ will preserve this stationary reflection of $\kappa$; conversely, if $\aleph_2$ satisfies this stationary reflection, then there is a subuniverse in which $\aleph_2$ is weakly compact.
+
+As for $\lnot\mathrm{SCH}$, Magidor argued that from a supercompact cardinal $\kappa$ (a very large cardinal hypothesis), one can force $\kappa$ to be singular and $\mathrm{SCH}$ to fail at $\kappa$;
+later work by Mitchell and Woodin optimized this result exactly to $\kappa$ measurable with $o(\kappa)=\kappa^{++}$.
+
+%   
+%   For very large cards, have a measure-like object, equiv. to j:VtoM eltary. Stronger closure properties of M (more V-like) === larger cards.
+%   
+%   M equiv to taking the "ultrapower"; 
+
+Sufficiently large cardinals, such as measurable, strong, strongly compact, and supercompact cardinals, come with a highly complete ultrafilter $U$ that induces a nontrivial elementary self-embedding of the universe $j:V\to Ult(V,U)$ into a well-founded ultrapower model of $\mathrm{ZFC}$ which is isomorphic to a transitive submodel $M$ of $V$.
+For a measurable cardinal $\kappa$, $M$ will itself be closed under $\kappa$-sequences from $V$, and $j(\kappa)>\kappa$.
+Various niceness properties of $j(\kappa)$ (e.g. cardinality lower bounds, being a $V$-cardinal) and how ``close" $M$ is to $V$, increase the consistency strength of the large cardinal hypothesis.
+
+% can also get *an* ultrapower by *forcing* with an ideal that gives a gen filter that is V-ultra, so gives j:VtoM in gen ext.
+%   Want to investigate properties of such ultrapowers; properties of such ideals tell props of their gen ults.
+
+Combining the method of forcing and the ultrafilter-based embedding methods allow for the construction of generic ultrapowers, where the embeddings $j:V\to M$ lie in a forcing extension of $V$.
+Rather than filters, such constructions are typically phrased in terms of the dual notion of \emph{ideal}:
+if $I$ is an ideal on some set algebra $\mathcal{A}$ in some $\mathcal{P}(Z)$,
+then $\mathcal{A}/I$ is a valid notion of forcing which adds a filter $U$ such that every $X\in \mathcal{A}\cap V$ is either in $U$ or its complement is in $U$, and so we may construct $j:V\to Ult(V,U)$.
+In the event that $\mathcal{A}/I$ only has antichains of size less than $\kappa$, then we say that $I$ is $\kappa$-\emph{saturated}.
+If $\kappa\leq \card{Z}^+$, then as a result $\mathcal{A}/I$ induces a well-founded generic ultrapower and preserves a large class of cardinals.
+
+%   
+%   Now we can describe anti-saturation results.
+%   Tie MS to being both a cpctness property, and an antisat result for NS.
+
+The theme of this thesis is in \emph{anti-saturation} results, that say when an ideal is specifically \emph{not} saturated.
+
+Solovay's Splitting Theorem for stationary sets says that the nonstationary ideal on $\kappa$ is not $\kappa$-saturated, and counts as the first major anti-saturation result for the nonstationary ideal on any regular cardinal $\kappa$.
+As for other results about the non-saturation of nonstationary ideals, Gitik and Shelah showed that when $\kappa>\omega_1$, $NS_\kappa$ is not $\kappa^+$-saturated.
+However, it is consistent (from very large cardinals) that $NS_{\omega_1}$ is $\omega_2$-saturated.
+Likewise, for $\lambda\geq\kappa\geq\omega_1$, the nonstationary ideal on $\mathcal{P}_\kappa(\lambda)$ (for $\lambda\geq\kappa$) is known not to be $\kappa^+$-saturated. 
+Burke, Foreman, Gitik, Magidor, Matsubara, and Shelah proved this over much time and many papers.
+
+Results on \emph{any} ideal have an equally rich history, which we will cover in Section \ref{destroy_sat:background}.
+
+In proving that the nonstationary ideal on $\mathcal{P}_{\omega_1}(\lambda)$ is not $\lambda^{\cf(\lambda)}$-saturated for any singular $\lambda$, Foreman and Magidor introduced the notion of \emph{mutually stationary} sequence, which acts as a generalization of stationarity, and of stationary reflection, for singular cardinals.
+
+Paradoxically, although saturation results often have large cardinal consistency strength, mutual stationarity principles are a strong form of anti-saturation property and also have large cardinal consistency strength.
+For instance, a Prikry generic sequence added to a measurable cardinal exhibits a mutual stationarity property, and the measurability is known to be necessary.
+For mutual stationarity principles at accessible cardinals such as $\aleph_\omega$, even larger cardinals are necessary.
+
+We now come to where this thesis's results fit into the above milieu.
+
+Cox and Eskew have a recent anti-saturation result for  successors of regular cardinals that still guarantees many of the corollaries of saturation, such as well-foundedness of the generic ultrapower and preservation of many cardinals.
+Chapter \ref{destroy_sat} generalizes their result to an inaccessible, in the form of Theorem \thref{bigthm} and \thref{savemorepresat}.
+
+Concerning mutual stationarity, we extend the mutual stationarity result for Prikry generic sequences to Magidor generic sequences, which act to singularize a cardinal to  uncountable cofinality in a cardinal-preserving manner.
+This is the content of Chapter \ref{ms}, in particular (TODO: forthcoming theorem on mag gens and MS).
+
+Finally, we describe an ongoing proof-of-concept project to achieve a mutual stationarity result at $\aleph_{\omega_1}$.
+While we have not achieved such a mutual stationarity result, we have developed a novel Magidor-like forcing $\mathbb{MC}\left(\vec{U}\right)$ that singularizes a regular cardinal $\kappa$ without collapsing $\kappa$,
+and simultaneously collapses cardinals below $\kappa$ using the method of \emph{guiding generics} to turn $\kappa$ into the extended universe's $\aleph_{\omega_1}$.
+This program takes up Chapter \ref{accesssible_ms}, and culminates in \thref{magidor_collapse_generic_iff_geometric}, an exact characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$.
+
+%   
+%   Then describe the organization:
+%   Preliminaries are prelims; cover basics, note interesting stuff in Mag forcing ch.
+%   destroy_sat covers getting nonsat'd but still nice ideals at an inaccessible cardinal and was first my preprint on the arXiv.
+%   MS chapter describes MS, and also new result that mag gens satisfy MS like Prikry gens.
+%   accesssible_MS describes ongoing pf of concept project to get MS results at aleph_omega_1. Here we define and prove results about a novel Magidor-type forcing with intercoll & guide gen, incl. a proof of its charn of geny.  
+
+The paper is organized as follows.
+Chapter \ref{forcing} describes our required preliminaries, including stationary sets, the basics of forcing, ideals \& measures, Mitchell order, Prikry forcing and Prikry forcing with collapses, and Magidor forcing.
+Chapter \ref{destroy_sat} covers our extension of Cox and Eskew's anti-saturation result to inaccessibles, in the form of Theorem \thref{bigthm} and \thref{savemorepresat}.
+Chapter \ref{ms} outlines a brief history of mutual stationarity results, expands on how mutual stationarity acts as an anti-saturation principle for nonstationary ideals, and exposits on indiscernibility-based methods pioneered by Koepke, and collated in \ref{ms:koepke}; we then cover \thref{simult_indisc_useful}, a novel simultaneous indiscernibility result that shows in (TODO: thref your Magidor Gens and MS result) that Magidor generic sequences exhibit mutual stationarity properties.
+Finally, Chapter \ref{accesssible_ms} describes a new Magidor-type forcing $\mathbb{MC}\left(\vec{U}\right)$ that turns a measurable $\kappa$ into $\aleph_{\omega_1}$; we state and prove its relevant Prikry-type lemmata in \thref{magidor_collapse_prikry_type_open_dense} and \thref{magidor_collapse_prikry_type_open_dense_better} and a complete characterization of genericity in \thref{magidor_collapse_generic_iff_geometric}.
