@@ -1,4 +1,123 @@
 \section{Mutual Stationarity for Magidor Generics}
 \label{ms:magidor_gens}
 
-Argues that Magidor generics satisfy mutual stationarity.
+
+We now generalize Koepke's approach to Magidor forcing.
+Before we do so, we have an ancillary lemma that will come into play.
+Note that Prikry forcing preserves the stationarity of sets of size less than $\kappa$, because Prikry forcing adds no new bounded subsets of $\kappa$.
+We need a different argument for Magidor forcing.
+
+\begin{lemma}\thlabel{mag_forcing_preserves_stationary_successors}
+  Let $\delta$ be a cardinal in $V$, and suppose that in $V[\mathbb{M}(\vec{U})]$, $\delta=\kappa_{\alpha+1}$ for some $\alpha$.
+  Let $S\subseteq \delta$ be stationary in $V$.
+  Then $S$ is stationary in $V[\mathbb{M}(\vec{U})]$.
+\end{lemma}
+
+\begin{proof}
+  It is enough to show that $S$ is stationary after forcing with $\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}\times \mathbb{M}(\vec{U})^{(\alpha+1,\delta)}$.
+  
+  To see that $S$ is stationary in $V[\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}]$, let $1\leq n<\omega$ be such that $\alpha+1=\beta+n$ for some $\beta$ limit (or $0$).
+  Then densely often (by extending the stem such that $\beta+k$ is in the domain of the stem, for all $k\leq n$),
+  we may assume we're forcing with $\mathbb{M}(\vec{U})_{(\beta,\xi)}$ for some $\xi$, which is $\xi^+$-cc, and hence is $\delta$-cc as well.
+  Thus $S$ is stationary in $V[\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}]$.
+  
+  Since the direct order on $\mathbb{M}(\vec{U})^{(\alpha+1,\delta)}$ remains $\delta$-closed after forcing with $\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}$, $S$ remains stationary in the full generic extension.
+\end{proof}
+
+Note that since mutually stationary sequences of sets are only defined for families of regular cardinals, we don't have to concern ourselves with sets cofinal in the cardinals singularized by the Magidor forcing.
+
+\begin{theorem}\thref{magidor_generics_mutually_hom}
+  Let $\lambda<\kappa$ and let $\seq{\kappa_{\alpha}\mid \alpha<\lambda}$ be Magidor generic over $V$.
+  In $V[G]$, let $f:[\kappa]^{<\omega}\to\kappa$.
+  
+  Then there are $\delta<\lambda$ and $\seq{A_\alpha \mid \delta < \alpha < \lambda, \alpha \text{ successor}}$ such that each $A_\alpha$ is stationary in $\kappa_\alpha$,
+  and whenever $x,y\subseteq [\bigcup_{\delta<\alpha<\omega} A_\alpha]^{<\omega}$ with $type(x)=type(y)$ and $x\cap (f(x)+1)=y\cap(f(x)+1)$, we have that $f(x)=f(y)$.
+\end{theorem}
+
+\begin{proof}
+  We mimic the argument as in \cite{koepke_free_subset}, except with Magidor geometricity.
+  
+  Let $(g,H)\forces \dot{f}:[\kappa]^{<\omega}\to\kappa$.
+  Let $\mathcal{M}$ be a transitive structure posessing Skolem functions for itself, containing $\kappa$, $\vec{U}$, $\mathbb{M}(\vec{U})$, $(g,H)$, and $\dot{f}$ as constants, $\kappa\subseteq \mathcal{M}$, and reflecting enough of $V$ for the following argument.\footnote{
+    This amounts to the transitive version of the Reflection Principle, where the following argument only uses finitely many axioms of ZFC.
+  }
+  
+  Since $\vec{U}$ is a family of normal measures on $\kappa$, an application of \thref{simult_indisc_useful} for each $\mathcal{M}$-formula, plus a diagonal intersection, yields us a $(g,X)\leq^* (g,H)$ such that for every $\mathcal{M}$-formula $\psi$, we have the following principle:
+
+  For every $n$, whenever $k_0,\dots,k_{n-1}\in \omega$ and whenever $\alpha_0<\dots<\alpha_{n-1}$, if
+  \[
+    x,y\in \prod_{0\leq i<n}^{\uparrow} X_{\alpha_i}^{k_i}
+  \]
+  and
+  \[
+    \vec{\alpha}\in [\kappa]^{<\omega} \text{ with }x \cap(\max\vec{\alpha}+1) =  y\cap(\max\vec{\alpha}+1)
+  \]
+  then 
+  \[
+    \mathcal{M}\models \phi(\vec{\alpha},x) \text{ iff }\mathcal{M}\models \phi(\vec{\alpha},y)
+  \]
+  
+  Let $Y$ be such that $Y(\beta)$ is the stationary reflection points in each $X(\beta)$, i.e. 
+  \[
+    Y(\beta)=X(\beta) \cap \{\gamma<\kappa \mid \gamma \cap X(\beta) \text{ stationary in }\gamma\}
+  \]
+  Let $G'$ be $\mathbb{M}(\vec{U})$-generic over $V$ with $(g,Y)\in G'$; let $\seq{\kappa'_\alpha \mid \alpha<\lambda}$ be the $G'$-generic Magidor sequence.
+  
+  Let $\delta=\max(dom(g))$ and let $\seq{A_\alpha \mid \delta<\alpha<\kappa}$ be given by $A_\alpha=X(\alpha) \cap \kappa'_\alpha$.
+  
+  Suppose that $x,y$ are finite subsets of $\bigcup_{\delta<\alpha<\kappa} A_\alpha$ such that $type(x)=type(y)$, 
+  $\dot{f}[G'](x)\leq \dot{f}[G'](y)$, and $x \cap (\dot{f}[G'](x) + 1)=y\cap (\dot{f}[G'](x)+1)$.
+  Let $\beta$ be least such that $\dot{f}[G'](x)\leq \kappa'_\beta$;
+  extend $g$ to $g'$ such that $g'(\beta)=\kappa'_\beta$ and with enough Magidor points included to witness that $type(x)=type(y)$.\footnote{
+    That is, the elements of $x$, $y$ fall between only finitely many of points of the Magidor sequence; let $g'$ be an extension including these finitely many points of the Magidor sequence.
+  }
+  Let $t$, $w$ be $\mathcal{M}$-terms such that
+  \[
+    (g',t(g',x)) \forces \dot{f}(x)=w(g',x) 
+  \]
+  \[
+    (g',t(g',y)) \forces \dot{f}(y)=w(g',y) 
+  \]
+  Such terms exist because $\mathbb{M}(\mathcal{U})$ has pure decision; i.e. for our choices of $x$, $y$, we have that
+  \[
+    \exists E \exists \beta \ (g',E) \forces \dot{f}(x)=\beta
+  \]
+  and similarly for $y$. Sice $\mathcal{M}$ is Skolemized, we have that there are terms $t$, $w$ as above.
+  
+  Since $x,y$ were drawn from $X$, we have, letting $X'(\beta)=t(g',x)(\beta)\cap t(g',y)(\beta)$, that
+  \[
+    (g',X') \forces \dot{f}(x)=\dot{f}(y)
+  \]
+  By construction, $(g',X')$ is compatible with $(g,Y)$ so therefore there is some mutual extension in $G'$ forcing $\dot{f}(x)=\dot{f}(y)$.  
+\end{proof}
+
+\begin{corollary}\thlabel{mag_forcing_mutual_ramsey_tail}
+  There is a fixed $\delta<\kappa$ such that $\seq{\kappa_\alpha \mid \alpha\leq\delta<\kappa}$ is mutually Ramsey.
+\end{corollary}
+
+\begin{proof}
+  As in \thref{koepke_free_subset}, we uniformize.
+  Suppose otherwise; for each $\delta<\lambda$ fix some $f_\delta:[\kappa]^{<\omega}\to \kappa$ for which $f$ is not mutually homogeneous for $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$ and since $\lambda<\kappa$, by identifying $\lambda\times \kappa$ with $\kappa$ we may encode these into a single $f:[\kappa]^{<\omega}\to\kappa$.
+  Then $f$ is a counterexample to \thref{magidor_generics_mutually_hom}.
+\end{proof}
+
+\begin{corollary}
+  Fix $\seq{\kappa_\alpha \mid \alpha<\lambda}$ and $\delta$ as above.
+  Then any family of stationary subsets $S_\alpha\subseteq \kappa_\alpha$, $\delta<\alpha<\kappa$ and $\alpha$ a successor point, is mutually stationary.
+\end{corollary}
+
+\begin{proof}
+  Invoke mutual Ramseyness as for Prikry generics as in \thref{prikry_generic_ramseyness_implies_ms}.
+\end{proof}
+
+\begin{theorem}
+  Furthermore, in $\mathbb{M}(\vec{U})$, there is a cofinite subfamily $K$ of $\seq{\kappa_\alpha \mid \alpha<\lambda}$ of regular cardinals such that 
+  \[
+    MS(\seq{\kappa_\alpha \mid \kappa_\alpha\in K})
+  \]
+  holds.
+\end{theorem}
+
+\begin{proof}
+  Apply the above arguments, but while invoking \thref{magidor_geometric_iff_generic} and \thref{magidor_geometric_cofinite_meet}.
+\end{proof}
