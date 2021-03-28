@@ -13,7 +13,7 @@ Ever since Cohen proved the independence of the Continuum Hypothesis from $\math
 A proof or disproof of the Continuum Hypothesis ($\mathrm{CH}$), the statement that $2^{\aleph_0}=\aleph_1$, had been on mathematicians' radar since the nineteenth century, but Cohen finally proved its undecidability.
 In brief, Cohen's method of forcing starts with a universe $V$ of $\mathrm{ZFC}$ and, using tools entirely within $V$, interprets a new universe with entirely new objects.
 Cohen's methods allow for the creation of a universe in which $\mathrm{CH}$ holds\footnote{
-  While G\"odel's Constructible universe $L$ also achieves this, Cohen's method allows for a more uniform treatment.
+%   While G\"odel's Constructible universe $L$ also achieves this, Cohen's method allows for a more uniform treatment.
 }.
 Furthermore, forcing with the combinatorial object $Add(\omega,1)$ can create a new universe $V^{Add(\omega,1)}$ with a real number not present in $V$.
 And forcing with $Add(\omega,\omega_2)$ can create real numbers on a scale hitherto undreamt of, so much that $V^{Add(\omega,\omega_2)}\models \card{\mathcal{P}({\aleph_0})}\geq\aleph_2$.
@@ -21,14 +21,14 @@ And forcing with $Add(\omega,\omega_2)$ can create real numbers on a scale hithe
 The question then arose of whether similar independence results could hold at other cardinals, and for regular cardinals Easton quickly characterized the exact behavior of the powerset operator.
 A regular cardinal $\kappa$ is one for which any $<\kappa$-sized union of $<\kappa$-sized sets is of size $<\kappa$.
 For instance (under $\mathrm{ZFC}$) $\omega_1$ is regular, as is $\omega_{\alpha+n}$ for any $n<\omega$, however $\aleph_\omega$ is not, as $\aleph_\omega=\bigcup_{n<\omega} \aleph_n$.
-So we say that $\aleph_\omega$ is singular, with cofinality $\cof(\aleph_\omega)=\omega$; likewise $\cf(\aleph_{\omega+\omega})=\omega$ and $\cf(\aleph_{\omega_1})=\omega_1$.
+So we say that $\aleph_\omega$ is singular, with cofinality $\cf(\aleph_\omega)=\omega$; likewise $\cf(\aleph_{\omega+\omega})=\omega$ and $\cf(\aleph_{\omega_1})=\omega_1$.
 
 In brief, Easton showed, using Cohen's tools and a universe satisfying $\mathrm{GCH}$ (i.e. for every $\kappa$, $2^\kappa=\kappa^+$),
 that besides the following three properties of the powerset function applying to every regular $\kappa$, $\lambda$:
 \begin{enumerate}
   \item (Cantor's Theorem) $2^\kappa>\kappa$
-  \item (Cofinality) $\cf(2^\kappa)>\kappa$
-  \item (K\"onig's Cardinality Lemma) if $\kappa\leq \lambda$ then $2^\kappa\leq 2^\lambda$
+  \item (K\"onig's Lemma) $\cf(2^\kappa)>\kappa$
+  \item (Weak Monotonicity) if $\kappa\leq \lambda$ then $2^\kappa\leq 2^\lambda$
 \end{enumerate}
 \emph{any} behavior for the powerset operator is possible.
 
@@ -54,7 +54,7 @@ This following example is due to Mitchell: if $\kappa$ is weakly compact, then e
 An appropriate forcing $\mathbb{P}$ in which $V^{\mathbb{P}}\models \kappa=\aleph_2$ will preserve this stationary reflection of $\kappa$; conversely, if $\aleph_2$ satisfies this stationary reflection, then there is a subuniverse in which $\aleph_2$ is weakly compact.
 
 As for $\lnot\mathrm{SCH}$, Magidor argued that from a supercompact cardinal $\kappa$ (a very large cardinal hypothesis), one can force $\kappa$ to be singular and $\mathrm{SCH}$ to fail at $\kappa$;
-later work by Mitchell and Woodin optimized this result exactly to $\kappa$ measurable with $o(\kappa)=\kappa^{++}$.
+later works by Gitik, Mitchell, and Woodin optimized this result exactly to $\kappa$ measurable with $o(\kappa)=\kappa^{++}$.
 
 %   
 %   For very large cards, have a measure-like object, equiv. to j:VtoM eltary. Stronger closure properties of M (more V-like) === larger cards.
@@ -79,7 +79,7 @@ If $\kappa\leq \card{Z}^+$, then as a result $\mathcal{A}/I$ induces a well-foun
 %   Now we can describe anti-saturation results.
 %   Tie MS to being both a cpctness property, and an antisat result for NS.
 
-The theme of this thesis is in \emph{anti-saturation} results, that say when an ideal is specifically \emph{not} saturated.
+A major theme of this thesis is \emph{anti-saturation} results, that say when an ideal is specifically \emph{not} saturated.
 
 Solovay's Splitting Theorem for stationary sets says that the nonstationary ideal on $\kappa$ is not $\kappa$-saturated, and counts as the first major anti-saturation result for the nonstationary ideal on any regular cardinal $\kappa$.
 As for other results about the non-saturation of nonstationary ideals, Gitik and Shelah showed that when $\kappa>\omega_1$, $NS_\kappa$ is not $\kappa^+$-saturated.
@@ -101,12 +101,12 @@ Cox and Eskew have a recent anti-saturation result for  successors of regular ca
 Chapter \ref{destroy_sat} generalizes their result to an inaccessible, in the form of Theorem \thref{bigthm} and \thref{savemorepresat}.
 
 Concerning mutual stationarity, we extend the mutual stationarity result for Prikry generic sequences to Magidor generic sequences, which act to singularize a cardinal to  uncountable cofinality in a cardinal-preserving manner.
-This is the content of Chapter \ref{ms}, in particular (TODO: forthcoming theorem on mag gens and MS).
+This is the content of Chapter \ref{ms}, in particular Section \ref{ms:magidor_gens}.
 
 Finally, we describe an ongoing proof-of-concept project to achieve a mutual stationarity result at $\aleph_{\omega_1}$.
-While we have not achieved such a mutual stationarity result, we have developed a novel Magidor-like forcing $\mathbb{MC}\left(\vec{U}\right)$ that singularizes a regular cardinal $\kappa$ without collapsing $\kappa$,
+WWe have developed a novel Magidor-like forcing $\mathbb{MC}\left(\vec{U}\right)$ that singularizes a regular cardinal $\kappa$ without collapsing $\kappa$,
 and simultaneously collapses cardinals below $\kappa$ using the method of \emph{guiding generics} to turn $\kappa$ into the extended universe's $\aleph_{\omega_1}$.
-This program takes up Chapter \ref{accesssible_ms}, and culminates in \thref{magidor_collapse_generic_iff_geometric}, an exact characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$.
+This program takes up Chapter \ref{accessible_ms}, and culminates in \thref{magidor_collapse_generic_implies_geometric} and \thref{magidor_collapse_generic_iff_geometric}, which together form an exact characterization of genericity for $\mathbb{MC}\left(\vec{U}\right)$.
 
 %   
 %   Then describe the organization:
@@ -119,4 +119,6 @@ The paper is organized as follows.
 Chapter \ref{forcing} describes our required preliminaries, including stationary sets, the basics of forcing, ideals \& measures, Mitchell order, Prikry forcing and Prikry forcing with collapses, and Magidor forcing.
 Chapter \ref{destroy_sat} first appeared on the arXiv (as \cite{schoem_destroy_sat_inaccessible}) and covers our extension of Cox and Eskew's anti-saturation result to inaccessibles, in the form of Theorem \thref{bigthm} and \thref{savemorepresat}.
 Chapter \ref{ms} outlines a brief history of mutual stationarity results, expands on how mutual stationarity acts as an anti-saturation principle for nonstationary ideals, and exposits on indiscernibility-based methods pioneered by Koepke, and collated in \ref{ms:koepke}; we then cover \thref{simult_indisc_useful}, a novel simultaneous indiscernibility result that shows in (TODO: thref your Magidor Gens and MS result) that Magidor generic sequences exhibit mutual stationarity properties.
-Finally, Chapter \ref{accesssible_ms} describes a new Magidor-type forcing $\mathbb{MC}\left(\vec{U}\right)$ that turns a measurable $\kappa$ into $\aleph_{\omega_1}$; we state and prove its relevant Prikry-type lemmata in \thref{magidor_collapse_prikry_type_open_dense} and \thref{magidor_collapse_prikry_type_open_dense_better} and a complete characterization of genericity in \thref{magidor_collapse_generic_iff_geometric}.
+Finally, Chapter \ref{accessible_ms} describes a new Magidor-type forcing $\mathbb{MC}\left(\vec{U}\right)$ that turns a measurable $\kappa$ into $\aleph_{\omega_1}$; we state and prove its relevant Prikry-type lemmata in \thref{magidor_collapse_prikry_open_dense} and \thref{magidor_collapse_prikry_open_dense_better} and a complete characterization of genericity in \thref{magidor_collapse_generic_implies_geometric} and \thref{magidor_collapse_generic_iff_geometric}.
+
+In the preliminaries up through The Prikry forcing section \ref{forcing:prikry}, we state well-known results, giving proofs or sketches as needed. In the preliminary Magidor forcing section \ref{forcing:magidor}, we flesh out most proofs, as the results are less well-known.
