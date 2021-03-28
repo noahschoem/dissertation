@@ -143,7 +143,7 @@ We summarize the core ideas and results we need of these generic ultrapowers; se
   Then for every $X\in V$, $X\subseteq \kappa$, either $[X]\in G$ or $[X^\complement]\in G$, so $G$ is a $V$-ultrafilter.
   Thus in $V[G]$ we may define $Ult(V,G)$ and obtain an elementary embedding $j:V\to Ult(V,G)$.
   
-  Further, if $\mathcal{I}$ is $\kappa$-complete then $G$ is $V$-$\kappa$-complete, and if $\mathcal{I}$ is normal then $G$ is $V$-normal.
+  Further, if $\mathcal{I}$ is $\kappa$-complete then $G$ is $V$-$\kappa$-complete, and if $\mathcal{I}$ is normal then $G$ is $V$-normal, and $G=\{X\subseteq \kappa \mid \kappa\in j(X)\}$.
 \end{proposition}
 
 We will variously refer to the generic ultrapower as $Ult(V,G)$ or $Ult(V,\mathcal{I})$, depending on context,
@@ -203,16 +203,26 @@ We make the following caveat about presaturation for ideals versus presaturation
 
 Solovay's Splitting theorem can now be rephrased as an anti-saturation result:
 
-\begin{proposition}
+\begin{fact}
   For every stationary $S$, $\mathbb{B}_{NS_\kappa}$ is not $\kappa$-saturated below $S$.
-\end{proposition}
+\end{fact}
 
 This result can be argued purely using generic ultrapowers:
 \begin{proof}[Proof sketch]
-  Suppose for sake of contradiction that $NS_\kappa$ is $\kappa$-saturated.
-  Then a $V$-generic filter $G$ for $\mathbb{B}_{NS_\kappa}$ is a $V$-$\kappa$-complete $V$-normal $V$-ultrafilter with wellfounded ultrapower $Ult(V,G)$.
-  Ultrapower arguments then yield a stationary set $S\subseteq\kappa$ in $V$ that is no longer stationary in $Ult(V,G)$, hence is nonstationary in $V[G]$. 
+  Suppose for sake of contradiction that $NS_\kappa$ is $\kappa$-saturated below $S$.
+  Suppose that $S\subseteq Reg\cap \kappa$; then
+  \[
+    T:=\left\{\alpha \in S \middle| S\cap \alpha \in NS_{\alpha}\right\}
+  \]
+  is stationary in $\kappa$.
+  
+  Then a $V$-generic filter $G$ for $\mathbb{B}_{NS_\kappa \upharpoonright T}$ is a $V$-$\kappa$-complete $V$-normal $V$-ultrafilter with well-founded ultrapower $j:V\to Ult(V,G)$ that is closed under $\kappa$-sequences from $V[G]$. 
+  Since we forced with $\mathbb{B}_{NS_\kappa \upharpoonright T}$, $T\in G$, hence $\kappa\in j(T)$,
+  and so $j(S) \cap \kappa=S$ is no longer stationary in $Ult(V,G)$, hence is nonstationary in $V[G]$. 
   But since $NS_\kappa$ was assumed to be $\kappa$-saturated, our forcing has the $\kappa$-chain condition and hence $S$ must be stationary in $V[G]$; this is a contradiction.
+  
+  A similar argument holds if $S \cap \cof(\lambda)$ is stationary for some $\lambda<\kappa$; for if we force in $\mathbb{B}_{NS_\kappa}$ below $S \cap \cof(\lambda)$, we get that $\kappa\in j(S\cap \cof(\lambda))$ and thus $\cf^{Ult(V,G)}(\kappa)=\lambda$.
+  But $\mathbb{B}_{NS_\kappa}$ is $\kappa$-cc, so preserves the regularity of $\kappa$; this is a contradiction.
 \end{proof}
 
 However, there are still useful arguments that can be written \emph{just} from having that $\mathbb{B}_{NS_\kappa}$ is precipitous.
