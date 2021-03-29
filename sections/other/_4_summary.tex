@@ -8,11 +8,16 @@ we extend an anti-saturation result for ideals on the successors of regular card
 \begin{thm}
   Suppose $V$ is a universe of $ZFC+GCH$ with an inaccessible cardinal $\kappa$ admitting $\kappa$-complete, normal, $\kappa^+$-saturated ideals on $\kappa$ concentrating on regular cardinals below $\kappa$.
   Then there is a generic extension $V^{\mathbb{Q}}$ in which
-  \begin{enumerate}[label={(\roman*)}]
-  \item there are no $\kappa$-complete, $\kappa^+$-saturated ideals on $\kappa$ concentrating on regular cardinals,
-  \item but if $I\in V$ is a $\kappa$-complete, normal, $\kappa^+$-saturated ideal on $\kappa$ concentrating on regular cardinals, 
-  then $V^\mathbb{Q}\models``\overline{I}\text{ is }\kappa^+\text{-presaturated}"$
-  \end{enumerate}
+  there are no $\kappa$-complete, $\kappa^+$-saturated ideals on $\kappa$ concentrating on regular cardinals,
+  but if $I\in V$ is a $\kappa$-complete, normal, $\kappa^+$-saturated ideal on $\kappa$ concentrating on regular cardinals, 
+  then $V^\mathbb{Q}\models``\overline{I}\text{ is }\kappa^+\text{-presaturated}"$.
+\end{thm}
+
+\begin{thm}
+  With the same assumptions and the same $\mathbb{Q}$ as above,  if $\delta>\kappa$ is a regular cardinal, $I\in V$ is a normal, fine, $\delta$-presaturated ideal of uniform completeness $\kappa$ on some algebra of sets $Z$ concentrating on inaccessible cardinals below $\kappa$ such that
+  $\forces_{\mathcal{B}_I} |\dot{j}_I(\kappa)|=\delta<\dot{j}_I(\kappa)$ and $\mathcal{B}_I$ is proper on $IA_{<\delta}$;
+  then in $V^\mathbb{Q}$, $\overline{I}$ is not $\delta$-saturated 
+  but $\overline{I}$ is $\delta$-presaturated.
 \end{thm}
 
 We then turn to mutually stationary sequences, and prove:
@@ -21,7 +26,7 @@ We then turn to mutually stationary sequences, and prove:
   Then there is a cofinite subset $K$ of $\seq{\beta_\alpha \mid \alpha<\lambda, \alpha\text{ successor}}$ such that every family $S_\alpha\subseteq \beta_\alpha\in K$ of stationary sets is mutually stationary.
 \end{thm}
 
-Finally we develop a novel Magidor-like forcing with interleaved collapses and guiding generics $\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)$ and state and prove a characterization of genericity:
+Finally we analyze a Magidor-type forcing with interleaved collapses and guiding generics $\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)$, ultimately proving the following characterization of genericity theorem:
 
 \begin{thm}
   Let $\vec{\beta}=\seq{\beta_\eta\mid \eta<\lambda}$ and $\vec{F}=\seq{F_\eta\mid \eta<\lambda}$ be in $V^{\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)}$.
