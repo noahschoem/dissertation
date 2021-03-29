@@ -45,7 +45,7 @@ In summary, conditions will similar to Magidor forcing to add a sequence $\seq{\
 \begin{itemize}
   \item $\kappa_0$ will be the new $\lambda^{++}$,
   \item between any two adjacent Magidor points $\kappa_\alpha$ and $\kappa_{\alpha+1}$ we will also force with ${Col(\kappa_\alpha^+,<\kappa_{\alpha+1})}$,
-  \item extension will be as in Magidor forcing, but additionally we may stregthen collapses, and we don't allow already-collapsed ordinals to become future Magidor points,
+  \item extension will be as in Magidor forcing, but additionally we may strengthen collapses, and we don't allow already-collapsed ordinals to become future Magidor points,
   \item when we add new points to the growing finite subfamily of the Magidor sequence, we must also choose new collapse terms to be below some condition below the relevant guiding generic in a sense;
   \item and the conditions are restricted in such a way as to ensure that no Magidor sequence point gets collapsed, and that the poset still has a Prikry-type property.
 \end{itemize}
@@ -342,7 +342,7 @@ Before we prove this, we will introduce some terminology for families of direct 
     \end{cases}
   \]
   By \thref{simult_indisc_easy}\footnote{
-    Technically, \thref{simult_indisc_easy} applies independently to $h$ on each subinterval between points in $dom(f^q) \cup \{\kappa\}$, taking reflected measures as needed.
+    Technically, \thref{simult_indisc_easy} applies independently to $h$ on each sub-interval between points in $dom(f^q) \cup \{\kappa\}$, taking reflected measures as needed.
   }, 
   there is some $r\leq^* q$ with $c^r=c^q$ such that for every $n$ and every $a\in [dom(A^r)]^{<\omega}$,
   \[
@@ -641,7 +641,7 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   
   By geometricity, let $\rho$ be an ordinal such that for all $\eta\geq \lambda_\rho$, $\beta_\eta\in A^q(\eta)$ and $C^q(\eta)(\beta_\eta)\in F_\eta$.
   
-  By the induction hypothesis appled to $\seq{\beta_\eta \mid \eta<\lambda_\rho}$ and $\seq{F_\eta \mid \eta<\lambda_\rho}$, we induce $H_\rho$ a $\mathbb{MC}\left(\seq{r_\eta^{\lambda_\rho}(\beta_{\lambda_\rho}) \mid \eta<\lambda_\rho}\right)$-generic filter over $V$.
+  By the induction hypothesis applied to $\seq{\beta_\eta \mid \eta<\lambda_\rho}$ and $\seq{F_\eta \mid \eta<\lambda_\rho}$, we induce $H_\rho$ a $\mathbb{MC}\left(\seq{r_\eta^{\lambda_\rho}(\beta_{\lambda_\rho}) \mid \eta<\lambda_\rho}\right)$-generic filter over $V$.
   
   Let
   \[
@@ -661,23 +661,3 @@ As for a characterization of genericity along the lines of \thref{magidor_geomet
   Thus $r'\in H$, and so $r'\in H \cap\mathcal{D}$.
   This completes the limit step.
 \end{proof}
-
-\begin{conjecture}
-  In $V^{\mathbb{MC}\left(\vec{U}\right)}$ with $\lambda=\omega_1$, 
-  \[
-    MS(\seq{\aleph_{2n+3}\middle| n<\omega}\frown \seq{\aleph_{\alpha+2n}\middle| \omega\leq\alpha<\omega_1,n<\omega};\omega_1)
-  \]
-  holds.
-\end{conjecture}
-
-It seems plausible that this might hold, under the following (very rough) outline.
-Suppose that $p\forces \dot{F}:[\kappa]^{<\omega}\to\kappa$ is a Skolem function for some algebra on $\kappa$.
-Let $\dot{S_\alpha}$ be names for a family of stationary sets as in conjecture.
-WLOG, $f^p=\seq{(-1,\omega_1)}$.
-Then:
-
-\begin{enumerate}
-  \item Let $F^*(x,c,t)=\beta$ if for some $A$, $C$, $(t,c,A,C)\leq p$ and $(t,c,A,C)\forces \dot{F}(x)=\beta$, and $\emptyset$ otherwise.
-  \item For each $x$, the collection of conditions deciding the value of $\dot{F}(x)$ is dense below $p$, so by the \thref{magidor_collapse_meets_dense_generic_one_step}, some family of them ought to be diagonalizable to some $q_x\leq^* p$.
-  \item Find some nice enough family of $x$'s and be able to homogenize those $q_x$'s to achieve the desired $MS$.
-\end{enumerate}
