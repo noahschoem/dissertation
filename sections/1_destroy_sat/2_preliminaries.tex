@@ -52,7 +52,7 @@ The following lemma makes clear its utility:
 Let $\delta$ be regular and uncountable. Then:
 \begin{enumerate}[label={(\roman*)}]
 \item\label{lemma-iaposets:cc}
-If $\mathbb{P}$ is $\delta$-cc and $M\prec (H_\theta,\in,\mathbb{P})$ is an element of $\mathcal{P}^*_\delta(H_\theta)$ (i.e. if $M\cap\delta\in\delta$), then $1_\mathbb{P}$ is an $(M,\mathbb{P})$-master condition; in particular $\mathbb{P}$ is $\delta$-proper on $\mathcal{P}^*_\delta(H_\theta)$.
+If $\mathbb{P}$ is $\delta$-cc and $M\prec (H_\theta,\in,\mathbb{P})$ is an element of $\mathcal{P}^*_\delta(H_\theta)$ (i.e. if $M\cap\delta\in\delta$), then $1_\mathbb{P}$ is an $(M,\mathbb{P})$-master condition; in particular $\mathbb{P}$ is $\delta$-proper on (a club subset of) $\mathcal{P}^*_\delta(H_\theta)$.
 
 \item\label{lemma-iaposets:closed}
 If $\mathbb{Q}$ is $<\delta$-closed then $\mathbb{Q}$ is $\delta$-proper on $IA_{<\delta}$.
@@ -76,6 +76,20 @@ Suppose that $M\prec (H_\theta,\in,\mathbb{P}*\dot{\mathbb{Q}})$ and $M\in IA_{<
 By Fact \ref{principle-A}, combined with \ref{lemma-iaposets:cc} and \ref{lemma-iaposets:closed},
 $\mathbb{P}$ forces that $\dot{\mathbb{Q}}$ is proper with respect to $M[\dot{G}]$.
 Hence $\mathbb{P}*\dot{\mathbb{Q}}$ is proper with respect to $M$.
+\end{proof}
+
+Item \ref{lemma-iaposets:cc} lends itself to a useful properness result for some forcing iterations:
+\begin{corollary}\label{corollary-superproper-iterate-proper}
+  Suppose $\rho$ is a cardinal less than $\delta$ and $\seq{\mathbb{P}_\alpha \mid \alpha<\rho}$ is an inverse support iteration of posets such that for every $\alpha<\rho$ and every $M'\prec (H_\theta,\in,\mathbb{P}_\alpha)$, $1_{\mathbb{P}_\alpha}$ is an $(M',\mathbb{P}_\alpha)$-master condition for $\mathbb{P}_\alpha$.
+  
+  Then for every $M\prec (H_\theta,\in,\mathbb{P})$, $1_{\mathbb{P}}$ is an $(M,\mathbb{P})$-master condition for $\mathbb{P}$, and thus $\mathbb{P}$ is $\delta$-proper on a club subset of $\mathcal{P}^*_\delta(H_\theta)$.
+\end{corollary}
+
+\begin{proof}
+  Let $M$ be such, and let $D\in M$ be dense in $\mathbb{P}$.
+  Then the projection $D \upharpoonright \mathbb{P}_\alpha$ is dense in $\mathbb{P}_\alpha$ for each $\alpha$, so by assumption $(D \upharpoonright \mathbb{P}_\alpha) \cap M$ is nonempty, as witnessed by $p_\alpha$.
+  Furthermore, by commutativity of the projections, the $\seq{p_\alpha \mid \alpha<\rho}$ is a descending sequence in $\mathbb{P}$, so by inverse limit, has a lower bound $p\in D$.
+  Since $\rho<\delta$, we may assume $M$ is closed under $\cf(\rho)$-sequences and thus $p\in M$.
 \end{proof}
 
 Presaturation comes with some partial cofinality preservation:
