@@ -12,21 +12,21 @@ Suppose that $I\in V$ is $\kappa$-complete, normal, $\kappa^+$-saturated, and co
 Then in $V^\mathbb{Q}$, $\overline{I}$ is not $\kappa^+$-saturated.
 \end{proposition}
 
-Before we prove this, it will be helpful to isolate a lemma on what $j_I(\mathbb{Q})$ looks like in $Ult(V,I)$:
+Before we prove this, it will be helpful to isolate a lemma on what $j_I(\mathbb{Q})$ looks like in $\Ult(V,I)$:
 
 \begin{lemma}\label{jQ-ultVI}
 Let $I$ be a $\kappa$-complete, normal, fine precipitous ideal concentrating on regulars.
-Then in $Ult(V,I)$, 
+Then in $\Ult(V,I)$, 
 $j_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is a name for an Easton support iteration $\seq{\mathbb{R}_\lambda * \dot{\mathbb{C}}(\lambda) \mid \lambda\in[\kappa,j(\kappa))}$, such that if $\lambda$ is regular, $\mathbb{C}(\lambda)=\mathbb{P}(\lambda)$, and $\mathbb{C}(\lambda)$ is the trivial forcing otherwise.
 \end{lemma}
 
 \begin{proof}
-This follows from the elementarity of $j_I$, and since $I$ concentrates on regulars, $\kappa$ is regular in $Ult(V,I)$.
+This follows from the elementarity of $j_I$, and since $I$ concentrates on regulars, $\kappa$ is regular in $\Ult(V,I)$.
 \end{proof}
 
 \begin{remark}
 Since we are assuming $V\models GCH$, as with ultrapowers from a measurable cardinal, we will have that if $I$ is a $\kappa$-complete normal precipitous ideal in $V$, then in $V^{\mathcal{B}_I}$, $|j_I(\kappa)|=2^\kappa=\kappa^+$.
-However, by elementarity, in $Ult(V,I)$, $j_I(\kappa)$ is inaccessible.
+However, by elementarity, in $\Ult(V,I)$, $j_I(\kappa)$ is inaccessible.
 \end{remark}
 
 \begin{remark}
@@ -47,9 +47,9 @@ We now prove Theorem \ref{bigthm}\ref{bigthm:killsat}.
 \begin{proof}[Proof of Theorem \ref{bigthm}\ref{bigthm:killsat}]
 Let $G$ be $\mathbb{Q}$-generic, and suppose that in $V[G]$ there is a $\kappa$-complete, $\kappa^+$-saturated ideal $\mathcal{J}$ on $\kappa$ concentrating on regular cardinals below $\kappa$.
 
-Let $U$ be $P(\kappa)/\mathcal{J}$-generic over $V[G]$, and let $j:V[G]\to Ult(V[G],U)$ be the generic ultrapower.
+Let $U$ be $P(\kappa)/\mathcal{J}$-generic over $V[G]$, and let $j:V[G]\to \Ult(V[G],U)$ be the generic ultrapower.
 
-Let $N=\bigcup_{\alpha\in ORD} j(V_\alpha)$. Then $j(\mathbb{Q})\in N$ and hence $Ult(V[G],U)=N[g']$ for some $g'\in V[G*U]$ which is $j(\mathbb{Q})$-generic over $N$.
+Let $N=\bigcup_{\alpha\in ORD} j(V_\alpha)$. Then $j(\mathbb{Q})\in N$ and hence $\Ult(V[G],U)=N[g']$ for some $g'\in V[G*U]$ which is $j(\mathbb{Q})$-generic over $N$.
 
 Observe that $\kappa$ is still inaccessible in $N[g']$ by inaccessibility in $V[G]$, by being the critical point of $j$, and since $\mathcal{J}$ concentrates on regulars.
 Since $j(\kappa)>\kappa$ and $j(\kappa)$ is a cardinal in $N[g']$, $j(\kappa)> (\kappa^+)^{N[g']}\geq (\kappa^+)^{V[G]}$ (by $\kappa$-closure and $\kappa^+$-saturation of $\mathcal{J}$).

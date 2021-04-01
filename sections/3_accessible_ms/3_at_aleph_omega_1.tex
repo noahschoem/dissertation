@@ -6,10 +6,10 @@ We fix $\vec{U}=\seq{U_\xi \middle| \xi\leq\lambda}$ a Mitchell order-increasing
   In brief, this assures that the ordinals in each $Y_\xi$ is measurable of Mitchell order $\xi$, as witnessed by the $r$-sequence of measure representatives, and with reflection in the $r$-measures.
 }.
 
-Work in $Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[Col(\alpha^+,<\kappa)]_{U_\lambda}$.
+Work in $\Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[Col(\alpha^+,<\kappa)]_{U_\lambda}$.
 
 \begin{lemma}\thlabel{big_guide_generic}
-  There is a $K\in V$ which is $Col(\kappa^+,<j_{U_\lambda}(\kappa))$-generic over $Ult(V,U_\lambda)$.
+  There is a $K\in V$ which is $Col(\kappa^+,<j_{U_\lambda}(\kappa))$-generic over $\Ult(V,U_\lambda)$.
 \end{lemma}
 
 \begin{proof}
@@ -17,20 +17,20 @@ Work in $Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[C
 \end{proof}
 
 \begin{lemma}\thlabel{coherence_guiding_generic_family}
-  Furthermore, for every $\alpha\leq\lambda$ there is a $K_\alpha\in V$ which is $Col(\kappa^+,<j_{U_\alpha}(\kappa))$-generic over $Ult(V,U_\alpha)$, such that:
+  Furthermore, for every $\alpha\leq\lambda$ there is a $K_\alpha\in V$ which is $Col(\kappa^+,<j_{U_\alpha}(\kappa))$-generic over $\Ult(V,U_\alpha)$, such that:
   \begin{enumerate}
-    \item whenever $\alpha<\beta\leq \lambda$, $K_\alpha\in Ult(V,U_\beta)$
+    \item whenever $\alpha<\beta\leq \lambda$, $K_\alpha\in \Ult(V,U_\beta)$
     \item there is a family of functions $\seq{k_\alpha^\beta\middle| \alpha<\beta<\lambda}$ such that $K_\alpha = [\eta \mapsto k^\beta_\alpha (\eta)]_{U_\beta}$
-    \item \label{coherence_guiding_generic_family:refl} in particular, for some $Z_\beta\in U_\beta$, for every $\eta\in Z_\beta$, $k^\beta_\alpha(\eta)$ is a $Col(\eta^+,<j_{r^\beta_\alpha(\eta)}(\eta))$-generic over $Ult(V,r^\beta_\alpha(\eta))$  and $[K_\alpha \upharpoonright \eta]_{r^\beta_\alpha(\eta)}=k^\beta_\alpha(\eta)$; furthermore, this reflects downwards through $r$.
+    \item \label{coherence_guiding_generic_family:refl} in particular, for some $Z_\beta\in U_\beta$, for every $\eta\in Z_\beta$, $k^\beta_\alpha(\eta)$ is a $Col(\eta^+,<j_{r^\beta_\alpha(\eta)}(\eta))$-generic over $\Ult(V,r^\beta_\alpha(\eta))$  and $[K_\alpha \upharpoonright \eta]_{r^\beta_\alpha(\eta)}=k^\beta_\alpha(\eta)$; furthermore, this reflects downwards through $r$.
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
   The existence of $K_\alpha$ can be argued exactly as in \thref{big_guide_generic}.
   
-  As for obtaining that $K_\alpha\in Ult(V,U_\beta)$, observe that since $U_\alpha\in Ult(V,U_\beta)$ (and by $GCH$), we simply have that $\left| j_{U_\alpha}(\kappa) \right|^{Ult(V,U_\beta)}=2^\kappa=\kappa^+$ (by $\kappa^\kappa$ onto $j_{U_\alpha}(\kappa)$ by $f \mapsto [f]_{U_\alpha}$, see for instance \cite{jech_set_theory}, Chapter 17, for details).
-  Furthermore, since $U_\alpha\in Ult(V,U_\beta)$, the entire family $\seq{A_\rho \middle| \rho<(2^\kappa)^{Ult(V,U_\alpha)}}$ of $Ult(V,U_\alpha)$-antichains of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ lives in $Ult(V,U_\beta)$, and there are only $\kappa^+$-many of them as witnessed in $Ult(V,U_\beta)$.
-  Since $Ult(V,U_\beta)$ is closed under $\kappa$-sequences, the argument as in \thref{big_guide_generic} goes through in $Ult(V,U_\beta)$, but for $Col(\kappa^+,<j_{U_\alpha}(\kappa))$.
+  As for obtaining that $K_\alpha\in \Ult(V,U_\beta)$, observe that since $U_\alpha\in \Ult(V,U_\beta)$ (and by $GCH$), we simply have that $\left| j_{U_\alpha}(\kappa) \right|^{\Ult(V,U_\beta)}=2^\kappa=\kappa^+$ (by $\kappa^\kappa$ onto $j_{U_\alpha}(\kappa)$ by $f \mapsto [f]_{U_\alpha}$, see for instance \cite{jech_set_theory}, Chapter 17, for details).
+  Furthermore, since $U_\alpha\in \Ult(V,U_\beta)$, the entire family $\seq{A_\rho \middle| \rho<(2^\kappa)^{\Ult(V,U_\alpha)}}$ of $\Ult(V,U_\alpha)$-antichains of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$ lives in $\Ult(V,U_\beta)$, and there are only $\kappa^+$-many of them as witnessed in $\Ult(V,U_\beta)$.
+  Since $\Ult(V,U_\beta)$ is closed under $\kappa$-sequences, the argument as in \thref{big_guide_generic} goes through in $\Ult(V,U_\beta)$, but for $Col(\kappa^+,<j_{U_\alpha}(\kappa))$.
   
   The second and third items are measure-one reflections of the first.
 \end{proof}
@@ -200,12 +200,12 @@ Before we prove this, we will introduce some terminology for families of direct 
   \begin{proof}[Proof of \thref{magidor_collapse_meets_dense_generic_one_step}]
     Without loss of generality, we argue for $\alpha>\max dom(f^p)$; for smaller $\alpha$, due to \thref{magidor_collapse_factoring}, we may factor and work over $\mathbb{MC}\left(\vec{U}\right)_{(\alpha,f^p(\alpha))}$ and $\mathbb{MC}\left(\vec{U}\right)^{(\alpha,f^p(\alpha))}$.
     
-    Let $\mathcal{D}^*\subseteq Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ be given by
+    Let $\mathcal{D}^*\subseteq Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$ be given by
     \[
       \mathcal{D}^*=\left\{[\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)]_{U_\alpha} \middle| \seq{p_{(\alpha,\nu)} \middle| \nu\in A^p(\alpha)}\text{ meets }\mathcal{D}\text{ below }p\text{ if possible} \right\}
     \]
     Then $\mathcal{D}^*$ is dense below $[C^p(\alpha)]$.
-    To see this, let $[b]\in Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ be below $[C^p(\alpha)]$;
+    To see this, let $[b]\in Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$ be below $[C^p(\alpha)]$;
     simply because $[b]\leq [C^p(\alpha)]$, (on a measure one collection of $\nu\in A^p(\alpha)$) we may straightaway let $p_{(\alpha,\nu)}$ be such that $p_{(\alpha,\nu)}\leq^* p\frown (\alpha,\nu)$, $c^{p_{(\alpha,\nu)}}(\alpha)\leq b(\nu)$, and if some $r\leq^* p_{(\alpha,\nu)}$ is in $\mathcal{D}$, then $p_{(\alpha,\nu)}$ is already chosen to be in $\mathcal{D}$.
     Then $\seq{p_{(\alpha,\nu)}\middle| \nu\in A^p(\alpha)}$ meets $\mathcal{D}$ below $p$ if possible and by construction, $[\nu\mapsto c^{p_{(\alpha,\nu)}}(\alpha)]\leq[b]$.
     
@@ -232,7 +232,7 @@ Before we prove this, we will introduce some terminology for families of direct 
     \]
     
     For $\beta>\alpha$, observe that for each $\nu\in A'$, $[C^{p_{(\alpha,\nu)}}(\beta)]_{U_\beta}\in K_\beta$, so we may extend $\{[C^{p_{(\alpha,\nu)}}(\beta)]_{U_\beta} \mid \nu\in A'\}$ to some $\kappa$-sized downwards directed subset of $K_\beta$.
-    Thus, by the $\kappa^+$-distributvity $Col(\kappa^+,<j_{U_\beta}(\kappa))^{Ult(V,U_\beta)}$, we may find some $[C']$ such that $[C']_{U_\beta}\leq [C^{p_{(\alpha,\nu)}}(\beta)]_{U_\beta}$ as witnessed by $W_\nu\in U_\beta$, for all $\nu\in A'$
+    Thus, by the $\kappa^+$-distributvity $Col(\kappa^+,<j_{U_\beta}(\kappa))^{\Ult(V,U_\beta)}$, we may find some $[C']$ such that $[C']_{U_\beta}\leq [C^{p_{(\alpha,\nu)}}(\beta)]_{U_\beta}$ as witnessed by $W_\nu\in U_\beta$, for all $\nu\in A'$
     \footnote{
       This is a widely applicable forcing result: let $\mathbb{P}$ be $\kappa^+$-distributive, let $G$ be $\mathbb{P}$-generic, and let $\seq{p_\alpha \mid \alpha<\kappa}$ be a downwards directed subset of $G$.
       Then there is a $p\in G$ that is a lower bound of $\seq{p_\alpha \mid \alpha<\kappa}$.
@@ -322,7 +322,7 @@ Before we prove this, we will introduce some terminology for families of direct 
   Therefore, by invoking the $\lambda^+$-closure of each relevant measure
   to shrink the measure terms $A^{q_a}$,
   the $\lambda^+$-directed closure of each relevant collapse forcing to shrink the $c^{q_a}$'s,
-  and the $\kappa^+$-directed closure of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{Ult(V,U_\alpha)}$ on the $C^{q_a}$'s,
+  and the $\kappa^+$-directed closure of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$ on the $C^{q_a}$'s,
   we may let $q$ be a lower bound of $\seq{q_a\middle| a\in [dom(A^p)]^{<\omega}}$.
   
   By \thref{magidor_collapse_diagonalize_all_step}, we have that 

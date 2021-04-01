@@ -99,7 +99,7 @@ From a measurable cardinal, we may build an ultrapower of $V$ as follows:
 
 \begin{definition}
   Let $U$ be a normal measure on $\kappa$.
-  Then $Ult(V,U)$ is the proper class model of set theory for which:
+  Then $\Ult(V,U)$ is the proper class model of set theory for which:
   \begin{itemize}
     \item the elements are of the form $[f]_U$, the equivalence class of all $f:\kappa \to V$ where $[f]_U=[g]_U$ if for $U$-many $\alpha$, $f(\alpha)=g(\alpha)$, i.e. $\{\alpha<\kappa \mid f(\alpha)=g(\alpha)\}\in U$
     \item and $\in^*$, the binary membership relation, is given by $[f]_U \in^* [g]_U$ if for $U$-many $\alpha$, $f(\alpha)\in g(\alpha)$
@@ -107,10 +107,10 @@ From a measurable cardinal, we may build an ultrapower of $V$ as follows:
 \end{definition}
 
 \begin{theorem}[Łoś' Theorem]
-  For any formula with parameters $\varphi(\overrightarrow{x})$, for any $\overrightarrow{[f]}$, $Ult(V,U)\models \varphi(\overrightarrow{[f]})$ if and only if for $U$-many $\alpha$, $V\models \varphi(\overrightarrow{f(\alpha)})$.
+  For any formula with parameters $\varphi(\overrightarrow{x})$, for any $\overrightarrow{[f]}$, $\Ult(V,U)\models \varphi(\overrightarrow{[f]})$ if and only if for $U$-many $\alpha$, $V\models \varphi(\overrightarrow{f(\alpha)})$.
 \end{theorem}
 
-Since $U$ is countably complete, $\in^*$ in $Ult(V,U)$ is well-founded, and therefore, by the Mostowski Collapsing Theorem, its transitive collapse $M$ is a $\in$-model of set theory. 
+Since $U$ is countably complete, $\in^*$ in $\Ult(V,U)$ is well-founded, and therefore, by the Mostowski Collapsing Theorem, its transitive collapse $M$ is a $\in$-model of set theory. 
 By Łoś' Theorem, $M$ is also a model of $\mathrm{ZFC}$.
 
 Further, $M$ is a class model since the class map $\rho\mapsto [\alpha\mapsto \rho]_U$ maps to $M$-ordinals and is injective.
@@ -141,19 +141,19 @@ We summarize the core ideas and results we need of these generic ultrapowers; se
   with partial order $[A]_{\overset{\smile}{\mathcal{I}}} \leq [B]_{\overset{\smile}{\mathcal{I}}}$ if $B\setminus A \in \mathcal{I}$, is a separative notion of forcing.
   Let $G$ be $\mathcal{B}_{\mathcal{I}}$-generic over $V$.
   Then for every $X\in V$, $X\subseteq \kappa$, either $[X]\in G$ or $[X^\complement]\in G$, so $G$ is a $V$-ultrafilter.
-  Thus in $V[G]$ we may define $Ult(V,G)$ and obtain an elementary embedding $j_{\mathcal{I}}:V\to Ult(V,G)$.
+  Thus in $V[G]$ we may define $\Ult(V,G)$ and obtain an elementary embedding $j_{\mathcal{I}}:V\to \Ult(V,G)$.
   
   Further, if $\mathcal{I}$ is $\kappa$-complete then $G$ is $V$-$\kappa$-complete, and if $\mathcal{I}$ is normal then $G$ is $V$-normal, and $G=\{X\subseteq \kappa \mid \kappa\in j(X)\}$.
 \end{proposition}
 
-We will variously refer to the generic ultrapower as $Ult(V,G)$ or $Ult(V,\mathcal{I})$, depending on context,
-and will also write $j_I$ to denote $j_G:V\to Ult(V,G)$ the generic ultrapower elementary embedding.
+We will variously refer to the generic ultrapower as $\Ult(V,G)$ or $\Ult(V,\mathcal{I})$, depending on context,
+and will also write $j_I$ to denote $j_G:V\to \Ult(V,G)$ the generic ultrapower elementary embedding.
 
 The generic ultrapower is not always well-founded; this is a special property that gets its own name:
 
 \begin{definition}[Definition 2.4 of \cite{foreman_ideals_gen_ees}]
   An ideal $\mathcal{I}$ is said to be \emph{precipitous} if whenever $G$ is a $\mathcal{B}_{\mathcal{I}}$-generic object over $V$,
-  $Ult(V,G)$ is well-founded.
+  $\Ult(V,G)$ is well-founded.
 \end{definition}
 
 A cardinal $\kappa$ admits a precipitous ideal if and only if $\kappa$ is measurable in some inner model;
@@ -181,7 +181,7 @@ Saturated ideals also lead to a measurable-like closure of the generic ultrapowe
 \begin{fact}\label{foreman_ideals_gen_ees:ultrapower-closure}
   If $\mathcal{I}$ is a $\kappa$-complete, $\kappa^+$-saturated ideal in $V$,
   and if $G$ is a $\mathcal{B}_{\mathcal{I}}$-generic filter over $V$,
-  then in $V[G]$, $Ult(V,G)^\kappa\subseteq Ult(V,G)$; that is, $Ult(V,G)$ is closed under $\kappa$-sequences from $V[G]$.
+  then in $V[G]$, $\Ult(V,G)^\kappa\subseteq \Ult(V,G)$; that is, $\Ult(V,G)$ is closed under $\kappa$-sequences from $V[G]$.
 \end{fact}
 
 This follows from Propositions 2.9 and 2.14 of \cite{foreman_ideals_gen_ees}.
@@ -216,12 +216,12 @@ This result can be argued purely using generic ultrapowers. The proof here is in
   \]
   is stationary in $\kappa$.
   
-  Then a $V$-generic filter $G$ for $\mathcal{B}_{NS_\kappa \upharpoonright T}$ is a $V$-$\kappa$-complete $V$-normal $V$-ultrafilter with well-founded ultrapower $j:V\to Ult(V,G)$ that is closed under $\kappa$-sequences from $V[G]$. 
+  Then a $V$-generic filter $G$ for $\mathcal{B}_{NS_\kappa \upharpoonright T}$ is a $V$-$\kappa$-complete $V$-normal $V$-ultrafilter with well-founded ultrapower $j:V\to \Ult(V,G)$ that is closed under $\kappa$-sequences from $V[G]$. 
   Since we forced with $\mathcal{B}_{NS_\kappa \upharpoonright T}$, $T\in G$, hence $\kappa\in j(T)$,
-  and so $j(S) \cap \kappa=S$ is no longer stationary in $Ult(V,G)$, hence is nonstationary in $V[G]$. 
+  and so $j(S) \cap \kappa=S$ is no longer stationary in $\Ult(V,G)$, hence is nonstationary in $V[G]$. 
   But since $NS_\kappa$ was assumed to be $\kappa$-saturated, our forcing has the $\kappa$-chain condition and hence $S$ must be stationary in $V[G]$; this is a contradiction.
   
-  A similar argument holds if $S \cap \cof(\lambda)$ is stationary for some $\lambda<\kappa$; for if we force in $\mathcal{B}_{NS_\kappa}$ below $S \cap \cof(\lambda)$, we get that $\kappa\in j(S\cap \cof(\lambda))$ and thus $\cf^{Ult(V,G)}(\kappa)=\lambda$.
+  A similar argument holds if $S \cap \cof(\lambda)$ is stationary for some $\lambda<\kappa$; for if we force in $\mathcal{B}_{NS_\kappa}$ below $S \cap \cof(\lambda)$, we get that $\kappa\in j(S\cap \cof(\lambda))$ and thus $\cf^{\Ult(V,G)}(\kappa)=\lambda$.
   But $\mathcal{B}_{NS_\kappa}$ is $\kappa$-cc, so preserves the regularity of $\kappa$; this is a contradiction.
 \end{proof}
 
