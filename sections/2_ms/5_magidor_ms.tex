@@ -101,16 +101,24 @@ Note that since mutually stationary sequences of sets are only defined for famil
   Then $f$ is a counterexample to \thref{magidor_generics_mutually_hom}.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\thlabel{magidor_generics_ms_cobounded}
   Fix $\seq{\kappa_\alpha \mid \alpha<\lambda}$ and $\delta$ as above.
   Then any family of stationary subsets $S_\alpha\subseteq \kappa_\alpha$, $\delta<\alpha<\kappa$ and $\alpha$ a successor point, is mutually stationary.
 \end{corollary}
 
 \begin{proof}
-  Invoke mutual Ramseyness as for Prikry generics as in \thref{prikry_generic_ramseyness_implies_ms}.
+  We invoke mutual Ramseyness as for Prikry generics as in \thref{prikry_generic_ramseyness_implies_ms}.
+  
+  Let $\seq{S_\alpha \mid \alpha<\kappa, \ \kappa_\alpha\text{ successor}}$ be a system of stationary sets with each $S_\alpha\subseteq \kappa_\alpha$, let $\mathcal{M}$ be a structure on $\kappa$ with Skolem function $F$, and let $\seq{A_\alpha \mid \delta<\alpha<\kappa, \kappa_\alpha\text{ successor}}$ be mutually homogeneous for $\mathcal{M}$ and $F$ with each $A_\alpha\subseteq \kappa_\alpha$.
+  
+  For each relevant $\alpha$, let $\gamma_\alpha\in S_\alpha \cap Lim(I_\alpha)$, and let
+  \[
+    \mathcal{U}=F"\left[\bigcup_{\delta<\alpha<\kappa, \ \alpha\text{ successor}}\right]^{<\omega}
+  \]
+  Then by the exact same logic as in \thref{prikry_generic_ramseyness_implies_ms}, for each relevant $\alpha$, $\sup(\mathcal{U}\cap \kappa_\alpha)=\gamma_\alpha$ as needed.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\thlabel{magidor_generics_ms_cofinite}
   Furthermore, in $\mathbb{M}(\vec{U})$, there is a cofinite subfamily $K$ of $\seq{\kappa_\alpha \mid \alpha<\lambda}$ of regular cardinals such that 
   \[
     MS(\seq{\kappa_\alpha \mid \kappa_\alpha\in K})
@@ -119,5 +127,8 @@ Note that since mutually stationary sequences of sets are only defined for famil
 \end{theorem}
 
 \begin{proof}
-  Apply the above arguments, but while invoking \thref{magidor_geometric_iff_generic} and \thref{magidor_geometric_cofinite_meet}.
+  By \thref{magidor_geometric_cofinite_meet}, the fact that a Magidor generic sequence meets $V$-measure one systems cofinitely often as witnessed by some condition in the generic object, the arguments in \thref{magidor_generics_mutually_hom} apply equally well to a cofinite subsequence of $\seq{\kappa_\alpha \mid \alpha<\kappa}$, rather than a cobounded sequence.
+  The argument in \thref{mag_forcing_mutual_ramsey_tail} additionally reflects downwards to each limit $\kappa_\alpha$.
+  
+  As a consequence, \thref{magidor_generics_ms_cobounded} also applies cofinitely.  
 \end{proof}
