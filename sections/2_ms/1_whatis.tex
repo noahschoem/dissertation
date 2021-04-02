@@ -187,9 +187,13 @@ Thus compatibility of mutual stationarity principles with $\lnot SCH$ are of ind
   
   For each $f\in \prod_{\alpha<\mu} \kappa_\alpha$, let $S_f=\{M\in \mathcal{P}_\delta(\lambda) \mid \alpha\in M\implies \sup(M\cap \kappa_\alpha)\in T^\alpha_{f(\alpha)}\}$.
   
-  Since $\seq{T^\alpha_\beta\mid \beta<\kappa_\alpha}$ is mutually stationary, each $S_f$ is stationary in $\mathcal{P}_\delta(\lambda)$.
-  Further, if $f\neq g$, then $f(\alpha)\neq g(\alpha)$ and hence $S^\alpha_{f(\alpha)}\cap S^\alpha_{g(\alpha)}=\emptyset$.
+  We claim that the family $\seq{S_f \mid f\in \prod_{\alpha<\mu} \kappa_\alpha}$ is an antichain for the nonstationary ideal on $\mathcal{P}_\delta(\lambda)$.
+  To see this, since $\seq{T^\alpha_{f(\alpha)}\mid \alpha<\mu}$ is mutually stationary, each $S_f$ is stationary in $\mathcal{P}_\delta(\lambda)$.
+  To argue that $S_f\cap S_g$ is nonstationary for distinct $f$, $g$, fix $f\neq g$.
+  Then there is some $\alpha$ for which $f(\alpha)\neq g(\alpha)$; hence for such $\alpha$, $S^\alpha_{f(\alpha)}\cap S^\alpha_{g(\alpha)}=\emptyset$.
   Thus $S_f\cap S_g$ misses the club $\{M\in \mathcal{P}_\delta(\lambda)\mid \alpha\in M\}$.
+  
+  $\seq{S_f \mid f\in \prod_{\alpha<\mu} \kappa_\alpha}$ is an antichain for the nonstationary ideal on $\mathcal{P}_\delta(\lambda)$, of cardinality $\prod_{\alpha<\mu} \kappa_\alpha=\lambda^\mu$.
 \end{proof}
 
 However, very little is known about mutual stationarity principles with $\lnot SCH$.
