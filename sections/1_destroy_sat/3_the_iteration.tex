@@ -11,7 +11,7 @@ in the sense that if $X\in V$ and $|X|\geq \mu$ then $X\not\subseteq C_\mu$.
 Towards this end:
 
 \begin{definition}\label{defpmu}
-  Let $\mu<\kappa$ be a regular cardinal.
+  Let $\mu<\kappa$ be a regular cardinal such that $\lvert| [\mu^+]^{<\mu} \rvert|=\mu$.
   Let $\mathbb{P}(\mu)$ be the collection of all conditions $(s,f)$ such that:
   \begin{enumerate}[label={(\arabic*)}]
     \item $s\in [\mu^+\setminus \mu]^{<\mu}$\label{defpmu:s}
@@ -44,7 +44,7 @@ Additionally, $f$ can be thought of as ``banning" certain ordinals from ever app
 \end{lemma}
 
 \begin{proof}
-The proofs are exactly as in Lemma 4.4 in \cite{cox_eskew_kill_sat_save_presat}, where here \ref{pmuisnice:cc} follows from assuming GCH.
+The proofs are exactly as in Lemma 4.4 in \cite{cox_eskew_kill_sat_save_presat}.
 
 For the sake of clarity, we will prove \ref{pmuisnice:proper} and \ref{pmuisnice:club}.
 
@@ -120,7 +120,7 @@ Thus $X\not\subseteq C_\mu$. This completes our proof of \ref{pmuisnice:club}.
 \begin{definition}
   We define an Easton support iteration forcing $\mathbb{Q}=\seq{\mathbb{Q}_\mu * \dot{\mathbb{C}}(\mu) \mid \mu<\kappa}$ as follows:
   
-  For each $\mu<\kappa$, if $\mu$ is regular in $V^{\mathbb{Q}_\mu}$, let $\mathbb{C}(\mu)=\mathbb{P}(\mu)$ as above, and otherwise let $\mathbb{C}(\mu)$ be the trivial forcing. 
+  For each $\mu<\kappa$, if $\mu$ is inaccessible in $V^{\mathbb{Q}_\mu}$, let $\mathbb{C}(\mu)=\mathbb{P}(\mu)$ as above, and otherwise let $\mathbb{C}(\mu)$ be the trivial forcing. 
 \end{definition}
 
 \begin{proposition}
@@ -137,12 +137,12 @@ This breaks into three cases:
 
 If $\nu=\tau^+$ where $\tau$ is regular, we may decompose $\mathbb{Q}_\nu$ as 
 \[\mathbb{Q}_\tau * \dot{\mathbb{C}}(\tau)\]
-Since $\tau$ is regular, $|\mathbb{Q}_\tau|=\tau$ hence is $\nu$-cc. Thus $\mathbb{Q}_\tau$ preserves $\nu$.
+Since $\tau$ is regular, $|\mathbb{Q}_\tau|\leq\tau$ hence is $\nu$-cc. Thus $\mathbb{Q}_\tau$ preserves $\nu$.
 By Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{C}}(\tau)$ preserves $\nu$.
 Thus $\dot{\mathbb{Q}}_{\nu}$ preserves $\nu$.
 
 If $\nu=\lambda^+$ where $\lambda$ is singular, we have that $\mathbb{Q}_\nu=\mathbb{Q}_\lambda$ since none of the ordinals in $[\lambda,\nu)$ are regular. 
-Here, the situation is more complicated, since now $|\mathbb{Q}_\lambda|=\lambda^+=\nu$. So we must verify more directly that $\nu$ is preserved.
+Here, the situation is more complicated, since now $|\mathbb{Q}_\lambda|=\lambda^{\cf(\lambda)}\geq\nu$. So we must verify more directly that $\nu$ is preserved.
 
 So observe that if $\nu$ is collapsed, then $V^{\mathbb{Q}_\lambda}\models |\nu|\leq |\lambda|$ and since $\lambda$ is singular, we would have a $\mathbb{Q}_\lambda$-name $\dot{f}:\check{\delta}\to\check{\nu}$ for a cofinal sequence in $\check{\nu}$ for some regular cardinal $\delta<\lambda$.
 
@@ -167,17 +167,8 @@ This shows that whenever $\nu$ is regular in $V$, $\nu$ remains regular in $V^{\
 \end{corollary}
 
 \begin{proof}
-Since $\kappa$ is inaccessible, $\mathbb{Q}=\mathbb{Q}_\kappa$  preserves $\kappa$ by Proposition \ref{itn-regularity}.
-Since $|\mathbb{Q}|=\kappa$, $\mathbb{Q}$ preserves cardinals $>\kappa$.
+Since $\kappa$ is Mahlo, $\mathbb{Q}=\mathbb{Q}_\kappa$  is $\kappa$-cc hence preserves $\kappa$ preserves cardinals $>\geq\kappa$.
 
 For $\nu<\kappa$ regular, we have that $\mathbb{Q}=\mathbb{Q}_\nu * \dot{\mathbb{P}}(\nu)*\dot{\mathbb{Q}}_{>\nu}$.
 By the preceding proposition, $\mathbb{Q}_\nu$ preserves $\nu$. By Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{P}}(\nu)$ preserves $\nu$. And by Lemma \ref{pmuisnice}\ref{pmuisnice:dircl}, $\dot{\mathbb{Q}}_{>\nu}$ is $<\nu^+$-directed closed hence preserves $\nu$.
 \end{proof}
-
-\begin{remark}
-Note that $|\mathbb{Q}|=\kappa$ so $\mathbb{Q}$ preserves $GCH_{\geq\kappa}$.
-
-By Lemma \ref{pmuisnice}, each $\mathbb{P}(\mu)$, $\mu<\kappa$ regular, preserves $GCH$; hence $\mathbb{Q}$ preserves $GCH_{<\kappa}$ as well.
-
-Since $\kappa$ is Mahlo, $\mathbb{Q}$ is $\kappa$-cc.
-\end{remark}
