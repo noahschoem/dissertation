@@ -51,20 +51,29 @@ This argument breaks into two cases.
 
 \begin{enumerate}
 
-\item [Case 1:] $\delta$ inaccessible. 
+\item [Case 1:] $\delta$ inaccessible.
 By Theorem \ref{easyduality} we once again have that
 \[\mathcal{B}(\mathbb{Q} * \mathcal{B}_{\overline{I}})\cong \mathcal{B}(\mathcal{B}_I * \dot{j}_I(\mathbb{Q}))\]
-and by a slight modification of Lemma \ref{jQ-ultVI},
+Since $\mathcal{B}_I$ is $\delta$-proper on $IA_{<\delta}$, by Fact \ref{proper-implies-presat} it suffices to show that 
+\[
+  \forces_{\mathcal{B}_I} ``\dot{j}_I(\mathbb{Q}))\text{ is proper on a stationary subset of }\dot{IA_{<\delta}}"
+\]
+
+By a slight modification of Lemma \ref{jQ-ultVI},
 \[j_I(\mathbb{Q})=\check{\mathbb{Q}} * \dot{(j_I(\mathbb{Q}))}\upharpoonright [\kappa,\delta) * \dot{\mathbb{P}(\delta)} * \dot{(j_I(\mathbb{Q}))}\upharpoonright [\delta^+,j_I(\kappa))\]
 where
 \begin{itemize}
 \item $\check{\mathbb{Q}}$ is $\kappa$-cc, hence $\delta$-cc
-\item $\dot{(j_I(\mathbb{Q}))}\upharpoonright [\kappa,\delta)$ is forced to be an Easton support iteration of $\delta$-cc posets (TODO: but may not be $\delta$-cc; fixme idk how)
+\item $\dot{(j_I(\mathbb{Q}))}\upharpoonright [\kappa,\delta)$ is forced to be an Easton support iteration of $\delta$-cc posets
 \item $\dot{\mathbb{P}(\delta)}$ is forced to be $<\delta$-directed closed
 \item $\dot{(j_I(\mathbb{Q}))}\upharpoonright [\delta^+,j_I(\kappa))$ is forced to be an Easton support iteration of $<\delta^+$-directed closed posets
 \end{itemize}
 
-Hence by Lemma \ref{lemma-iaposets}, $\mathcal{B}(\mathcal{B}_I * \dot{j}_I(\mathbb{Q}))$ is $\delta$-presaturated.
+By assumption, either $Inacc_\delta$ is bounded in $\delta$ or stationary in $\delta$, and thus $\dot{(j_I(\mathbb{Q}))}\upharpoonright [\kappa,\delta)$ is nontrivial either boundedly often or has $\delta$-cc iterates on a stationary subset of $\delta$.
+Thus $\dot{(j_I(\mathbb{Q}))}\upharpoonright [\kappa,\delta)$ is $\delta$-cc.
+
+Hence, $\mathcal{B}(\mathcal{B}_I * \dot{j}_I(\mathbb{Q}))$ is forcing-equivalent to a poset $\delta$-proper on a stationary subset of $\mathcal{P}_\delta^*(H_\theta)$ followed by a finite iteration of $\delta$-cc and $<\delta$-closed forcings.
+Thus by Lemma \ref{lemma-iaposets}\ref{lemma-iaposets:iter}, $\mathcal{B}(\mathcal{B}_I * \dot{j}_I(\mathbb{Q}))$ is $\delta$-presaturated.
 
 But then by Theorem \ref{easyduality}, $\mathcal{B}(\mathbb{Q} * \mathcal{B}_{\overline{I}})$ is $\delta$-presaturated, 
 and so by Lemma \ref{pushpresatdown}, in $V^{\mathbb{Q}}$, $\mathcal{B}_{\overline{I}}$ is $\delta$-presaturated.
@@ -72,7 +81,9 @@ and so by Lemma \ref{pushpresatdown}, in $V^{\mathbb{Q}}$, $\mathcal{B}_{\overli
 \item [Case 2:] $\delta$ is a successor cardinal with $\rho^+=\delta$.
 Theorem \ref{easyduality} and Lemma \ref{jQ-ultVI} now give that
 \[j_I(\mathbb{Q})=\check{\mathbb{Q}} * (\dot{j_I(\mathbb{Q})}) \upharpoonright [\kappa,\rho) * \dot{\mathbb{P}(\rho)} * \dot{j_I(\mathbb{Q})} \upharpoonright [\delta,j_I(\kappa))\]
-where
+which once again we want to show is $\delta$-proper on a stationary subset of $\dot{IA_{<\delta}}$.
+
+We have that
 \begin{itemize}
 \item $\check{\mathbb{Q}}$ is $\delta$-cc
 \item $(\dot{j_I(\mathbb{Q})}) \upharpoonright [\kappa,\rho)$ is an Easton support iteration of $\delta$-cc posets
@@ -85,7 +96,8 @@ Additionally, in $\Ult(V,U)^\mathbb{Q}$, $j_I(\mathbb{Q})$ is proper on $\mathca
 If $\rho$ is regular, then $(\dot{j_I(\mathbb{Q})}) \upharpoonright [\kappa,\rho)$ is $\delta$-cc by size bound.
 Otherwise, by Corollary \ref{corollary-superproper-iterate-proper}, $(\dot{j_I(\mathbb{Q})}) \upharpoonright [\kappa,\rho)$ is $\delta$-proper on a club subset of $\mathcal{P}^*_\delta(H_\theta)$.
 
-Thus $\mathcal{B}_I * \dot{j_I(\mathbb{Q})}$ is $\delta$-proper on a stationary set, hence, by Lemma \ref{lemma-iaposets}, is $\delta$-presaturated.
+Thus $\mathcal{B}_I * \dot{j_I(\mathbb{Q})}$ a finite iteration of forcings all $\delta$-proper on the same stationary subset of $IA_{<\delta}$.
+Thus by Fact \ref{proper-implies-presat}, $\mathcal{B}_I * \dot{j_I(\mathbb{Q})}$ is $\delta$-presaturated.
 
 Theorem \ref{easyduality} and Lemma \ref{pushpresatdown} then tell us that $\mathcal{B}_I$ is $\delta$-presaturated.
 \end{enumerate}
