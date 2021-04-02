@@ -39,22 +39,24 @@ We first argue an ``easy" version for $[\kappa]^{<\omega}$ that pulls at most on
   
   Fix an $\alpha<\lambda$; we now wish to define $\tensor*[^{k+1}]{H}{_\alpha}$.
   
-  By regressiveness of $g_{\alpha_1,\dots,\alpha_k}$, for each $\alpha_1<\dots<\alpha_k$ in $[\lambda\setminus(\alpha+1)]^{<\omega}$, there is an $A_{\alpha,\alpha_1,\dots,\alpha_k}\in U_{\alpha}$ such that $g_{\alpha_1,\dots,\alpha_k}$ is constant on $A_{\alpha,\alpha_1,\dots,\alpha_k}$, say with value $\delta_{\alpha,\alpha_1,\dots,\alpha_k}$.
+  % TODO: change the first \alpha to a superscript to distinguish between \alpha slash \alpha_0 and the tail (\alpha_1 above)
+  % for both A_{...}, B_{...}, and \delta_{...}
+  By regressiveness of $g_{\alpha_1,\dots,\alpha_k}$, for each $\alpha_1<\dots<\alpha_k$ in $[\lambda\setminus(\alpha+1)]^{<\omega}$, there is an ${A^\alpha_{\alpha_1,\dots,\alpha_k}\in U_{\alpha}}$ such that $g_{\alpha_1,\dots,\alpha_k}$ is constant on $A^\alpha_{\alpha_1,\dots,\alpha_k}$, say with value $\delta^\alpha_{\alpha_1,\dots,\alpha_k}$.
   
   Let \[
-    B_{\alpha}=\left(\bigcap_{\alpha<\alpha_1<\dots<\alpha_k<\lambda} A_{\alpha,\alpha_1,\dots,\alpha_k}\right)
+    B_{\alpha}=\left(\bigcap_{\alpha<\alpha_1<\dots<\alpha_k<\lambda} A^\alpha_{\alpha_1,\dots,\alpha_k}\right)
   \]
-  Furthermore, let $\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}=\tensor*[^{k}_{\beta}]{H}{_\alpha}\cap B_\alpha$ and define
+  For each $\beta<\kappa$, let $\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}=\tensor*[^{k}_{\beta}]{H}{_\alpha}\cap B_\alpha$ and define
   \[
     \tensor*[^{k+1}]{H}{_\alpha}=\Delta_{\beta<\kappa}\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}
   \]
   Then $\tensor*[^{k+1}]{H}{_\alpha}$ is in $U_\alpha$, and we now verify that $\tensor*[^{k+1}]{\overrightarrow{H}}{}$ has the appropriate homogeneity.
   Suppose that $\alpha_0<\dots<\alpha_k$.
-  We wish to verify that for every $\beta_i\in \tensor*[^{k+1}]{H}{_{\alpha_i}}$, $\beta_i<\beta_{i+1}$, we have $f(\{\beta_0,\dots,\beta_k\})=\delta_{\alpha_0,\dots,\alpha_k}$.
+  We wish to verify that for every $\beta_i\in \tensor*[^{k+1}]{H}{_{\alpha_i}}$, $\beta_i<\beta_{i+1}$, we have $f(\{\beta_0,\dots,\beta_k\})=\delta^{\alpha_0}_{\alpha_1,\dots,\alpha_k}$.
   To see this, observe that for each possible choice of $\beta_0$, $f(\{\beta_0,\dots,\beta_k\})=\tensor*[_{\beta_0}]{f}{}(\{\beta_1,\dots,\beta_k\})$;
   since $\beta_i<\beta_{i+1}$, for $i\geq 1$ we have that $\beta_i\in \tensor*[^{k}_{\beta_0}]{H}{_{\alpha_i}}$.
   Hence $f(\{\beta_0,\dots,\beta_k\})=\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)$.
-  But since $\beta_0\in B_{\alpha_0}$, we have that in fact $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)=\delta_{\alpha_0,\dots,\alpha_k}$ as desired.
+  But since $\beta_0\in B_{\alpha_0}$, we have that in fact $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)=\delta^{\alpha_0}_{\alpha_1,\dots,\alpha_k}$ as desired.
   
   In the end, our desired $H_\alpha$ is $\bigcap_{n<\omega} \tensor*[^n]{H}{_\alpha}$.
 \end{proof}
