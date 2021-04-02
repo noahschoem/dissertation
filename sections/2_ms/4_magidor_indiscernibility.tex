@@ -14,7 +14,7 @@ We first argue an ``easy" version for $[\kappa]^{<\omega}$ that pulls at most on
 \end{definition}
 
 \begin{lemma}\thlabel{simult_indisc_easy}
-  Suppose $\overrightarrow{U}=\seq{U_\alpha \mid \alpha<\lambda}$ is a sequence of normal measures on $\kappa$ and suppose that $f:[\kappa]^{<\omega}\to\kappa$ is regressive, i.e. for all $x$, $f(x)<\min(x)$.
+  Suppose $\lambda$ is a regular cardinal below $\kappa$ and $\overrightarrow{U}=\seq{U_\alpha \mid \alpha<\lambda}$ is a sequence of normal measures on $\kappa$ and suppose that $f:[\kappa]^{<\omega}\to\kappa$ is regressive, i.e. for all $x$, $f(x)<\min(x)$.
   
   Then there is an $\overrightarrow{H}=\seq{H_\alpha\mid \alpha<\lambda}$ where each $H_\alpha\in U_\alpha$, 
   such that for every $n$ and every $\alpha_0<\dots<\alpha_{n-1}$,
@@ -33,24 +33,28 @@ We first argue an ``easy" version for $[\kappa]^{<\omega}$ that pulls at most on
   
   For each $\beta_0<\kappa$, let $\tensor*[_{\beta_0}]{f}{}:[\kappa\setminus \{\beta_0\}]^k\to\kappa$, $\tensor*[_{\beta_0}]{f}{}(X)=f(\{\beta_0\}\sqcup X)$.
   
-  Since $f$ is regressive, so is $\tensor*[_{\beta_0}]{f}{}$; so by the induction hypothesis, for each $\beta_0$, there is a sequence $\tensor*[^{k}_{\beta_0}]{\overrightarrow{H}}{}$ such that for every $\alpha_1<\dots<\alpha_k$, $\tensor*[_{\beta_0}]{f}{}\upharpoonright \prod^\uparrow_{1\leq i<k+1} \tensor*[^{k}_{\beta_0}]{H}{_{\alpha_i}}$ is constant, say with value $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)$.
+  Since $f$ is regressive, so is $\tensor*[_{\beta_0}]{f}{}$; so by the induction hypothesis, for each $\beta_0$, there is a sequence $\tensor*[^{k}_{\beta_0}]{\overrightarrow{H}}{}$ such that for each $\alpha_1<\alpha_2<\dots<\alpha_k$, $\tensor*[_{\beta_0}]{f}{}\upharpoonright \prod^\uparrow_{1\leq i<k+1} \tensor*[^{k}_{\beta_0}]{H}{_{\alpha_i}}$ is constant, say with value $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)$.
   
-  Let $g_{\alpha_1,\dots,\alpha_k}:\kappa\to\kappa$, $g_{\alpha_1,\dots,\alpha_k}(\beta)=\gamma_{\alpha_1,\dots,\alpha_k}(\beta)$.
-  Since $g_{\alpha_1,\dots,\alpha_k}$ is regressive,
-  for each $\alpha<\alpha_1$, there is an $A_{\alpha,\dots,\alpha_k}\in U_{\alpha}$ such that $g_{\alpha_1,\dots,\alpha_k}$ is constant on $A_{\alpha,\dots,\alpha_k}$, say with value $\delta_{\alpha,\dots,\alpha_k}$.
+  Let $g_{\alpha_1,\dots,\alpha_k}:\kappa\to\kappa$, $g_{\alpha_1,\dots,\alpha_k}(\beta)=\gamma_{\alpha_1,\dots,\alpha_k}(\beta)$; observe that $g_{\alpha_1,\dots,\alpha_k}$ is regressive.
+  
+  Fix an $\alpha<\lambda$; we now wish to define $\tensor*[^{k+1}]{H}{_\alpha}$.
+  
+  By regressiveness of $g_{\alpha_1,\dots,\alpha_k}$, for each $\alpha_1<\dots<\alpha_k$ in $[\lambda\setminus(\alpha+1)]^{<\omega}$, there is an $A_{\alpha,\alpha_1,\dots,\alpha_k}\in U_{\alpha}$ such that $g_{\alpha_1,\dots,\alpha_k}$ is constant on $A_{\alpha,\alpha_1,\dots,\alpha_k}$, say with value $\delta_{\alpha,\alpha_1,\dots,\alpha_k}$.
   
   Let \[
-    A_{\alpha}=\left(\bigcap_{\alpha<\alpha_1<\dots<\alpha_k<\lambda} A_{\alpha,\alpha_1,\dots,\alpha_k}\right)
+    B_{\alpha}=\left(\bigcap_{\alpha<\alpha_1<\dots<\alpha_k<\lambda} A_{\alpha,\alpha_1,\dots,\alpha_k}\right)
   \]
-  Furthermore, let $\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}=\tensor*[^{k}_{\beta}]{H}{_\alpha}\cap A_\alpha$ and define
-  $$\tensor*[^{k+1}]{H}{_\alpha}=\Delta_{\beta<\kappa}\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}$$
+  Furthermore, let $\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}=\tensor*[^{k}_{\beta}]{H}{_\alpha}\cap B_\alpha$ and define
+  \[
+    \tensor*[^{k+1}]{H}{_\alpha}=\Delta_{\beta<\kappa}\tensor*[^{k}_{\beta}]{H}{^{'}_{\alpha}}
+  \]
   Then $\tensor*[^{k+1}]{H}{_\alpha}$ is in $U_\alpha$, and we now verify that $\tensor*[^{k+1}]{\overrightarrow{H}}{}$ has the appropriate homogeneity.
   Suppose that $\alpha_0<\dots<\alpha_k$.
   We wish to verify that for every $\beta_i\in \tensor*[^{k+1}]{H}{_{\alpha_i}}$, $\beta_i<\beta_{i+1}$, we have $f(\{\beta_0,\dots,\beta_k\})=\delta_{\alpha_0,\dots,\alpha_k}$.
   To see this, observe that for each possible choice of $\beta_0$, $f(\{\beta_0,\dots,\beta_k\})=\tensor*[_{\beta_0}]{f}{}(\{\beta_1,\dots,\beta_k\})$;
   since $\beta_i<\beta_{i+1}$, for $i\geq 1$ we have that $\beta_i\in \tensor*[^{k}_{\beta_0}]{H}{_{\alpha_i}}$.
   Hence $f(\{\beta_0,\dots,\beta_k\})=\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)$.
-  But since $\beta_0\in A_{\alpha_0}$, we have that in fact $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)=\delta_{\alpha_0,\dots,\alpha_k}$ as desired.
+  But since $\beta_0\in B_{\alpha_0}$, we have that in fact $\gamma_{\alpha_1,\dots,\alpha_k}(\beta_0)=\delta_{\alpha_0,\dots,\alpha_k}$ as desired.
   
   In the end, our desired $H_\alpha$ is $\bigcap_{n<\omega} \tensor*[^n]{H}{_\alpha}$.
 \end{proof}
@@ -67,7 +71,7 @@ While \thref{simult_indisc_easy} has some utility, we will need the following mo
 \end{definition}
 
 \begin{lemma}\thlabel{simult_indisc_useful}
-  Suppose $\overrightarrow{U}=\seq{U_\alpha \mid \alpha<\lambda}$ is a system of normal measures on $\kappa$ and suppose that $f:[\kappa]^{<\omega}\to\kappa$ is regressive.
+  Suppose $\lambda$ is a regular cardinal below $\kappa$ and $\overrightarrow{U}=\seq{U_\alpha \mid \alpha<\lambda}$ is a system of normal measures on $\kappa$ and suppose that $f:[\kappa]^{<\omega}\to\kappa$ is regressive.
   
   Then there is an $\overrightarrow{H}=\seq{H_\alpha\mid \alpha<\lambda}$ where each $H_\alpha\in U_\alpha$, 
   such that for every $n$ and for every $k_0,\dots,k_{n-1}$,
