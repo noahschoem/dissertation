@@ -1,10 +1,9 @@
 \section{The Koepke Approach}
 \label{ms:koepke}
 
-Koepke's argument for the consistency of $MS(\seq{\aleph_{2n+3}\mid n<\omega;\omega_1})$ uses an alternative way to think about the proof of \thref{ms_prikry}.
-We will flesh out this approach here, as our arguments for Magidor generics depend on Koepke's work.
-
-Koepke's mutual stationarity result in \cite{koepke_ms_omega_1} implicitly rephrases \thref{ms_prikry} as a Ramsey-theoretic result, in the following sense:
+In this section, we flesh out Koepke's argument for \thref{ms_prikry}, that Prikry generics achieve $MS$ on a tail.
+Koepke's argument uses \emph{mutual Ramseyness}, an alternative and more general way to think about the proof of \thref{ms_prikry}.
+As our arguments on Magidor generics also utilize mutual Ramseyness, we will explain here what mutual Ramseyness is, why mutual Ramseyness holds for Prikry generics on a tail, and why that implies mutual stationarity principles.
 
 \begin{definition}[Koepke, Definition 2.2 of \cite{koepke_ms_omega_1}]\thlabel{koepke_types}
    Suppose that $\kappa$ is a limit cardinal with $cf(\kappa)=\lambda$, and let $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be a normal cofinal sequence of cardinals below $\kappa$.
@@ -89,7 +88,7 @@ Our use case for mutually homogeneous sequences is to build order indiscernibles
   Then we say that $\mathcal{I}:=\seq{I_\alpha \mid \alpha\in \lambda\cap Succ}$ is \emph{mutually homogeneous for $\mathcal{M}$ and $F$} if
   \begin{itemize}
     \item $\mathcal{I}$ is mutually homogeneous for $F$
-    \item for each formula $\phi$ in the signature of $\mathcal{M}$, if $x,y\in [\kappa]^{<\omega}$ are of the appropriate arity for $\phi$ and $type(x)=type(y)$, then $\mathcal{M}\models \phi(x) \iff \mathcal{M}\models \phi(y)$
+    \item for each formula $\phi$ in the signature of $\mathcal{M}$, if $x,y\in \left[\bigcup_{\alpha \in \lambda\cap Succ} I_\alpha\right]^{<\omega}$ are of the appropriate arity for $\phi$ and $type(x)=type(y)$, then $\mathcal{M}\models \phi(x) \iff \mathcal{M}\models \phi(y)$
     \item for each term definable in $\mathcal{M}$ viewed as a map $g:[\kappa]^{<\omega}\to \kappa$, $\mathcal{I}$ is mutually homogeneous for $g$; that is, if $x,y\in \left[\bigcup_{\alpha \in \lambda\cap Succ} I_\alpha\right]^{<\omega}$ with $type(x)=type(y)$ and $x\cap (g(x)+1) = y \cap (g(x)+1)$ then $g(x)=g(y)$
   \end{itemize}
 \end{definition}
@@ -120,7 +119,7 @@ Koepke has arguments pertaining to such $F$ and in a much earlier paper \cite{ko
   Furthermore, the sequence of $I_n$'s witnessing this in $V[G]$ may be chosen to be club subsets of each $\kappa_n$, or stationary subsets of each $\kappa_n$ consisting only of inaccessibles.
 \end{theorem}
 
-The proof is fundamentally exactly as in \cite{cummings_foreman_magidor_canonical_structure} but Koepke reproves it anyways.
+The proof is fundamentally exactly as in \cite{cummings_foreman_magidor_canonical_structure}.
 The clubness is left unwritten in both, but is implicit; the fact that each $I_n$ may consist only of inaccessibles comes from observing that measure-one (hence stationarily) many cardinals below a measurable are Mahlo.
 
 \begin{corollary}\thlabel{prikry_generic_ramseyness_implies_ms}
