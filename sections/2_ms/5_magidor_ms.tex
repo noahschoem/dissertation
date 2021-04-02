@@ -8,20 +8,20 @@ Note that Prikry forcing preserves the stationarity of sets of size less than $\
 We need a different argument for Magidor forcing.
 
 \begin{lemma}\thlabel{mag_forcing_preserves_stationary_successors}
-  Let $\delta$ be a cardinal in $V$, and suppose that in $V[\mathbb{M}(\vec{U})]$, $\delta=\kappa_{\alpha+1}$ for some $\alpha$.
+  Let $\delta$ be a cardinal in $V$, let and suppose that in $V[\mathbb{M}\left(\vec{U}\right)]$, $\delta=\kappa_{\alpha+1}$ for some $\alpha$.
   Let $S\subseteq \delta$ be stationary in $V$.
-  Then $S$ is stationary in $V[\mathbb{M}(\vec{U})]$.
+  Then $S$ is stationary in $V[\mathbb{M}\left(\vec{U}\right)]$.
 \end{lemma}
 
 \begin{proof}
-  It is enough to show that $S$ is stationary after forcing with $\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}\times \mathbb{M}(\vec{U})^{(\alpha+1,\delta)}$.
+  It is enough to show that $S$ is stationary after forcing with $\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}\times \mathbb{M}\left(\vec{U}\right)^{(\alpha+1,\delta)}$.
   
-  To see that $S$ is stationary in $V[\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}]$, let $1\leq n<\omega$ be such that $\alpha+1=\beta+n$ for some $\beta$ limit (or $0$).
+  To see that $S$ is stationary in $V[\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}]$, let $1\leq n<\omega$ be such that $\alpha+1=\beta+n$ for some $\beta$ limit (or $0$).
   Then densely often (by extending the stem such that $\beta+k$ is in the domain of the stem, for all $k\leq n$),
-  we may assume we're forcing with $\mathbb{M}(\vec{U})_{(\beta,\xi)}$ for some $\xi$, which is $\xi^+$-cc, and hence is $\delta$-cc as well.
-  Thus $S$ is stationary in $V[\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}]$.
+  we may assume we're forcing with $\mathbb{M}\left(\vec{U}\right)_{(\beta,\xi)}$ for some $\xi$, which is $\xi^+$-cc, and hence is $\delta$-cc as well.
+  Thus $S$ is stationary in $V[\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}]$.
   
-  Since the direct order on $\mathbb{M}(\vec{U})^{(\alpha+1,\delta)}$ remains $\delta$-closed after forcing with $\mathbb{M}(\vec{U})_{(\alpha+1,\delta)}$, $S$ remains stationary in the full generic extension.
+  Since the direct order on $\mathbb{M}\left(\vec{U}\right)^{(\alpha+1,\delta)}$ remains $\delta$-closed after forcing with $\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}$, $S$ remains stationary in the full generic extension.
 \end{proof}
 
 Note that since mutually stationary sequences of sets are only defined for families of regular cardinals, we don't have to concern ourselves with sets cofinal in the cardinals singularized by the Magidor forcing.
@@ -38,7 +38,7 @@ Note that since mutually stationary sequences of sets are only defined for famil
   We mimic the argument as in \cite{koepke_free_subset}, except with Magidor geometricity.
   
   Let $(g,H)\forces \dot{f}:[\kappa]^{<\omega}\to\kappa$.
-  Let $\mathcal{M}$ be a transitive structure possessing Skolem functions for itself, containing $\kappa$, $\vec{U}$, $\mathbb{M}(\vec{U})$, $(g,H)$, and $\dot{f}$ as constants, $\kappa\subseteq \mathcal{M}$, and reflecting enough of $V$ for the following argument.\footnote{
+  Let $\mathcal{M}$ be a transitive structure possessing Skolem functions for itself, containing $\kappa$, $\vec{U}$, $\mathbb{M}\left(\vec{U}\right)$, $(g,H)$, and $\dot{f}$ as constants, $\kappa\subseteq \mathcal{M}$, and reflecting enough of $V$ for the following argument.\footnote{
     This amounts to the transitive version of the Reflection Principle, where the following argument only uses finitely many axioms of $\mathrm{ZFC}$.
   }
   
@@ -61,7 +61,7 @@ Note that since mutually stationary sequences of sets are only defined for famil
   \[
     Y(\beta)=X(\beta) \cap \{\gamma<\kappa \mid \gamma \cap X(\beta) \text{ stationary in }\gamma\}
   \]
-  Let $G'$ be $\mathbb{M}(\vec{U})$-generic over $V$ with $(g,Y)\in G'$; let $\seq{\kappa'_\alpha \mid \alpha<\lambda}$ be the $G'$-generic Magidor sequence.
+  Let $G'$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$ with $(g,Y)\in G'$; let $\seq{\kappa'_\alpha \mid \alpha<\lambda}$ be the $G'$-generic Magidor sequence.
   
   Let $\delta=\max(dom(g))$ and let $\seq{A_\alpha \mid \delta<\alpha<\kappa}$ be given by $A_\alpha=X(\alpha) \cap \kappa'_\alpha$.
   
@@ -119,7 +119,7 @@ Note that since mutually stationary sequences of sets are only defined for famil
 \end{proof}
 
 \begin{theorem}\thlabel{magidor_generics_ms_cofinite}
-  Furthermore, in $\mathbb{M}(\vec{U})$, there is a cofinite subfamily $K$ of $\seq{\kappa_\alpha \mid \alpha<\lambda}$ of regular cardinals such that 
+  Furthermore, in $\mathbb{M}\left(\vec{U}\right)$, there is a cofinite subfamily $K$ of $\seq{\kappa_\alpha \mid \alpha<\lambda}$ of regular cardinals such that 
   \[
     MS(\seq{\kappa_\alpha \mid \kappa_\alpha\in K})
   \]
