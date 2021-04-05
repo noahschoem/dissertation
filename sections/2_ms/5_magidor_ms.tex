@@ -7,21 +7,26 @@ Before we do so, we have an ancillary lemma that will come into play.
 Note that Prikry forcing preserves the stationarity of sets of size less than $\kappa$, because Prikry forcing adds no new bounded subsets of $\kappa$.
 We need a different argument for Magidor forcing.
 
+For this section, let $\vec{U}=\seq{U_\alpha \mid \alpha<\lambda}$ be a Mitchell order increasing sequence of normal measures on $\kappa$ of length $\lambda$, for some $\lambda<\kappa$.
+Recall that $V^{\mathbb{M}\left(\vec{U}\right)}$ denotes a generic extension after forcing with $\mathbb{M}\left(\vec{U}\right)$, as defined in Section \ref{forcing:forcing}.
+
 \begin{lemma}\thlabel{mag_forcing_preserves_stationary_successors}
-  Let $\delta$ be a cardinal in $V$, let and suppose that in $V[\mathbb{M}\left(\vec{U}\right)]$, $\delta=\kappa_{\alpha+1}$ for some $\alpha$.
+  Let $\delta$ be a cardinal in $V$, let and suppose that in $V^{\mathbb{M}\left(\vec{U}\right)}$, 
+  $\seq{\kappa_\alpha \mid \alpha<\lambda}$ denotes the Magidor generic sequence added by $\mathbb{M}\left(\vec{U}\right)$.
+  Suppose that $\delta=\kappa_{\alpha+1}$ for some $\alpha$.
   Let $S\subseteq \delta$ be stationary in $V$.
-  Then $S$ is stationary in $V[\mathbb{M}\left(\vec{U}\right)]$.
+  Then $S$ is stationary in $V^{\mathbb{M}\left(\vec{U}\right)}$.
 \end{lemma}
 
 \begin{proof}
   It is enough to show that $S$ is stationary after forcing with $\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}\times \mathbb{M}\left(\vec{U}\right)^{(\alpha+1,\delta)}$.
   
-  To see that $S$ is stationary in $V[\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}]$, let $1\leq n<\omega$ be such that $\alpha+1=\beta+n$ for some $\beta$ limit (or $0$).
+  To see that $S$ is stationary in $V^{\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}}$, let $1\leq n<\omega$ be such that $\alpha+1=\beta+n$ for some $\beta$ limit (or $0$).
   Then densely often (by extending the stem such that $\beta+k$ is in the domain of the stem, for all $k\leq n$),
   we may assume we're forcing with $\mathbb{M}\left(\vec{U}\right)_{(\beta,\xi)}$ for some $\xi$, which is $\xi^+$-cc, and hence is $\delta$-cc as well.
-  Thus $S$ is stationary in $V[\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}]$.
+  Thus $S$ is stationary in $V^{\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}}$.
   
-  Since the direct order on $\mathbb{M}\left(\vec{U}\right)^{(\alpha+1,\delta)}$ remains $\delta$-closed after forcing with $\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}$, $S$ remains stationary in the full generic extension.
+  Since the direct extension order on $\mathbb{M}\left(\vec{U}\right)^{(\alpha+1,\delta)}$ remains $\delta$-closed after forcing with $\mathbb{M}\left(\vec{U}\right)_{(\alpha+1,\delta)}$, $S$ remains stationary in the full generic extension.
 \end{proof}
 
 Note that since mutually stationary sequences of sets are only defined for families of regular cardinals, we don't have to concern ourselves with sets cofinal in the cardinals singularized by the Magidor forcing.
@@ -31,46 +36,55 @@ Note that since mutually stationary sequences of sets are only defined for famil
   In $V[G]$, let $f:[\kappa]^{<\omega}\to\kappa$.
   
   Then there are $\delta<\lambda$ and $\seq{A_\alpha \mid \delta < \alpha < \lambda, \alpha \text{ successor}}$ such that each $A_\alpha$ is stationary in $\kappa_\alpha$,
-  and whenever $x,y\subseteq [\bigcup_{\delta<\alpha<\omega} A_\alpha]^{<\omega}$ with $type(x)=type(y)$ and $x\cap (f(x)+1)=y\cap(f(x)+1)$, we have that $f(x)=f(y)$.
+  and whenever $x,y\subseteq [\bigcup_{\delta<\alpha<\lambda} A_\alpha]^{<\omega}$ with $type(x)=type(y)$ and $x\cap (f(x)+1)=y\cap(f(x)+1)$, we have that $f(x)=f(y)$.
 \end{theorem}
 
 \begin{proof}
-  We mimic the argument as in \cite{koepke_free_subset}, except with Magidor geometricity.
-  
   Let $(g,H)\forces \dot{f}:[\kappa]^{<\omega}\to\kappa$.
-  Let $\mathcal{M}$ be a transitive structure possessing Skolem functions for itself, containing $\kappa$, $\vec{U}$, $\mathbb{M}\left(\vec{U}\right)$, $(g,H)$, and $\dot{f}$ as constants, $\kappa\subseteq \mathcal{M}$, and reflecting enough of $V$ for the following argument.\footnote{
+  Suppose without loss of generality that $g=\emptyset$;
+  otherwise, let $\delta=\max dom(g)$ and then we carry out the following argument for $\mathbb{M}\left(\vec{U}\right)^{(\delta,\kappa_\delta)}$ in $V^{\mathbb{M}\left(\vec{U}\right)_{(\delta,\kappa_\delta)}}$.
+  
+  Let $\mathcal{M}$ be a transitive structure possessing Skolem functions for itself, containing $\kappa$, $\vec{U}$, $\mathbb{M}\left(\vec{U}\right)$, $(\emptyset,H)$, and $\dot{f}$ as constants, $\kappa\subseteq \mathcal{M}$, and reflecting enough of $V$ for the following argument\footnote{
     This amounts to the transitive version of the Reflection Principle, where the following argument only uses finitely many axioms of $\mathrm{ZFC}$.
-  }
+  }.
   
-  Since $\vec{U}$ is a family of normal measures on $\kappa$, an application of \thref{simult_indisc_useful} for each $\mathcal{M}$-formula, plus a diagonal intersection, yields us a $(g,X)\leq^* (g,H)$ such that for every $\mathcal{M}$-formula $\psi$, we have the following principle:
-
-  For every $n$, whenever $k_0,\dots,k_{n-1}\in \omega$ and whenever $\alpha_0<\dots<\alpha_{n-1}$, if
-  \[
-    x,y\in \prod_{0\leq i<n}^{\uparrow} X_{\alpha_i}^{k_i}
-  \]
-  and
-  \[
-    \vec{\alpha}\in [\kappa]^{<\omega} \text{ with }x \cap(\max\vec{\alpha}+1) =  y\cap(\max\vec{\alpha}+1)
-  \]
-  then 
-  \[
-    \mathcal{M}\models \phi(\vec{\alpha},x) \text{ iff }\mathcal{M}\models \phi(\vec{\alpha},y)
-  \]
+  Since $\vec{U}$ is a family of normal measures on $\kappa$, for each $\mathcal{M}$-definable function $h:[\kappa]^{<\omega}\to \kappa$, an application of \thref{simult_indisc_useful} yields $\vec{H}=\seq{H_h(\alpha) \mid \alpha<\lambda}$, where each $H_h(\alpha)\in U_\alpha$, with the following property:
+  whenever $x=\seq{x_{\alpha_0},\dots,x_{\alpha_{n-1}}}$ and $y=\seq{y_{\alpha_0},\dots,y_{\alpha_{n-1}}}$ are finite increasing sequences such that $x_{\alpha_i}$, $y_{\alpha_i}\in H_h(\alpha_i)$ and $x\cap (h(x)+1)=y\cap (h(x)+1)$\footnote{
+    Recall that $x\cap (h(x)+1)=y\cap (h(x)+1)$ amounts to saying that $h(x)<\min (x\Delta y)$, so amounts to asserting that $h$ is regressive on an appropriate subcollection of $\kappa$.
+  }, then $h(x)=h(y)$.
   
-  Let $Y$ be such that $Y(\beta)$ is the stationary reflection points in each $X(\beta)$, i.e. 
+  Further, we may, for each $\mathcal{M}$-formula $\varphi$, let $\seq{H_\varphi(\alpha)\mid \alpha<\lambda}$ be as in \thref{simult_indisc_useful} with respect to $\varphi$;
+  that is, whenever $x=\seq{x_{\alpha_0},\dots,x_{\alpha_{n-1}}}$ and $y=\seq{y_{\alpha_0},\dots,y_{\alpha_{n-1}}}$ are finite increasing sequences such that $\alpha_0\leq\dots\leq \alpha_{n-1}$ and $x_{\alpha_i}$, $y_{\alpha_i}\in H_\varphi(\alpha_i)$, then $\mathcal{M}\models \varphi(x)$ iff $\mathcal{M}\models \varphi(y)$.
+  
+  Since the signature of $\mathcal{M}$ is smaller than $\kappa$, there are fewer than $\kappa$-many definable functions and formulae, so the $\kappa$-completeness of every $U_\alpha$ allows this homogeneity simultaneously for every definable $h$ and every formula $\varphi$.
+  Thus we have a $(\emptyset,X)\leq^* (\emptyset,H)$ such that for each $\mathcal{M}$-definable $h$, $(\emptyset,X)\leq^* (\emptyset,H_h)$, and likewise for every $\mathcal{M}$-formula $\phi$, $(\emptyset,X)\leq^* (\emptyset,H_\phi)$.
+  
+  Let $Y$ with $dom(Y)=dom(X)$ be such that $Y(\beta)$ is the collection of stationary reflection points in each $X(\beta)$, i.e. 
   \[
     Y(\beta)=X(\beta) \cap \{\gamma<\kappa \mid \gamma \cap X(\beta) \text{ stationary in }\gamma\}
   \]
-  Let $G'$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$ with $(g,Y)\in G'$; let $\seq{\kappa'_\alpha \mid \alpha<\lambda}$ be the $G'$-generic Magidor sequence.
+  Each $Y(\beta)\in U_\beta$; this is a consequence of the fact that the collection of stationary reflection points below a measurable cardinal is measure one.
+  Thus $(\emptyset,Y)$ is in fact a condition.
   
-  Let $\delta=\max(dom(g))$ and let $\seq{A_\alpha \mid \delta<\alpha<\kappa}$ be given by $A_\alpha=X(\alpha) \cap \kappa'_\alpha$.
+  We wish to verify that $(\emptyset,Y)$ forces the desired property for $\dot{f}$; to do so, we will invoke the Generic Model Theorem.
+  Let $G$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$ with $(\emptyset,Y)\in G$; let $\vec{\kappa}=\seq{\kappa_\alpha \mid \alpha<\lambda}$ be the $G$-generic Magidor sequence.
+  This buys for us that for all $\alpha<\lambda$, $\kappa_\alpha\in Y(\alpha)$.
+  Let $\seq{A_\alpha \mid \alpha<\lambda, \alpha\text{ successor}}$ be given by $A_\alpha=X(\alpha) \cap \kappa_\alpha$.
+  Each $A_\alpha$ is $V$-stationary in $\kappa_\alpha$ since $\kappa_\alpha\in Y(\alpha)$, and by \thref{mag_forcing_preserves_stationary_successors}, $A_\alpha$ remains stationary in $\kappa_\alpha$.
+  Then for each $x,y\subseteq \left[\bigcup_{\alpha<\lambda}A_\alpha\right]^{<\omega}$ such that $type(x)=type(y)$ and $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$, it suffices to find \emph{some} condition in $G$ that forces that $\dot{f}[G](x)=\dot{f}[G](y)$.
+  Since this argument will work in $V[\Gamma]$ for all relevant $x$ and $y$ and any $\mathbb{M}\left(\vec{U}\right)$-generic $\Gamma$ over $V$ with $\Gamma\ni (\emptyset,Y)$,
+  by the Forcing Theorem, $(\emptyset,Y)$ forces the desired property for $\dot{f}$ as witnessed by a name for $\seq{A_\alpha \mid \alpha<\lambda, \alpha\text{ successor}}$.
   
-  Suppose that $x,y$ are finite subsets of $\bigcup_{\delta<\alpha<\kappa} A_\alpha$ such that $type(x)=type(y)$, 
-  $\dot{f}[G'](x)\leq \dot{f}[G'](y)$, and $x \cap (\dot{f}[G'](x) + 1)=y\cap (\dot{f}[G'](x)+1)$.
-  Let $\beta$ be least such that $\dot{f}[G'](x)\leq \kappa'_\beta$;
-  extend $g$ to $g'$ such that $g'(\beta)=\kappa'_\beta$ and with enough Magidor points included to witness that $type(x)=type(y)$.\footnote{
-    That is, the elements of $x$, $y$ fall between only finitely many of points of the Magidor sequence; let $g'$ be an extension including these finitely many points of the Magidor sequence.
-  }
+  To that end, work in $V[G]$ and suppose that $x,y$ are finite subsets of $\bigcup_{\alpha<\lambda,\alpha\text{ successor}} A_\alpha$ such that $type(x)=type(y)$ and $x \cap (\dot{f}[G](x) + 1)=y\cap (\dot{f}[G](x)+1)$.
+  Let $\beta$ be least such that $x,y\subseteq \kappa_\beta$; since $x$, $y$ finite, we have that $\beta=\alpha+1$ for some $\alpha$.
+  Furthermore, since $x,y$ are finite and $type(x)=type(y)$,
+  we may extend $(\emptyset,Y)$ to some $(g',Y')\in G$ such that:
+  \begin{itemize}
+    \item $\alpha=\max dom(g')$ and $g'(\alpha)=\kappa_\alpha$
+    \item since $lh(x)=lh(y)=n$, if we write $x=\seq{x_i\mid i<n}$ and $y=\seq{y_i\mid i<n}$ in increasing order, then for each $i$ such that $x_i,y_i<\kappa_\alpha$,
+    there exists some $\gamma\in dom(g')$ such that $x_i,y_i\in (\kappa_\gamma,\kappa_{\gamma+1})$
+  \end{itemize}
+  
   Let $t$, $w$ be $\mathcal{M}$-terms such that
   \[
     (g',t(g',x)) \forces \dot{f}(x)=w(g',x) 
@@ -80,15 +94,38 @@ Note that since mutually stationary sequences of sets are only defined for famil
   \]
   Such terms exist because $\mathbb{M}(\mathcal{U})$ has pure decision; i.e. for our choices of $x$, $y$, we have that
   \[
-    \exists E \exists \beta \ (g',E) \forces \dot{f}(x)=\beta
+    \exists E \exists \zeta \ (g',E) \forces \dot{f}(x)=\zeta
   \]
   and similarly for $y$. Since $\mathcal{M}$ is Skolemized, we have that there are terms $t$, $w$ as above.
   
-  Since $x,y$ were drawn from $X$, we have, letting $X'(\beta)=t(g',x)(\beta)\cap t(g',y)(\beta)$, that
+  Since $x,y$ were drawn from $X$, we have that, letting $dom(x)=dom(y)=\seq{\alpha_0\leq\dots\leq\alpha_{n-1}}$, for each $i$, $x_{\alpha_i}$ and $y_{\alpha_i}$ were both drawn from $H_w(\alpha_i)$,
+  and furthermore 
   \[
-    (g',X') \forces \dot{f}(x)=\dot{f}(y)
+    (x\cup g') \cap (w(g',x)+1)=(y\cup g') \cap (w(g',x)+1)
   \]
-  By construction, $(g',X')$ is compatible with $(g,Y)$ so therefore there is some mutual extension in $G'$ forcing $\dot{f}(x)=\dot{f}(y)$.  
+  since the same is forced to be true for $\dot{f}$.
+  Thus, $w(g',x)=w(g',y)$ and so, letting 
+  \[
+    Y''(\beta')=\begin{cases}
+      t(g',x)(\beta')\cap t(g',y)(\beta') & \beta'<\beta, \ \beta'\notin dom(g') \\
+      \left(t(g',x)(\beta')\cap t(g',y)(\beta')\right) \setminus \kappa_{\beta} & \beta'>\beta, \ \beta'\notin dom(g')
+    \end{cases}
+  \]
+  we then obtain a condition $(g',Y'')$ such that
+  \[
+    (g',Y'') \forces \dot{f}(x)=\dot{f}(y)
+  \]
+  
+  It remains to argue that $(g',Y'')\in G$; for this, it suffices to show that $\vec{\kappa}\upharpoonright dom(g')=g'$ and for all $\beta'\in dom(Y'')$, $\kappa_{\beta'}\in Y''(\beta')$.
+  Since $(g',Y')\in G$, clearly $\vec{\kappa}\upharpoonright dom(g')=g'$.
+  
+  For $\beta'>\beta$, since $t(g',x)(\beta') \cap t(g',y)(\beta)\in U_{\beta'}$, there must be some $\rho\in Y(\beta')$ such that $\rho>\kappa_\beta$ and $\rho\in t(g',x)(\beta')\cap t(g',y)(\beta')$.
+  But, since $x$, $y$, and $\rho$ were chosen from $H_\psi$ where $\psi$ is the formula expressing membership in $t(g',\circ)(\beta')$, it must be the case that \emph{every} $\rho'>\kappa_\beta$ in $Y(\beta')$ must be in $t(g',x)(\beta')\cap t(g',y)(\beta')$.
+  In particular, since $\kappa_{\beta'}\in Y(\beta')$, we get that $\kappa_{\beta'}\in t(g',x)(\beta')\cap t(g',y)(\beta')$ and so $\kappa_{\beta'}\in Y''(\beta')$.
+  
+  For $\beta'<\beta$, the exact same argument applies, but with measures and measure one sets reflected below some point in $g'$.
+  
+  Thus $(g',Y'')\in G$ and $(g',Y'') \forces \dot{f}(x)=\dot{f}(y)$, and so the desired conclusion follows.
 \end{proof}
 
 \begin{corollary}\thlabel{mag_forcing_mutual_ramsey_tail}
@@ -101,10 +138,10 @@ Note that since mutually stationary sequences of sets are only defined for famil
   Then $f$ is a counterexample to \thref{magidor_generics_mutually_hom}.
 \end{proof}
 
-\begin{corollary}\thlabel{magidor_generics_ms_cobounded}
+\begin{theorem}\thlabel{magidor_generics_ms_cobounded}
   Fix $\seq{\kappa_\alpha \mid \alpha<\lambda}$ and $\delta$ as above.
   Then any family of stationary subsets $S_\alpha\subseteq \kappa_\alpha$, $\delta<\alpha<\kappa$ and $\alpha$ a successor point, is mutually stationary.
-\end{corollary}
+\end{theorem}
 
 \begin{proof}
   We invoke mutual Ramseyness as for Prikry generics as in \thref{prikry_generic_ramseyness_implies_ms}.
