@@ -32,7 +32,7 @@ Recall that $V^{\mathbb{M}\left(\vec{U}\right)}$ denotes a generic extension aft
 Note that since mutually stationary sequences of sets are only defined for families of regular cardinals, we don't have to concern ourselves with sets cofinal in the cardinals singularized by the Magidor forcing.
 
 \begin{theorem}\thlabel{magidor_generics_mutually_hom}
-  Let $\lambda<\kappa$ and let $\seq{\kappa_{\alpha}\mid \alpha<\lambda}$ be Magidor generic over $V$.
+  Let $\lambda<\kappa$ and let $G$ be Magidor generic over $V$ with $\seq{\kappa_{\alpha}\mid \alpha<\lambda}$ the induced Magidor generic sequence.
   In $V[G]$, let $f:[\kappa]^{<\omega}\to\kappa$.
   
   Then there are $\delta<\lambda$ and $\seq{A_\alpha \mid \delta < \alpha < \lambda, \alpha \text{ successor}}$ such that each $A_\alpha$ is stationary in $\kappa_\alpha$,
@@ -129,13 +129,32 @@ Note that since mutually stationary sequences of sets are only defined for famil
 \end{proof}
 
 \begin{corollary}\thlabel{mag_forcing_mutual_ramsey_tail}
-  There is a fixed $\delta<\kappa$ such that $\seq{\kappa_\alpha \mid \alpha\leq\delta<\kappa}$ is mutually Ramsey.
+  Let $V[G]$ and $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be as in \thref{magidor_generics_mutually_hom}.
+  Then there is a fixed $\delta<\kappa$ such that $\seq{\kappa_\alpha \mid \alpha\leq\delta<\kappa}$ is mutually Ramsey.
 \end{corollary}
 
 \begin{proof}
+  % TODO: check for correctness
+  % Godel pairing function? Double check this when more alert.
+  % Spec: need that:
+  %   1: o.t. of the pairing fn, restricted to kappa\times\lambda, is in fact \kappa
+  %   2: sections of stationary sets are stationary
   We uniformize.
-  Suppose otherwise; for each $\delta<\lambda$ fix some $f_\delta:[\kappa]^{<\omega}\to \kappa$ for which $f$ is not mutually homogeneous for $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$ and since $\lambda<\kappa$, by identifying $\lambda\times \kappa$ with $\kappa$ we may encode these into a single $f:[\kappa]^{<\omega}\to\kappa$.
-  Then $f$ is a counterexample to \thref{magidor_generics_mutually_hom}.
+  Suppose otherwise; for each $\delta<\lambda$ fix some $f_\delta:[\kappa]^{<\omega}\to \kappa$ for which $f$ is not mutually homogeneous for any $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$.
+  Let $\chi:\lambda\times\kappa \to \kappa$ be the bijection given by G\"odel's pairing function, that is $\chi(\alpha,\beta)$ is the order type of the predecessors of $(\alpha,\beta)$ under the ordering given by the canonical well ordering on $Ord^2$.
+  
+  Since $\chi$ is a normal bijection, whenever $A$ is a stationary subset of $\kappa$, and $\alpha<\lambda$, $(\chi^{-1} " A) \cap (\{\alpha\}\times \kappa)$ is still stationary in $\kappa$.
+  
+  So let $f:[\kappa]^{<\omega}\to \kappa$ given by 
+  $f(\mu_0,\dots,\mu_n)=(\nu_0,\dots,\nu_n)$ where $\nu_i$ comes from letting $\chi^{-1}(\mu_i)=(\alpha,\mu'_i)$ and then letting $\nu_i=f_\alpha(\mu'_i)$.
+  
+  Then by \thref{magidor_generics_mutually_hom}, let $\delta$ and $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$ be mutually homogeneous for $f$ and composed of stationary sets.
+  But then 
+  \[
+    \seq{(\chi^{-1} " A_\alpha) \cap (\{\delta\}\times \kappa) \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}
+  \]
+  is mutually homogeneous for $f_\delta$ and is composed of stationary sets.
+  This is a contradiction and the result follows.
 \end{proof}
 
 \begin{theorem}\thlabel{magidor_generics_ms_cobounded}
