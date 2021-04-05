@@ -124,11 +124,11 @@ Note that since mutually stationary sequences of sets are only defined for famil
 \begin{proof}
   We invoke mutual Ramseyness as for Prikry generics as in \thref{prikry_generic_ramseyness_implies_ms}.
   
-  Let $\seq{S_\alpha \mid \alpha<\kappa, \ \kappa_\alpha\text{ successor}}$ be a system of stationary sets with each $S_\alpha\subseteq \kappa_\alpha$, let $\mathcal{M}$ be a structure on $\kappa$ with Skolem function $F$, and let $\seq{A_\alpha \mid \delta<\alpha<\kappa, \kappa_\alpha\text{ successor}}$ be mutually homogeneous for $\mathcal{M}$ and $F$ with each $A_\alpha\subseteq \kappa_\alpha$.
+  Let $\seq{S_\alpha \mid \delta<\alpha<\kappa, \ \alpha\text{ successor}}$ be a system of stationary sets with each $S_\alpha\subseteq \kappa_\alpha$, let $\mathcal{M}$ be a structure on $\kappa$ with Skolem function $F$, and let $\seq{A_\alpha \mid \delta<\alpha<\kappa, \alpha\text{ successor}}$ be mutually homogeneous for $\mathcal{M}$ and $F$ with each $A_\alpha$ stationary in $\kappa_\alpha$.
   
-  For each relevant $\alpha$, let $\gamma_\alpha\in S_\alpha \cap Lim(I_\alpha)$, and let
+  For each relevant $\alpha$, since $Lim(A_\alpha)$ is club in $\kappa_\alpha$ let $\gamma_\alpha\in S_\alpha \cap Lim(A_\alpha)$, and let
   \[
-    \mathcal{U}=F"\left[\bigcup_{\delta<\alpha<\kappa, \ \alpha\text{ successor}}\right]^{<\omega}
+    \mathcal{U}=F"\left[\bigcup_{\delta<\alpha<\kappa, \ \alpha\text{ successor}} A_\alpha \cap \gamma_\alpha\right]^{<\omega}
   \]
   Then by the exact same logic as in \thref{prikry_generic_ramseyness_implies_ms}, for each relevant $\alpha$, $\sup(\mathcal{U}\cap \kappa_\alpha)=\gamma_\alpha$ as needed.
 \end{proof}
