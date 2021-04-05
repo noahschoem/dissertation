@@ -40,97 +40,56 @@ Note that since mutually stationary sequences of sets are only defined for famil
 \end{theorem}
 
 \begin{proof}
-  Let $(g,H)\forces \dot{f}:[\kappa]^{<\omega}\to\kappa$.
-  Suppose without loss of generality that $g=\emptyset$;
-  otherwise, let $\delta=\max dom(g)$ and then we carry out the following argument for $\mathbb{M}\left(\vec{U}\right)^{(\delta,\kappa_\delta)}$ in $V^{\mathbb{M}\left(\vec{U}\right)_{(\delta,\kappa_\delta)}}$.
+  Work in $V$; let $(g,H)\forces \dot{f}:[\kappa]^{<\omega}\to\kappa$.
+  For each stem $g'$ extending $g$, and each $x\in[\kappa]^{<\omega}$ strictly increasing with $\min(x)>\max ran(g)$, let $F(g',x)$ be defined by
+  \[
+    F(g',x)=\begin{cases}
+      \beta & \exists E \ (g',E)\forces \dot{f}(x)=\beta \\
+      \emptyset & \text{otherwise} \\
+    \end{cases}
+  \]
   
-  Let $\mathcal{M}$ be a transitive structure possessing Skolem functions for itself, containing $\kappa$, $\vec{U}$, $\mathbb{M}\left(\vec{U}\right)$, $(\emptyset,H)$, and $\dot{f}$ as constants, $\kappa\subseteq \mathcal{M}$, and reflecting enough of $V$ for the following argument\footnote{
-    This amounts to the transitive version of the Reflection Principle, where the following argument only uses finitely many axioms of $\mathrm{ZFC}$.
-  }.
-  
-  Since $\vec{U}$ is a family of normal measures on $\kappa$, for each $\mathcal{M}$-definable function $h:[\kappa]^{<\omega}\to \kappa$, an application of \thref{simult_indisc_useful} yields $\vec{H}=\seq{H_h(\alpha) \mid \alpha<\lambda}$, where each $H_h(\alpha)\in U_\alpha$, with the following property:
-  whenever $x=\seq{x_{\alpha_0},\dots,x_{\alpha_{n-1}}}$ and $y=\seq{y_{\alpha_0},\dots,y_{\alpha_{n-1}}}$ are finite increasing sequences such that $x_{\alpha_i}$, $y_{\alpha_i}\in H_h(\alpha_i)$ and $x\cap (h(x)+1)=y\cap (h(x)+1)$\footnote{
+  Since $\vec{U}$ is a family of normal measures on $\kappa$,  an application of \thref{simult_indisc_useful} yields a family $X\in \prod_{\max dom(g)<\alpha<\lambda} U_\alpha$ of order indiscernibles for $F$.
+  What that precisely means is that 
+  whenever $g_1$, $g_2$ are finite extensions of $g$ with the same domain such that, above $\max dom(g)$, $g_i\upharpoonright (\max dom(g),\lambda)=\seq{\kappa^i_{\alpha_0},\dots,\kappa^i_{\alpha_n}}$ such that each $\kappa^i_{\alpha_j}\in X(\alpha_j)$, and $x_1$, $x_2$ are in $[\kappa]^{<\omega}$ with $\min(x_i)>\max ran(g)$ such that $x_i=\seq{x^i_{\beta_0},\dots,x^i_{\beta_{m}}}$ where $x^i_{\beta_j}\in X(\beta_j)$, and $x_1$ bears the same order relations to $ran(g_1)$ as $x_2$ bears to $g_2$, and $(ran(g_1)\cup x_1)\cap (F(g_1,x_1)+1)=(ran(g_2) \cup x_2)\cap (F(g_1,x_1)+1)$\footnote{
     Recall that $x\cap (h(x)+1)=y\cap (h(x)+1)$ amounts to saying that $h(x)<\min (x\Delta y)$, so amounts to asserting that $h$ is regressive on an appropriate subcollection of $\kappa$.
-  }, then $h(x)=h(y)$.
+  }, then $F(g_1,x_1)=F(g_2,x_2)$.
+  We may further constrain $X$ so that for $\beta>\max dom(g)$, $X(\beta)\subseteq H(\beta)$.
   
-  Further, we may, for each $\mathcal{M}$-formula $\varphi$, let $\seq{H_\varphi(\alpha)\mid \alpha<\lambda}$ be as in \thref{simult_indisc_useful} with respect to $\varphi$;
-  that is, whenever $x=\seq{x_{\alpha_0},\dots,x_{\alpha_{n-1}}}$ and $y=\seq{y_{\alpha_0},\dots,y_{\alpha_{n-1}}}$ are finite increasing sequences such that $\alpha_0\leq\dots\leq \alpha_{n-1}$ and $x_{\alpha_i}$, $y_{\alpha_i}\in H_\varphi(\alpha_i)$, then $\mathcal{M}\models \varphi(x)$ iff $\mathcal{M}\models \varphi(y)$.
-  
-  Since the signature of $\mathcal{M}$ is smaller than $\kappa$, there are fewer than $\kappa$-many definable functions and formulae, so the $\kappa$-completeness of every $U_\alpha$ allows this homogeneity simultaneously for every definable $h$ and every formula $\varphi$.
-  Thus we have a $(\emptyset,X)\leq^* (\emptyset,H)$ such that for each $\mathcal{M}$-definable $h$, $(\emptyset,X)\leq^* (\emptyset,H_h)$, and likewise for every $\mathcal{M}$-formula $\phi$, $(\emptyset,X)\leq^* (\emptyset,H_\phi)$.
-  
-  Let $Y$ with $dom(Y)=dom(X)$ be such that $Y(\beta)$ is the collection of stationary reflection points in each $X(\beta)$, i.e. 
+  Let $Y$ with $dom(Y)=dom(X)$ be such that for $\beta<\max dom(g)$, $Y(\beta)=H(\beta)$; and for $\beta>\max dom(g)$, $Y(\beta)$ is the collection of stationary reflection points in each $X(\beta)$, i.e. 
   \[
     Y(\beta)=X(\beta) \cap \{\gamma<\kappa \mid \gamma \cap X(\beta) \text{ stationary in }\gamma\}
   \]
-  Each $Y(\beta)\in U_\beta$; this is a consequence of the fact that the collection of stationary reflection points below a measurable cardinal is measure one.
-  Thus $(\emptyset,Y)$ is in fact a condition.
+  For each $\beta>\max dom(g)$, $Y(\beta)\in U_\beta$; this is a consequence of the fact that the collection of stationary reflection points below a measurable cardinal is measure one.
+  Thus $(g,Y)$ is in fact a condition.
   
-  We wish to verify that $(\emptyset,Y)$ forces the desired property for $\dot{f}$; to do so, we will invoke the Generic Model Theorem.
-  Let $G$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$ with $(\emptyset,Y)\in G$; let $\vec{\kappa}=\seq{\kappa_\alpha \mid \alpha<\lambda}$ be the $G$-generic Magidor sequence.
-  This buys for us that for all $\alpha<\lambda$, $\kappa_\alpha\in Y(\alpha)$.
-  Let $\seq{A_\alpha \mid \alpha<\lambda, \alpha\text{ successor}}$ be given by $A_\alpha=X(\alpha) \cap \kappa_\alpha$.
+  We wish to verify that $(g,Y)$ forces the desired property for $\dot{f}$; by the Generic Model Theorem, it suffices to show the desired property is true in $V[G]$ whenever $(g,Y)\in G$.
+  Let $G$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$ with $(g,Y)\in G$; let $\vec{\kappa}=\seq{\kappa_\alpha \mid \alpha<\lambda}$ be the $G$-generic Magidor sequence.
+  This buys for us that for all $\alpha<\lambda$ with $\alpha>\max dom(g)$, $\kappa_\alpha\in Y(\alpha)$.
+  Let $\delta=\max dom(g)$ and let $\seq{A_\alpha \mid \delta<\alpha<\lambda, \alpha\text{ successor}}$ be given by $A_\alpha=X(\alpha) \cap \kappa_\alpha$.
   Each $A_\alpha$ is $V$-stationary in $\kappa_\alpha$ since $\kappa_\alpha\in Y(\alpha)$, and by \thref{mag_forcing_preserves_stationary_successors}, $A_\alpha$ remains stationary in $\kappa_\alpha$.
-  Then for each $x,y\subseteq \left[\bigcup_{\alpha<\lambda}A_\alpha\right]^{<\omega}$ such that $type(x)=type(y)$ and $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$, it suffices to find \emph{some} condition in $G$ that forces that $\dot{f}[G](x)=\dot{f}[G](y)$.
-  Since this argument will work in $V[\Gamma]$ for all relevant $x$ and $y$ and any $\mathbb{M}\left(\vec{U}\right)$-generic $\Gamma$ over $V$ with $\Gamma\ni (\emptyset,Y)$,
-  by the Forcing Theorem, $(\emptyset,Y)$ forces the desired property for $\dot{f}$ as witnessed by a name for $\seq{A_\alpha \mid \alpha<\lambda, \alpha\text{ successor}}$.
   
-  To that end, work in $V[G]$ and suppose that $x,y$ are finite subsets of $\bigcup_{\alpha<\lambda,\alpha\text{ successor}} A_\alpha$ such that $type(x)=type(y)$ and $x \cap (\dot{f}[G](x) + 1)=y\cap (\dot{f}[G](x)+1)$.
+  From here on out, unless otherwise noted, we work in $V[G]$.
+  Suppose $x,y\subseteq \left[\bigcup_{\alpha<\lambda}A_\alpha\right]^{<\omega}$ are such that $type(x)=type(y)$ and $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$.
   Let $\beta$ be least such that $x,y\subseteq \kappa_\beta$; since $x$, $y$ finite, we have that $\beta=\alpha+1$ for some $\alpha$.
-  Furthermore, since $x,y$ are finite and $type(x)=type(y)$,
-  we may extend $(\emptyset,Y)$ to some $(g',Y')\in G$ such that:
+  Furthermore, since $x,y$ are finite, $type(x)=type(y)$, and 
+  $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$, we may extend $(g,Y)$ to some $(g',Y')\in G$ such that:
   \begin{itemize}
-    \item $\alpha=\max dom(g')$ and $g'(\alpha)=\kappa_\alpha$
+    \item $\beta\in dom(g')$ and $g'(\beta)=\kappa_\beta$
     \item since $lh(x)=lh(y)=n$, if we write $x=\seq{x_i\mid i<n}$ and $y=\seq{y_i\mid i<n}$ in increasing order, then for each $i$ such that $x_i,y_i<\kappa_\alpha$,
     there exists some $\gamma\in dom(g')$ such that $x_i,y_i\in (\kappa_\gamma,\kappa_{\gamma+1})$
+    \item $(g',Y')$ decides the values of both $\dot{f}(x)$ and $\dot{f}(y)$
   \end{itemize}
   
-  Let $t$, $w$ be $\mathcal{M}$-terms such that
-  \[
-    (g',t(g',x)) \forces \dot{f}(x)=w(g',x) 
-  \]
-  \[
-    (g',t(g',y)) \forces \dot{f}(y)=w(g',y) 
-  \]
-  Such terms exist because $\mathbb{M}(\mathcal{U})$ has pure decision; i.e. for our choices of $x$, $y$, we have that
-  \[
-    \exists E \exists \zeta \ (g',E) \forces \dot{f}(x)=\zeta
-  \]
-  and similarly for $y$. Since $\mathcal{M}$ is Skolemized, we have that there are terms $t$, $w$ as above.
-  
-  Since $x,y$ were drawn from $X$, we have that, letting $dom(x)=dom(y)=\seq{\alpha_0\leq\dots\leq\alpha_{n-1}}$, for each $i$, $x_{\alpha_i}$ and $y_{\alpha_i}$ were both drawn from $H_w(\alpha_i)$,
-  and furthermore 
-  \[
-    (x\cup g') \cap (w(g',x)+1)=(y\cup g') \cap (w(g',x)+1)
-  \]
-  since the same is forced to be true for $\dot{f}$.
-  Thus, $w(g',x)=w(g',y)$ and so, letting 
-  \[
-    Y''(\beta')=\begin{cases}
-      t(g',x)(\beta')\cap t(g',y)(\beta') & \beta'<\beta, \ \beta'\notin dom(g') \\
-      \left(t(g',x)(\beta')\cap t(g',y)(\beta')\right) \setminus \kappa_{\beta} & \beta'>\beta, \ \beta'\notin dom(g')
-    \end{cases}
-  \]
-  we then obtain a condition $(g',Y'')$ such that
-  \[
-    (g',Y'') \forces \dot{f}(x)=\dot{f}(y)
-  \]
-  
-  It remains to argue that $(g',Y'')\in G$; for this, it suffices to show that $\vec{\kappa}\upharpoonright dom(g')=g'$ and for all $\beta'\in dom(Y'')$, $\kappa_{\beta'}\in Y''(\beta')$.
-  Since $(g',Y')\in G$, clearly $\vec{\kappa}\upharpoonright dom(g')=g'$.
-  
-  For $\beta'>\beta$, since $t(g',x)(\beta') \cap t(g',y)(\beta)\in U_{\beta'}$, there must be some $\rho\in Y(\beta')$ such that $\rho>\kappa_\beta$ and $\rho\in t(g',x)(\beta')\cap t(g',y)(\beta')$.
-  But, since $x$, $y$, and $\rho$ were chosen from $H_\psi$ where $\psi$ is the formula expressing membership in $t(g',\circ)(\beta')$, it must be the case that \emph{every} $\rho'>\kappa_\beta$ in $Y(\beta')$ must be in $t(g',x)(\beta')\cap t(g',y)(\beta')$.
-  In particular, since $\kappa_{\beta'}\in Y(\beta')$, we get that $\kappa_{\beta'}\in t(g',x)(\beta')\cap t(g',y)(\beta')$ and so $\kappa_{\beta'}\in Y''(\beta')$.
-  
-  For $\beta'<\beta$, the exact same argument applies, but with measures and measure one sets reflected below some point in $g'$.
-  
-  Thus $(g',Y'')\in G$ and $(g',Y'') \forces \dot{f}(x)=\dot{f}(y)$, and so the desired conclusion follows.
+  But $type(x)=type(y)$, and $\min(x)$ and $\min(y)$ are both above $\kappa_\delta$.
+  Thus $x$ bears the exact same order relations to the elements of $ran(g')$ as does $y$.
+  Furthermore, since $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$ is true in $V[G]$, we have that $(ran(g') \cup x)\cap (F(g',x)+1)=(ran(g') \cup y) \cap(F(g',x)+1)$ in $V$.
+  Since $x$, $y$, and $g'\upharpoonright (\delta,\lambda)$ were all picked from $X$, by choice of $X$ we have that $F(g',x)=F(g',y)$ and therefore $f(x)=f(y)$.
 \end{proof}
 
 \begin{corollary}\thlabel{mag_forcing_mutual_ramsey_tail}
   Let $V[G]$ and $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be as in \thref{magidor_generics_mutually_hom}.
-  Then there is a fixed $\delta<\kappa$ such that $\seq{\kappa_\alpha \mid \alpha\leq\delta<\kappa}$ is mutually Ramsey.
+  Then there is a fixed $\delta<\lambda$ such that $\seq{\kappa_\alpha \mid \delta<\alpha<\lambda, \ \alpha\text{successor}}$ is mutually Ramsey.
 \end{corollary}
 
 \begin{proof}
