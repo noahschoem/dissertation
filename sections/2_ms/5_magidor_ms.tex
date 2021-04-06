@@ -49,7 +49,7 @@ Note that since mutually stationary sequences of sets are only defined for famil
     \end{cases}
   \]
   
-  Since $\vec{U}$ is a family of normal measures on $\kappa$,  an application of \thref{simult_indisc_useful} yields a family $X\in \prod_{\max dom(g)<\alpha<\lambda} U_\alpha$ of order indiscernibles for $F$.
+  Since $\vec{U}$ is a family of normal measures on $\kappa$,  applying \thref{simult_indisc_useful} to $F$ yields a family $X\in \prod_{\max dom(g)<\alpha<\lambda} U_\alpha$ of order indiscernibles for $F$.
   What that precisely means is that 
   whenever $g_1$, $g_2$ are finite extensions of $g$ with the same domain such that, above $\max dom(g)$, $g_i\upharpoonright (\max dom(g),\lambda)=\seq{\kappa^i_{\alpha_0},\dots,\kappa^i_{\alpha_n}}$ such that each $\kappa^i_{\alpha_j}\in X(\alpha_j)$, and $x_1$, $x_2$ are in $[\kappa]^{<\omega}$ with $\min(x_i)>\max ran(g)$ such that $x_i=\seq{x^i_{\beta_0},\dots,x^i_{\beta_{m}}}$ where $x^i_{\beta_j}\in X(\beta_j)$, and $x_1$ bears the same order relations to $ran(g_1)$ as $x_2$ bears to $g_2$, and $(ran(g_1)\cup x_1)\cap (F(g_1,x_1)+1)=(ran(g_2) \cup x_2)\cap (F(g_1,x_1)+1)$\footnote{
     Recall that $x\cap (h(x)+1)=y\cap (h(x)+1)$ amounts to saying that $h(x)<\min (x\Delta y)$, so amounts to asserting that $h$ is regressive on an appropriate subcollection of $\kappa$.
@@ -70,7 +70,10 @@ Note that since mutually stationary sequences of sets are only defined for famil
   Each $A_\alpha$ is $V$-stationary in $\kappa_\alpha$ since $\kappa_\alpha\in Y(\alpha)$, and by \thref{mag_forcing_preserves_stationary_successors}, $A_\alpha$ remains stationary in $\kappa_\alpha$.
   
   From here on out, unless otherwise noted, we work in $V[G]$.
-  Suppose $x,y\subseteq \left[\bigcup_{\alpha<\lambda}A_\alpha\right]^{<\omega}$ are such that $type(x)=type(y)$ and $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$.
+  We will verify that \\
+  $\seq{A_\alpha \mid \delta<\alpha<\lambda, \alpha\text{ successor}}$ witnesses the desired conclusion.
+  
+  Suppose $x,y\subseteq \left[\bigcup_{\delta<\alpha<\lambda, \ \alpha\text{ successor}}A_\alpha\right]^{<\omega}$ are such that $type(x)=type(y)$ and $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$.
   Let $\beta$ be least such that $x,y\subseteq \kappa_\beta$; since $x$, $y$ finite, we have that $\beta=\alpha+1$ for some $\alpha$.
   Furthermore, since $x,y$ are finite, $type(x)=type(y)$, and 
   $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$, we may extend $(g,Y)$ to some $(g',Y')\in G$ such that:
@@ -84,7 +87,13 @@ Note that since mutually stationary sequences of sets are only defined for famil
   But $type(x)=type(y)$, and $\min(x)$ and $\min(y)$ are both above $\kappa_\delta$.
   Thus $x$ bears the exact same order relations to the elements of $ran(g')$ as does $y$.
   Furthermore, since $x\cap (\dot{f}[G](x)+1)=y\cap(\dot{f}[G](x)+1)$ is true in $V[G]$, we have that $(ran(g') \cup x)\cap (F(g',x)+1)=(ran(g') \cup y) \cap(F(g',x)+1)$ in $V$.
-  Since $x$, $y$, and $g'\upharpoonright (\delta,\lambda)$ were all picked from $X$, by choice of $X$ we have that $F(g',x)=F(g',y)$ and therefore $f(x)=f(y)$.
+  Since $x$, $y$, and $g'\upharpoonright (\delta,\lambda)$ were all picked from $X$, by choice of $X$ we have that $F(g',x)=F(g',y)$.
+  
+  But then by definition of $F(g',x)$ and $F(g',y)$, without loss of generality there is some $E$ such that 
+  $(g',E)\forces \dot{f}(x)=F(g',x)=F(g',y)=\dot{f}(y)$.
+  While $(g',E)$ is not necessarily in $G$, we have that $(g',E) \compat (g',Y')$ and both $(g',E)$ and $(g',Y')$ decide the values of $\dot{f}(x)$ and $\dot{f}(y)$.
+  But then by compatibility, $(g',E)$ and $(g',Y')$ must decide the values of $\dot{f}(x)$ and $\dot{f}(y)$ the same way, and so $(g',Y')\forces \dot{f}(x)=\dot{f}(y)$.
+  But then $(g',Y')\in G$ so $V[G]\models f(x)=f(y)$.
 \end{proof}
 
 \begin{corollary}\thlabel{mag_forcing_mutual_ramsey_tail}
@@ -99,7 +108,7 @@ Note that since mutually stationary sequences of sets are only defined for famil
   %   1: o.t. of the pairing fn, restricted to kappa\times\lambda, is in fact \kappa
   %   2: sections of stationary sets are stationary
   We uniformize.
-  Suppose otherwise; for each $\delta<\lambda$ fix some $f_\delta:[\kappa]^{<\omega}\to \kappa$ for which $f$ is not mutually homogeneous for any $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$.
+  Suppose otherwise; for each $\delta<\lambda$ fix some $f_\delta:[\kappa]^{<\omega}\to \kappa$ which is not mutually homogeneous for any $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$.
   Let $\chi:\lambda\times\kappa \to \kappa$ be the bijection given by G\"odel's pairing function, that is $\chi(\alpha,\beta)$ is the order type of the predecessors of $(\alpha,\beta)$ under the ordering given by the canonical well ordering on $Ord^2$.
   
   Since $\chi$ is a normal bijection, whenever $A$ is a stationary subset of $\kappa$, and $\alpha<\lambda$, $(\chi^{-1} " A) \cap (\{\alpha\}\times \kappa)$ is still stationary in $\kappa$.
