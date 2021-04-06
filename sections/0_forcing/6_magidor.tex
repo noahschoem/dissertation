@@ -169,7 +169,7 @@ We will want a notion of \emph{minimal} extension, where we wish to extend e.g. 
   To define $q_a$, we first define $q_a$ for $|a|=1$ and then will induct on $|a|$.
   Without loss of generality, we may assume that $g=\emptyset$; we will justify why we may assume this after the following claim.
   
-  \begin{claim}
+  \begin{claim}\thlabel{magidor_diagonalize_empty_one_step}
     Suppose $g=\emptyset$; then for each $\alpha<\lambda$ there is some $p_\alpha\leq^*p$ (with $p_\alpha=(\emptyset,H^\alpha)$) that is good for $p$ and $E_{\{\alpha\}}$, that is, for all $\nu\in H^\alpha(\alpha)$, $p_\alpha \frown (\alpha,\nu)\leq^* p_{(\alpha,\nu)}$.
   \end{claim}
   \begin{proof}[Proof of claim]
@@ -205,27 +205,43 @@ We will want a notion of \emph{minimal} extension, where we wish to extend e.g. 
     
     Thus $H^\alpha$ is as desired.
   \end{proof}
-  In the event that $g=(\beta,\rho)$, we may argue as above for $p\upharpoonright (\beta,\lambda)$ to obtain some 
-  \[
-    \tensor*[^{\beta}]{p}{_\alpha}=(\emptyset,\tensor*[^\beta]{H}{^\alpha})\in \mathbb{M}(\seq{U_\gamma \mid \beta<\gamma<\lambda})
-  \]
-  satisfying the above claim for the forcing $\mathbb{M}(\seq{U_\gamma \mid \beta<\gamma<\lambda})$.
+  In the event that $g=(\xi,\rho)$, we have two cases, depending on $\alpha$:
   
-  Let $\gamma>\beta$; for each $\beta'<\beta$, $meas(p)(\beta')\in r_{\beta'}^\beta(\rho)$, which has cardinality $2^{\rho}<\kappa$, so by $\kappa$-completeness there is an $F_{\beta',\gamma}\in U_\gamma$ and some $G_{\beta',\gamma} \in r_{\beta'}^\beta(\rho)$ such that for all $\nu\in F_{\beta',\gamma}$, $H_\nu(\beta')=G_{\beta',\gamma}$.
+  \begin{enumerate}[label={Case \arabic*:},labelindent=15pt]
   
-  Then we argue as above for $(g\upharpoonright \beta,\seq{G_{\beta',\gamma} \mid \beta'<\beta})$ to obtain 
-  \[
-    \tensor*[_{\beta}]{p}{_\alpha}=(g\upharpoonright \beta, \tensor*[_{\beta}]H{^\alpha})\in\mathbb{M}\left(\seq{r_{\beta'}^\beta(\rho) \mid \beta'<\beta}\right)
-  \]
-  satisfying the above claim for $\mathbb{M}\left(\seq{r_{\beta'}^\beta(\rho) \mid \beta'<\beta}\right)$.
+    \item If $\alpha>\xi$, then we may argue as in \thref{magidor_diagonalize_empty_one_step} for $p\upharpoonright (\xi,\lambda)\in\mathbb{M}\left(\seq{U_\gamma \mid \xi<\gamma<\lambda}\right)$ to obtain some 
+    \[
+      (\emptyset,\tensor*[^\xi]{H}{^\alpha})\in \mathbb{M}(\seq{U_\gamma \mid \xi<\gamma<\lambda})
+    \]
+    such that whenever $\nu\in \tensor*[^\xi]{H}{^\alpha}(\alpha)$, $(\emptyset,\tensor*[^\xi]{H}{^\alpha}) \frown (\alpha,\nu) \leq^* p_{(\alpha,\nu)} \upharpoonright (\xi,\lambda)$.
+    
+    As for working below $\xi$, let $\zeta<\xi$.
+    Then for each $\nu\in \tensor*[^\xi]{H}{^\alpha}(\alpha)$, $H_\nu(\zeta)\in r_{\zeta}^\xi(\rho)$, and $\lvert r_{\zeta}^\xi(\rho) \rvert=2^{\rho}<\kappa$.
+    So by $\kappa$-completeness there is an $F_{\zeta,\alpha}\in U_\alpha$ and some $G_{\zeta,\alpha} \in r_{\zeta}^\xi(\rho)$ such that for all $\nu\in F_{\zeta,\alpha}$, $H_\nu(\zeta)=G_{\zeta,\alpha}$.
+    
+    Then our desired $p_\alpha\leq^* p$ is given by
+    \[
+      meas(p_\alpha)(\gamma)=\begin{cases}
+        G_{\gamma,\alpha} & \gamma<\xi \\
+        \tensor*[^\xi]{H}{^\alpha}(\gamma) \cap \bigcap_{\zeta<\xi} F_{\zeta,\alpha} & \gamma=\alpha \\
+        \tensor*[^\xi]{H}{^\alpha}(\gamma) & \gamma>\xi, \ \gamma\neq\alpha \\      
+      \end{cases}
+    \]
+    since whenever $\nu\in meas(p_\alpha)(\nu)$, by construction we have that $(p_\alpha \frown (\alpha,\nu)) \upharpoonright (\xi,\lambda)\leq^* p_{(\alpha,\nu)} \upharpoonright (\xi,\lambda)$, and since $\nu\in F_{\zeta,\alpha}$ for all $\zeta<\xi$, $(p_\alpha \frown (\alpha,\nu)) \upharpoonright \xi=\seq{G_{\gamma,\alpha}\mid \gamma<\xi}$ which is by construction a direct extension of $p_{(\alpha,\nu)} \upharpoonright \xi$.
+    
+    \item If $\alpha<\xi$, then $H(\alpha)\in r_\alpha^\xi(\rho)$ and hence $H(\alpha)\subseteq \rho$.
+    So working in $\mathbb{M}\left(\vec{U}\right)_{(\xi,\rho)}$, we may invoke \thref{magidor_diagonalize_empty_one_step} for $(\emptyset, H) \upharpoonright \xi$ to obtain $(\emptyset,G)\in \mathbb{M}\left(\vec{U}\right)_{(\xi,\rho)}$ such that for every $\nu\in G(\alpha)$, $(\emptyset,G)\frown (\alpha,\nu)\leq^* p_{(\alpha,\nu)}\upharpoonright \xi$.
+    But then since there are only $\rho$-many such $\nu$, for each such $\nu$ and each $\beta>\xi$, $\bigcap_{\nu\in G(\alpha)} H_\nu(\beta)\in U_\beta$.
+    So let
+    \[
+      p_\alpha=\left( (\xi,\rho) , G\frown \seq{\bigcap_{\nu\in G(\alpha)} H_\nu(\beta) \mid \xi<\beta<\lambda} \right)
+    \]
+    Then $p_\alpha\leq^* p$ and by our construction for $p_\alpha \upharpoonright (\xi,\lambda)$, we have that $p_\alpha\frown (\alpha,\nu)\leq^* p_{(\alpha,\nu)}$ for every $\nu\in G(\alpha)$.
+    
+  \end{enumerate}
   
-  Then 
-  \[
-    p_\alpha = \left(g, \tensor*[_{\beta}]H{^\alpha} \frown \seq{ \tensor*[^\beta]{H}{^\alpha}(\gamma) \cap \bigcap_{\beta'<\beta} G_{\beta',\gamma} \mid \gamma<\kappa }\right)
-  \]
-  is as desired.
-  
-  For larger $g$, note that $|g|$ is always finite so letting $\beta=\max dom(g)$ may recursively argue exactly as above for $p \upharpoonright (\beta,\lambda)$ and $p \upharpoonright \beta$.
+  For larger $g$, note that $|g|$ is always finite.
+  So, letting $\beta=\max dom(g)$, we may recursively argue exactly as above for $p \upharpoonright (\beta,\lambda)$ and $p \upharpoonright \beta$.
   
   Hence we now have, for each $|a|=1$, some $q_a$ good for $p$ and $E_a$.
   
