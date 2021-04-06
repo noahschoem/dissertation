@@ -270,11 +270,11 @@ We will want a notion of \emph{minimal} extension, where we wish to extend e.g. 
   Of course, by open density, there will \emph{always} be some $q\leq p\frown \vec{\nu}$ with $q\in D$; the point is we want such $q$ to be a direct extension only.
   
   By \thref{magidor_diagonalization}, we obtain, for $\seq{p_{\vec{\nu}}\mid \vec{\nu}\in E}$,
-  some $p'\leq^* p$ such that for all $\vec{\nu}$, $p'\frown \vec{\nu}\leq p_{\vec{\nu}}$.
+  some $p'\leq^* p$ such that for all $\vec{\nu}$, $p'\frown \vec{\nu}\leq^* p_{\vec{\nu}}$.
   We now claim the following:
   
   \begin{claim}\thlabel{magidor_stepwise_density_hom}
-    For every $a\in [A]^{<\omega}$, there is a $q\leq^* p'$ such that ether every $a$-step extension of $q$ is in $D$, or none are.
+    For every $a\in [dom(H)]^{<\omega}$, there is a $q\leq^* p'$ such that either every $a$-step extension of $q$ is in $D$, or none are.
   \end{claim}
   \begin{proof}[Proof of claim]
     We proceed by induction on $|a|$.
@@ -283,8 +283,11 @@ We will want a notion of \emph{minimal} extension, where we wish to extend e.g. 
     Let $H^*$ be the function on $\lambda$ where $H^*(i)=B'$ and when $j\neq i$, $H^*(j)=H(j)$.
     Let $q=(stem(p'),H^*)$. 
     To see that $q$ is as desired, note that clearly $q\leq^* p'$, and if $B'=B^+$, then every $\{i\}$-step extension is in $D$.
-    If instead $B'=B^-$, then for each $\nu\in B'$, we must have had that $p_{(i,\nu)}=p\frown (i,\nu)$ which is not in $D$, and \emph{no} direct extension of $p\frown (i,\nu)$ lands in $D$, either.
-    In particular, no direct extension of $q\frown (i,\nu)$ is in $D$, and thus no $\{i\}$-step extension of $q$ is in $D$.
+    If instead $B'=B^-$, then let $\nu\in B^-$.
+    Then $q\frown (i,\nu)\leq^* p'\frown(i,\nu)\leq^* p_{(i,\nu)}$ and since $p'\frown(i,\nu)\notin D$, we must have had that $p_{(i,\nu)}=p\frown (i,\nu)$ which is also not in $D$.
+    What's more, by definition of $p_{(i,\nu)}$, \emph{no} direct extension of $p\frown (i,\nu)$ lands in $D$, either.
+    In particular, no direct extension of $q\frown (i,\nu)$ is in $D$.
+    Since $\nu$ ranged over all valid $i$-step extensions of $q$, we have shown that no $\{i\}$-step extension of $q$ is in $D$.
     
     Before we move to the general case, we note the following for the case $a=\{i,j\}$ with $i<j$.
     For each $\nu\in meas(p')(i)$, we may perform the same argument as above for $p'\frown (i,\nu)$ at $j$ to obtain a $q_\nu\leq^* p'\frown (i,\nu)$ such that either every $\{j\}$-step extension of $p'\frown (i,\nu)$ is in $D$, or none are.
