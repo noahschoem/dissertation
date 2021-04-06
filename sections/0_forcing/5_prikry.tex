@@ -91,7 +91,8 @@ We will generalize this to uncountable cofinality in Section \ref{accessible_ms:
 This particular forcing is well documented in \cite{cummings_prikry_slides}.
 
 \begin{proposition}\thlabel{exists_guide_generic}
-  Let $\kappa$ be measurable with normal measure $U$, let $j:V\to \Ult(V,U)$ be the measure embedding associated with $U$, and assume $GCH$.
+  Let $\kappa$ be measurable with normal measure $U$ and suppose that $2^\kappa=\kappa^+$.
+  Let $j:V\to \Ult(V,U)$ be the measure embedding associated with $U$.
   Then there is a $K\in V$ such that $K$ is $Col(\kappa^+,<j(\kappa))^{\Ult(V,U)}$-generic over $V$.
 \end{proposition}
 
@@ -100,7 +101,8 @@ This particular forcing is well documented in \cite{cummings_prikry_slides}.
   this is since each such antichain is of the form $[f]$, where $f$ is a function with domain $\kappa$ such that for all $\alpha$, $f(\alpha)$ is an antichain of $Col(\alpha^+,<\kappa)$.
   
   Let $\seq{A_\beta \middle| \beta<2^\kappa}$ be a $V$-enumeration of all antichains of $Col(\kappa^+,<j(\kappa))$ in the ultrapower.
-  By $GCH$, since $|j(\kappa)|=\kappa^+$, we have exactly $\kappa^+$-many antichains and since $Col(\kappa^+,<j(\kappa))$ is $\kappa+1$-closed and the ultrapower is closed under $\kappa$-sequences, we may iteratively build a descending chain $K'=\seq{p_\beta\middle| \beta<\kappa^+}$ such that for every maximal antichain $A_\beta$ in the ultrapower, $p_\beta\in A_\beta$ or is stronger than some condition in $A_\beta$.
+  Since $(2^\kappa)^V=\kappa^+$, we have that $|j(\kappa)|=\kappa^+$, and thus there exactly $\kappa^+$-many antichains of $Col(\kappa^+,<j(\kappa))$ in $\Ult(V,U)$.
+  Since $Col(\kappa^+,<j(\kappa))$ is $\kappa+1$-closed and the ultrapower is closed under $\kappa$-sequences, we may iteratively build a descending chain $K'=\seq{p_\beta\middle| \beta<\kappa^+}$ such that for every maximal antichain $A_\beta$ in the ultrapower, $p_\beta\in A_\beta$ or is stronger than some condition in $A_\beta$.
   Then $K$, the upwards closure of $K'$, is as desired.
 \end{proof}
 
