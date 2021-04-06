@@ -142,12 +142,12 @@ Before we state and prove Prikry-type lemmas for Magidor forcing, it is worth fo
 We will want a notion of \emph{minimal} extension, where we wish to extend e.g. $(f,A)$ to $(f\frown \vec{\nu},A')$ for some $\vec{\nu}$, and $A'$ altered as little as possible from $A$:
 
 \begin{definition}\thlabel{magidor_weakest_step_extension}
-  If $p=(f,A)$, $\vec{\nu}:a\to \kappa$ for some $a\in[A]^{<\omega}$, and there is some $B$ for which $(f\frown \vec{\nu},B)$ is a condition below $p$,
+  If $p=(f,A)$, $\vec{\nu}:a\to \kappa$ for some $a$ a finite subset of $\lambda\setminus dom(f)$, and there is some $B$ for which $(f\frown \vec{\nu},B)$ is a condition below $p$,
   we write $p\frown \vec{\nu}$ to mean the weakest such $(f\frown \vec{\nu},A')$ below $p$.
   Namely, for $\xi>\max dom(f\frown \vec{\nu})$, ${A'(\xi)=A(\xi)\setminus (f\frown\vec{v}(\xi)+1)}$, and for $\xi<\max dom(f\frown \vec{\nu})$:
   for $\tau$ being the least domain element of $f\frown \vec{\nu}$ bigger than $\xi$:
   \begin{itemize}
-    \item if $\tau\in dom(\nu)$, we have that $A'(\xi)=A(\xi)\cap \tau$; since $[\alpha \mapsto A(\xi) \cap \alpha]_{r_\xi^\tau (\nu(\tau))}=A(\xi)$ and $\nu(\tau)\in Y_\tau$, $A'(\xi)\in r_\xi^\tau (\nu(\tau))$ and is the $\subseteq$-largest such.
+    \item if $\tau\in dom(\nu)$, we have that $A'(\xi)=A(\xi)\cap (\vec{\nu}(\tau))$; since $[\alpha \mapsto A(\xi) \cap \alpha]_{r_\xi^\tau (\nu(\tau))}=A(\xi)$ and $\nu(\tau)\in Y_\tau$, $A'(\xi)\in r_\xi^\tau (\nu(\tau))$ and is the $\subseteq$-largest such.
     
     \item if $\tau\in dom(f)$, then $A'(\xi)=A(\xi)$.
   \end{itemize}
