@@ -406,14 +406,14 @@ Geometricity for a Magidor generic sequence differs from a Prikry generic sequen
 We make this precise:
 
 \begin{definition}\thlabel{def_magidor_geometricity}
-  Suppose $G$ is $\mathbb{M}(\vec{U})$-generic and let $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}\in V[G]$ be increasing, normal, and with supremum $\kappa$.
+  Suppose in some outer model $W$ of $V$, some sequence $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}\in W$ is increasing, normal, and cofinal in $\kappa$.
   
   Then we say that $\vec{\beta}$ is \emph{geometric} if for every $\xi\leq\lambda$ limit, and every $\seq{A_\eta \mid \eta<\xi}$ in $V$ with each $A_\eta \in r^\xi_\eta(\beta_\eta)$ (and if $\xi=\lambda$, then $A_\eta\in U_\eta$),
   for coboundedly many $\eta<\xi$, $\beta_\eta\in A_\eta$.
 \end{definition}
 
 \begin{lemma}\thlabel{magidor_generic_implies_geometric}
-  Let $G$ be $\mathbb{M}(\vec{U})$-generic and let
+  Let $G$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$ and let
   \[
     \vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}=:\bigcup_{(f,A)\in G} f
   \]
@@ -437,7 +437,7 @@ We make this precise:
 
 The converse is also true in the following sense:
 \begin{theorem}\thlabel{magidor_geometric_iff_generic}
-  Suppose $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}\in V[G]$ is geometric.
+  Suppose $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}$ is geometric.
   Let 
   \[
     H=
