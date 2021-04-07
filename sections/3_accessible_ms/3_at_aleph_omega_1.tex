@@ -421,31 +421,39 @@ The proof is functionally the same as in \thref{magidor_prikry_type_sentential}:
 Further arguments along the lines of \thref{magidor_prikry_type_open_dense_better} yield a tail-change version:
 
 \begin{lemma}[Prikry-type lemma, tail-change version]\thlabel{magidor_collapse_prikry_open_dense_better}
-  If $p$ is a condition, $\mathcal{D}$ is an open dense set, and $\beta\in dom(f^p)$,
-  then there is a direct extension $q\leq^* p$ such that $(q)_{\beta} = (p)_{\beta}$ and whenever $a\in [dom(A^p)]^{<\omega}$, if $r$ is an $a$-step extension of $q$ and $r\in \mathcal{D}$, then every $a\setminus (dom(r^p)\cap \beta)$-step extension of $(r)_\beta \frown (q)^\beta$ is also in $\mathcal{D}$.
+  If $p$ is a condition, $\mathcal{D}$ is an open dense set, and $\beta,\beta+1\in dom(f^p)$,
+  then there is a direct extension $q\leq^* p$ such that $(q)_{\beta+1} = (p)_{\beta+1}$ and whenever $a\in [dom(A^p)]^{<\omega}$, if $r$ is an $a$-step extension of $q$ and $r\in \mathcal{D}$, then every $a\setminus (dom(r^p)\cap (\beta+1))$-step extension of $(r)_{\beta+1} \frown (q)^{\beta+1}$ is also in $\mathcal{D}$.
 \end{lemma}
 
 The proof is almost identical to the analogue for $\mathbb{M}\left(\vec{U}\right)$ (c.f.  \thref{magidor_prikry_type_open_dense_better}).
 The core difference here is in assuring that the collapse terms are compatible.
 
 \begin{proof}
-  For ease of notation, let $f^p(\beta)=\rho$.
-  For each $r\leq (p)_{(\beta,\rho)}$ in $\mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}$, by \thref{magidor_collapse_prikry_open_dense_addendum}, let $p_r\leq^* r \frown (p)^\beta$ (in the full $\mathbb{MC}\left(\vec{U}\right)$) be such that for every $b$, either every $b$-step extension of $p_r$ is in $\mathcal{D}$, or none are.
-  By construction, for each $r$, $(p_r)_\beta \leq^* r$ and $(p_r)^\beta = (f^p,c^{p_r},A^{p_r},C^{p_r})^\beta$.
+  For ease of notation, let $f^p(\beta)=\zeta$ and let $f^p(\beta+1)=\rho$.
+  Recall that both $\zeta$ and $\rho$ are inaccessible, and so $\zeta<2^\zeta<\rho$.
   
-  We will additionally need that the $c^{p_r}$'s are all compatible on $[\beta,\lambda)$.
-  By constructing the $p_r$'s along a well-ordering of all such $r$ (of which there are at most $\rho$-many by size of  $\mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}$), we may additionally arrange that the $c^{p_r}\upharpoonright [\beta,\lambda)$'s form a $\rho$-length descending chain in the relevant collapse forcings.
+  For each $r\leq (p)_{(\beta+1,\rho)}$ in $\mathbb{MC}\left(\vec{U}\right)_{(\beta+1,\rho)}$, by \thref{magidor_collapse_prikry_open_dense_addendum}, let $p_r\leq^* r \frown (p)^{\beta+1}$ (in the full $\mathbb{MC}\left(\vec{U}\right)$) be such that for every $b$, either every $b$-step extension of $p_r$ is in $\mathcal{D}$, or none are.
+  By construction, for each $r$, $(p_r)_{\beta+1} \leq^* r$ and $(p_r)^{\beta+1} = (f^p,c^{p_r},A^{p_r},C^{p_r})^{\beta+1}$.
   
-  For each $r$, let $q_r=(p)_\beta \frown (p_r)^\beta$; note that $q_r\leq^* p$ by construction. 
-  But there are only $\rho$-many such $r$, and the $c^{p_r}$'s form a $\rho$-length descending chain in $(\rho+1)$-closed collapse forcings.
-  Thus the family of $(p_r)^\beta$'s forms a $\rho$-length descending chain the $(\rho+1)$-closed forcing $\mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}$, and thus there is a $\leq^*$-lower bound $q$ of the $q_r$'s.
+  We will additionally need that the $c^{p_r}$'s are all compatible on $[\beta+1,\lambda)$.
+  If there are $\rho$-many such $r$, then since $\leq^*$ on $\mathbb{MC}\left(\vec{U}\right)^{(\beta+1,\rho)}$ is $\rho^+$-directed closed, we may recursively construct the $p_r$'s along a well-ordering of all such $r$ of order type $\rho$, so that the sequence of $(p_r)^{(\beta+1,\rho)}$'s forms a $\rho$-length descending chain.
+  
+  We claim that there are $\rho$-many such $r$.
+  To see this, note that our choices for $f^r$ consist of elements of $[\zeta]^{<\omega}$, of which there are $\zeta<\rho$-many, and choices for $C^r$ and $A^r$ range over measures and families of collapses up to and including $\zeta$, of which there are $2^\zeta<\rho$-many.
+  Finally, for $c^r$: below $\beta$, collapse terms are bounded in $\zeta$, so there are at most $\zeta$-many, and at $\beta$, $c^r(\beta)\in Col(\zeta^+,<\rho)$ and so there are $\rho$-many.
+  Thus, there are $\rho$-many such $r$.
+  
+  Thus the family of $(p_r)^{\beta+1}$'s forms a $\rho$-length descending chain in $\leq^*$, the $\rho^+$-closed direct extension order on $\mathbb{MC}\left(\vec{U}\right)^{(\beta+1,\rho)}$.
+  For each $r$, let $q_r=(p)_{\beta+1} \frown (p_r)^{\beta+1}$;
+  then by construction there is a $\leq^*$-lower bound $q$ of the $q_r$'s.
   
   But then $q$ is as desired. To see this, suppose $q'\leq q$ and $q'\in\mathcal{D}$.
-  Let $r=(q')_\beta$, and let $b$ be such that $q'$ is a $b$-step extension of $q$.
-  Then by construction, $q'\leq r \frown (q)^\beta\leq p_r$, and by definition of $p_r$, every $b$-step extension of $p_r$, and hence any $b\setminus (dom(r^p) \cap\beta)$-step extension of $r \frown (q)^\beta$, is also in $\mathcal{D}$.
+  Let $r=(q')_{\beta+1}$, and let $b$ be such that $q'$ is a $b$-step extension of $q$.
+  Then by construction, $q'\leq r \frown (q)^{\beta+1}\leq p_r$, and by definition of $p_r$, every $b$-step extension of $p_r$, and hence any $b\setminus (dom(r^p) \cap(\beta+1))$-step extension of $r \frown (q)^{\beta+1}$, is also in $\mathcal{D}$.
 \end{proof}
 Likewise, we have a similar sentential version with tail changes:
 
+% TODO: propagate domain change from magidor_prikry_type_open_dense_better
 \begin{lemma}[Prikry-type lemma, tail-change sentential version]\thlabel{magidor_collapse_prikry_sentential_better}
   Let $\sigma$ be a sentence of the forcing language, let $p\in \mathbb{MC}\left(\vec{U}\right)$, and let $\beta\in dom(f^p)$.
   Then there is some $q\leq^* p$ such that $(q)_\beta=(p)_\beta$ and if $r\leq q$ such that $r$ decides $\sigma$, then $(r)_\beta \frown (q)^\beta$ decides $\sigma$ the same way.
@@ -626,6 +634,7 @@ The crux of the proof below is in having a good Diagonalization Lemma, such as \
   $H^g$ is actually $\mathbb{MC}\left(\vec{U}\right)^g$-generic over $V[H_g]$ and so $H=H_g\times Hg$ is $\mathbb{MC}\left(\vec{U}\right)$-generic over $V$.
   This concludes the successor step.
   
+  % TODO: propagate domain change from magidor_prikry_type_open_dense_better
   For the limit step, let $\lambda=\sup_{\rho<\tau} \lambda_\rho$ with each $\lambda_\rho$ a limit ordinal.
   Our induction hypothesis is now that for each $\rho<\tau$ and for each $\seq{\beta_\eta \mid \eta<\lambda_\rho}$ and $\seq{F_\eta \mid \eta<\lambda_\rho}$ geometric for some Magidor collapse forcing $\mathbb{MC}\left(\seq{U_\eta \mid \eta< \lambda_\rho}\right)$, the resulting filter $H_\rho$ is $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_\rho}\right)$-generic over $V$;
   note that if $\rho<\rho'$ then by the Product Lemma and appropriate chain condition, $H_{\rho}=H_{\rho'} \times H'$ for some $H_{\rho'}$ $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_{\rho'}}\right)_{(\lambda_{\rho},\beta_{\lambda_{\rho}})}$-generic over $V$ and some $H'$ $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda_{\rho'}}\right)^{(\lambda_\rho,\beta_{\lambda_\rho})}$-generic over $V[H_{\rho}]$.
