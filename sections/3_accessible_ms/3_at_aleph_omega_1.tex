@@ -223,11 +223,11 @@ Before we prove this, we will introduce some terminology for families of direct 
   \end{claim}
   
   \begin{proof}[Proof of \thref{magidor_collapse_diagonalize_one_step}]
-    Without loss of generality, we argue for $p$ such that $f^p=\seq{(-1,\omega_1)}$; we can handle larger stems by factoring and measure one concentrations as per \thref{magidor_collapse_factoring}.
+    Without loss of generality, we argue for $p$ such that $f^p=\seq{(-1,\lambda)}$; we can handle larger stems by factoring and measure one concentrations as per \thref{magidor_collapse_factoring}.
     In this reduced case, it suffices to define $A^{p_\alpha}$, $C^{p_\alpha}$, and $c^{p_\alpha}(-1)$.
     
-    Observe that for each $\nu\in A^p(\alpha)$, $c^{p_{(\alpha,\nu)}}(-1)\in Col(\omega_2,<\nu)$ which is of cardinality $\nu$.
-    Thus we may view the map $\nu\mapsto c^{p_{(\alpha,\nu)}}(-1)$ as a regressive map on $A^p(\alpha)$, and so by the normality of $U_\alpha$ and Fodor's Theorem, there is some $A'\in U_\alpha$, $A'\subseteq A^p(\alpha)$, and some $c'\in Col(\omega_2,<\kappa)$ such that for all $\nu\in A'$, $c^{p_{(\alpha,\nu)}}(-1)=c'$.
+    Observe that for each $\nu\in A^p(\alpha)$, $c^{p_{(\alpha,\nu)}}(-1)\in Col(\lambda^+,<\nu)$ which is of cardinality $\nu$.
+    Thus we may view the map $\nu\mapsto c^{p_{(\alpha,\nu)}}(-1)$ as a regressive map on $A^p(\alpha)$, and so by the normality of $U_\alpha$ and Fodor's Theorem, there is some $A'\in U_\alpha$, $A'\subseteq A^p(\alpha)$, and some $c'\in Col(\lambda^+,<\kappa)$ such that for all $\nu\in A'$, $c^{p_{(\alpha,\nu)}}(-1)=c'$.
     
     Let
     \[
@@ -303,7 +303,7 @@ Before we prove this, we will introduce some terminology for families of direct 
   \begin{proof}[Proof of \thref{magidor_collapse_diagonalize_all_step}]
     We induct on $|a|$; \thref{magidor_collapse_meets_dense_generic_one_step} and \thref{magidor_collapse_diagonalize_one_step} show how to find such $p_a$ for $|a|=1$.
     
-    As for the induction, suppose without loss of generality that $f^p=\seq{(-1,\omega_1)}$ as before;
+    As for the induction, suppose without loss of generality that $f^p=\seq{(-1,\lambda)}$ as before;
     suppose the above statement is true for every $a$ with $|a|=n$.
     Let $\alpha=\min(a)$ and let $b=a\setminus \{\alpha\}$.
     Then by the induction hypothesis, for (measure one many) $\mu\in A^p(\alpha)$, there is some $q_\mu\leq^* p \frown (\alpha,\mu)$ such that 
@@ -313,7 +313,7 @@ Before we prove this, we will introduce some terminology for families of direct 
     meets $\mathcal{D}$ below $p$ if possible. 
     By the same argument as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may assume that $[\mu\mapsto c^{q_\mu}(\alpha)\mid \alpha\in A^p(\alpha)]_{U_\alpha}\in K_\alpha$, 
     and thus by the same argument as in \thref{magidor_collapse_diagonalize_one_step}, we have some $q\leq^* p$ such that $q\frown (\alpha,\mu)\leq^* q_\mu$ whenever $\mu\in A^q(\alpha)$ and $\seq{q\frown (\alpha,\mu) \middle| \mu\in A^q(\alpha)}$ meets $\mathcal{D}$ below $p$ if possible\footnote{
-      Note that the same Fodor's Theorem argument works to concentrate $A^{q}(\alpha)$ so that for every $\mu\in A^q(\alpha)$, the map $\mu\mapsto c^{q_\mu}(-1)\in Col(\omega_2,<\mu)$ is constant.
+      Note that the same Fodor's Theorem argument works to concentrate $A^{q}(\alpha)$ so that for every $\mu\in A^q(\alpha)$, the map $\mu\mapsto c^{q_\mu}(-1)\in Col(\lambda^+,<\mu)$ is constant.
     }.
     
     But then by construction, $\seq{q\frown \vec{\nu} \middle| \vec{\nu}\in E_a}$ meets $\mathcal{D}$ below $p$ if possible, and so $q$ is our desired $p_a$.
