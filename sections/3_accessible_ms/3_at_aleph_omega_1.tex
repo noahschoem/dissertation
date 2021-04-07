@@ -627,9 +627,10 @@ The crux of the proof below is in having a good Diagonalization Lemma, such as \
   By construction, $(g,c_g) \frown (p)^{m-1} \leq p_{g,c_g}$.
   Let $r=q\frown (\vec{\beta}\upharpoonright [m,m_g])$; by construction of $p_{g,c_g}$, $r\in\mathcal{D}$.
   
-  To argue that $r\in H$, note that by construction, for all $n\geq lh(r)$, $\beta_n\in A^r(n)$ and $C^r(n)(\beta_n)\in F_n$.
-  So all we need to do is argue that for each $l<lh(c^r)$, $c^r(l)\in F_l$.
-  For $l>lh(g)$, $c^r(l)=C^q(l)$ by definition of $r$, and $C^q(l)\in F_l$ by geometricity.
+  Next we argue that we can arrange our argument so that $r\in H$. 
+  Note that by construction, for all $n\geq lh(r)$, $\beta_n\in A^r(n)$ and $C^r(n)(\beta_n)\in F_n$.
+  So all we need to do is arrange that for each $l<lh(c^r)$, $c^r(l)\in F_l$.
+  For $l>lh(g)$, this is already guaranteed: $c^r(l)=C^q(l)$ by definition of $r$, and $C^q(l)\in F_l$ by geometricity.
   For $l\leq lh(g)$, by the genericity of the $F_n$'s, and since our choices for $c_g$ ranged over a dense subset of $\prod_{l\leq lh(g)} Col(\beta_l^+,\beta_{l+1})$, we can arrange to have $c^r(l)\in F_l$.
   This concludes the base case.
   
@@ -653,14 +654,15 @@ The crux of the proof below is in having a good Diagonalization Lemma, such as \
   
   Let $\seq{\beta_\eta \mid \eta<\lambda}$ and $\seq{F_\eta \mid \eta<\lambda}$ be geometric for some Magidor collapse forcing $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq \lambda}\right)$.
   Let $\mathcal{D}$ be dense in $\mathbb{MC}\left(\seq{U_\eta \mid \eta\leq\lambda}\right)$.
-  By \thref{magidor_collapse_prikry_open_dense_better}, for each $g=(f,c)$ such that $f$ is a stem and $c$ is a compatible collapsing sequence\footnote{
+  By applying \thref{magidor_collapse_prikry_open_dense_better} to the trivial condition, for each $g=(f,c)$ such that $f$ is a stem for which $\max dom(f)=\delta+1$ for some $\delta$ such that $\delta\in dom(f)$,
+  and $c$ is a compatible collapsing sequence\footnote{
     that is, there is some condition $p$ such that $f^p=f$ and $c^p=c$
   },
   take $p_g=(f,c,A_g,C_g)$ such that
   \begin{itemize}
     \item $p_g\in \mathbb{MC}\left(\seq{U_\eta \mid \eta\leq\lambda}\right)$
-    \item letting $\delta=\max dom(f)$, $(p_g)_\delta = \left(1_{\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)}\right)_\delta$
-    \item (tail-change property) for every $b\subseteq [dom(A_g)]^{<\omega}$, if $q$ is a $b$-step extension of $p_g$ and $q\in\mathcal{D}$ then every $b\setminus (dom(f^q)\cap \delta)$-step extension of $(q)_\delta \frown (p_g)^\delta$ is also in $\mathcal{D}$
+    \item letting $\delta+1=\max dom(f)$, $(p_g)_{\delta+1} = \left(1_{\mathbb{MC}\left(\seq{U_\eta \mid \eta<\lambda}\right)}\right)_{\delta+1} \frown g$
+    \item (tail-change property) for every $b\subseteq [dom(A_g)]^{<\omega}$, if $q$ is a $b$-step extension of $p_g$ and $q\in\mathcal{D}$ then every $b\setminus (dom(f^q)\cap (\delta+1)$-step extension of $(q)_{\delta+1} \frown (p_g)^{\delta+1}$ is also in $\mathcal{D}$
   \end{itemize}
   By arguing as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may choose for every $f$ a $c_f$ such that $\seq{p_{(f,c_f)} \mid f\text{ a stem}}$ satisfies the hypotheses of \thref{magidor_collapse_modified_diagonalization}.
   (Note that before we used the notation $\vec{\nu}$ for $f$.)
