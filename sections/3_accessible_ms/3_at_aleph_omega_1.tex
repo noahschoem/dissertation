@@ -109,32 +109,32 @@ Note that two conditions with the same Magidor stem need not be compatible due t
 As with Magidor forcing, we have notions of how to project conditions, and a factoring property:
 
 \begin{definition}\thlabel{magidor_collapse_condition_projection}
-  Let $p=(f,c,A,C)\in \mathbb{M}\left(\vec{U}\right)$ and let $\xi<\lambda$.
+  Let $p=(f,c,A,C)\in \mathbb{MC}\left(\vec{U}\right)$ and let $\xi<\lambda$.
   Then we may define the following:
   \begin{itemize}
-    \item $(p)_\xi=(f,c,A,C)_\xi=(f\upharpoonright (\xi+1), c \upharpoonright (\xi+1),A\upharpoonright (\xi+1), C\upharpoonright (\xi+1))$
-    \item $(p)^\xi=(f,c,A,C)^\xi=(f\upharpoonright (\lambda \setminus (\xi+1)), c \upharpoonright (\lambda \setminus (\xi+1)), A\upharpoonright (\lambda\setminus (\xi+1)), C\upharpoonright (\lambda \setminus (\xi+1)))$
-    \item $\mathbb{MC}\left(\vec{U}\right)_{(\xi,\beta)}=\{(f,c,A,C)_\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
-    \item $\mathbb{MC}\left(\vec{U}\right)^{(\xi,\beta)}=\{(f,c,A,C)^\xi\mid (f,A)\in \mathbb{M}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\}$
+    \item $(p)_\xi=(f,c,A,C)_\xi=\left(f\upharpoonright (\xi+1), c \upharpoonright (\xi+1),A\upharpoonright (\xi+1), C\upharpoonright (\xi+1)\right)$
+    \item $(p)^\xi=(f,c,A,C)^\xi=\left(f\upharpoonright (\lambda \setminus (\xi+1)), c \upharpoonright (\lambda \setminus (\xi+1)), A\upharpoonright (\lambda\setminus (\xi+1)), C\upharpoonright (\lambda \setminus (\xi+1))\right)$
+    \item $\mathbb{MC}\left(\vec{U}\right)_{(\xi,\beta)}=\left\{(f,c,A,C)_\xi\mid (f,A)\in \mathbb{MC}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\right\}$
+    \item $\mathbb{MC}\left(\vec{U}\right)^{(\xi,\beta)}=\left\{(f,c,A,C)^\xi\mid (f,A)\in \mathbb{MC}\left(\vec{U}\right), \xi\in dom(f), \text{ and }f(\xi)=\beta\right\}$
   \end{itemize}
 \end{definition}
 
 \begin{fact}\thlabel{magidor_collapse_factoring}
   As with vanilla Magidor forcing (c.f. \thref{magidor_factoring}),
-  due to our use of the reflected guiding generics $\seq{k_\alpha^\beta\middle| \alpha<\beta, \beta<\lambda}$, for each $\beta$ and each $\rho\in Y_\beta$, relative to the weakest $p$ for which $f^p(\beta)=\rho$, 
+  due to our use of the reflected guiding generics $\seq{k_\alpha^\beta\middle| \alpha<\beta, \beta<\lambda}$, for each $\xi$ a limit point below $\lambda$ and each $\beta\in Y_\xi$, relative to the weakest $p$ for which $f^p(\xi)=\beta$, 
   \[
-    \mathbb{MC}\left(\vec{U}\right) / p=\mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}\times\mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}
+    \mathbb{MC}\left(\vec{U}\right) / p=\mathbb{MC}\left(\vec{U}\right)_{(\xi,\beta)}\times\mathbb{MC}\left(\vec{U}\right)^{(\xi,\beta)}
   \]
   so $\mathbb{MC}\left(\vec{U}\right)$ factors.
   
   In particular, 
   \[
-    \mathbb{MC}\left(\vec{U}\right)_{(\beta,\rho)}=\mathbb{MC}\left(\seq{r_\alpha^\beta(\rho) \mid \alpha<\beta}\right)
+    \mathbb{MC}\left(\vec{U}\right)_{(\xi,\beta)}=\mathbb{MC}\left(\seq{r_\alpha^\xi(\beta) \mid \alpha<\xi}\right)
   \]
-  with guiding generics $\seq{k_\alpha^\beta(\rho) \mid \alpha<\beta}$,
+  with guiding generics $\seq{k_\alpha^\xi(\beta) \mid \alpha<\xi}$,
   and
   \[
-    \mathbb{MC}\left(\vec{U}\right)^{(\beta,\rho)}=\mathbb{MC}\left(\seq{U_\gamma \mid \beta<\gamma<\lambda}\right)
+    \mathbb{MC}\left(\vec{U}\right)^{(\xi,\beta)}=\mathbb{MC}\left(\seq{U_\gamma \mid \xi<\gamma<\lambda}\right)
   \]
   (restricted to stems above $\rho^+$) with guiding generics $\seq{K_\gamma \mid \gamma<\lambda}$.
 \end{fact}
