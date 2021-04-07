@@ -28,9 +28,13 @@ Work in $\Ult(V,U_\lambda)$ and consider $Col(\kappa^+,<j_{U_\lambda}(\kappa))=[
 \begin{proof}
   The existence of $K_\alpha$ can be argued exactly as in \thref{big_guide_generic}.
   
-  As for obtaining that $K_\alpha\in \Ult(V,U_\beta)$, observe that since $U_\alpha\in \Ult(V,U_\beta)$ (and by $GCH$), we simply have that $\left| j_{U_\alpha}(\kappa) \right|^{\Ult(V,U_\beta)}=2^\kappa=\kappa^+$ (by $\kappa^\kappa$ onto $j_{U_\alpha}(\kappa)$ by $f \mapsto [f]_{U_\alpha}$, see for instance \cite{jech_set_theory}, Chapter 17, for details).
-  Furthermore, since $U_\alpha\in \Ult(V,U_\beta)$, the entire family $\seq{A_\rho \middle| \rho<(2^\kappa)^{\Ult(V,U_\alpha)}}$ of $\Ult(V,U_\alpha)$-antichains of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$ lives in $\Ult(V,U_\beta)$, and there are only $\kappa^+$-many of them as witnessed in $\Ult(V,U_\beta)$.
-  Since $\Ult(V,U_\beta)$ is closed under $\kappa$-sequences, the argument as in \thref{big_guide_generic} goes through in $\Ult(V,U_\beta)$, but for $Col(\kappa^+,<j_{U_\alpha}(\kappa))$.
+  As for obtaining that $K_\alpha\in \Ult(V,U_\beta)$, observe that since $U_\alpha\in \Ult(V,U_\beta)$ (and by $GCH$), we simply have that $\left| j_{U_\alpha}(\kappa) \right|^{\Ult(V,U_\beta)}=2^\kappa=\kappa^+$ (by mapping $\kappa^\kappa$ onto $j_{U_\alpha}(\kappa)$ by $f \mapsto [f]_{U_\alpha}$, see for instance \cite{jech_set_theory}, Chapter 17, for details).
+  Furthermore, since $U_\alpha\in \Ult(V,U_\beta)$, not only is $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$ in $\Ult(V,U_\beta)$, 
+  but so is the entire enumerated family $\seq{A_\rho \middle| \rho<(2^\kappa)^{\Ult(V,U_\beta)}}$ of $\Ult(V,U_\alpha)$-antichains of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$.
+  
+  Recall that since $\Ult(V,U_\alpha)$ is closed under $\kappa$-sequences, in $V$ we enumerate $K'_\alpha=\seq{p_\alpha \mid \alpha<\kappa^+}$ a descending chain of $Col(\kappa^+,<j_{U_\alpha}(\kappa))^{\Ult(V,U_\alpha)}$ such that for every $A_\rho$, either $p_\rho\in A_\rho$ or $p_\rho$ is below some element of $A_\rho$.
+  Since $K'_\alpha$ is definable entirely from the enumerated antichains and $U_\alpha$,
+  $K'_\alpha\in \Ult(V,U_\beta)$, and hence so is $K_\alpha$ the upwards closure of $K'_\alpha$.
   
   The second and third items are measure-one reflections of the first.
 \end{proof}
