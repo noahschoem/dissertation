@@ -388,8 +388,11 @@ This appears as Theorem 3.5 of \cite{fuchs_magidor}, and we give a proof here:
 This appears as Lemma 4.5 of \cite{magidor_chg_cof}, and has a short proof:
 
 \begin{proof}
-  As the collection of conditions deciding $\sigma$ is open dense, by \thref{magidor_prikry_type_open_dense_better}, let $(f,B)\leq^* (f,A)$ be such that $(f,B)_\beta \leq^* (f,A)_\beta$ and whenever $(g,H)\leq (f,B)$ and $(g,H) \compat \sigma$, then also $(g,H)_\beta \frown (f,B)^\beta \compat \sigma$.
-  But since $(g,H)\leq (g,H)_\beta \frown (f,B)^\beta$, $(g,H)_\beta \frown (f,B)^\beta$ must decide $\sigma$ the same way as $(g,H)$.
+  As the collection of conditions deciding $\sigma$ is open dense, we may re-run the argument of \thref{magidor_prikry_type_open_dense_better}, but while invoking \thref{magidor_prikry_type_sentential} to ensure that each $p_r$ as above also decides $\sigma$.
+  Then define $(f,B)$ as in the proof of \thref{magidor_prikry_type_open_dense_better}.
+  Then if $(g,H)\leq (f,B)$ and $(g,H)$ decides $\sigma$, then let $r=(g,H)_\beta$.
+  As before $(g,H)\leq r \frown (f,B)^\beta\leq p_r$ and $p_r$ already decides $\sigma$. 
+  But then $p_r$ must decide $\sigma$ the same way as $(g,H)$, and hence $r \frown (f,B)^\beta=(g,H)_\beta \frown (f,B)^\beta$ must also decide $\sigma$ the same way as $(g,H)$.
 \end{proof}
 
 Observe that a $\mathbb{M}\left(\vec{U}\right)$-generic adds a sequence $\seq{\alpha_\eta \mid \eta<\lambda} = \bigcup_{(g,H)\in G} g$ strictly increasing, normal, and with supremum $\kappa$. As with Prikry forcing, Magidor forcing preserves cardinals:
