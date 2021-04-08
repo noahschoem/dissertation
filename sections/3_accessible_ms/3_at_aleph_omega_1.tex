@@ -629,18 +629,19 @@ The crux of the proof below is in having a good Diagonalization Lemma, such as \
   Let $g=\vec{\beta}\upharpoonright [-1,m-1]$.
   By construction, $(1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1} \leq p_{g}$.
   Since $\mathcal{D}$ is dense, let $r\leq (1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1}$ be such that $r\in \mathcal{D}$.
-  Without loss of generality, let $b=dom(f^r)\setminus [-1,m-1]=[m,m+k]$ for some $k<\omega$.
-  Then by definition of $p_g$, \emph{every} $b$-step extension of $(1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1}$ is in $\mathcal{D}$, 
-  so let $r'=\left((1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1}\right) \frown \vec{\beta}\upharpoonright [m,m+k]$.
+  By geometricitity, item \ref{magidor_collapse_generic_implies_geometric:collapses}, the projection of $\mathcal{D}$ to $Col(\beta_n^+,<\beta_{n+1})$, for each $n<m$, is open dense in $Col(\beta_n^+,<\beta_{n+1})$, so we may without loss of generality have that for each $n<m$, $c^{r}(n)\in F_n$.
+  Also without loss of generality, let $b=dom(f^r)\setminus [-1,m-1]=[m,m+k]$ for some $k<\omega$.
+  Then by definition of $p_g$, \emph{every} $b$-step extension of $(r)_{m-1} \frown (q)^{m-1}$ is in $\mathcal{D}$, 
+  so let $r'=\left((r)_{m-1} \frown (q)^{m-1}\right) \frown \vec{\beta}\upharpoonright [m,m+k]$.
   Then $r'\in \mathcal{D}$.
-  By \ref{magidor_collapse_generic_implies_geometric:collapses}, the projection of $\mathcal{D}$ to $Col(\beta_n^+,<\beta_{n+1})$, for each $n<m$, is open dense in $Col(\beta_n^+,<\beta_{n+1})$, so we may minimally strengthen $r'$ to some $r''$ just on $c^{r'} \upharpoonright m$ so that for each $n<m$, $c^{r''}(n)\in F_n$.
   
-  But then $r''\in H$. 
-  To see this, note that by construction, for all $n>m+k$, $\beta_n\in A^q(n)=A^{r''}(n)$ and $C^q(n)(\beta_n)=C^{r''}(n)(\beta_n)=\in F_n$.
-  Also by construction, $f^{r''}\upharpoonright m=g=\vec{\beta}\upharpoonright m$ and $c^{r''}\upharpoonright m \in \prod_{n<m} F_n$.
-  And for $n\in [m,m+k]$, we explicitly defned $f^{r''}(n)=\beta_n$, and $c^{r''}(n)=c^{r'}(n)=C^q(n)(\beta_n)\in F_n$.  
   
-  Therefore $r''\in H\cap\mathcal{D}$, and so this concludes the base case.
+  But then $r'\in H$. 
+  To see this, note that by construction, for all $n>m+k$, $\beta_n\in A^q(n)=A^{r'}(n)$ and $C^q(n)(\beta_n)=C^{r'}(n)(\beta_n)=\in F_n$.
+  Also by construction, $f^{r'}\upharpoonright m=g=\vec{\beta}\upharpoonright m$ and $c^{r'}\upharpoonright m = c^r \upharpoonright m \in \prod_{n<m} F_n$.
+  And for $n\in [m,m+k]$, we explicitly defned $f^{r'}(n)=\beta_n$, and $c^{r'}(n)=C^q(n)(\beta_n)\in F_n$.  
+  
+  Therefore $r'\in H\cap\mathcal{D}$, and so this concludes the base case.
   
   For the successor step, suppose that $\lambda=\bar{\lambda}+\omega$ and suppose the result is true for any forcing of the form $\mathbb{MC}\left(\seq{U'_\eta \mid \eta<\bar{\lambda}}\right)$.
   Let $\vec{U}=\seq{U_\eta \mid \eta< \lambda}$, and let $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}$ and $\seq{F_\eta \mid \eta<\lambda}$ be geometric for $\mathbb{MC}\left(\vec{U}\right)$, with induced filter $H$.
