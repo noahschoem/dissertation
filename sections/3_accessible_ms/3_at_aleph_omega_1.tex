@@ -155,8 +155,7 @@ As with Magidor forcing, the step extensions in question for the Prikry lemma ar
 
 Note that $a$-step extensions, like direct extensions, may additionally extend the $c$-terms.
 
-Also as with Magidor forcing, we want a notion of minimal extension $p\frown \vec{\nu}$ for which $f^{p\frown \vec{\nu}}=f^p \frown \vec{\nu}$.
-If $c$ is a family of collapse terms, we will additionally need a notion of $p\frown (\vec{\nu},c)$:
+Also as with Magidor forcing, we want a notion of minimal extension $p\frown \vec{\nu}$ for which $f^{p\frown \vec{\nu}}=f^p \frown \vec{\nu}$:
 
 \begin{definition}
   Let $p$ be a condition, let $\alpha \in dom(A^q)$, and let $\nu\in A^q(\alpha)$.
@@ -168,12 +167,8 @@ If $c$ is a family of collapse terms, we will additionally need a notion of $p\f
     \item For $\beta<\alpha$, $A^{p\frown (\alpha,\nu)}(\beta)=A^p(\beta)\cap \nu \cap \{\mu \in Z_\beta \cap \nu \mid \sup C^p(\beta)(\mu)<\nu\}$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), this is in $r_\beta^\alpha(\nu)$
     \item and for $\beta<\alpha$, $C^{p\frown (\alpha,\nu)}(\beta)=C^p(\beta)\upharpoonright A^{p\frown (\alpha,\nu)}(\beta)$; by \thref{coherence_guiding_generic_family}(\ref{coherence_guiding_generic_family:refl}), $[C^{p\frown (\alpha,\nu)}(\beta)]_{r_\beta^\alpha(\nu)}\in k_\beta^\alpha(\nu)$ as needed
   \end{itemize}
-  If in addition $c=(\alpha,r)$ for some $r\leq C^p(\alpha)(\nu)$, then we define $p\frown ((\alpha,\nu),c)$ as the weakest direct extension of $p\frown (\alpha,\nu)$ such that $c^{p\frown ((\alpha,\nu),c)}(\alpha)=r$.
   
   For longer $\nu$, we define, for each $a\in [dom(A^p)]^{<\omega}$ and each strictly increasing $\vec{\nu}\in \prod_{\alpha\in a} A^p(\alpha)$, $p\frown \vec{\nu}$ similarly.
-  
-  For larger $c$, if $dom(c)\subseteq dom(\vec{\nu})\cup dom(f^p)$ such that for each $\alpha\in dom(\vec{\nu})\cap dom(c)$, $c(\alpha)\leq C^p(\alpha)(\nu)$, and for each $\alpha\in dom(f^p)\cup dom(c)$, $c(\alpha)\leq c^p(\alpha)$,
-  then we define $p\frown (\vec{\nu},c)$ as the weakest direct extension of $p\frown \vec{\nu}$ such that for all $\alpha\in dom(c)$, $c^{p\frown (\vec{\nu},c)}(\alpha)=c(\alpha)$.
 \end{definition}
 
 \begin{lemma}[Prikry-type lemma, open dense version]\thlabel{magidor_collapse_prikry_open_dense}
