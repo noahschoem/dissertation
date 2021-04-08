@@ -610,35 +610,42 @@ The crux of the proof below is in having a good Diagonalization Lemma, such as \
   Our base case is when $\lambda=\omega$, and our forcing is $\mathbb{MC}\left(\seq{U_n\mid n<\omega}\right)$;
   let $\seq{\beta_n\mid n<\omega}$, and $F_n$ for each $n<\omega$, be such that the conclusions of \thref{magidor_collapse_generic_implies_geometric} apply.
   Let $\mathcal{D}\subseteq \mathbb{MC}\left(\seq{U_n\mid n<\omega}\right)$ be open dense.
-  For each $g$ a valid stem, by \thref{magidor_collapse_prikry_open_dense}, fix some $c_g$, some condition $p_{g,c_g}=(g,c_g,A^{g,c_g},C^{g,c_g})$ and an $a_g\in [\omega]^{<\omega}$ such that every $a_g$-step extension of $p_{g,c_g}$ is in $\mathcal{D}$.
-  Without loss of generality, we suppose that $a_g=[lh(g)-1,lh(g)+m_g-1)$ for some $m_g\in \omega$.
+  Without loss of generality, we work over $g$'s that are valid stems with domain $[-1,m]$ for some $m<\omega$.
+  By \thref{magidor_collapse_prikry_open_dense_better}, fix  some condition $p_{g}\leq 1_{\mathbb{MC}\left(\vec{U}\right)} \frown g$ such that 
+  $(p_g)_{\max dom(g)} = (1_{\mathbb{MC}\left(\vec{U}\right)} \frown g)_{\max dom(g)}$ 
+  and if $r\leq p_g$ is a $b$-step extension and $r\in \mathcal{D}$, then every $b$-step extension of $(r)_m \frown (p_g)^m$ is also in $\mathcal{D}$.
   
-  By Item \ref{magidor_collapse_generic_implies_geometric:collapses}, by arguing as in \thref{magidor_collapse_meets_dense_generic_one_step}, we may choose $c_g$'s such the family of $\seq{p_{g,c_g}\mid g\text{ a stem}}$ meets the necessary conditions for our Diagonalization Lemma (\thref{magidor_collapse_modified_diagonalization}).
-  Thus by \thref{magidor_collapse_modified_diagonalization}, there is a condition $p$ with $f^p=((-1,\lambda))$ such that for every $g$ for which $p\frown g\leq p$, $p\frown g \leq^* p_{g,c_g}$.
+  For each $g$, $c^{p_g}$ is trivial by construction, hence satisfies the hypothesis of our Diagonalization Lemma (\thref{magidor_collapse_modified_diagonalization}).
+  Thus by \thref{magidor_collapse_modified_diagonalization}, there is a condition $p$ with $f^p=((-1,\lambda))$ such that for every $g$ for which $p\frown g\leq p$, $p\frown g \leq^* p_{g}$.
   
-  What we actually need is $q$ a direct extension of $p$ with the following property: for any $g$, $(g,c_g) \frown (q)^{\max dom(g)}\leq^* p_{g,c_g}$.
+  What we actually need is a $q\leq^* p$ with the following property: for any $g$, $(1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{\max dom(g)}\leq^* p_{g}$.
   To attain this, we define $f^q=f^{p}$ and $c^q=c^{p}$.
   As for $A^q$ and $C^q$, let
   \[
-    B(n)=A^{p}(n) \cap \diagcap_{g}A^{p_{g,c_g}}(n)=A^{p}(n) \cap \left\{\alpha<\kappa \mid \forall g \ |g|<n, \max ran(g)<\alpha\implies \alpha\in A^{p_{g,c_g}}(n)\right\}
+    B(n)=A^{p}(n) \cap \diagcap_{g}A^{p_{g}}(n)=A^{p}(n) \cap \left\{\alpha<\kappa \mid \forall g \ |g|<n, \max ran(g)<\alpha\implies \alpha\in A^{p_{g}}(n)\right\}
   \]
-  For all $n$ observe that $\{[C^{p_{g,c_g}}(n)] \mid |g|<n\}$ forms a $\kappa$-sized directed set in a $\kappa^+$-distributive collapse forcing.
-  So let $C'(n)$ be such that $[C'(n)]$ is a lower bound of the $[C^{p_{g,c_g}}(n)]$'s as witnessed by $W_n$.
+  For all $n$ observe that $\{[C^{p_{g}}(n)] \mid |g|<n\}$ forms a $\kappa$-sized directed set in a $\kappa^+$-distributive collapse forcing.
+  So let $C'(n)$ be such that $[C'(n)]$ is a lower bound of the $[C^{p_{g}}(n)]$'s as witnessed by $W_n$.
   Then let $A^q(n)=B(n)\cap W_n$, and let $C^q(n)=C' \upharpoonright A^q(n)$.
-  Then by construction, for any $g$, $(g,c_g) \frown (q)^{\max dom(g)}\leq^* p_{g,c_g}$.
+  Then by construction, for any $g$, $(1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{\max dom(g)}\leq^* p_{g}$.
   
   By geometricity for $\vec{\beta}$ (namely Item \ref{magidor_collapse_generic_implies_geometric:measures}) and for the collapses (Item \ref{magidor_collapse_generic_implies_geometric:collapse_futures}, there is an $m\in \omega$ such that for all $n\geq m$, $\beta_n\in A^q(n)$ and $C^q(n)(\beta_n)\in F_n$. 
   
   Let $g=\vec{\beta}\upharpoonright [-1,m-1]$.
-  By construction, $(g,c_g) \frown (p)^{m-1} \leq p_{g,c_g}$.
-  Let $r=q\frown (\vec{\beta}\upharpoonright [m,m_g])$; by construction of $p_{g,c_g}$, $r\in\mathcal{D}$.
+  By construction, $(1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1} \leq p_{g}$.
+  Since $\mathcal{D}$ is dense, let $r\leq (1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1}$ be such that $r\in \mathcal{D}$.
+  Without loss of generality, let $b=dom(f^r)\setminus [-1,m-1]=[m,m+k]$ for some $k<\omega$.
+  Then by definition of $p_g$, \emph{every} $b$-step extension of $(1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1}$ is in $\mathcal{D}$, 
+  so let $r'=\left((1_{\mathbb{MC}\left(\vec{U}\right)} \frown g) \frown (q)^{m-1}\right) \frown \vec{\beta}\upharpoonright [m,m+k]$.
+  Then $r'\in \mathcal{D}$.
+  By \ref{magidor_collapse_generic_implies_geometric:collapses}, the projection of $\mathcal{D}$ to $Col(\beta_n^+,<\beta_{n+1})$, for each $n<m$, is open dense in $Col(\beta_n^+,<\beta_{n+1})$, so we may minimally strengthen $r'$ to some $r''$ just on $c^{r'} \upharpoonright m$ so that for each $n<m$, $c^{r''}(n)\in F_n$.
   
-  Next we argue that we can arrange our argument so that $r\in H$. 
-  Note that by construction, for all $n\geq lh(r)$, $\beta_n\in A^r(n)$ and $C^r(n)(\beta_n)\in F_n$.
-  So all we need to do is arrange that for each $l<lh(c^r)$, $c^r(l)\in F_l$.
-  For $l>lh(g)$, this is already guaranteed: $c^r(l)=C^q(l)$ by definition of $r$, and $C^q(l)\in F_l$ by geometricity.
-  For $l\leq lh(g)$, by the genericity of the $F_n$'s, and since our choices for $c_g$ ranged over a dense subset of $\prod_{l\leq lh(g)} Col(\beta_l^+,\beta_{l+1})$, we can arrange to have $c^r(l)\in F_l$.
-  This concludes the base case.
+  But then $r''\in H$. 
+  To see this, note that by construction, for all $n>m+k$, $\beta_n\in A^q(n)=A^{r''}(n)$ and $C^q(n)(\beta_n)=C^{r''}(n)(\beta_n)=\in F_n$.
+  Also by construction, $f^{r''}\upharpoonright m=g=\vec{\beta}\upharpoonright m$ and $c^{r''}\upharpoonright m \in \prod_{n<m} F_n$.
+  And for $n\in [m,m+k]$, we explicitly defned $f^{r''}(n)=\beta_n$, and $c^{r''}(n)=c^{r'}(n)=C^q(n)(\beta_n)\in F_n$.  
+  
+  Therefore $r''\in H\cap\mathcal{D}$, and so this concludes the base case.
   
   For the successor step, suppose that $\lambda=\bar{\lambda}+\omega$ and suppose the result is true for any forcing of the form $\mathbb{MC}\left(\seq{U'_\eta \mid \eta<\bar{\lambda}}\right)$.
   Let $\vec{U}=\seq{U_\eta \mid \eta< \lambda}$, and let $\vec{\beta}=\seq{\beta_\eta \mid \eta<\lambda}$ and $\seq{F_\eta \mid \eta<\lambda}$ be geometric for $\mathbb{MC}\left(\vec{U}\right)$, with induced filter $H$.
