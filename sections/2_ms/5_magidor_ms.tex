@@ -35,8 +35,11 @@ Note that since mutually stationary sequences of sets are only defined for famil
   Let $\lambda<\kappa$ and let $G$ be Magidor generic over $V$ with $\seq{\kappa_{\alpha}\mid \alpha<\lambda}$ the induced Magidor generic sequence.
   In $V[G]$, let $f:[\kappa]^{<\omega}\to\kappa$.
   
-  Then there are $\delta<\lambda$ and $\seq{A_\alpha \mid \delta < \alpha < \lambda, \alpha \text{ successor}}$ such that each $A_\alpha$ is stationary in $\kappa_\alpha$,
-  and whenever $x,y\subseteq [\bigcup_{\delta<\alpha<\lambda} A_\alpha]^{<\omega}$ with $type(x)=type(y)$ and $x\cap (f(x)+1)=y\cap(f(x)+1)$, we have that $f(x)=f(y)$.
+  Then there are $\delta<\lambda$ and $\seq{A_\alpha \mid \delta < \alpha < \lambda, \alpha \text{ successor}}$ such that each $A_\alpha$ is stationary in $\kappa_\alpha$
+  and on which $f$ is mutually homogeneous,
+  that is, whenever $x,y\subseteq [\bigcup_{\delta<\alpha<\lambda} A_\alpha]^{<\omega}$ with $type(x)=type(y)$ and $x\cap (f(x)+1)=y\cap(f(x)+1)$, we have that $f(x)=f(y)$.
+  
+  Moreover, each $A_\alpha\in r_\alpha^\lambda(\kappa_\alpha)$, where $r_\alpha^\lambda(\kappa_\alpha)$ is a Mitchell-rank $\alpha$ measure on $\kappa_\alpha$ and $r$ is the coherent system of representatives for $\seq{U_\alpha\mid \alpha<\lambda}$.
 \end{theorem}
 
 \begin{proof}
@@ -96,54 +99,85 @@ Note that since mutually stationary sequences of sets are only defined for famil
   But then $(g',Y')\in G$ so $V[G]\models f(x)=f(y)$.
 \end{proof}
 
-\begin{corollary}\thlabel{mag_forcing_mutual_ramsey_tail}
-  Let $V[G]$ and $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be as in \thref{magidor_generics_mutually_hom}.
-  Then there is a fixed $\delta<\lambda$ such that $\seq{\kappa_\alpha \mid \delta<\alpha<\lambda, \ \alpha\text{successor}}$ is mutually Ramsey.
-\end{corollary}
+\thref{magidor_generics_mutually_hom} gives a per-function mutual homogeneity on a tail of the Magidor generic sequence, but to achieve mutual stationarity, we need a uniform version.
+Fortunately, \thref{magidor_generics_mutually_hom} can be uniformized below a single condition, which then forces that the entire Magidor sequence is mutually Ramsey.
+This isn't particular to the complexities of mutual homogeneity or Ramseyness, but rather arises from the forcing apparatus itself:
+
+\begin{lemma}\thlabel{magidor_generics_uniform_hom}
+  There is a single $p\in\mathbb{MC}\left(\vec{U}\right)$ such that 
+  \[
+    p\forces ``\dot{\seq{\kappa_\alpha \mid \alpha<\lambda, \ \alpha\text{ successor}}} \text{ is mutually Ramsey as witnessed by } \check{A_\alpha}\in r_\alpha^\lambda\left(\dot{\kappa_\alpha}\right)"
+  \]
+\end{lemma}
 
 \begin{proof}
-  % TODO: check for correctness
-  % Godel pairing function? Double check this when more alert.
-  % Spec: need that:
-  %   1: o.t. of the pairing fn, restricted to kappa\times\lambda, is in fact \kappa
-  %   2: sections of stationary sets are stationary
-  We uniformize.
-  Suppose otherwise; for each $\delta<\lambda$ fix some $f_\delta:[\kappa]^{<\omega}\to \kappa$ which is not mutually homogeneous for any $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$.
-  Let $\chi:\lambda\times\kappa \to \kappa$ be the bijection given by G\"odel's pairing function, that is $\chi(\alpha,\beta)$ is the order type of the predecessors of $(\alpha,\beta)$ under the ordering given by the canonical well ordering on $Ord^2$.
+  For the sake of contradiction, suppose otherwise.
+  By unpacking the definitions of $\not\forces$ and of mutually Ramsey, we have that below every $p$ there is a $q$ such that 
+  \begin{equation}
+    \begin{alignedat}{3}\label{bad_condition}
+      q & \forces && ``\exists \dot{f}:[\kappa]^{<\omega}\to \kappa \ \text{there is no family of }\check{A_\alpha}\in r_\alpha^\lambda\left(\dot{\kappa_\alpha}\right) \text{ on successors} \\
+      & && \text{witnessing mutual homogeneity for }f  "
+    \end{alignedat}
+  \end{equation}
+  Without loss of generality, each such $q$ has a name $\dot{f}_q$ such that $q$ forces $\dot{f}_q$ to witness the criterion in \ref{bad_condition}.
   
-  Since $\chi$ is a normal bijection, whenever $A$ is a stationary subset of $\kappa$, and $\alpha<\lambda$, $(\chi^{-1} " A) \cap (\{\alpha\}\times \kappa)$ is still stationary in $\kappa$.
-  
-  So let $f:[\kappa]^{<\omega}\to \kappa$ given by 
-  $f(\mu_0,\dots,\mu_n)=(\nu_0,\dots,\nu_n)$ where $\nu_i$ comes from letting $\chi^{-1}(\mu_i)=(\alpha,\mu'_i)$ and then letting $\nu_i=f_\alpha(\mu'_i)$.
-  
-  Then by \thref{magidor_generics_mutually_hom}, let $\delta$ and $\seq{A_\alpha \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}$ be mutually homogeneous for $f$ and composed of stationary sets.
-  But then 
+  By choosing a maximal antichain $A$ of such $q$ and then by applying the Mixing Lemma to $\seq{f_q \mid q\in A}$, there is a name $\dot{g}$ such that 
+  \begin{equation}
+    \begin{alignedat}{3}\label{bad_condition_at_1}
+      1_{\mathbb{M}\left(\vec{U}\right)} & \forces && ``\dot{g}:[\kappa]^{<\omega}\to \kappa \ \text{admits no family of }\check{A_\alpha}\in r_\alpha^\lambda\left(\dot{\kappa_\alpha}\right) \text{ on successors} \\
+      & && \text{witnessing mutual homogeneity for }\dot{g}"
+    \end{alignedat}
+  \end{equation}
+  But then by the argument of \thref{magidor_generics_mutually_hom}, since $stem\left(1_{\mathbb{M}\left(\vec{U}\right)}\right)=\emptyset$, 
+  there is a condition $(\emptyset,Y)$ such that
   \[
-    \seq{(\chi^{-1} " A_\alpha) \cap (\{\delta\}\times \kappa) \mid \delta<\alpha<\lambda,\ \alpha\text{ successor}}
+    (\emptyset,Y)\forces ``\exists \dot{A_\alpha \mid \alpha<\lambda \text{ successor}}, \ A_\alpha\in r_\alpha^\lambda\left(\dot{\kappa_\alpha}\right), \ \text{ that is mutually homogeneous for }g"
   \]
-  is mutually homogeneous for $f_\delta$ and is composed of stationary sets.
-  This is a contradiction and the result follows.
+  This contradicts \ref{bad_condition_at_1}.  
 \end{proof}
 
-\begin{theorem}\thlabel{magidor_generics_ms_cobounded}
-  Fix $\seq{\kappa_\alpha \mid \alpha<\lambda}$ and $\delta$ as above.
-  Then any family of stationary subsets $S_\alpha\subseteq \kappa_\alpha$, $\delta<\alpha<\kappa$ and $\alpha$ a successor point, is mutually stationary.
+Due to \thref{magidor_geometric_cofinite_meet}, we can adjust our Magidor generic sequence on a finite set to meet whatever condition we want, including the $p$ from \thref{magidor_generics_uniform_hom}:
+
+\begin{lemma}\thlabel{magidor_is_hom_forcing}
+  Let $q\in \mathbb{M}\left(\vec{U}\right)$, and let $G$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$.
+  Then there is a $G'$ also $\mathbb{M}\left(\vec{U}\right)$-generic over $V$ such that $q\in G'$ and $V[G]=V[G']$.
+\end{lemma}
+
+\begin{proof}
+  Let $q=(g,H)$, and let $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be the Magidor generic sequence induced by $G$. 
+  By \thref{magidor_geometric_cofinite_meet}, there exists a finite $b\subseteq dom(H)$ such that for all $\alpha \in dom(H)\setminus b$, $\kappa_\alpha\in H(\alpha)$.
+  Thus, let $q'=(g',H')$ be a $b$-step extension of $q$ such that for all $\alpha\in dom(H')$, $\kappa_\alpha\in H'(\alpha)$.
+  
+  Then let $\seq{\kappa'_\alpha \mid \alpha<\lambda}$ be given by $\kappa'_\alpha=g'(\alpha)$ if $\alpha\in dom(g)$, and $\kappa'_\alpha=\kappa_\alpha$ otherwise.
+  Since $\seq{\kappa_\alpha \mid \alpha<\lambda}$ is geometric, so is $\seq{\kappa'_\alpha \mid \alpha<\lambda}$, 
+  and so by \thref{magidor_geometric_iff_generic}, let $G'$ be the generic filter induced by $\seq{\kappa'_\alpha \mid \alpha<\lambda}$.
+  
+  By construction of $G'$, $q'\in G'$ since $\seq{\kappa'_\alpha \mid \alpha<\lambda} \upharpoonright dom(g')=g'$ and for all $\alpha\in dom(H')$, $\kappa'_\alpha\in H'(\alpha)$. Thus $q\in G'$ as $q'\leq q$.
+  But since $\seq{\kappa_\alpha \mid \alpha<\lambda}$ and $\seq{\kappa'_\alpha \mid \alpha<\lambda}$ differ only on a finite subsequence, both are equidefinable from each other and therefore $V[G']=V[G]$.
+\end{proof}
+
+As a consequence, we have that Magidor generic sequences are mutually Ramsey on a \emph{cofinite} set:
+
+\begin{theorem}\thlabel{magidor_generics_mr_cofinite}
+  Let $G$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$, and let $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be its induced generic sequence.
+  Then there is a cofinite subset $K$ of $\{\alpha<\lambda \mid \alpha\text{ successor}\}$ such that $\seq{\kappa_\alpha \mid \alpha\in K}$ is mutually Ramsey as witnessed by a family of $A_\alpha \in r_\alpha^\lambda(\kappa_\alpha)$.
 \end{theorem}
 
 \begin{proof}
-  We invoke mutual Ramseyness as for Prikry generics as in \thref{prikry_generic_ramseyness_implies_ms}.
+  Let $p\in \mathbb{M}\left(\vec{U}\right)$ be as in \thref{magidor_generics_uniform_hom},
+  and by \thref{magidor_is_hom_forcing}, let $G'$ be generic such that $p\in G'$ and $V[G]=V[G']$.
   
-  Let $\seq{S_\alpha \mid \delta<\alpha<\kappa, \ \alpha\text{ successor}}$ be a system of stationary sets with each $S_\alpha\subseteq \kappa_\alpha$, let $\mathcal{M}$ be a structure on $\kappa$ with Skolem function $F$, and let $\seq{A_\alpha \mid \delta<\alpha<\kappa, \alpha\text{ successor}}$ be mutually homogeneous for $\mathcal{M}$ and $F$ with each $A_\alpha$ stationary in $\kappa_\alpha$.
+  Then by \thref{magidor_generics_uniform_hom}, the $V[G']$-generic sequence $\seq{\kappa'_\alpha \mid \alpha<\lambda}$ is mutually Ramsey on the $\kappa'_\alpha$ for which $\alpha$ is a successor, as witnessed by elements of $r_\alpha^\lambda(\kappa'_\alpha)$.
   
-  For each relevant $\alpha$, since $Lim(A_\alpha)$ is club in $\kappa_\alpha$ let $\gamma_\alpha\in S_\alpha \cap Lim(A_\alpha)$, and let
-  \[
-    \mathcal{U}=F"\left[\bigcup_{\delta<\alpha<\kappa, \ \alpha\text{ successor}} A_\alpha \cap \gamma_\alpha\right]^{<\omega}
-  \]
-  Then by the exact same logic as in \thref{prikry_generic_ramseyness_implies_ms}, for each relevant $\alpha$, $\sup(\mathcal{U}\cap \kappa_\alpha)=\gamma_\alpha$ as needed.
+  But by the proof of \thref{magidor_is_hom_forcing}, $\seq{\kappa_\alpha \mid \alpha<\lambda}$ and $\seq{\kappa_\alpha \mid \alpha<\lambda}$ agree on a cofinite subsequence $K'$.
+  Then $K=K'\cap \{\alpha \in Ord \mid \alpha \text{ successor}\}$ is as desired.
 \end{proof}
 
+As for Prikry generics, (c.f. \thref{prikry_generic_ramseyness_implies_ms}), from the mutual Ramseyness we obtain mutual stationarity:
+
 \begin{theorem}\thlabel{magidor_generics_ms_cofinite}
-  Furthermore, in $\mathbb{M}\left(\vec{U}\right)$, there is a cofinite subfamily $K$ of $\seq{\kappa_\alpha \mid \alpha<\lambda}$ of regular cardinals such that 
+  Let $G$ be $\mathbb{M}\left(\vec{U}\right)$-generic over $V$, let $\seq{\kappa_\alpha \mid \alpha<\lambda}$ be its induced generic sequence, and let $K$ be as in \thref{magidor_generics_mr_cofinite}.
+  Then
   \[
     MS(\seq{\kappa_\alpha \mid \kappa_\alpha\in K})
   \]
@@ -151,8 +185,12 @@ Note that since mutually stationary sequences of sets are only defined for famil
 \end{theorem}
 
 \begin{proof}
-  By \thref{magidor_geometric_cofinite_meet}, the fact that a Magidor generic sequence meets $V$-measure one systems cofinitely often as witnessed by some condition in the generic object, the arguments in \thref{magidor_generics_mutually_hom} apply equally well to a cofinite subsequence of $\seq{\kappa_\alpha \mid \alpha<\kappa}$, rather than a cobounded sequence.
-  The argument in \thref{mag_forcing_mutual_ramsey_tail} additionally reflects downwards to each limit $\kappa_\alpha$.
+  Let $\seq{S_\alpha \mid \alpha\in K}$ be a system of stationary sets with each $S_\alpha\subseteq \kappa_\alpha$, let $\mathcal{M}$ be a structure $\kappa$ with countable signature and with Skolem function $F$.
+  Since $\mathcal{M}$ has only countably many functions in its signature, let $\seq{A_\alpha \mid \alpha\in K}$ be mutually homogeneous for $\mathcal{M}$ and $F$ with each $A_\alpha$ stationary in $\kappa_\alpha$.
   
-  As a consequence, \thref{magidor_generics_ms_cobounded} also applies cofinitely.  
+  For each relevant $\alpha$, since $Lim(A_\alpha)$ is club in $\kappa_\alpha$ let $\gamma_\alpha\in S_\alpha \cap Lim(A_\alpha)$, and let
+  \[
+    \mathcal{U}=F"\left[\bigcup_{\delta<\alpha<\kappa, \ \alpha\text{ successor}} A_\alpha \cap \gamma_\alpha\right]^{<\omega}
+  \]
+  Then since $F$ is a Skolem function, $\mathcal{U}\prec \mathcal{M}$, and by the exact same logic as in \thref{prikry_generic_ramseyness_implies_ms}, for each relevant $\alpha$, $\sup(\mathcal{U}\cap \kappa_\alpha)=\gamma_\alpha$ for every $\alpha\in K$.
 \end{proof}
