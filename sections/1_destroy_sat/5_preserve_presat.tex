@@ -5,9 +5,9 @@ We now prove Theorem \ref{bigthm}\ref{bigthm:savepresat}.
 
 \begin{proof}[Proof of Theorem  \ref{bigthm}\ref{bigthm:savepresat}]
 Let $I\in V$ be a $\kappa$-complete, normal, $\kappa^+$-saturated ideal in $V$ concentrating on inaccessibles.
-Work in $V^{\mathcal{B}_I}$ and let $U$ be the generic ultrafilter. 
+Work in $V^{\mathcal{B}_I}$ and let $U$ be the generic ultrafilter. Since $I$ is $\kappa$-complete, $crit(\dot{j}_I)=\kappa$ and $\dot{j}_I\upharpoonright \kappa=id$.
 
-Then in $\Ult(V,U)$, by Lemma \ref{jQ-ultVI}, $\dot{j}_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{P}(\kappa)}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is an Easton support iteration $\seq{\mathbb{R}_\lambda * \mathbb{C}(\lambda) \mid \lambda\in[\kappa^+,j(\kappa))}$, such that if $\lambda$ is inaccessible, $\mathbb{C}(\lambda)=\mathbb{P}(\lambda)$, and $\mathbb{C}(\lambda)$ is the trivial forcing otherwise.
+Thus, in $\Ult(V,U)$, by Lemma \ref{jQ-ultVI}, $\dot{j}_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{P}(\kappa)}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is an Easton support iteration $\seq{\mathbb{R}_\alpha * \mathbb{C}(\alpha) \mid \alpha\in[\kappa^+,j_I(\kappa))}$, such that if $\alpha$ is inaccessible, $\mathbb{C}(\alpha)=\mathbb{P}(\alpha)$, and $\mathbb{C}(\alpha)$ is the trivial forcing otherwise.
 
 We will argue that $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\kappa^+$-proper on a stationary set, and hence is $\kappa^+$-presaturated.
 
@@ -16,7 +16,7 @@ Thus, in $\Ult(V,U)$, $\mathcal{B}_I * \mathbb{Q}$ is $\kappa^+$-cc and hence is
 
 The difficulty comes in assuring $\mathbb{P}(\kappa)*\dot{\mathbb{R}}$ preserves the properness on a stationary set.
 We will do this by arguing that $\mathbb{P}(\kappa) * \dot{\mathbb{R}}$ is forced by $\mathcal{B}_I*\mathbb{Q}$ to be $\kappa^+$-proper on $\dot{IA_{<\kappa^+}}$.
-Once we have that, since $\mathcal{B}_I*\mathbb{Q}$ is $\kappa^+$-cc and $\mathcal{B}_I*\mathbb{Q}$ is $\kappa^+$-proper on a stationary set, the full forcing is then $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\kappa^+$-proper on a stationary set.
+Once we have that, since $\mathcal{B}_I*\mathbb{Q}$ is $\kappa^+$-cc and forces $\mathbb{P}(\kappa)* \dot{\mathbb{R}}$ is $\kappa^+$-proper on a stationary set, the full forcing $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is then $\kappa^+$-proper on a stationary set.
 
 Work in $\Ult(V,U)^{\mathbb{Q}}$. Here, $\mathbb{P}(\kappa)$ is proper on 
 $$\mathcal{S}:={\{M\prec (H_\theta,\in,\kappa^+)\mid |M|=|M\cap\kappa^+|=\kappa\text{ and }M\cap\kappa^+\in cof(\kappa)\}}$$
@@ -25,7 +25,7 @@ But not only is $\mathcal{S}$ stationary, $\mathcal{S}$ is a club subset of $\ma
 
 % aside: was originally seen from Lemma 2.5 of Foreman-Magidor \cite{foreman_magidor_lcs_ctx_ch}, which is that $\mathcal{S}\cap IA_{<\kappa^+}$ is stationary iff $\mathcal{S}$ remains stationary after collapsing $H_\theta$ to size $\kappa^+$. The latter is a short argument from the definitions, but the above avoids an awkward aside.)
 
-Thus, by Lemma \ref{lemma-iaposets}, after forcing with $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$, we have that $\mathbb{P}(\kappa)*\dot{\mathbb{R}}$ is $\kappa^+$-proper on a stationary set.
+Thus, by Lemma \ref{lemma-iaposets}, after forcing with $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$, we have that $\mathbb{P}(\kappa)*\dot{\mathbb{R}}$ is $\kappa^+$-proper on the stationary set $\mathcal{S}\cap IA_{<\delta^+}$.
 
 Therefore, $\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)$ is $\kappa^+$-proper on a stationary subset of $\mathcal{P}_{\kappa^+}^*(H_\theta)^V$, hence is $\kappa^+$-presaturated.
 But by Theorem \ref{easyduality}, $\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)\cong \mathbb{Q}*\dot{\mathcal{B}_{\overline{I}}}$;
@@ -35,30 +35,61 @@ then by Lemma \ref{pushpresatdown}, $\overline{I}$ is $\kappa^+$-presaturated.
 A more general argument will prove Theorem \ref{savemorepresat}:
 
 \begin{proof}[Proof of Theorem \ref{savemorepresat}]
-In $V$, let $\delta\geq \kappa$ be a Mahlo cardinal, and let $I$ be a normal, precipitous, fine, $\delta^+$-presaturated ideal of uniform completeness $\kappa$ on some algebra of sets $Z$ concentrating on inaccessible cardinals below $\delta$.
-Further suppose that $\forces_{\mathcal{B}_I}\delta^+\leq |\dot{j}_I(\kappa)|<\dot{j}(\kappa)$, and that $\mathcal{B}_I$ is $\delta^+$-proper on $IA_{<\delta^+}$.
+In $V$, let $\delta\geq \kappa$ be an inaccessible cardinal, and let $I$ be a normal, precipitous, fine, $\delta^+$-presaturated ideal of uniform completeness $\kappa$ on some algebra of sets $Z$ such that $\mathcal{B}_I$ preserves the inaccessibility of $\kappa$ and $\delta$ in $\Ult(V,I)$; $\forces_{\mathcal{B}_I}\delta^+\leq |\dot{j}_I(\kappa)|<\dot{j}(\kappa)$; and $\mathcal{B}_I$ is $\delta^+$-proper on $IA_{<\delta^+}$.
 
-We wish to show that $\mathcal{B}_{\overline{I}}$ is not $\delta^+$-saturated, but is $\delta^+$-saturated.
+Let $\mathbb{Q}$ be the forcing from Definition \ref{defq}.
+Recall that $\mathbb{Q}$ is $\kappa$-cc since $\mathbb{Q}$ is an Easton support iteration of $\kappa$-cc posets and $\kappa$ is Mahlo.
 
-Observe by Theorem \ref{easyduality} that
+We wish to show that $\mathcal{B}_{\overline{I}}$ is not $\delta^+$-saturated, but is $\delta^+$-presaturated.
+
+Since $\mathcal{B}_I$ is precipitous, by Theorem \ref{easyduality},
 \begin{equation} \label{eqn:savemorepresat-duality}
   \mathcal{B}\left(\mathcal{B}_I * \dot{j}_I(\mathbb{Q})\right) \cong \mathcal{B}\left(\mathbb{Q} * \mathcal{B}_{\overline{I}}\right)
 \end{equation}
-where $j_I(\mathbb{Q})=\mathbb{Q} * \seq{\mathbb{R}_\lambda * \mathbb{C}(\lambda) \mid \lambda\in[\kappa^+,j_I(\kappa))}$, where each $\mathbb{R}_\lambda$ is an Easton support iteration,
-such that if $\lambda$ is inaccessible, $\mathbb{C}(\lambda)=\mathbb{P}(\lambda)$, and $\mathbb{C}(\lambda)$ is the trivial forcing otherwise.
+Also, since $I$ is $\kappa$-complete, $crit(j_I)=\kappa$ and thus $j_I \upharpoonright \kappa=id$.
+Since $\mathcal{B}_I$ preserves the regularity of $\kappa$, we get that $\dot{j}_I(\mathbb{Q})\upharpoonright \kappa=\mathbb{Q}$.
 
-Since $I$ concentrates on inaccessibles below $\delta$, $\Ult(V,I)\models ``\delta \text{ inaccessible}"$, and thus $\mathbb{C}(\delta)=\mathbb{P}(\delta)$ which is not $\delta^+$-cc.
+Therefore, $j_I(\mathbb{Q})=\mathbb{Q} * \seq{\mathbb{R}_\alpha * \mathbb{C}(\alpha) \mid \alpha\in[\kappa,j_I(\kappa))}$, where each $\mathbb{R}_\alpha$ is an Easton support iteration,
+such that if $\alpha$ is inaccessible, $\mathbb{C}(\alpha)=\mathbb{P}(\alpha)$, and $\mathbb{C}(\alpha)$ is the trivial forcing otherwise.
+
+Since $\Ult(V,I)\models ``\delta \text{ inaccessible}"$, we get that $\mathbb{C}(\delta)=\mathbb{P}(\delta)$ which is not $\delta^+$-cc.
 Thus $\left(\mathbb{Q} * \mathcal{B}_{\overline{I}}\right)$ is not $\delta^+$-cc, and since $\mathbb{Q}$ is clearly $\delta^+$-cc, $\mathcal{B}_{\overline{I}}$ cannot be $\delta^+$-saturated.
 
 As for the $\delta^+$-presaturation of $\mathcal{B}_{\overline{I}}$, by \ref{eqn:savemorepresat-duality} it suffices to show that  $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\delta^+$-presaturated.
+
+Work in $\Ult(V,I)$.
 Since $\mathcal{B}_I$ preserves the regularity of $\kappa$, we decompose $\dot{j}_I(\mathbb{Q})$ as 
 \[
-  \dot{j}_I(\mathbb{Q})=\mathbb{Q} * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa^+,\delta) \right) * \mathbb{P}(\delta) * \left( \dot{j}_I(\mathbb{Q})\upharpoonright [\delta^+,j_I(\kappa))\right)
+  \dot{j}_I(\mathbb{Q})=\mathbb{Q} * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa,\delta) \right) * \left( \dot{j}_I(\mathbb{Q})\upharpoonright [\delta,j_I(\kappa))\right)
 \]
-We have that both $\mathbb{Q}$ and $\left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa^+,\delta) \right)$ are $\delta^+$-cc, so by $\mathcal{B}_I * \mathbb Q * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa^+,\delta) \right)$ remains proper on $IA_{<\delta*+}$.
-As in the proof of Theorem \ref{bigthm}\ref{bigthm:savepresat}, $\mathbb{P}(\delta)$ is proper on a club subset of $\mathcal{P}_{\delta^+}^*(H_\theta) \cap cof(\delta)$ and so $\mathcal{B}_I * \mathbb Q * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa^+,\delta) \right) * \mathbb{P}(\delta)$ is $\delta^+$-proper on a stationary set.
-Finally, $\left( \dot{j}_I(\mathbb{Q})\upharpoonright [\delta^+,j_I(\kappa))\right)$ is $\delta^+$-directed closed and therefore is proper on $\check{IA_{<\delta^+}}$, which by Fact \ref{principle-A}, is absolute between $\mathcal{B}_I$ and $\mathcal{B}_I * \mathbb Q * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa^+,\delta) \right) * \mathbb{P}(\delta)$.
+and further $\dot{j}_I(\mathbb{Q})(\delta)=\dot{\mathbb{P}}(\delta)$, so we decompose $\left( \dot{j}_I(\mathbb{Q})\upharpoonright [\delta,j_I(\kappa))\right)$ as $\left( \dot{\mathbb{P}}(\delta) * \dot{j}_I(\mathbb{Q})\upharpoonright [\delta^+,j_I(\kappa))\right)$.
 
-Thus $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\delta^+$-proper on a stationary set, and therefore is $\delta^+$-presaturated.
+So we may further decompose $\dot{j}_I(\mathbb{Q})$ as
+\[
+  \dot{j}_I(\mathbb{Q})=\mathbb{Q} * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa,\delta) \right) *
+  \dot{\mathbb{P}}(\delta) * \left( \dot{j}_I(\mathbb{Q})\upharpoonright [\delta^+,j_I(\kappa))\right)
+\]
+and we will argue the following items in $\Ult(V,I)$:
+\begin{itemize}
+  \item $\mathbb{Q}$ is $\delta^+$-cc
+  \item $\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa,\delta)$ is $\delta^+$-cc
+  \item $\dot{\mathbb{P}}(\delta)$ is $\delta^+$-proper on a stationary set $S$ such that $S \cap IA_{<\delta^+}$ is stationary
+  \item $\left( \dot{j}_I(\mathbb{Q})\upharpoonright [\delta^+,j_I(\kappa))\right)$ is $\delta^+$-directed closed and thus is $\delta$-proper on $IA_{<\delta^+}$
+\end{itemize}
+in such a way that we may conclude that $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\delta^+$-proper on a stationary set.
+
+We have that $\mathbb{Q}$ is $\kappa$-cc, hence is $\delta^+$-cc.
+
+If $\delta=\kappa$, then $\left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa,\delta) \right)$ is trivial so is $\delta^+$-cc.
+Otherwise, $\delta>\kappa$, and since $\delta$ is inaccessible in $\Ult(V,I)$,
+$\left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa,\delta) \right)$ is a $\delta$-length direct limit iteration of posets of size $<\delta$.
+Thus $\left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa,\delta) \right)$ has size $\delta$, and so is $\delta^+$-cc.
+
+Therefore $\mathcal{B}_I * \mathbb Q * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa,\delta) \right)$ is $\delta^+$-cc, so by Lemma \label{iaposets}\label{iaposets:iter}, is $\delta^+$-proper on $\mathcal{P}_{\delta^+}^*(H_\theta)$.
+
+As in the proof of Theorem \ref{bigthm}\ref{bigthm:savepresat}, $\mathbb{P}(\delta)$ is proper on a club subset of $\mathcal{P}_{\delta^+}^*(H_\theta) \cap cof(\delta)$ and so $\mathcal{B}_I * \mathbb Q * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa^+,\delta) \right) * \mathbb{P}(\delta)$ is $\delta^+$-proper on the stationary set $IA_{<\delta^+} \cap cof(\delta)$.
+Finally, $\left( \dot{j}_I(\mathbb{Q})\upharpoonright [\delta^+,j_I(\kappa))\right)$ is $\delta^+$-directed closed and therefore is proper on $IA_{<\delta^+}$, which by Fact \ref{principle-A}, is absolute between $V^{\mathcal{B}_I}$ and $V^{\mathcal{B}_I * \mathbb Q * \left(\dot{j}_I(\mathbb{Q}) \upharpoonright [\kappa^+,\delta) \right) * \mathbb{P}(\delta)}$.
+
+Thus $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\delta^+$-proper on the stationary subset $IA_{<\delta^+}\cap cof(\delta)$, and therefore is $\delta^+$-presaturated.
 But then $\mathbb{Q} * \mathcal{B}_{\overline{I}}$ is $\delta^+$-presaturated as well, and therefore by Lemma \ref{pushpresatdown}, $V^{\mathbb{Q}}\models ``\mathcal{B}_{\overline{I}}\text{ is }\delta^+\text{-presaturated}"$.
 \end{proof}
