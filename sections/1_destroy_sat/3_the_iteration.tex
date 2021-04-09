@@ -2,9 +2,9 @@
 \label{destroy_sat:the_itern}
 
 Through the rest of this paper, suppose GCH and fix $\kappa$ to be a Mahlo cardinal.
-We do this because by assuming that $V$ admits a $\kappa$-complete, normal, $\kappa^+$-saturated ideal on $\kappa$ concentrating on regular cardinals below $\kappa$, we have that $\kappa$ is Mahlo.
+We do this because by assuming that $V$ admits a $\kappa$-complete, normal, $\kappa^+$-saturated ideal on $\kappa$ concentrating on inaccessible (equivalently regular) cardinals below $\kappa$, we have that $\kappa$ is Mahlo.
 
-Over cardinals below $\kappa$, we will define a forcing iteration that will destroy $\kappa^+$-saturation but preserve $\kappa^+$-presaturation for ideals on $\kappa$, concentrating on regulars by adding, for each $\mu<\kappa$, $\mu$ regular, a club subset  $C_\mu$ of $\mu^+$ using $<\mu$-conditions.
+Over cardinals below $\kappa$, we will define a forcing iteration that will destroy $\kappa^+$-saturation but preserve $\kappa^+$-presaturation for ideals on $\kappa$, concentrating on inaccessibles by adding, for each $\mu<\kappa$, $\mu$ inaccessible, a club subset  $C_\mu$ of $\mu^+$ using $<\mu$-conditions.
 This club $C_\mu$ will fail to contain certain ground model sets, 
 in the sense that if $X\in V$ and $|X|\geq \mu$ then $X\not\subseteq C_\mu$.
 
@@ -138,11 +138,11 @@ This breaks into three cases:
 If $\nu=\tau^+$ where $\tau$ is regular, we may decompose $\mathbb{Q}_\nu$ as 
 \[\mathbb{Q}_\tau * \dot{\mathbb{C}}(\tau)\]
 Since $\tau$ is regular, $|\mathbb{Q}_\tau|\leq\tau$ hence is $\nu$-cc. Thus $\mathbb{Q}_\tau$ preserves $\nu$.
-By Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{C}}(\tau)$ preserves $\nu$.
+Either $\dot{\mathbb{C}}(\tau)$ is trivial, or is $\dot{\mathbb{P}}(\tau)$, so by Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{C}}(\tau)$ preserves $\nu$.
 Thus $\dot{\mathbb{Q}}_{\nu}$ preserves $\nu$.
 
-If $\nu=\lambda^+$ where $\lambda$ is singular, we have that $\mathbb{Q}_\nu=\mathbb{Q}_\lambda$ since none of the ordinals in $[\lambda,\nu)$ are regular. 
-Here, the situation is more complicated, since now $|\mathbb{Q}_\lambda|=\lambda^{\cf(\lambda)}\geq\nu$. So we must verify more directly that $\nu$ is preserved.
+If $\nu=\lambda^+$ where $\lambda$ is singular, we have that $\mathbb{Q}_\nu=\mathbb{Q}_\lambda$ since none of the ordinals in $[\lambda,\nu)$ are inanccessible. 
+Here, the situation is more complicated, since now $|\mathbb{Q}_\lambda|$ might be equal to $\lambda^{\cf(\lambda)}\geq\nu$. So we must verify more directly that $\nu$ is preserved.
 
 So observe that if $\nu$ is collapsed, then $V^{\mathbb{Q}_\lambda}\models |\nu|\leq |\lambda|$ and since $\lambda$ is singular, we would have a $\mathbb{Q}_\lambda$-name $\dot{f}:\check{\delta}\to\check{\nu}$ for a cofinal sequence in $\check{\nu}$ for some regular cardinal $\delta<\lambda$.
 
@@ -160,7 +160,8 @@ $$\mathbb{Q}_\delta * \dot{\mathbb{C}}(\delta) * \dot{\mathbb{Q}}_{>\delta^+}$$
 The analysis is exactly as in the successor of a singular case.
 \end{proof}
 
-This shows that whenever $\nu$ is regular in $V$, $\nu$ remains regular in $V^{\mathbb{Q}_\nu}$ and we will now write $\mathbb{P}(\nu)$ rather than $\mathbb{C}(\nu)$.
+This shows that whenever $\nu$ is regular in $V$, $\nu$ remains regular in $V^{\mathbb{Q}_\nu}$.
+When $\nu$ is inaccessible, we will now write $\mathbb{P}(\nu)$ rather than $\mathbb{C}(\nu)$.
 
 \begin{corollary}
   $\mathbb{Q}$ preserves cardinals.
@@ -169,6 +170,6 @@ This shows that whenever $\nu$ is regular in $V$, $\nu$ remains regular in $V^{\
 \begin{proof}
 Since $\kappa$ is Mahlo, $\mathbb{Q}=\mathbb{Q}_\kappa$  is $\kappa$-cc hence preserves $\kappa$ preserves cardinals $>\geq\kappa$.
 
-For $\nu<\kappa$ regular, we have that $\mathbb{Q}=\mathbb{Q}_\nu * \dot{\mathbb{P}}(\nu)*\dot{\mathbb{Q}}_{>\nu}$.
-By the preceding proposition, $\mathbb{Q}_\nu$ preserves $\nu$. By Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{P}}(\nu)$ preserves $\nu$. And by Lemma \ref{pmuisnice}\ref{pmuisnice:dircl}, $\dot{\mathbb{Q}}_{>\nu}$ is $<\nu^+$-directed closed hence preserves $\nu$.
+For $\nu<\kappa$ regular, we have that $\mathbb{Q}=\mathbb{Q}_\nu * \dot{\mathbb{C}}(\nu)*\dot{\mathbb{Q}}_{>\nu}$.
+By the preceding proposition, $\mathbb{Q}_\nu$ preserves $\nu$. Either $\dot{\mathbb{C}}(\nu)$ is trivial or is $\dot{\mathbb{P}}(\nu)$, and so Lemma \ref{pmuisnice}\ref{pmuisnice:proper}, $\dot{\mathbb{C}}(\nu)$ preserves $\nu$. And by Lemma \ref{pmuisnice}\ref{pmuisnice:dircl}, $\dot{\mathbb{Q}}_{>\nu}$ is $<\nu^+$-directed closed hence preserves $\nu$.
 \end{proof}

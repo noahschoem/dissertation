@@ -1,7 +1,7 @@
 \section{Destroying Saturation}
 \label{destroy_sat:destroy_sat}
 
-Since $\mathbb{Q}$ projects to each $\mathbb{Q}_\mu * \dot{\mathbb{P}}(\mu)$, $\mu<\kappa$ regular, we may, for each such $\mu$, let $G_\mu$ be the restriction of the $\mathbb{Q}$-generic $G$ to $\mathbb{P}(\mu)$ and define 
+Since $\mathbb{Q}$ projects to each $\mathbb{Q}_\mu * \dot{\mathbb{P}}(\mu)$, $\mu<\kappa$ inaccessible, we may, for each such $\mu$, let $G_\mu$ be the restriction of the $\mathbb{Q}$-generic $G$ to $\mathbb{P}(\mu)$ and define 
 $C_\mu=\{\xi \mid \exists (s,f)\in G_\mu \ \xi\in s\}$.
 By Lemma \ref{pmuisnice}\ref{pmuisnice:club}, $C_\mu$ is a club subset of $\mu^+$ in $V^{\mathbb{Q}_{\mu}*\dot{\mathbb{P}}(\mu)}$ and for every $X\in V^{\mathbb{Q}_{\mu}}$ such that $X\subseteq [\mu,\mu^+)$ and $X$ has $V^{\mathbb{Q}_{\mu}}$-cardinality $\geq\mu$, $X\not\subseteq C_\mu$. 
 
@@ -21,11 +21,11 @@ $j_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is 
 \end{lemma}
 
 \begin{proof}
-This follows from the elementarity of $j_I$, and since $I$ concentrates on regulars, $\kappa$ is regular in $\Ult(V,I)$.
+This follows from the elementarity of $j_I$, and since $I$ concentrates on inaccessibles, $\kappa$ is inaccessible in $\Ult(V,I)$.
 \end{proof}
 
 \begin{remark}
-Since we are assuming $V\models GCH$, as with ultrapowers from a measurable cardinal, we will have that if $I$ is a $\kappa$-complete normal precipitous ideal in $V$, then in $V^{\mathcal{B}_I}$, $|j_I(\kappa)|=2^\kappa=\kappa^+$.
+As with ultrapowers from a measurable cardinal, we will have that if $I$ is a $\kappa$-complete normal precipitous ideal in $V$, then in $V^{\mathcal{B}_I}$, $|j_I(\kappa)|=2^\kappa$.
 However, by elementarity, in $\Ult(V,I)$, $j_I(\kappa)$ is inaccessible.
 \end{remark}
 
@@ -37,7 +37,8 @@ for $\lambda$ a successor cardinal, we would have that $j_J(\lambda)=\lambda^+$.
 \begin{proof}[Proof of Proposition \ref{ground-killsat}]
 By Lemma \ref{jQ-ultVI}, in $V^{\mathcal{B}_I}$, $\dot{j}_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is an Easton support iteration $\seq{\mathbb{R}_\lambda * \dot{\mathbb{C}}(\lambda) \mid \lambda\in[\kappa,j_I(\kappa))}$ as in the lemma.
 
-Since $\mathbb{P}(\alpha)$ is not $\kappa^+$-cc for all $\alpha\in [\kappa,j_I(\kappa))$ inaccessible, $j_I(\mathbb{Q})$ is not $\kappa^+$-saturated.
+Since $\kappa$ is still inaccessible in $\Ult(V,I)$, $\mathbb{C}(\kappa)=\mathbb{P}(\kappa)$ which is not $\kappa^+$-cc. 
+So $j_I(\mathbb{Q})$ is not $\kappa^+$-saturated.
 
 So by Lemma \ref{foreman_ideals_gen_ees:groundideals}, in $V^\mathbb{Q}$, $\overline{I}$ is not $\kappa^+$-saturated.
 \end{proof}
@@ -76,5 +77,5 @@ Thus $ran(j(\phi)\upharpoonright \kappa)\in N$ and $j"E'\subseteq ran(j(\phi)\up
 
 But $j"E'=ran(j(\phi)\upharpoonright \kappa) \cap j(E')\in N$; and since $E'=\{\beta\in ran(\phi)\mid j(\beta)\in j(E')\}$, we have that $E'$ is a subset of $C_\kappa$ with $|E'|^N=\kappa$ and $E'\subseteq[\kappa,\kappa^+)$. 
 
-This contradicts Statement (\ref{eqn:ng'defc}), and hence $\mathcal{J}$ cannot be $\kappa^+$-saturated.
+This contradicts \ref{eqn:ng'defc}, and hence $\mathcal{J}$ cannot be $\kappa^+$-saturated.
 \end{proof}
