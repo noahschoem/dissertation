@@ -31,7 +31,8 @@ Many mutual stationarity proofs are analogous to, or generalizations of, the fol
   Then $MS(\seq{\kappa_\alpha \mid \alpha<\lambda, \alpha\text{ successor}})$ holds.
 \end{theorem}
 
-Foreman and Magidor state this without proof in \cite{foreman_magidor_ns_ns}, but the proof is fairly straightforward, and proceeds via the use of \emph{indiscernibles}:
+This is stated without proof in \cite{foreman_magidor_ns_ns}. 
+The proof is fairly straightforward, and proceeds via the use of \emph{indiscernibles}:
 
 \begin{definition}
   Let $\mathcal{M}$ be a structure, $I$ a linear order.
@@ -66,7 +67,7 @@ Foreman and Magidor state this without proof in \cite{foreman_magidor_ns_ns}, bu
 
 A largely similar argument works for the points of a Prikry generic sequence:
 
-\begin{theorem}[Cummings, Foreman, and Magidor, Theorem 5.4 of \cite{cummings_foreman_magidor_canonical_structure}]\thlabel{ms_prikry}
+\begin{theorem}[Theorem 5.4 of \cite{cummings_foreman_magidor_canonical_structure}]\thlabel{ms_prikry}
   Let $\kappa$ be measurable with normal measure $U$, let $\mathbb{P}(U)$ be Prikry forcing at $\kappa$, and let $\seq{\kappa_n \mid n<\omega}$ be Prikry generic.
   Then in the generic extension, there is some $m<\omega$ such that 
   \[
@@ -75,8 +76,8 @@ A largely similar argument works for the points of a Prikry generic sequence:
   holds.
 \end{theorem}
 
-This theorem is due to Cummings, Foreman, and Magidor, and its  proof originally appeared in \cite{cummings_foreman_magidor_canonical_structure}.
-But, in ways we will see in \ref{ms:koepke} was anticipated much earlier by results of Koepke in \cite{koepke_free_subset}.
+This theorem originally appeared in \cite{cummings_foreman_magidor_canonical_structure}.
+But, in ways we will see in \ref{ms:koepke}, \thref{ms_prikry} was anticipated much earlier by results in \cite{koepke_free_subset}.
 
 \begin{proof}[Proof sketch]
   With the use of the Prikry property, the argument of \thref{ms_measurables} readily adapts to a $U$-measure one 
@@ -93,11 +94,11 @@ The following lemmas make working with mutually stationary sequences and mutual 
     \item If $\seq{S_\alpha\mid \alpha<\mu}$ is mutually stationary with each $S_\alpha\subseteq \kappa_\alpha\cap cof(\leq\nu)$ and $\nu<\kappa_0$ then the mutual stationarity can be witnessed by an elementary substructure of size $\nu$.
   \end{enumerate}
 \end{lemma}
-Foreman and Magidor in \cite{foreman_magidor_ns_ns} cite this as implicit in Baumgartner's paper \cite{baumgartner_size_clubs}.
+\cite{foreman_magidor_ns_ns} cites this as implicit in \cite{baumgartner_size_clubs}.
 
 As a corollary, mutual stationarity principles of restricted cofinality (under mild assumptions) are preserved under finite changes:
 
-\begin{lemma}[Foreman and Magidor, Lemma 23 of \cite{foreman_magidor_ns_ns}]\thlabel{mutual_stationarity_finite_change}
+\begin{lemma}[Lemma 23 of \cite{foreman_magidor_ns_ns}]\thlabel{mutual_stationarity_finite_change}
   Let $\seq{S_\alpha \mid \alpha<\mu}$ be mutually stationary with each $S_\alpha \subseteq \kappa_\alpha \cap cof(\leq\nu)$, with $\nu<\kappa_0$.
   Suppose $\lambda_0,\dots,\lambda_n$ are all greater than $\nu$, not equal to any $\kappa_\alpha$, and $S_{\lambda_i}\subseteq \lambda_i\cap cof(\leq\nu)$.
   
@@ -110,7 +111,7 @@ As a corollary, mutual stationarity principles of restricted cofinality (under m
 
 As for consistency results:
 
-\begin{theorem}[Foreman and Magidor, Theorem 7 of \cite{foreman_magidor_ns_ns}]
+\begin{theorem}[Theorem 7 of \cite{foreman_magidor_ns_ns}]
   Let $\seq{\kappa_\alpha \mid \alpha<\mu}$ be any family of regular cardinals.
   Then 
   \[
@@ -118,7 +119,7 @@ As for consistency results:
   \]
 \end{theorem}
 
-\begin{theorem}[Foreman and Magidor, Theorem 24 of \cite{foreman_magidor_ns_ns}]
+\begin{theorem}[Theorem 24 of \cite{foreman_magidor_ns_ns}]
   In $L$, for all $k\in\omega$, 
   \[
     \lnot MS(\seq{\aleph_n \mid n>k},cof(\omega_k))
@@ -131,9 +132,9 @@ Further inner model theoretic results showed that mutual stationarity principles
   If $k<\omega$ and $MS(\seq{\aleph_n \mid n>k},cof(\omega_k))$, then there is an inner model in which each $\aleph_n^V$ has stationarily many measurable cardinals of Mitchell order $\omega_{n-2}$.
 \end{theorem}
 
-As of writing, the best known argument in the other direction comes courtesy of Ben-Neria in 2019:
+As of writing, the best known argument in the other direction comes courtesy of \cite{benneria_singular_stat}:
 
-\begin{theorem}[Ben-Neria, Theorem 1.3 of \cite{benneria_singular_stat}]
+\begin{theorem}[Theorem 1.3 of \cite{benneria_singular_stat}]
   Assume $GCH$ and let $\seq{\kappa_n\mid n<\omega}$ be a sequence of cardinals with $\kappa_0=\omega$, and with limit $\kappa_\omega$ such that each $\kappa_n$ is $\kappa_\omega^+$-supercompact.
   Then after forcing with a full-support iteration of $Col(\kappa_n,<\kappa_{n+1})$, for each $k<\omega$, 
   \[
@@ -145,7 +146,7 @@ As of writing, the best known argument in the other direction comes courtesy of 
 Mutual stationarity results at every other $\aleph_n$ require much weaker large cardinal assumptions.
 For instance:
 
-\begin{theorem}[Koepke, Theorem 1.6 of \cite{koepke_ms_omega_1}; Koepke and Welch, Theorem 1 of \cite{koepke_welch_strength_ms}]
+\begin{theorem}[Theorem 1.6 of \cite{koepke_ms_omega_1}; Theorem 1 of \cite{koepke_welch_strength_ms}]
   The principle 
   \[
     MS(\seq{\aleph_{2n+3}\mid n<\omega},cof(\omega_1))
@@ -154,7 +155,7 @@ For instance:
 \end{theorem}
 
 and for larger cofinality:
-\begin{theorem}[Ben-Neria, Theorem 1.4 of \cite{benneria_singular_stat}]
+\begin{theorem}[Theorem 1.4 of \cite{benneria_singular_stat}]
   It is consistent, relative to a sequence $\seq{\kappa_n\mid n<\omega}$ with each $\kappa_n$ being $\kappa_n^+$-supercompact with a $\kappa_{n-1}^+$-Mitchell sequence of such measures, that every sequence $S_n\subseteq \aleph_{2n+3}\cap cof(<\aleph_{2n+2})$ of stationary subsets is mutually stationary.
   
   In particular, for all $k<\omega$,
@@ -165,11 +166,11 @@ and for larger cofinality:
 
 This family of consistency results demonstrate that $MS$ principles has large cardinal strength, often follows directly from large cardinals and, failing that, in a forcing extension, and fails in $L$.
 However, relationships between square principles and mutual stationarity are not straightforward.
-Koepke and Welch in \cite{koepke_welch_global_square_ms} use global $\square$ in the Dodd-Jensen core model $K$ to construct inner models for large cardinals from $MS$ principles, but relationships between $MS$ principles and failures of $\square$ remain uninvestigated.
+The arguments of \cite{koepke_welch_global_square_ms} use global $\square$ in the Dodd-Jensen core model $K$ to construct inner models for large cardinals from $MS$ principles, but relationships between $MS$ principles and failures of $\square$ remain uninvestigated.
 
 We conclude our background section by elaborating on how we may view mutual stationarity principles as a strong form of anti-saturation.
 
-Its introduction implicitly takes this view in the form of the following (a weaker version of which appears as Theorem 7 and Corollary 8 in Foreman and Magidor's \cite{foreman_magidor_ns_ns}):
+Its introduction implicitly takes this view in the form of the following (a weaker version of which appears as Theorem 7 and Corollary 8 in \cite{foreman_magidor_ns_ns}):
 
 \begin{theorem}\thlabel{ms_antisat}
   Assume $\delta$ is the successor of a regular cardinal and $\lambda$ is a singular cardinal with $cf(\lambda)=\mu>\delta$.
@@ -198,6 +199,6 @@ Thus compatibility of mutual stationarity principles with $\lnot SCH$ are of ind
 
 However, very little is known about mutual stationarity principles with $\lnot SCH$.
 
-Koepke's argument in \cite{koepke_ms_omega_1} does not depend on cardinal arithmetic, so should readily achieve $MS(\seq{\aleph_{2n+3}\mid n<\omega; cof(\leq\omega_1)}) + \lnot SCH_{\aleph_\omega})$.
+The argument of \cite{koepke_ms_omega_1} does not depend on cardinal arithmetic, so should readily achieve $MS(\seq{\aleph_{2n+3}\mid n<\omega; cof(\leq\omega_1)}) + \lnot SCH_{\aleph_\omega})$.
 
-Ben-Neria's arguments in \cite{benneria_singular_stat} assume $GCH$, but suggest a framework for achieving mutual stationarity principles with the failure of $GCH$.
+The arguments of \cite{benneria_singular_stat} assume $GCH$, but suggest a framework for achieving mutual stationarity principles with the failure of $GCH$.
