@@ -116,11 +116,11 @@ Koepke has arguments pertaining to such $F$ and in a much earlier paper \cite{ko
 \begin{theorem}[Koepke, \cite{koepke_free_subset}; also Koepke, Proposition 2.3 of \cite{koepke_ms_omega_1}]\thlabel{koepke_mr}
   Let $V[G]$ be a Prikry generic model for $\kappa$ over $V$, and let $\seq{\kappa_n \mid n<\omega}$ be a Prikry generic sequence for $\kappa$.
   Then in $V[G]$, for some $m$, $\seq{\kappa_n \mid m\leq n<\omega}$ is mutually Ramsey.
-  Furthermore, the sequence of $I_n$'s witnessing this in $V[G]$ may be chosen to be club subsets of each $\kappa_n$, or stationary subsets of each $\kappa_n$ consisting only of inaccessibles.
+  Furthermore, the sequence of $I_n$'s witnessing this in $V[G]$ may be chosen to be stationary subsets of each $\kappa_n$ consisting only of inaccessibles chosen from some $\sigma$-closed filter.
 \end{theorem}
 
 The proof is fundamentally exactly as in \cite{cummings_foreman_magidor_canonical_structure}.
-The clubness is left unwritten in both, but is implicit; the fact that each $I_n$ may consist only of inaccessibles comes from observing that measure-one (hence stationarily) many cardinals below a measurable are Mahlo.
+The fact that each $I_n$ may consist only of inaccessibles comes from observing that measure-one (hence stationarily) many cardinals below a measurable are Mahlo.
 
 \begin{corollary}\thlabel{prikry_generic_ramseyness_implies_ms}
   If $\seq{\kappa_n\mid n<\omega}$ is a Prikry generic sequence over $V$ in $V[G]$,  then in $V[G]$, $MS(\seq{\kappa_n\mid n<\omega})$ holds on a tail.
@@ -129,7 +129,7 @@ The clubness is left unwritten in both, but is implicit; the fact that each $I_n
 \begin{proof}
   Let $\vec{S}=\seq{S_n\mid n<\omega}$ be a family of stationary sets on $\seq{\kappa_n\mid n<\omega}$; without loss of generality, all of $\seq{\kappa_n\mid n<\omega}$ is mutually Ramsey.
   
-  Let $\mathcal{M}$ be a structure on $\kappa$ with Skolem function $F$ and, without loss of generality, terms for each $S_n$; by mutual Ramseyness of $\kappa$, let $\seq{I_n\mid n<\omega}$ be a mutually homogeneous for $\mathcal{M}$ and $F$ family of clubs on each $\kappa_n$.
+  Let $\mathcal{M}$ be a structure on $\kappa$ with Skolem function $F$ and, without loss of generality, terms for each $S_n$; by mutual Ramseyness of $\kappa$, let $\seq{I_n\mid n<\omega}$ be a mutually homogeneous for $\mathcal{M}$ and $F$ family of stationary sets on each $\kappa_n$.
   
   Since each $I_n$ is unbounded in $\kappa_n$, let $\gamma_n\in S_n\cap Lim(I_n)$, and let 
   \[
