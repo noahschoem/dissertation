@@ -8,7 +8,7 @@ Forcing poset closure, and properness, relate to presaturation; we now summarize
 Let $\delta$ be regular uncountable, and let $H\supsetneq\delta$.
 Then we write $\mathcal{P}_\delta(H)$ for all subsets of $H$ of size $<\delta$, and $\mathcal{P}^*_\delta(H)$ to denote the set of all $x\in \mathcal{P}_\delta(H)$ such that $x\cap\delta\in\delta$.
 
-\begin{definition}
+\begin{definition}\label{strongly-proper}
 Let $\mathbb{P}$ be a notion of forcing, $\theta$ sufficiently large so that $\mathbb{P}\in H_\theta$, and $M\prec (H_\theta,\in,\mathbb{P})$. 
 
 We say that $p\in\mathbb{P}$ is an \emph{$(M,\mathbb{P})$-master condition} if for every dense $D\in M$, $D\cap M$ is predense below $p$; equivalently, $p\forces_{\mathbb{P}} M[\dot{G}_{\mathbb{P}}]\cap V=M$. 
@@ -22,6 +22,8 @@ We say that $\mathbb{P}$ is \emph{(strongly) $\delta$-proper on a stationary set
 \end{definition}
 
 Note that $\{M\in \mathcal{P}^*_\delta(H_\theta)\mid M\prec (H_\theta,\in,\mathbb{P})\}$ is a club subset of $\mathcal{P}^*_\delta(H_\theta)$; so a forcing being $\delta$-proper on a stationary set really only depends on the properness condition.
+
+The definitions of $\mathcal{P}_{\delta}^*(H)$ and \ref{strongly-proper} are as in \cite{cox_eskew_kill_sat_save_presat}.
 
 \begin{fact}\label{proper-implies-presat}
 If $\mathbb{P}$ is $\delta$-proper on a stationary set, then $\mathbb{P}$ is $\delta$-presaturated.
@@ -38,7 +40,7 @@ is the collection of all $M\in \mathcal{P}^*_\delta(H_\theta)$, with $|M|=|M\cap
 i.e. such that there is a $\zeta<\delta$ and a continuous $\subseteq$-increasing sequence $\seq{N_\alpha\mid \alpha<\zeta}$ whose union is $M$, such that $\vec{N}\upharpoonright \alpha\in M$ for all $\alpha<\zeta$.
 \end{definition}
 
-In a sense, internal approachability is preserved by any generic extension:
+In a sense, internal approachability is preserved by any generic extension, as noted in \cite{cox_eskew_kill_sat_save_presat}:
 
 \begin{fact}\label{principle-A}
 Suppose $\mathbb{P}$ is a poset, $M\prec(H_\theta,\in,\mathbb{P})$, $\seq{N_\alpha\mid\alpha<\zeta}$ witnesses that $M\in IA_{<\delta}$, and $G$ is $(V,\mathbb{P})$-generic.
