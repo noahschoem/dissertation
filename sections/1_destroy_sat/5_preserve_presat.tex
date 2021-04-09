@@ -11,10 +11,12 @@ Then in $\Ult(V,U)$, by Lemma \ref{jQ-ultVI}, $\dot{j}_I(\mathbb{Q})\cong \mathb
 
 We will argue that $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\kappa^+$-proper on a stationary set, and hence is $\kappa^+$-presaturated.
 
-Observe that $\mathcal{B}_I$ is $\kappa^+$-cc. Hence, $\Ult(V,U)$, $\mathbb{Q}$ is still $\kappa^+$-cc. 
+Observe that $\mathcal{B}_I$ is $\kappa^+$-cc. Hence, in $V[U]$ so also in $\Ult(V,U)$, $\mathbb{Q}$ is still $\kappa^+$-cc. 
 Thus, in $\Ult(V,U)$, $\mathcal{B}_I * \mathbb{Q}$ is $\kappa^+$-cc and hence is $\kappa^+$-proper on $\mathcal{P}^*_{\kappa^+}(H_\theta)$ for all sufficiently large $\theta$.
 
-The difficulty comes in assuring $\mathbb{P}(\kappa)$ and $\dot{\mathbb{R}}$ preserve the properness on a stationary set.
+The difficulty comes in assuring $\mathbb{P}(\kappa)*\dot{\mathbb{R}}$ preserves the properness on a stationary set.
+We will do this by arguing that $\mathbb{P}(\kappa) * \dot{\mathbb{R}}$ is forced by $\mathcal{B}_I*\mathbb{Q}$ to be $\kappa^+$-proper on $\dot{IA_{<\kappa^+}}$.
+Once we have that, since $\mathcal{B}_I*\mathbb{Q}$ is $\kappa^+$-cc and $\mathcal{B}_I*\mathbb{Q}$ is $\kappa^+$-proper on a stationary set, the full forcing is then $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$ is $\kappa^+$-proper on a stationary set.
 
 Work in $\Ult(V,U)^{\mathbb{Q}}$. Here, $\mathbb{P}(\kappa)$ is proper on 
 $$\mathcal{S}:={\{M\prec (H_\theta,\in,\kappa^+)\mid |M|=|M\cap\kappa^+|=\kappa\text{ and }M\cap\kappa^+\in cof(\kappa)\}}$$
@@ -23,7 +25,9 @@ But not only is $\mathcal{S}$ stationary, $\mathcal{S}$ is a club subset of $\ma
 
 % aside: was originally seen from Lemma 2.5 of Foreman-Magidor \cite{foreman_magidor_lcs_ctx_ch}, which is that $\mathcal{S}\cap IA_{<\kappa^+}$ is stationary iff $\mathcal{S}$ remains stationary after collapsing $H_\theta$ to size $\kappa^+$. The latter is a short argument from the definitions, but the above avoids an awkward aside.)
 
-Thus $\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)$ is $\kappa^+$-proper on a stationary subset of $\mathcal{P}_{\kappa^+}^*(H_\theta)^V$, hence is $\kappa^+$-presaturated.
+Thus after forcing with $\mathcal{B}_I * \dot{j}_I(\mathbb{Q})$, we have that $\mathbb{P}(\kappa)*\dot{\mathbb{R}}$ is $\kappa^+$-proper on a stationary set.
+
+Therefore, $\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)$ is $\kappa^+$-proper on a stationary subset of $\mathcal{P}_{\kappa^+}^*(H_\theta)^V$, hence is $\kappa^+$-presaturated.
 But by Theorem \ref{easyduality}, $\mathcal{B}_I * \dot{j}_I\left(\mathbb{Q}\right)\cong \mathbb{Q}*\dot{\mathcal{B}_{\overline{I}}}$;
 then by Lemma \ref{pushpresatdown}, $\overline{I}$ is $\kappa^+$-presaturated.
 % Might be a little more worth saying here, i.e. that \mathcal{S} lives in V and P^*_\kappa^+(H_\theta), \mathcal{S}, and IA_<\kappa^+ are all relatively unchanged by \kappa^+-cc forcings.

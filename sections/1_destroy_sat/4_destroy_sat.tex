@@ -20,6 +20,25 @@ Then in $\Ult(V,I)$,
 $j_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is a name for an Easton support iteration $\seq{\mathbb{R}_\lambda * \dot{\mathbb{C}}(\lambda) \mid \lambda\in[\kappa,j(\kappa))}$, such that if $\lambda$ is $Ult(V,I)$-inaccessible, $\mathbb{C}(\lambda)=\mathbb{P}(\lambda)$, and $\mathbb{C}(\lambda)$ is the trivial forcing otherwise.
 \end{lemma}
 
+And we remark on how $\Ult(V,I)$ computes $\kappa^+$:
+
+\begin{lemma}
+  Let $I$ be as in Lemma \label{jQ-ultVI}, with $G$ a $\mathcal{B}_I$-generic over $V$.
+  Then if $I$ is $\kappa^+$-saturated, then $(\kappa^+)^{\Ult(V,I)}=(\kappa^+)^{V[G]}$.
+\end{lemma}
+
+Thus for $\kappa^+$-saturated ideals, we will just write $\kappa^+$ to mean $(\kappa^+)^V=(\kappa^+)^{V[G]}=(\kappa^+)^{\Ult(V,I)}$.
+
+\begin{proof}
+  Since $I$ is $\kappa^+$-presaturated, forcing with $\mathcal{B}_I$ preserves $\kappa^+$, hence $(\kappa^+)^V=(\kappa^+)^{V[G]}\geq (\kappa^+)^{\Ult(V,I)}$.
+  
+  To see that $(\kappa^+)^{V[G]}=(\kappa^+)^{\Ult(V,I)}$, 
+  suppose that $\alpha\in [\kappa,(\kappa^+)^{V[G]})$.
+  Let this be witnessed by some $\kappa$-sequence $f:\kappa\to\alpha$ a bijection.
+  Since $I$ is $\kappa^+$-saturated, we have from Fact \ref{foreman_ideals_gen_ees:ultrapower-closure} that $\Ult(V,I)$ is closed under $\kappa$-sequences from $V[G]$, and so $f\in Ult(V,I)$.
+  Thus $\alpha$ is not a cardinal in $Ult(V,I)$.
+\end{proof}
+
 \begin{proof}
 This follows from the elementarity of $j_I$, and since $I$ concentrates on inaccessibles, $\kappa$ is inaccessible in $\Ult(V,I)$.
 \end{proof}
@@ -37,7 +56,9 @@ for $\lambda$ a successor cardinal, we would have that $j_J(\lambda)=\lambda^+$.
 \begin{proof}[Proof of Proposition \ref{ground-killsat}]
 By Lemma \ref{jQ-ultVI}, in $V^{\mathcal{B}_I}$, $\dot{j}_I(\mathbb{Q})\cong \mathbb{Q}*\dot{\mathbb{R}}$, where $\dot{\mathbb{R}}$ is an Easton support iteration $\seq{\mathbb{R}_\lambda * \dot{\mathbb{C}}(\lambda) \mid \lambda\in[\kappa,j_I(\kappa))}$ as in the lemma.
 
-Since $\kappa$ is still inaccessible in $\Ult(V,I)$, $\mathbb{C}(\kappa)=\mathbb{P}(\kappa)$ which is not $\kappa^+$-cc. 
+Since $I$ concentrates on inaccessibles below $\kappa$,
+$\kappa$ is still inaccessible in $\Ult(V,I)$.
+Thus $\mathbb{C}(\kappa)=\mathbb{P}(\kappa)$ which is not $\kappa^+$-cc. 
 So $j_I(\mathbb{Q})$ is not $\kappa^+$-saturated.
 
 So by Lemma \ref{foreman_ideals_gen_ees:groundideals}, in $V^\mathbb{Q}$, $\overline{I}$ is not $\kappa^+$-saturated.
