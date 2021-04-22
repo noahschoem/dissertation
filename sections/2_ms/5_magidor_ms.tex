@@ -54,7 +54,7 @@ Note that since mutually stationary sequences of sets are only defined for famil
   
   Since $\vec{U}$ is a family of normal measures on $\kappa$,  applying \thref{simult_indisc_useful} to $F$ yields a family $X\in \prod_{\max dom(g)<\alpha<\lambda} U_\alpha$ of order indiscernibles for $F$.
   What that precisely means is that 
-  whenever $g_1$, $g_2$ are finite extensions of $g$ with the same domain such that, above $\max dom(g)$, $g_i\upharpoonright (\max dom(g),\lambda)=\seq{\kappa^i_{\alpha_0},\dots,\kappa^i_{\alpha_n}}$ such that each $\kappa^i_{\alpha_j}\in X(\alpha_j)$, and $x_1$, $x_2$ are in $[\kappa]^{<\omega}$ with $\min(x_i)>\max ran(g)$ such that $x_i=\seq{x^i_{\beta_0},\dots,x^i_{\beta_{m}}}$ where $x^i_{\beta_j}\in X(\beta_j)$, and $x_1$ bears the same order relations to $ran(g_1)$ as $x_2$ bears to $g_2$, and $(ran(g_1)\cup x_1)\cap (F(g_1,x_1)+1)=(ran(g_2) \cup x_2)\cap (F(g_1,x_1)+1)$\footnote{
+  whenever $g_1$, $g_2$ are finite extensions of $g$ with the same domain such that, above $\max dom(g)$, $g_i\upharpoonright (\max dom(g),\lambda)=\seq{\kappa^i_{\alpha_0},\dots,\kappa^i_{\alpha_n}}$ such that each $\kappa^i_{\alpha_j}\in X(\alpha_j)$, and $x_1$, $x_2$ are in $[\kappa]^{<\omega}$ with $\min(x_i)>\max ran(g)$ such that $x_i=\seq{x^i_{\beta_0},\dots,x^i_{\beta_{m}}}$ where $x^i_{\beta_j}\in X(\beta_j)$, and $x_1$ bears the same order relations to $ran(g_1)$ as $x_2$ bears to $ran(g_2)$, and $(ran(g_1)\cup x_1)\cap (F(g_1,x_1)+1)=(ran(g_2) \cup x_2)\cap (F(g_1,x_1)+1)$\footnote{
     Recall that $x\cap (h(x)+1)=y\cap (h(x)+1)$ amounts to saying that $h(x)<\min (x\Delta y)$, so amounts to asserting that $h$ is regressive on an appropriate subcollection of $\kappa$.
   }, then $F(g_1,x_1)=F(g_2,x_2)$.
   We may further constrain $X$ so that for $\beta>\max dom(g)$, $X(\beta)\subseteq H(\beta)$.
@@ -115,7 +115,7 @@ This isn't particular to the complexities of mutual homogeneity or Ramseyness, b
   By unpacking the definitions of $\not\forces$ and of mutually Ramsey, we have that below every $p$ there is a $q$ such that 
   \begin{equation}
     \begin{alignedat}{3}\label{bad_condition}
-      q & \forces && ``\exists \dot{f}:[\kappa]^{<\omega}\to \kappa \ \text{there is no family of }\check{A_\alpha}\in r_\alpha^\lambda\left(\dot{\kappa_\alpha}\right) \text{ on successors} \\
+      q & \forces && ``\exists \dot{f}:[\kappa]^{<\omega}\to \kappa \ \text{for which there is no family of }\check{A_\alpha}\in r_\alpha^\lambda\left(\dot{\kappa_\alpha}\right) \text{ on successors} \\
       & && \text{witnessing mutual homogeneity for }f  "
     \end{alignedat}
   \end{equation}
